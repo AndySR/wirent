@@ -1,0 +1,19 @@
+branch-defaults:
+  master:
+    environment: Sample-env
+environment-defaults:
+  Sample-env:
+    branch: master
+    repository: git@github.com:AndySR/wirent.git
+global:
+  application_name: wirent
+  default_ec2_keyname: wirent
+  default_platform: arn:aws:elasticbeanstalk:ap-southeast-2::platform/PHP 7.0 running
+    on 64bit Amazon Linux/2.3.3
+  default_region: ap-southeast-2
+  instance_profile: aws-elasticbeanstalk-ec2-role
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  sc: git
+  workspace_type: Application

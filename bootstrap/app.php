@@ -23,9 +23,9 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -58,14 +58,18 @@ $app->singleton(
 | route or middleware that'll be assigned to some specific routes.
 |
 */
+//
+	$app->middleware([
+	    Illuminate\Session\Middleware\StartSession::class
 
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
+	]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+
+   $app->routeMiddleware([
+       'auth' => App\Http\Middleware\Authenticate::class,
+       'cus'=>App\Http\Middleware\CustomerLoginStatus::class,
+       'lord'=>App\Http\Middleware\LandlordLoginStatus::class,       
+   ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -78,10 +82,16 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
-
+   $app->register(App\Providers\AppServiceProvider::class);
+   $app->register(App\Providers\AuthServiceProvider::class);
+   $app->register(App\Providers\EventServiceProvider::class);
+   
+   // reg SessionServiceProvider
+	$app->register(Illuminate\Session\SessionServiceProvider::class);
+	// load session conf
+	$app->configure('session');
+	// set session name
+	$app->alias('session', 'Illuminate\Session\SessionManager');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

@@ -49,6 +49,15 @@ $app->group(['prefix' => '/tpl/page'], function () use ($app){
 	$app->get('/googlemap',function () {
 		return view('page.googlemap');	
 	});
+	$app->get('/details',function () {
+		return view('page.details');	
+	});
+	$app->get('/shortlist',function () {
+		return view('page.shortlist');	
+	});
+	$app->get('/upload',function () {
+		return view('page.upload');	
+	});
 });
 
 /*

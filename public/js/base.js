@@ -8,7 +8,8 @@
 							'question',
 							'user',
 							'ui.load',
-							'googlemap',
+							'ngMap',
+							'detail',
 							'answer'])
 		.config(function($interpolateProvider,
 								$stateProvider,
@@ -62,6 +63,18 @@
 				.state('googlemap', {
                   url: '/googlemap',
                   templateUrl: 'tpl/page/googlemap'
+              })
+				.state('details', {
+                  url: '/details',
+                  templateUrl: 'tpl/page/details'
+              })
+				.state('shortlist', {
+                  url: '/shortlist',
+                  templateUrl: 'tpl/page/shortlist'
+              })
+				.state('upload', {
+                  url: '/upload',
+                  templateUrl: 'tpl/page/upload'
               })
 		})
 		 .directive('uiToggleClass', ['$timeout', '$document', function($timeout, $document) {

@@ -12,11 +12,16 @@
 	<link rel="stylesheet" href="/css/app.css" type="text/css" />
 	<link rel="stylesheet" href="/css/search-option.css" type="text/css" />
 	<link rel="stylesheet" href="/css/profile.css" type="text/css" />
+	<link rel="stylesheet" href="/css/infowindow.css" type="text/css" />
+	<link rel="stylesheet" href="/css/details.css" type="text/css" />
+	<link rel="stylesheet" href="/css/shortlist.css" type="text/css" />
 	<script src="/node_modules/angular/angular.min.js"></script>
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="/node_modules/jquery.slimscroll.min.js"></script>
 	<script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="/node_modules/ui-bootstrap-tpls.js"></script>
+	<script src="/node_modules/ng-map.min.js"></script>
+	<script src="/node_modules/angular-file-upload.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDvEbpAtBYXMXoun-I3wYhn-7K33iVc7qs"></script>
 	<script src="/node_modules/ui-utils.js"></script>
 	<script src="/js/directives/ui-jq.js"></script>
@@ -28,6 +33,8 @@
 	<script src="/js/question.js"></script>
 	<script src="/js/common.js"></script>
 	<script src="/js/answer.js"></script>
+	<script src="/js/details.js"></script>
+	<script src="/js/upload.js"></script>
 	</head>
 <body ng-controller="AppCtrl">
 <div class="navbar">
@@ -105,7 +112,7 @@
                 </div>
                 <div class="panel-footer text-sm">
                   <a href class="pull-right"><i class="fa fa-cog"></i></a>
-                  <a href="#notes">See all the favors</a>
+                  <a ui-sref="shortlist">See all the shortlists</a>
                 </div>
               </div>
             </div>
@@ -138,7 +145,7 @@
                 <progressbar value="60" class="progress-xs m-b-none bg-white"></progressbar>
               </li>
               <li>
-                <a href>
+                <a ui-sref="upload">
                   <span class="badge bg-danger pull-right">30%</span>
                   <span>Settings</span>
                 </a>

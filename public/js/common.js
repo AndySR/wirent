@@ -127,7 +127,7 @@
 							if (r.status)
 							{
 								
-								$state.go('result');
+								$state.go('googlemap');
 							}
 							
 							

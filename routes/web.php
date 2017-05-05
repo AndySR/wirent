@@ -17,18 +17,24 @@
 $app->get('/',function () {
 	return view('index');	
 });
+$app->get('/admin',function () {
+	return view('admin');	
+});
 
 /*
  *  view group:customer|landlord|thirdparty|staff
  */
 $app->group(['prefix' => '/tpl/page'], function () use ($app){	
+	$app->get('/app',function () {
+		return view('page.app');	
+	});
 	$app->get('/home',function () {
 		return view('page.home');	
 	});
 	$app->get('/signup',function () {
 		return view('page.signup');	
 	});
-	$app->get('/login',function () {
+	$app->get('/adminlogin',function () {
 		return view('page.login');	
 	});
 	$app->get('/result',function () {
@@ -58,6 +64,9 @@ $app->group(['prefix' => '/tpl/page'], function () use ($app){
 	$app->get('/upload',function () {
 		return view('page.upload');	
 	});
+	$app->get('/admin',function () {
+		return view('page.admin');	
+	});
 });
 
 /*
@@ -73,7 +82,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->get('/filt/share', 		'CustomerController@filt_share');	
 	$app->post('/filt_address', 		'CustomerController@filt_address');	
 	$app->get('/profile', 			['middleware' => 'cus','uses'=>'CustomerController@profile_check']);
-	$app->get('/profile/update',	['middleware' => 'cus','uses'=>'CustomerController@profile_update']);
+	$app->post('/profile/update',	['middleware' => 'cus','uses'=>'CustomerController@profile_update']);
 	$app->get('/bill',				['middleware' => 'cus','uses'=>'CustomerController@bill_check']);
 	$app->get('/maintenance',		['middleware' => 'cus','uses'=>'CustomerController@maintenance_check']);		
 	$app->get('/maintenance/apply',	['middleware' => 'cus','uses'=>'CustomerController@maintenance_apply']);

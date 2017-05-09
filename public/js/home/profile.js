@@ -20,9 +20,9 @@
 			me.profiledata = {};
 			
 			alert("111");
-			me.saveProfile = function(){
+			me.propMgm() = function(){
 					alert("111");
-					$http.get('/customer/profile')
+					$http.get('/customer/maintenance')
 						.then(function(r){
 							console.log(r);
 						},function(e){
@@ -33,6 +33,8 @@
 		.controller('ProfileController',['$scope','$http','$filter','utilConvertDateToString','$timeout',function($scope,$http,$filter,utilConvertDateToString,$timeout){
 					$scope.data = {};
 					$scope.payment = {};
+					$scope.management = {};
+					$scope.maintenance={};
 					var val= {
 						ER_ID : 0,
 						CID : 0,
@@ -111,26 +113,50 @@
                         }
                     );
 				}
-				
+				//mypaments click()
 					$scope.myPayment = function(){
 //						alert("111");
-						/*$scope.payment.CID = 29;
-						$scope.payment.ER_ID = 2;
+						$scope.payment.CID = 0;
+						$scope.payment.ER_ID = 0;
 						$scope.payment.BillDateMin = '2000-01-01';
 						$scope.payment.BillDateMax = '3000-01-01';
-						$scope.payment.BillType = '';*/
+						$scope.payment.BillType = '';
 						
-						//mypaments
+						
 						console.log("valllllll",val);
-						$http.post('/customer/bill',val)
-							.then(function(r){
-//										$scope.data = r.data;
-										console.log(r);
-										alert("123");
-									},function(e){
-										console.log(e);
-									})
+//						
+						 $http.post('/customer/bill',$scope.payment)
+            		.then(function (response) {
+            			console.log("response",response);
+            			$scope.payment = response.data[0];
+            				console.log("$scope.payment",$scope.payment);
+            		});
 						
+					}
+					
+					//propertymanagement click()
+					$scope.propMgm = function(){
+					$scope.management.CID = 0;
+					$http.post('/customer/rent',$scope.management)
+						.then(function(r){
+						$scope.management = r.data[0];
+						$scope.management.address= r.data[0].ER_No+" "+r.data[0].ER_St+" "+r.data[0].ER_Suburb+","+r.data[0].ER_Region+" "+r.data[0].postcode;
+						console.log($scope.management);
+						},function(e){
+							
+						});
+					}
+					//maintenance Apply
+					$scope.mtApply =  function(){
+					$scope.maintenance.CID = 0;
+					$http.post('/customer/rent',$scope.maintenance)
+						.then(function(r){
+						console.log(r);
+						$scope.maintenance = r.data[0];
+						console.log($scope.maintenance);
+						},function(e){
+							
+						})
 					}
 			
 			
@@ -158,6 +184,44 @@
 			$scope.tabs_accounts[index] = true;
 		}	
 		
+		
+		/*datepicker*/
+		$scope.today = function() {
+	      $scope.dt = new Date();
+	    };
+	    $scope.today();
+	
+	    $scope.clear = function () {
+	      $scope.dt = null;
+	    };
+	
+	    // Disable weekend selection
+	    /*$scope.disabled = function(date, mode) {
+	      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+	    };*/
+	
+	    $scope.toggleMin = function() {
+	      $scope.minDate = $scope.minDate ? null : new Date();
+	    };
+	    $scope.toggleMin();
+	
+	    $scope.open = function($event) {
+	      $event.preventDefault();
+	      $event.stopPropagation();
+	
+	      $scope.opened = true;
+	    };
+	
+	    $scope.dateOptions = {
+	      formatYear: 'yy',
+	      startingDay: 1,
+	      class: 'datepicker'
+	    };
+	
+	    $scope.initDate = new Date('2016-15-20');
+	    $scope.formats = ['yyyy-MMMM-dd', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+	    $scope.format = $scope.formats[0];
+
 	}])	
 	
 })();

@@ -234,10 +234,10 @@ class CustomerController extends Controller
 		//执行存储过程
 		try{
 			$proc_name = 'filt_Check_BillLibrary';
-			$sql = "call $proc_name({$CID},{$ER_ID},'{$BillType}',{$BillDateMin},{$BillDateMax})";
+			$sql = "call $proc_name({$CID},{$ER_ID},'{$BillType}','{$BillDateMin}','{$BillDateMax}')";
 //			echo $sql;
 			$result = DB::select($sql);
-			return json_encode($result);
+			return $result;
 		}
 		catch(exception $e)
 		{
@@ -263,8 +263,8 @@ class CustomerController extends Controller
 		{
 			$proc_name = 'filt_Check_MaintenanceLibrary';
 			$sql = "call $proc_name(
-									{$CID},{$ER_ID},'{$MType}','{$MStat}',{$MApplyDateMin},
-									{$MApplyDateMax}
+									{$CID},{$ER_ID},'{$MType}','{$MStat}','{$MApplyDateMin}',
+									'{$MApplyDateMax}'
 									)";						
 			$result = DB::select($sql);
 			return $result;

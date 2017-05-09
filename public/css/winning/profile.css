@@ -323,3 +323,11 @@ label, .cursor-hand {
     border-radius: 3px;
     box-sizing: border-box;
 }
+/*table style="table-layout:fixed ; width: 100%;"*/
+.profile .tab-pane .card .inner-wrap table tr td {
+	word-wrap: break-word;
+	overflow-x: hidden;
+	text-overflow: ellipsis; 
+	white-space: nowrap; 
+	width: 30px;
+}

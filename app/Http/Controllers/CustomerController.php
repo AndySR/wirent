@@ -80,6 +80,7 @@ class CustomerController extends Controller
 		$CEmail=$request->input('CEmail'); //不允许用户从此过程修改邮箱		
 		$CCurrStat=$request->input('CCurrStat'); //不允许用户修改租买状态		
 		$CLastContDate=$request->input('CLastContDate'); //不允许用户最后一次员工管理日期		
+//		echo $CLastContDate;
 		$CIDType=$request->input('CIDType');
 		$CIDProfile=$request->input('CIDProfile');
 		$CIncomeProfile=$request->input('CIncomeProfile');
@@ -233,9 +234,10 @@ class CustomerController extends Controller
 		//执行存储过程
 		try{
 			$proc_name = 'filt_Check_BillLibrary';
-			$sql = "call $proc_name({$CID},{$ER_ID},'{$BillType}','{$BillDateMin}','{$BillDateMax}')";
+			$sql = "call $proc_name({$CID},{$ER_ID},'{$BillType}',{$BillDateMin},{$BillDateMax})";
+//			echo $sql;
 			$result = DB::select($sql);
-			return $result;
+			return json_encode($result);
 		}
 		catch(exception $e)
 		{
@@ -261,8 +263,8 @@ class CustomerController extends Controller
 		{
 			$proc_name = 'filt_Check_MaintenanceLibrary';
 			$sql = "call $proc_name(
-									{$CID},{$ER_ID},'{$MType}','{$MStat}','{$MApplyDateMin}',
-									'{$MApplyDateMax}'
+									{$CID},{$ER_ID},'{$MType}','{$MStat}',{$MApplyDateMin},
+									{$MApplyDateMax}
 									)";						
 			$result = DB::select($sql);
 			return $result;

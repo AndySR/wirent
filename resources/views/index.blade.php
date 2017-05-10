@@ -43,7 +43,7 @@
 	<script src="/js/home/details.js"></script>
 	<script src="/js/home/upload.js"></script>
 	<script src="/js/home/profile.js"></script>
-	<!--<script src="/js/home/property_mangement_control.js"></script>-->
+	<script src="/js/home/shortlist.js"></script>
 	
 	
 </body>

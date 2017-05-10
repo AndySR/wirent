@@ -324,7 +324,7 @@ label, .cursor-hand {
     box-sizing: border-box;
 }
 /*table style="table-layout:fixed ; width: 100%;"*/
-.profile .tab-pane .card .inner-wrap table tr td {
+.profile   table tr td {
 	word-wrap: break-word;
 	overflow-x: hidden;
 	text-overflow: ellipsis; 

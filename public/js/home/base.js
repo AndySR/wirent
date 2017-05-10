@@ -10,7 +10,8 @@
 							'ui.load',
 							'ngMap',
 							'detail',
-							'profile'
+							'profile',
+							'shortlist'
 							])
 		.config(function($interpolateProvider,
 								$stateProvider,

@@ -137,7 +137,6 @@
 							console.log('r',r);
 							if (r.status)
 							{
-								
 								$state.go('app.googlemap');
 							}
 							

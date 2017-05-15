@@ -90,7 +90,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/service',			['middleware' => 'cus','uses'=>'CustomerController@service_check']);
 	$app->post('/shortlist',			['middleware' => 'cus','uses'=>'CustomerController@shortlist_check']);	
 	$app->post('/shortlist/delete',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_delete']);	
-	$app->get('/shortlist/insert',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_insert']);	
+	$app->post('/shortlist/insert',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_insert']);	
 	
 	$app->group(['prefix' => 'msg'], function () use ($app){
 		$app->get('/notice',		['middleware' => 'cus','uses'=>'CustomerController@msg_notice']);	

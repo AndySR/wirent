@@ -1,8 +1,22 @@
 ;(function(){
 	'use strict';
 	angular.module('map',['ngMap','home'])
-	.controller('MyCtrl',function($scope,$log,NgMap,$cookies,$rootScope,$localStorage,SearchService) {
-				
+		.factory('utilConvertDateToString', ['$filter', function ($filter) {  
+		    return {  
+		        getDateToString: function (date, format) {  
+		            if (angular.isDate(date) && angular.isString(format)) {  
+		                return $filter('date')(date, format);  
+		            }  
+		        },  
+		        getStringToDate: function (string) {  
+		            if (angular.isString(string)) {  
+		                return new Date(string.replace(/-/g, "-"));  
+		            }  
+		        }  
+		    };  
+		}])
+	.controller('MyCtrl',function($scope,$http,$log,NgMap,$cookies,$rootScope,$localStorage,SearchService,utilConvertDateToString) {
+				var shortlistInsert = {};
 				var vm = this;
 				NgMap.getMap().then(function(map) {
 					vm.map = map;
@@ -44,17 +58,34 @@
 						position:vm.shopss[0].ER_No+' '+vm.shopss[0].ER_St+' '+vm.shopss[0].ER_Suburb+' '+vm.shopss[0].ER_Region
 					}
 				];*/
-				  $scope.myInterval = 5000;
-				    var slides = $scope.slides = [];
-				    $scope.addSlide = function() {
+				 
+				  /*   vm.myInterval = 5000;
+				   *   var slides = vm.slides = [];
+				    vm.addSlide = function() {
 				      slides.push({
 				        image: 'img/b1' + slides.length + '.jpg',
 				        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
 				      });
 				    };
 				    for (var i=0; i<4; i++) {
-				      $scope.addSlide();
-				    }
+				      vm.addSlide();
+				    }*/
+				    
+				vm.addShortlist = function (){
+					alert("clicked");
+					shortlistInsert.CID = 1;
+					shortlistInsert.CLType="FavorSave";
+					shortlistInsert.CLDetail=vm.shop.ER_ID+'';;
+					shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+					console.log("shortlistInsert",shortlistInsert);
+					$http.post('/customer/shortlist/insert', shortlistInsert)
+							.then(function(r){
+								console.log('r',r);				
+									console.log("r",r);
+							},function(e){
+								console.log("数据有误");
+							})
+				}
 				vm.shop = vm.shops[0];
 				vm.showDetail = function(e, shop) {
 					vm.shop = shop;

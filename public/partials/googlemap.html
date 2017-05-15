@@ -216,12 +216,12 @@
 													<div id="arr"><span id="left"><</span><span id="right">></span></div>-->
 													<div class="ad">
 														<div class="shortlist-star" >
-																<a style="color: pink;" ng-show="star" ng-click="star=!star;add()"><i class="fa fa-5x fa-heart-o" aria-hidden="true"></i></a>
-																<a style="color: pink;" ng-show="!star" ng-click="star=!star;delete()"><i class="fa fa-5x fa-heart" aria-hidden="true"></i></a>
+																<a style="color: pink;" ng-show="!star" ng-click="star=!star;vm.addShortlist()"><i class="fa fa-5x fa-heart-o" aria-hidden="true"></i></a>
+																<a style="color: pink;" ng-show="star" ng-click="star=!star;vm.deleteShortlist()"><i class="fa fa-5x fa-heart" aria-hidden="true"></i></a>
 														</div>
 														 <carousel interval="myInterval">
-													          <slide ng-repeat="slide in slides" active="slide.active">
-													            <img ng-src="[:slide.image:]" class="img-full" style="height: 400px;">
+													          <slide ng-repeat="picture in shop.picset" active="slide.active">
+													            <img ng-src="[:picture.PicFile:]" class="img-full" style="height: 400px;">
 													            <div class="carousel-caption">
 													             <!-- <h4>Slide [:$index:]</h4>
 													              <p>[:slide.text:]</p>-->

@@ -1,5 +1,5 @@
 <div class="navbar" ng-controller="WinCtrl">
-      <!-- navbar header -->
+     <!-- navbar header -->
       <div class="navbar-header" ng-class="{true:'app-header-fixed',false:''}[headerfix]">
         <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
           <i class="glyphicon glyphicon-align-justify"></i>
@@ -24,10 +24,10 @@
         <!-- link and dropdown -->
 		<ul class="nav navbar-nav hidden-sm">
 			<li><a href="#about">Rental</a></li>
-			<li><a href="#services">Buy</a></li>
-			<li><a ui-sref="news">News</a></li>
-			<li><a ui-sref="contact">Contact</a></li>
-			<li><a ui-sref="aboutus">About</a></li>
+			<li><a href="http://www.winninginvestment.com.au/project-en">Buy</a></li>
+			<li><a href="http://www.winninginvestment.com.au/news">News</a></li>
+			<li><a href="http://www.winninginvestment.com.au/contantus">Contact</a></li>
+			<li><a href="http://www.winninginvestment.com.au/aboutus">About</a></li>
 		</ul>
         <!-- / link and dropdown -->
 
@@ -41,8 +41,8 @@
 		-->
 		  <li class="dropdown" dropdown>
             <a href class="dropdown-toggle" dropdown-toggle>
-              <i class="icon-heart fa-fw"></i>
-              <span class="visible-xs-inline">Notifications</span>
+              <i class="fa fa-heart-o fa-fw"></i>
+              <span class="visible-xs-inline">Shortlist</span>
               <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
             </a>
             <!-- dropdown -->
@@ -80,7 +80,11 @@
             <!-- / dropdown -->
           </li>
 		  <li >
-			<a><i class="fa fa-star fa-fw"></i></a>
+			<a>
+				<i class="fa fa-bell-o fa-fw"></i>
+				<span class="visible-xs-inline">Shortlist</span>
+              	<span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+			</a>
 		  </li>
       <li ng-if="!profile">
 			<a ui-sref="app.login"><span class="badge badge-lg bg-success" >登录</span></a>

@@ -23,8 +23,13 @@
 
 	<div style="height: 100%;" ui-view></div>
 	
-	<script src="/node_modules/angular/angular.min.js"></script>
-	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="vendor/angular/angular.js"></script>
+	<!--<script src="/node_modules/jquery/dist/jquery.min.js"></script>-->
+	<script src="vendor/angular/angular-animate/angular-animate.js"></script>
+	<script src="vendor/angular/angular-cookies/angular-cookies.js"></script>
+	<script src="vendor/angular/ngstorage/ngStorage.js"></script>
+	<script src="/node_modules/jquery-1.12.2.js"></script>
+	<script src="/node_modules/bootstrap.min.js"></script>
 	<script src="/node_modules/jquery.slimscroll.min.js"></script>
 	<script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="/node_modules/ui-bootstrap-tpls.js"></script>

@@ -10,7 +10,7 @@
 			$http.post('/customer/shortlist',$scope.shortlistData)
 						.then(function(r){
 							$scope.shortlistData = r.data;
-							console.log("$scope.shortlistData",$scope.shortlistData);
+//							console.log("$scope.shortlistData",$scope.shortlistData);
 						},function(e){
 							
 						});

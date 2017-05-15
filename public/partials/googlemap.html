@@ -1,7 +1,7 @@
 <div ng-controller="MyCtrl as vm" >
-			<div class="row clear">
-				<div style="position: fixed; top: 50px; right: 0;width:100%; z-index: 100; background-color: #f6f8f8;">
-						<div>
+			<div class="map-page">
+				    <div style="position: fixed; right: 0;width:100%; height: 50px; z-index: 100; background-color: #f6f8f8;">
+							<div class="pull-left">
 							<form>
 								<ul class="nav navbar-nav more-options">
 							          <li class="dropdown pos-stc">
@@ -9,7 +9,7 @@
 							              <span>Filters</span> 
 							              <span class="caret"></span>
 							            </a>
-							            <div class=" wrapper w-full bg-white cust-m-t" style=" position: fixed; top: 115px; left: 0;z-index: 10000;" ng-show="dropdown">
+							            <div class=" wrapper w-full bg-white cust-m-t" style=" position: fixed; top: 100px; left: 0;z-index: 10000;" ng-show="dropdown">
 							              <div class="row">
 							                <div class="col-sm-4">
 							                	
@@ -138,10 +138,10 @@
 							              </div>
 							            </div>
 							          </li>
-							</ul>
+								</ul>
 							</form>
 							</div>
-							<div>
+							<div class="m-t-xxs pull-left">
 								<form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" >
 					          <div class="form-group">
 					            <div class="input-group">
@@ -165,11 +165,9 @@
 												<li><a href><i class="fa fa-chevron-right"></i></a></li>
 								</ul>
 							</div>
-							
-						</div>
-					<div class="col-sm-7 pull-left">
-						<div class="col-sm-12" style="height: 100%;position: fixed; left: -15px;top: 100px;">
-							<ng-map  center="[:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb:]" zoom="18" style="height: 538px; width: 64%;">
+					</div>
+					<div class="" style="height: 100%; width:100%;  padding-right: 530px; position: fixed; left: 0;top: 100px;">
+							<ng-map  center="[:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb:]" zoom="12" style="height: 538px;">
 									<marker id="[:shop.ER_ID:]" position="[:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region:]" ng-repeat="shop in vm.shops" on-click="vm.showDetail(shop)">
 									</marker>
 									<info-window id="foo-iw">
@@ -202,23 +200,35 @@
 									</info-window>
 							</ng-map>
 						</div>
-						
-					</div>
-					<div class="col-sm-5 pull-right clear" >
-						<div class="clear">
-								<div class="adv">
+						<div class="adv clear">
 									<div class="relative-position">
-										<ul>
+										<ul class="clear">
 											<li ng-repeat="shop in vm.shops" ng-mouseover="vm.showDetail(e,shop)">
-												<div id="box" class="all clear">
-													<div class="ad">
+												<div id="box" class="all clear panel b-a" set-ng-animate="false">
+													<!--<div class="ad">
+														
 														<ul id="imgs">
 															<li ng-repeat="picture in shop.picset">
 																<img src="[:picture.PicFile:]" />
 															</li>
 														</ul>
-													</div>
-													<div id="arr"><span id="left"><</span><span id="right">></span></div>
+													
+													<div id="arr"><span id="left"><</span><span id="right">></span></div>-->
+													<div class="ad">
+														<div class="shortlist-star" >
+																<a style="color: pink;" ng-show="star" ng-click="star=!star;add()"><i class="fa fa-5x fa-heart-o" aria-hidden="true"></i></a>
+																<a style="color: pink;" ng-show="!star" ng-click="star=!star;delete()"><i class="fa fa-5x fa-heart" aria-hidden="true"></i></a>
+														</div>
+														 <carousel interval="myInterval">
+													          <slide ng-repeat="slide in slides" active="slide.active">
+													            <img ng-src="[:slide.image:]" class="img-full" style="height: 400px;">
+													            <div class="carousel-caption">
+													             <!-- <h4>Slide [:$index:]</h4>
+													              <p>[:slide.text:]</p>-->
+													            </div>
+													          </slide>
+												         </carousel>
+											         </div>
 												</div>
 												<div class="description">
 													<div class="info-panel">
@@ -262,7 +272,7 @@
 															
 														</div>
 														<div class="price">
-															<span class="num">$585</span>
+															<span class="num">$[:shop.ER_Price:]</span>
 															<span class="period">per week</span>
 															<span class="available">Available Time:[:shop.ER_AvailableDate:]</span>
 														</div>
@@ -277,9 +287,6 @@
 										</ul>
 									</div>
 								</div>
-						</div>
-						
-					</div>
 			</div>
 			
 </div>

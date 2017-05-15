@@ -148,7 +148,7 @@
 				
 				
 				// property types
-			$scope.myPropertyType = 'Apartment';
+			$scope.myPropertyType = '';
 			$scope.propertyTypes = [{ id: 1, propertyType:'House'}, { id: 2,propertyType:'Apartment'},
 				{ id: 3, propertyType:'Unit'},{ id: 4,propertyType:'Studio'}];
 			

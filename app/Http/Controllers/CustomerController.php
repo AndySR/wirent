@@ -104,6 +104,27 @@ class CustomerController extends Controller
 		$result = DB::update($sql);		
 		return response($result) ; //0:失败或无更新；1：成功
 	} 
+	
+	/*
+	 * hot rent
+	 */ 
+	public function hotrent_check()
+	{
+		$proc_name = 'proc_Check_HotRent';
+		$sql = "call $proc_name()";
+		$data = DB::select($sql);
+
+			//循环查询图片库
+		$proc_Name = 'check_EntireRentPicture_by_ERID';	
+		foreach($data as $item)
+		{
+			$ER_ID = $item->ER_ID;
+			$sql = "call $proc_Name('{$ER_ID}')";	
+			$itempic = DB::select($sql);
+			$item->picset = $itempic;	
+		}
+		return $data;
+	}
 	 
 	/*address check
 	 * 
@@ -170,9 +191,27 @@ class CustomerController extends Controller
 			return $e;
 		}	
 	}
+	public function filt_entire_detail(Request $request)
+	{
+		$ER_ID = $request->input('ER_ID');
+		$proc_Name = 'check_EntireRentInfo_by_ERID';
+		$sql = "call $proc_Name({$ER_ID})";
+		$data = DB::select($sql);
+
+		//循环查询图片库
+		$proc_Name = 'check_EntireRentPicture_by_ERID';	
+		foreach($data as $item)
+		{
+			$ER_ID = $item->ER_ID;
+			$sql = "call $proc_Name('{$ER_ID}')";	
+			$itempic = DB::select($sql);
+			$item->picset = $itempic;	
+		}
+		return $data;	
+	}
 	
 	/*
-	 * filt entire rent
+	 * filt share rent
 	 */ 	
 	public function filt_share(Request $request)
 	{

@@ -16,6 +16,21 @@
 					 }
 					
 					})
+			.factory('updateService', function() {
+					 var savedData = {}
+					 function set(data) {
+					   savedData = data;
+					 }
+					 function get() {
+					  return savedData;
+					 }
+					
+					 return {
+					  set: set,
+					  get: get
+					 }
+					
+					})
 			.directive('selectSearch', function($compile) {  
 			  return {  
 			    restrict: 'AE', //attribute or element  
@@ -89,7 +104,8 @@
 					'$element',
 					'$http',
 					'SearchService',
-					function($cookies,$rootScope,$state,$scope,$element,$http,SearchService){
+					'updateService',
+					function($cookies,$rootScope,$state,$scope,$element,$http,SearchService,updateService){
 					//	$scope.address="";
 						$scope.active1 = true;
 						var hello = true;
@@ -148,7 +164,7 @@
 				
 				
 				// property types
-			$scope.myPropertyType = '';
+			$scope.myPropertyType = 'Apartment';
 			$scope.propertyTypes = [{ id: 1, propertyType:'House'}, { id: 2,propertyType:'Apartment'},
 				{ id: 3, propertyType:'Unit'},{ id: 4,propertyType:'Studio'}];
 			
@@ -252,6 +268,7 @@
 					$http.post('/customer/filt/entire', entireData)
 						.then(function(r){
 							SearchService.set(r);
+							updateService.set(entireData);
 //							SetCredentials(r);
 							console.log('r===>',r);
 							if (r.data.length>0)

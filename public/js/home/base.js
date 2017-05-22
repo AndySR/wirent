@@ -1,10 +1,15 @@
 ;(function()
 {
 	'use strict';
-	angular.module('andy',['ui.router',
+	angular.module('andy',[
+							 'ngAnimate',
+							 'angularCSS',
+							'ui.router',
 							'ui.bootstrap',
 							'ngCookies',
 							'ngStorage',
+							'ngSanitize',
+							'oc.lazyLoad',
 							'header',
 							'user',
 							'home',
@@ -14,7 +19,9 @@
 							'ngMap',
 							'detail',
 							'profile',
-							'shortlist'
+							'shortlist',
+							'listpage',
+							'lunbo'
 							])
 		.config(function($interpolateProvider,
 								$stateProvider,
@@ -55,34 +62,57 @@
 					url:'/user/:id',
 					templateUrl:'/tpl/page/user'
 				})
-				.state('result',{
-					url:'/result',
-					templateUrl:'tpl/page/result'
+				.state('app.search',{
+					url:'/search',
+					templateUrl:'/partials/search.html'
 				})
-				.state('aboutus',{
-					url:'/aboutus',
-					templateUrl:'tpl/page/aboutus'
+				.state('app.businessDetails',{
+					url:'/businessDetails',
+					templateUrl:'/partials/businessDetails.html'
 				})
-				.state('news',{
+				.state('app.news',{
 					url:'/news',
-					templateUrl:'tpl/page/news'
+					templateUrl:'/partials/listpage.html',
+					controller: 'listPageCtrl',
+                  	resolve: {
+	                      deps: ['$ocLazyLoad',
+	                        function( $ocLazyLoad ){
+	                          return $ocLazyLoad.load('ui.select').then(
+	                              function(){
+	                                  return $ocLazyLoad.load('js/home/listpage.js');
+	                              }
+	                          );
+	                      }]
+                  	}
 				})
-				.state('contact',{
-					url:'/contact',
-					templateUrl:'tpl/page/contact'
+				.state('app.business',{
+					url:'/business',
+					templateUrl:'/partials/business.html'
 				})
-				.state('details', {
-                  url: '/details',
-                  templateUrl: 'tpl/page/details'
+				.state('app.documentation', {
+                  url: '/documentation',
+                  templateUrl: '/partials/documentation.html'
               })
 				.state('app.shortlist', {
                   url: '/shortlist',
                   templateUrl: '/partials/shortlist.html'
               })
-				.state('upload', {
-                  url: '/upload',
-                  templateUrl: 'tpl/page/upload'
+				.state('app.details', {
+                  url: '/details',
+                  templateUrl: '/partials/details.html'
               })
+				.state('app.serviceTypes',{
+					url:'/serviceTypes',
+					templateUrl:'/partials/serviceTypes.html'
+				})
+				.state('app.guides',{
+					url:'/guides',
+					templateUrl:'/partials/guide.html'
+				})
+				.state('app.new',{
+					url:'/new',
+					templateUrl:'/partials/new.html'
+				})
 			
 				
 		})

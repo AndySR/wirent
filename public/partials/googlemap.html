@@ -9,16 +9,15 @@
 							              <span>Filters</span> 
 							              <span class="caret"></span>
 							            </a>
-							            <div class=" wrapper w-full bg-white cust-m-t" style=" position: fixed; top: 100px; left: 0;z-index: 10000;" ng-show="dropdown">
+							            <div class=" wrapper w-full bg-white cust-m-t" style="position: fixed; top: 100px; left: 0;z-index: 100;" ng-show="dropdown">
 							              <div class="row">
 							                <div class="col-sm-4">
-							                	
 							                  <div class="row">
 							                    <div class="col-xs-6 left-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
 							                         <label>Price</label>
-    												<input type="text" class="form-control input-sm" placeholder="minPrice" aria-describedby="basic-addon1">
+    												<input type="text" ng-model="myMinPrice" class="form-control input-sm" placeholder="minPrice" aria-describedby="basic-addon1">
 							                        </li>
 							                        <li>
 							                          <label>Beds</label>
@@ -32,7 +31,7 @@
 												        </select>
 							                        </li>
 							                        <li>
-							                          <label>Property type</label>
+							                          <label>Type</label>
 												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
 												        </select>
 							                        </li>
@@ -41,11 +40,11 @@
 							                    <div class="col-xs-6 right-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
-    												<input type="text" class="form-control input-sm" placeholder="maxPrice" aria-describedby="basic-addon1">
+    												<input type="text" class="form-control input-sm" ng-model="myMaxPrice" placeholder="maxPrice" aria-describedby="basic-addon1">
 							                        </li>
 							                        <li>
         											  <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
-							                        	</select>
+							                          </select>
 							                        </li>
 							                        <li>
 												        <select class="input-lg form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
@@ -64,18 +63,18 @@
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
 							                          <label>Parking</label>
-												        <select class="input-sm form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+												        <select class="input-sm form-control w-sm inline v-middle" ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
 												        </select>
 							                        </li>
-							                        <li>
+							                       <!-- <li>
 							                          <label>minArea</label>
-												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myArea" ng-options="parking.num as parking.num for parking in parkingsNum" >
 												        </select>
-							                        </li>
-							                        <li>
+							                        </li>-->
+							                       <!-- <li>
 							                          	<label>features</label>
-    													<input type="text" class="form-control input-lg" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
-							                        </li>
+    													<input type="text" class="form-control input-lg" ng-model="features" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
+							                        </li>-->
 							                        <li>
 							                         <label class="m-t-xxs">Available:</label>
 											            <p class="input-group">
@@ -85,25 +84,42 @@
 											              </span>
 											            </p>   
 							                        </li>
+							                          <li>
+							                          	<label class="m-t-xxs">Descriptions:</label>
+							                          	<ul style="list-style: none; padding-right: 0;">
+							                          		<li>
+							                          			<a class="m-r-md" title="靠近bus stop"><i class="fa fa-bus" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="靠近hospital."><i class="fa fa-h-square" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="靠近地铁站."><i class="fa fa-train" aria-hidden="true"></i></a>
+							                          		</li>
+							                          	</ul>
+							                        </li>
 							                      </ul>
 							                    </div>
 							                    <div class="col-xs-6 right-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
-							                         <select class="input-sm form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
+							                         <select class="input-sm form-control w-sm inline v-middle" ng-model="maxParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
         											 </select>
 							                        </li>
 							                        <li>
-												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
-												        </select>
+							                          	<a style="display: block;"></a>
 							                        </li>
-							                        <li>
-							                          	<a></a>
+							                        <li style="visibility: hidden;">
+							                           <label>descriptions:</label>
+    												   <input type="text" class="form-control input-lg"  style="background: white; border: none;" aria-describedby="basic-addon1">
 							                        </li>
-							                        <li>
-							                           <label>descriptions</label>
-    												   <input type="text" class="form-control input-lg" placeholder="keyword description" aria-describedby="basic-addon1">
-							                        </li>
+							                          	<ul style="list-style: none; margin-top: 46px; padding-left: 0;">
+							                          		<li>
+							                          			<a class="m-r-md" title="靠近bus stop"><i class="fa fa-bus" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="这里其实有很多字被忽略掉了."><i class="fa fa-train" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="靠近hospital."><i class="fa fa-h-square" aria-hidden="true"></i></a>
+									                          	<a class="m-r-md" title="靠近地铁站."><i class="fa fa-train" aria-hidden="true"></i></a>
+							                          		</li>
+							                          	</ul>
 							                      </ul>
 							                    </div>
 							                  </div>
@@ -129,7 +145,39 @@
 							                      		<label for="allowancesRefineCb3">Smoking permitted</label>
 							                      	</li>
 							                      	<li>
-							                      		<button type="submit" class="button plusplus" tabindex="23"><span>Update search</span></button>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb3" value="smokers" tabindex="21">
+							                      		<label for="allowancesRefineCb3">Smoking permitted</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb3" value="smokers" tabindex="21">
+							                      		<label for="allowancesRefineCb3">Smoking permitted</label>
+							                      	</li>
+							                      </ul>
+							                    </div>
+							                     <div class="col-xs-6">
+							                      <ul class="list-unstyled l-h-2x">
+							                      	<li>
+							                      	<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">
+							                      	<label for="featureproductrankRefineCb0">Search only Premiere properties</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb1" value="pets-allowed" tabindex="19">
+							                      		<label for="allowancesRefineCb1">Pets allowed</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb2" value="furnished" tabindex="20">
+							                      		<label for="allowancesRefineCb2">Furnished</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb2" value="furnished" tabindex="20">
+							                      		<label for="allowancesRefineCb2">Furnished</label>
+							                      	</li>
+							                      	<li>
+							                      		<input type="checkbox" name="allowances" id="allowancesRefineCb2" value="furnished" tabindex="20">
+							                      		<label for="allowancesRefineCb2">Furnished</label>
+							                      	</li>
+							                      	<li>
+							                      		<button type="submit" class="button plusplus" ng-click="update()" tabindex="23"><span>Update search</span></button>
 							                      	</li>
 							                      </ul>
 							                    </div>
@@ -178,7 +226,7 @@
 																	</div>
 																	<div class="info-right">
 																		<p class="price">$[:vm.shop.ER_Price:]<span>per week</span></p>
-																	  <p class="address"><span><a ui-sref="details">[:vm.shop.ER_No+' '+shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region:]</span></a></p>
+																	  <p class="address"><span><a ui-sref="app.details">[:vm.shop.ER_No+' '+shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region:]</span></a></p>
 																	  <div class="listing-features">
 																					<span class="f-icon with-text">
 									                            <span class="copy"><em class="ng-binding">[:vm.shop.ER_BedRoom:]</em></span>
@@ -247,7 +295,7 @@
 																				</span>
 														</div>
 														<div class="address">
-															<a ui-sref="details">
+															<a ui-sref="app.details">
 																<span>[:shop.ER_No+' '+shop.ER_St:],</span>
 																<span>[:shop.ER_Suburb+' '+shop.ER_Region:]</span>
 															</a>

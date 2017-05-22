@@ -12,6 +12,7 @@
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
           <i class="fa fa-wikipedia-w"></i>
+          <!--<img src="/img/logo.png" />-->
          
           <span class="hidden-folded m-l-xs">[:name:]</span>
         </a>
@@ -24,10 +25,14 @@
         <!-- link and dropdown -->
 		<ul class="nav navbar-nav hidden-sm">
 			<li><a href="#about">Rental</a></li>
-			<li><a href="http://www.winninginvestment.com.au/project-en">Buy</a></li>
-			<li><a href="http://www.winninginvestment.com.au/news">News</a></li>
-			<li><a href="http://www.winninginvestment.com.au/contantus">Contact</a></li>
-			<li><a href="http://www.winninginvestment.com.au/aboutus">About</a></li>
+			<li><a ui-sref="app.search">Buy</a></li>
+			<li><a ui-sref="app.news">News</a></li>
+			<li><a ui-sref="app.business">Contact</a></li>
+			<li><a ui-sref="app.businessDetails">About</a></li>
+			<li><a ui-sref="app.documentation">Guide</a></li>
+			<!--<li><a ui-sref="app.serviceTypes">Types</a></li>-->
+			<!--<li><a ui-sref="app.guides">guides</a></li>-->
+			<li><a ui-sref="app.new">News</a></li>
 		</ul>
         <!-- / link and dropdown -->
 

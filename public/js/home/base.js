@@ -2,8 +2,8 @@
 {
 	'use strict';
 	angular.module('andy',[
-							 'ngAnimate',
-							 'angularCSS',
+							'ngAnimate',
+							'angularCSS',
 							'ui.router',
 							'ui.bootstrap',
 							'ngCookies',

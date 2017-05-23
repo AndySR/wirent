@@ -46,7 +46,7 @@
  	.directive('lunbo',['readJSON','$timeout','mouseEvent' ,function (readJSON,$timeout,mouseEvent) {
   return{
    restrict:'EA',
-   templateUrl:'/partials/directive-lunbo.html',
+   templateUrl:'/partials/mydirectives/directive-lunbo.html',
    css: 'css/winning/new.css',
    scope:{},
    link: function (scope, element, attr) {

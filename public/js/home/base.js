@@ -39,7 +39,7 @@
 				.state('app.home',{
 					url:'/home',
 					//template:'<h1>homePage</h1>'
-					templateUrl:'/partials/home.html' //localhost:8080/home.tpl
+					templateUrl:'/partials/search.html' //localhost:8080/home.tpl
 				})
 				.state('app.googlemap',{
 					url:'/googlemap',

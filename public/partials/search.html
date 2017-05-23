@@ -1,4 +1,4 @@
-<div class="banner-search">
+<div class="banner-search"  ng-controller="HomeController">
 	<div class="clear">
 		<div class="header" data-stellar-background-ratio="0.07">
 			<div class="wrapper">
@@ -22,14 +22,17 @@
 								</ul>
 								<i></i>
 							</div>
-							<div class="search clear">
+							<div class="search">
 								<div class="box">
-									<div class="clear searchBox" data-action="/ershoufang/rs">
-										<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
+									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
+										<select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search> 
+								          <!--<input type="text" class="input-lg form-control" placeholder="Search">-->
+								            <button class="btn btn-lg btn-success" style="position: absolute; left: 605px;top: 0;" ng-click="entireSearch()"  type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
 												<a style="color:white;margin-left: 5px;"><i class="fa fa-lg fa-search"></i></a>
-											</button>
+										</button>-->
 										<div id="userNews" class="savesearch">
 
 										</div>

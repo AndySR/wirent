@@ -50,9 +50,9 @@
 			    '<input type = "test"'+
 			    'class="input-lg form-control" autocomplete="off" name="inputStr" data-val="true" data-val-required="Please choose a location to search." ng-minlength="2"  placeholder="Search by suburb, region, postcode or address" type="text"'+
 			    'ng-change="changeKeyValue(searchField)" ng-keyup="getData({val:searchField})" ng-model="searchField" '+
-			    ' value="{{searchField}}"/>'+
-			    '<div  ng-hide="hidden" style = "position:absolute; top:44px; z-index: 1000;">'+  
-			    '   <select style = "width:527px; border-top:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px;border-color: #23b7e5; overflow-x:hidden;overflow-y:hidden;" ng-change="change(x)" ng-model="x" multiple>'+  
+			    ' value="{{searchField}}" style="width:605px; height:55px;border:none"/>'+
+			    '<div  ng-hide="hidden" style = "position:absolute; top:55px; z-index: 1000;">'+  
+			    '   <select style = "width:605px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;overflow-y:hidden;" ng-change="change(x)" ng-model="x" multiple>'+  
 			    '       <option ng-repeat="data in datas track by $index" style="padding-left:16px">{{data}}</option>'+  
 			    '   </select>'+  
 			    '</div>',

@@ -83,7 +83,7 @@
 	width: 1150px;
 	position: relative;
 	left: 0;
-	top: 0;
+	top: -45px;
 	z-index: 10;
 }
 
@@ -126,7 +126,7 @@
 	padding: 30px 40px;
 	margin: 140px auto;
 	width: 812px;
-	height: 167px;
+	/*height: 167px;*/
 	border-radius: 5px;
 	position: relative;
 }
@@ -249,7 +249,26 @@
 	position: relative;
 	top: -1px;
 }
-
+.banner-search .free-advs {
+	position: relative;
+	top: -140px;
+	width: 100%;
+	height: 100%;
+}
+.banner-search .free-advs ul{
+	display: block;
+}
+.banner-search .free-advs ul li {
+	float: left;
+	width: 49%;
+	text-align: center;
+	border: 1px solid darkgrey;
+	background: white;
+	box-shadow: 0 1px 3px gray;
+	padding:0 10px 10px;
+	margin-right: 5px;
+	opacity: 0.9;
+}
 
 /*dream homes*/
 
@@ -606,6 +625,7 @@
 	float: left;
 }
 .banner-search .top-cities .pics .w {
+	text-align: center;
 	width: 390px;
 	height: 200px;
 	margin-right: 5px;
@@ -642,14 +662,42 @@
 	border: 0;
 	vertical-align: top;
 }
+.banner-search .top-cities .pics .city-pic {
+	background: silver;
+}
 
 .banner-search .top-cities .pics .city-pic a,
 .top-cities .pics .city-pic h3 {
-	color: #fff;
+	color: #000;
 }
 
+.banner-search .top-cities .pics .city-pic:hover a{
+	color: chocolate;
+}
+.banner-search .top-cities .pics .graduation:hover a{
+	color: greenyellow;
+}
+.banner-search .top-cities .pics .railroad:hover a{
+	color: orange;
+}
+.banner-search .top-cities .pics .park-city-space:hover a{
+	color: green;
+}
+.banner-search .top-cities .pics .open-book:hover a{
+	color: yellow;
+}
+.banner-search .top-cities .pics .flaticonpeople:hover a{
+	color: pink;
+}
+.banner-search .top-cities .pics .shoppingcart:hover a{
+	color: blue;
+}
+.banner-search .top-cities .pics .business-rental:hover a{
+	color: silver;
+}
 .banner-search .top-cities .pics .city-pic:hover .holder {
 	bottom: 0;
+	text-align: center;
 }
 
 .banner-search .top-cities .pics .city-pic .holder {
@@ -690,7 +738,9 @@
 	display: block;
 	font-size: 30px;
 }
-
+.banner-search .top-cities .pics .city-pic .holder .desTile em:hover {
+	color: #a40000;
+}
 .banner-search em,
 .banner-search i,
 .banner-search b,
@@ -700,12 +750,12 @@
 }
 
 .banner-search .top-cities .pics .city-pic .holder .desTile span:hover {
-	color: #fff;
+	color: #a40000;
 }
 
 .banner-search .top-cities .pics .city-pic .holder .desTile span {
 	font-size: 12px;
-	color: #bbb;
+	color: #FFFFFF;
 	margin-right: 10px;
 }
 
@@ -731,6 +781,7 @@
 }
 
 .banner-search .top-cities .pics .wh {
+	text-align: center;
 	width: 192px;
 	height: 200px;
 	margin-bottom: 5px;
@@ -738,6 +789,7 @@
 }
 
 .banner-search .top-cities .pics .h {
+	/*text-align: center;*/
 	width: 200px;
 	height: 405px;
 	margin-right: 5px;
@@ -756,6 +808,7 @@
 	width: 193px;
 	height: 200px;
 	margin-right: 5px;
+	text-align: center;
 }
 
 .banner-search .right1 {

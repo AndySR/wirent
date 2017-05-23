@@ -275,7 +275,7 @@
 	          <div class="clear pagination-top">
 		          	<div class="pull-left">
 		          		<a><i class="fa fa-lg fa-list"></i>&nbsp;List</a>
-		          		<a><i class="fa fa-lg fa-map-marker"></i>&nbsp;Map</a>
+		          		<a><i class="fa fa-lg fa-map-marker" ui-sref="app.googlemap"></i>&nbsp;Map</a>
 		          	</div>
 	          	 <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm m-r-lg pull-right" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
 	          </div>
@@ -285,7 +285,7 @@
 			<div id="results">
 				<div class="list-wrap">
 					<ul id="house-list" class="house-list">
-						<li class="first">
+						<li class="first" ui-sref="app.details">
 							<div class="pic-panel w-slider cl" id="js_slider">
 								<span class="new"></span>
 								<div class="slider cl">
@@ -361,7 +361,7 @@
 							</div>
 
 						</li>
-						<li class="first">
+						<li class="" ui-sref="app.details">
 							<div class="pic-panel w-slider cl" id="js_slider">
 								<span class="new"></span>
 								<div class="slider cl">

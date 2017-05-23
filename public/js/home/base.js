@@ -70,8 +70,8 @@
 					url:'/businessDetails',
 					templateUrl:'/partials/businessDetails.html'
 				})
-				.state('app.news',{
-					url:'/news',
+				.state('app.listpage',{
+					url:'/listpage',
 					templateUrl:'/partials/listpage.html',
 					controller: 'listPageCtrl',
                   	resolve: {
@@ -113,7 +113,10 @@
 					url:'/new',
 					templateUrl:'/partials/new.html'
 				})
-			
+				.state('app.newsDetail',{
+					url:'/newsDetail',
+					templateUrl:'/partials/newsDetail.html'
+				})
 				
 		})
 		

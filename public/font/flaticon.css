@@ -25,18 +25,17 @@
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
   font-family: Flaticon;
         font-size: 20px;
-font-style: normal;
-margin-left: 20px;
+		font-style: normal;
 }
 
-.flaticon-business:before { content: "\f100"; }
-.flaticon-mall-shopping-cart:before { content: "\f101"; }
-.flaticon-people:before { content: "\f102"; }
-.flaticon-green-park-city-space:before { content: "\f103"; }
-.flaticon-backpack:before { content: "\f104"; }
-.flaticon-open-book:before { content: "\f105"; }
-.flaticon-college-graduation:before { content: "\f106"; }
-.flaticon-train-on-railroad:before { content: "\f107"; }
+.flaticon-business:before { content: "\f100"; font-size: 140px;}
+.flaticon-mall-shopping-cart:before { content: "\f101";font-size: 140px; }
+.flaticon-people:before { content: "\f102"; font-size:140px;}
+.flaticon-green-park-city-space:before { content: "\f103"; font-size: 140px;}
+.flaticon-backpack:before { content: "\f104"; font-size: 140px;}
+.flaticon-open-book:before { content: "\f105"; font-size: 140px;}
+.flaticon-college-graduation:before { content: "\f106"; font-size: 140px;}
+.flaticon-train-on-railroad:before { content: "\f107"; font-size: 140px;}
 .flaticon-man-standing-up:before { content: "\f108"; }
 .flaticon-wifi:before { content: "\f109"; }
 .flaticon-female-silhouette:before { content: "\f10a"; }

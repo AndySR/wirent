@@ -307,17 +307,37 @@
 }
 
 @media(min-width:976px) and (max-width:1440px) {
-	.banner-search .dream-homes-item {
+	.dream-homes-item {
 		width: 25%
 	}
 }
 
 @media(min-width:1441px) {
-	.banner-search .dream-homes-item {
+	.dream-homes-item {
 		width: 25%
 	}
 }
-
+/*.banner-search .dream-homes-item-left,
+.banner-search .dream-homes-item-right,
+.banner-search .dream-homes-item-centered {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: silver;
+	position: absolute;
+	top: 0;
+	left: 0px;
+	transition: left 0.5s;
+}*/
+.banner-search .centered {
+	
+}
+.banner-search .dreamhomesitemleft {
+	left: -341.25px;
+}
+.banner-search .dreamhomesitemright {
+	left: 341.25px;
+}
 .banner-search .dream-homes {
 	padding: 1px 0;
 	background-color: #f2f5f7

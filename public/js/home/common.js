@@ -2,6 +2,22 @@
 (function() {
 	'use strict';
 	angular.module('home', ['ui.bootstrap'])
+		.factory('readJSON', ['$http', '$q', function($http, $q) {
+			return {
+				query: function() {
+					var deferred = $q.defer();
+					$http({
+						method: 'GET',
+						url: 'img.json'
+					}).success(function(data, status, header, config) {
+						deferred.resolve(data);
+					}).error(function(data, status, header, config) {
+						deferred.reject(data);
+					});
+					return deferred.promise;
+				}
+			}
+		}])
 		.factory('SearchService', function() {
 			var savedData = {}
 
@@ -142,10 +158,52 @@
 				}
 			};
 		})
+		.directive('hotrent', ['readJSON','$timeout', 'mouseEvent', function(readJSON, $timeout, mouseEvent) {
+			return {
+				restrict: 'EA',
+				templateUrl: '/partials/mydirectives/directive-hotrent.html',
+				scope: {
+				},
+				link: function(scope, element, attr) {
+					scope.imageid = 4;
+					scope.left = 0;
+					var promise = readJSON.query();
+					var step = 0;
+					var time = null;
+					promise.then(function(data) {
+						scope.carouselimages = data;
+						
+					});
+					scope.prev = function(){
+						if(scope.imageid >4 ){
+							scope.imageid--;
+							scope.left = scope.left+341.25;
+							element.find("ul").css({
+								'left': scope.left + 'px'
+							});
+						}
+					}
+					scope.next = function(){
+					if(scope.imageid <scope.carouselimages.length ){
+//						alert(scope.carouselimages.length);
+						scope.imageid++;
+						scope.left = scope.left-341.25;
+						element.find("ul").css({
+							'left': scope.left + 'px'
+						});
+					}
+					/*scope.imageid = (scope.imageid  + scope.imageid - 1) % scope.carouselimages.length; 
+					scope.carouseleft=true;
+					scope.carouseright=false;
+					scope.moveleft = scope.imageid & scope.carouseleft;
+					scope.moveright = scope.imageid & scope.carouseright;*/
+					}
+				}
+			}
+		}])
 		.service('commonHeader', ['$scope', function() {
-			//					var me = this;
-			//					me.data = {};
-			//					me.data.headerfix = true;
+			
+			
 		}])
 		.controller('HomeController', [
 			'$cookies',

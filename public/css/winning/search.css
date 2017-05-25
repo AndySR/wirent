@@ -171,7 +171,7 @@
 	transition: all ease-in-out .3s;
 	position: absolute;
 	top: 87px;
-	left: 62px;
+	left: 56px;
 	border-bottom: 10px solid #fff;
 	z-index: 9;
 }
@@ -713,7 +713,7 @@
 	color: darkred;
 }
 .banner-search .top-cities .pics .business-rental:hover a{
-	color: silver;
+	color: blue;
 }
 .banner-search .top-cities .pics .city-pic:hover .holder {
 	bottom: 0;

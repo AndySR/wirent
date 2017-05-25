@@ -58,9 +58,14 @@
 				templateUrl: '/partials/mydirectives/directive-search.html',
 				//			   css: 'css/winning/new.css',
 				scope: {
-					tips : '='
+					tips : '=',
+					openmodal : "&"
+				},
+				controller: function($scope) {
+//					$scope.openmodal();
 				},
 				link: function(scope, element, attr) {
+//					scope.openmodal();
 					scope.tips=false;
 					/*点击事件*/
 					scope.clickEvent = function(event) {
@@ -74,26 +79,26 @@
 							scope.tips=false;
 						}
 						 else if(event == 2) {
-							left = 122;
+							left = 130;
 							scope.tips=false;
 						}
 						  else if(event == 3) {
-							left = 178;
+							left = 186;
 							scope.tips=true;
 							
 						}
 						   else if(event == 4) {
-							left = 250;
+							left = 256;
 							scope.tips=false;
 						}
 						 else if(event == 5) {
-							left = 328;
+							left = 334;
 							scope.tips=false;
 						}
 						element.find("li").removeClass("selected");
 						element.find("li").eq(event).addClass("selected");
 						element.find("i").css({
-							'left': left + 62 + 'px'
+							'left': left + 56 + 'px'
 						});
 					};
 				}
@@ -214,7 +219,9 @@
 			'$http',
 			'SearchService',
 			'updateService',
-			function($cookies, $rootScope, $state, $scope, $element, $http, SearchService, updateService) {
+			'$modal', 
+			'$log',
+			function($cookies, $rootScope, $state, $scope, $element, $http, SearchService, updateService,$modal,$log) {
 				//	$scope.address="";
 				$scope.active1 = true;
 				var hello = true;
@@ -223,22 +230,9 @@
 				var data = {};
 				var count = 0;
 				var regions = {};
+				var business = {};
 				$scope.datas = []; //下拉框选项
 				var entireData = {};
-				$scope.switchCheckBox1 = function(e) {
-					console.log("123");
-					$scope.active1 = true;
-					$scope.active2 = false;
-
-				}
-				$scope.switchCheckBox2 = function(e) {
-					console.log("1234");
-					$scope.active1 = false;
-					$scope.active2 = true;
-				}
-				//				$scope.sDisplay = function(){
-				//					$scope.hello = !hello;
-				//				}
 				//model types
 				$scope.myMode = 'Entire';
 				$scope.Modes = [{
@@ -283,7 +277,7 @@
 				}
 
 				// property types
-				$scope.myPropertyType = 'Apartment';
+				$scope.myPropertyType = '';
 				$scope.propertyTypes = [{
 						id: 1,
 						propertyType: 'House'
@@ -589,7 +583,7 @@
 							ER_AreaMin: 0,
 							ER_AreaMax: 5000,
 							ER_AvailableDate: '2020-01-01',
-							ER_Description: $scope.keywords || ' ',
+							ER_Description: $scope.keywords || '',
 							ER_Feature: ' '
 						};
 					} else {
@@ -613,7 +607,7 @@
 						}
 					}
 
-					//			 $state.go('app.googlemap');
+					// $state.go('app.googlemap');
 					console.log(entireData);
 					$http.post('/customer/filt/entire', entireData)
 						.then(function(r) {
@@ -630,7 +624,86 @@
 
 						});
 				}
+				/* theme title search*/
+				$scope.search = function(keywords) {
+//					console.log($scope.x);
+//					alert(keywords);
+					if($scope.x) {
+						var address = $scope.x[0].split(",");
+//						console.log("xxx", address);
+						entireData = {
+							ER_Suburb: address[0],
+							ER_Region: address[1],
+							ER_Type: $scope.myPropertyType,
+							ER_PriceMin: $scope.myMinPrice,
+							ER_PriceMax: $scope.myMaxPrice,
+							ER_BedRoomMin: $scope.minBedNum,
+							ER_BedRoomMax: $scope.maxBedNum,
+							ER_BathRoomMin: $scope.minBathNum,
+							ER_BathRoomMax: 5,
+							ER_ParkingMin: $scope.myParkingNum,
+							ER_ParkingMax: 5,
+							ER_AreaMin: 0,
+							ER_AreaMax: 5000,
+							ER_AvailableDate: '2020-01-01',
+							ER_Description:'%'+keywords+';',
+							ER_Feature: ' '
+						};
+					} else {
+						entireData = {
+							ER_Suburb: '',
+							ER_Region: '',
+							ER_Type: $scope.myPropertyType,
+							ER_PriceMin: $scope.myMinPrice,
+							ER_PriceMax: $scope.myMaxPrice,
+							ER_BedRoomMin: $scope.minBedNum,
+							ER_BedRoomMax: $scope.maxBedNum,
+							ER_BathRoomMin: $scope.minBathNum,
+							ER_BathRoomMax: 5,
+							ER_ParkingMin: $scope.myParkingNum,
+							ER_ParkingMax: 5,
+							ER_AreaMin: 0,
+							ER_AreaMax: 5000,
+							ER_AvailableDate: '2020-01-01',
+							ER_Description:'%'+keywords+';',
+							ER_Feature: ''
+						}
+					}
 
+					// $state.go('app.googlemap');
+					console.log(entireData);
+					$http.post('/customer/filt/entire', entireData)
+						.then(function(r) {
+							SearchService.set(r);
+							updateService.set(entireData);
+							//							SetCredentials(r);
+							console.log('r===>', r);
+							if(r.data.length > 0) {
+								$state.go('app.googlemap');
+							}
+							//							
+
+						}, function(e) {
+
+						});
+				}
+				/*商家专区*/
+				$scope.businessSearch = function(TPDetail){
+					business.TPDetail = TPDetail;
+					business.TPServLoc = '';
+					$http.post('/customer/filt_thirdparty', business)
+						.then(function(r) {
+							SearchService.set(r);
+							console.log('r===>', r);
+							if(r.data.length > 0) {
+								$state.go('app.business');
+							}
+							//							
+
+						}, function(e) {
+
+						});
+				}
 				//datepicker
 				$scope.today = function() {
 					$scope.dt = new Date();
@@ -668,8 +741,54 @@
 				$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 				$scope.format = $scope.formats[0];
 
+
+			/*modal code*/
+		    $scope.items = ['item1', 'item2', 'item3'];
+		    
+		    $scope.openmodal = function (size) {
+//		    	alert("modal");
+				
+		      var modalInstance = $modal.open({
+		        templateUrl: 'myModalContent.html',
+		        controller: 'ModalInstanceCtrl',
+		        size: size,
+		        resolve: {
+		         /* maps: function(){
+		          	return angular.element(".subway-map").subwayMap({ debug: true });
+		          },*/
+		          items: function () {
+		            return $scope.items;
+		          }
+		        }
+		      });
+			 
+		      modalInstance.result.then(function (selectedItem) {
+		        $scope.selected = selectedItem;
+		      }, function () {
+		        $log.info('Modal dismissed at: ' + new Date());
+		      });
+		    };
 			}
-		]);
+		])
+		.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
+		   
+		    $scope.items = items;
+		    $scope.selected = {
+		      item: $scope.items[0]
+		    };
+		
+		    $scope.ok = function () {
+		      $modalInstance.close($scope.selected.item);
+		    };
+		
+		    $scope.cancel = function () {
+		      $modalInstance.dismiss('cancel');
+		    };
+		  }]);
+		
+		
+		
+  
 	/*.animation('.fold-animation', ['$animateCss', function($animateCss) {
 	  return {
 	    enter: function(element, doneFn) {

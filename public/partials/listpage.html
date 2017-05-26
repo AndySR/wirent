@@ -167,99 +167,173 @@
 	                </div>
 	                <div class=" m-l-n-xxs" ng-show="hello">
 	                  <label>Features:</label>
-	                  <div class="row">
-	                    <div class="col-xs-6">
-	                   	  
-	                      <ul class="list-unstyled l-h-2x">
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb0" checked>
-						              <i></i>
-						        </label>
-	                      	<label for="featureproductrankRefineCb0" style="position: absolute; top: 0;left: 60px;">Search only Premiere properties</label>
-	                      	</li>
-	                      	<li>
-	                      		
-	                      		<label class="i-switch bg-danger m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb" checked>
-						              <i></i>
-						        </label>
-	                      		<input type="checkbox" name="allowances" id="allowancesRefineCb1" value="pets-allowed" tabindex="19">
-	                      		 <label for="allowancesRefineCb" style="position: absolute; top: 35px;left: 60px;" >Pets allowed</label>
-	                      	</li>
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb2" checked>
-						              <i></i>
-						        </label>
-	                      		<label for="allowancesRefineCb2" style="position: absolute; top: 68px;left: 60px;">Furnished</label>
-	                      	</li>
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb3" checked>
-						              <i></i>
-						        </label>
-	                      		<label for="allowancesRefineCb3" style="position: absolute; top: 102px;left: 60px;">Smoking permitted</label>
-	                      	</li>
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb4" checked>
-						              <i></i>
-						        </label>
-	                      		<label for="allowancesRefineCb4" style="position: absolute; top: 136px;left: 60px;">Smoking permitted</label>
-	                      	</li>
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb5" checked>
-						              <i></i>
-						        </label>
-	                      		<label for="allowancesRefineCb5" style="position: absolute; top: 171px;left: 60px;">Smoking permitted</label>
-	                      	</li>
-	                      </ul>
-	                    </div>
-	                     <div class="col-xs-6">
-	                      <ul class="list-unstyled l-h-2x">
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb6" checked>
-						              <i></i>
-						        </label>
-	                      	<label for="featureproductrankRefineCb6" style="position: absolute; top: 0;left: 60px;">Search only Premiere properties</label>
-	                      	</li>
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb7" checked>
-						              <i></i>
-						        </label>
-	                      		<label for="allowancesRefineCb7" style="position: absolute; top: 35px;left: 60px;">Pets allowed</label>
-	                      	</li>
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb8" checked>
-						              <i></i>
-						        </label>
-	                      		<label for="allowancesRefineCb8" style="position: absolute; top: 68px;left: 60px;">Furnished</label>
-	                      	</li>
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb9" checked>
-						              <i></i>
-						        </label>
-	                      		<label for="allowancesRefineCb9" style="position: absolute; top: 102px;left: 60px;">Furnished</label>
-	                      	</li>
-	                      	<li>
-	                      		<label class="i-switch m-t-xs m-r">
-						              <input type="checkbox" id="allowancesRefineCb10" checked>
-						              <i></i>
-						        </label>
-	                      		<label for="allowancesRefineCb10" style="position: absolute; top: 136px;left: 60px;">Furnished</label>
-	                      	</li>
-	                      	<li>
-	                      		
-	                      	</li>
-	                      </ul>
-	                    </div>
-	                  </div>
+	                   <div class="row  m-l-md">
+		                    <div class="col-xs-6">
+		                    	<div class="row">
+		                    		<div class="col-xs-4">
+		                    			 <ul class="list-unstyled l-h-2x">
+					                      	<li>
+					                      	<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
+					                      	<!--<label for="featureproductrankRefineCb0"></label>-->
+					                      	<span title="all_requirements" ng-click="col_requirements()">
+					                      		<i ng-show="all_requirements" style="color: purple;" class="flaticon-puzzle20"></i>
+					                      		<i ng-show="!all_requirements" class="flaticon-puzzle20"></i>
+					                      	</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="no_smoking" ng-click="no_smoking=!no_smoking">
+					                      			<i ng-show="no_smoking" style="color: purple;" class="flaticon-no-smoking-sign18"></i>
+					                      			<i ng-show="!no_smoking" class="flaticon-no-smoking-sign18"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="no_pets" ng-click="no_pets=!no_pets">
+					                      			<i ng-show="no_pets" style="color: purple;" class="flaticon-no-dogs18"></i>
+					                      			<i ng-show="!no_pets" class="flaticon-no-dogs18"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="girl_only" ng-click="girl_only=!girl_only">
+					                      			<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette18"></i>
+					                      			<i ng-show="!girl_only" class="flaticon-female-silhouette18"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="boy_only" ng-click="boy_only=!boy_only">
+					                      			<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up18"></i>
+					                      			<i ng-show="!boy_only" class="flaticon-man-standing-up18"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="no_party" ng-click="no_party=!no_party">
+					                      			<i ng-show="no_party" style="color: purple;" class="flaticon-turn-microphone-off-button18"></i>
+					                      			<i ng-show="!no_party" class="flaticon-turn-microphone-off-button18"></i>
+					                      		</span>
+					                      	</li>
+					                      </ul>
+		                    		</div>
+		                    		<div class="col-xs-4">
+		                    			 <ul class="list-unstyled l-h-2x m-l-sm">
+					                      	<li>
+					                      	<span title="appliances" ng-click="col_appliances()">
+					                      		<i ng-show="appliances" style="color: purple;" class="flaticon-socket20"></i>
+					                      		<i ng-show="!appliances" class="flaticon-socket20"></i>
+					                      	</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="stove" ng-click="stove=!stove">
+					                      			<i ng-show="stove" style="color: purple;" class="flaticon-stove16"></i>
+					                      			<i ng-show="!stove" class="flaticon-stove16"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="dishwasher" ng-click="dishwasher=!dishwasher">
+					                      			<i ng-show="dishwasher" style="color: purple;" class="flaticon-dishwasher16"></i>
+					                      			<i ng-show="!dishwasher" class="flaticon-dishwasher16"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="dryer" ng-click="dryer=!dryer">
+					                      			<i ng-show="dryer" style="color: purple;" class="flaticon-tumble-dryer16"></i>
+					                      			<i ng-show="!dryer" class="flaticon-tumble-dryer16"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="aircondition" ng-click="aircondition=!aircondition">
+					                      			<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit16"></i>
+					                      			<i ng-show="!aircondition" class="flaticon-minisplit16"></i>
+					                      		</span>
+					                      	</li>
+					                    </ul>
+		                    		</div>
+		                    		<div class="col-xs-4">
+		                    			  <ul class="list-unstyled l-h-2x m-l-md">
+					                      	<li>
+					                      	<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
+					                      	<!--<label for="featureproductrankRefineCb0"></label>-->
+					                      	<span title="furniture" ng-click="col_furniture()">
+					                      		<i ng-show="furniture" style="color: purple;" class="flaticon-cabinet20"></i>
+					                      		<i ng-show="!furniture" class="flaticon-cabinet20"></i>
+					                      	</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="bed" ng-click="bed=!bed">
+					                      			<i ng-show="bed" style="color: purple;" class="flaticon-bed16"></i>
+					                      			<i ng-show="!bed" class="flaticon-bed16"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="desk" ng-click="desk=!desk">
+					                      			<i ng-show="desk" style="color: purple;" class="flaticon-man-in-office-desk-with-computer16"></i>
+					                      			<i ng-show="!desk" class="flaticon-man-in-office-desk-with-computer16"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="wardrob" ng-click="wardrob=!wardrob">
+					                      			<i ng-show="wardrob" style="color: purple;" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
+					                      			<i ng-show="!wardrob" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
+					                      		</span>
+					                      	</li>
+					                      	<!--<li>
+					                      		<span><i class="flaticon-minisplit16"></i></span>
+					                      	</li>-->
+					                      </ul>
+		                    		</div>
+		                    	</div>
+		                     </div>
+		                     <div class="col-xs-6">
+		                     	<div class="row">
+		                    		<div class="col-xs-6">
+		                    			 <ul class="list-unstyled l-h-2x m-l-xl">
+					                      	<li>
+					                      	<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
+					                      	<!--<label for="featureproductrankRefineCb0"></label>-->
+					                      	<span title="other_appliance" ng-click="col_other_appliance()">
+					                      		<i ng-show="other_appliance" style="color: purple;" class="flaticon-plug20"></i>
+					                      		<i ng-show="!other_appliance" class="flaticon-plug20"></i>
+					                      	</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="refrigerator" ng-click="refrigerator=!refrigerator">
+					                      			<i ng-show="refrigerator" style="color: purple;" class="flaticon-fridge16"></i>
+					                      			<i ng-show="!refrigerator" class="flaticon-fridge16"></i>
+					                      		</span>
+					                      	</li>
+					                      	<li>
+					                      		<span title="laundry" ng-click="laundry=!laundry">
+					                      			<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine16"></i>
+					                      			<i ng-show="!laundry" class="flaticon-washing-machine16"></i>
+					                      		</span>
+					                      	</li>
+					                      </ul>
+		                    		</div>
+		                    		<div class="col-xs-6">
+		                    			  <ul class="list-unstyled l-h-2x">
+						                      <li>
+						                      	<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
+						                      	<!--<label for="featureproductrankRefineCb0"></label>-->
+						                      	<span title="other_essential" ng-click="col_other_essential()">
+						                      		<i ng-show="other_essential" style="color: purple;" class="flaticon-settings20"></i>
+						                      		<i ng-show="!other_essential" class="flaticon-settings20"></i>
+						                      	</span>
+						                      	</li>
+						                      	<li>
+						                      		<span title="wifi" ng-click="wifi=!wifi">
+						                      			<i ng-show="wifi" style="color: purple;" class="flaticon-wifi16"></i>
+						                      			<i ng-show="!wifi" class="flaticon-wifi16"></i>
+						                      		</span>
+						                      	</li>
+						                      	<li>
+						                      		<span title="gas" ng-click="gas=!gas">
+						                      			<i ng-show="gas" style="color: purple;" class="flaticon-gas-level16"></i>
+						                      			<i ng-show="!gas" class="flaticon-gas-level16"></i>
+						                      		</span>
+						                      	</li>
+					                      </ul>
+		                    		</div>
+		                    	</div>
+		                     </div>
+	                   </div>
 	                </div>
 	              </div>
 	            </div>

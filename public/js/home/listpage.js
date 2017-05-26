@@ -32,7 +32,16 @@
 		        return out;
 		    };
 		})
-		.controller('listPageCtrl', ['$scope', '$log','$timeout','$http',function($scope,$log,$timeout,$http) {
+		.controller('listPageCtrl', ['$scope', 
+			'$log','$timeout','$http',
+			'$cookies','$rootScope','$localStorage',
+			'SearchService','updateService',
+			function($scope,$log,$timeout,
+			$http,$cookies,$rootScope,
+			$localStorage,SearchService,
+			updateService) {
+			var entireData = {};
+			var datafromhome = {};
 			$scope.totalItems = 64;
 		    $scope.currentPage = 4;
 		    $scope.setPage = function (pageNo) {
@@ -135,5 +144,28 @@
 				$scope.update = function(){
 					alert("updated");
 				}
+				
+		/**
+		 * resolve the data passed through factory service from home page
+		 */
+		 if(JSON.stringify(SearchService.get()) != "{}"){
+			 	$localStorage.settings = SearchService.get().data;
+			 	console.log('$localStorage.settings',$localStorage.settings);
+			 	entireData = $localStorage.settings;
+				console.log('entireData',entireData);
+			 }else{
+			 	entireData = $localStorage.settings;
+			 	console.log('$localStorage.settings other conditions',$localStorage.settings);
+			 }
+			 $scope.entireData=entireData;
+		 if(JSON.stringify(updateService.get()) != "{}"){
+				$localStorage.datafromhome=updateService.get();
+				datafromhome=$localStorage.datafromhome;
+		 		console.log('updateService.get()',updateService.get());
+				 }else{
+				 	datafromhome=$localStorage.datafromhome;
+				 	console.log('$localStorage.datafromhome',datafromhome);
+				 }
+				  $scope.datafromhome=datafromhome;
 	}])
 })();

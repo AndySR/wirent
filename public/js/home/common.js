@@ -2,13 +2,13 @@
 (function() {
 	'use strict';
 	angular.module('home', ['ui.bootstrap'])
-		.factory('readJSON', ['$http', '$q', function($http, $q) {
+		.factory('readData', ['$http', '$q', function($http, $q) {
 			return {
 				query: function() {
 					var deferred = $q.defer();
 					$http({
 						method: 'GET',
-						url: 'img.json'
+						url: '/customer/hotrent'
 					}).success(function(data, status, header, config) {
 						deferred.resolve(data);
 					}).error(function(data, status, header, config) {
@@ -52,7 +52,7 @@
 			}
 
 		})
-		.directive('animatesearch', ['readJSON', '$timeout', 'mouseEvent', function(readJSON, $timeout, mouseEvent) {
+		.directive('animatesearch', ['$timeout', function($timeout) {
 			return {
 				restrict: 'EA',
 				templateUrl: '/partials/mydirectives/directive-search.html',
@@ -163,7 +163,7 @@
 				}
 			};
 		})
-		.directive('hotrent', ['readJSON','$timeout', 'mouseEvent', function(readJSON, $timeout, mouseEvent) {
+		.directive('hotrent', ['readData','$timeout', 'mouseEvent', function(readData, $timeout, mouseEvent) {
 			return {
 				restrict: 'EA',
 				templateUrl: '/partials/mydirectives/directive-hotrent.html',
@@ -172,12 +172,59 @@
 				link: function(scope, element, attr) {
 					scope.imageid = 4;
 					scope.left = 0;
-					var promise = readJSON.query();
+					var promise = readData.query();
 					var step = 0;
 					var time = null;
 					promise.then(function(data) {
+						 angular.forEach(data, function(data,index,array){
+						//data等价于array[index]
+							var dataresults = data.ER_Description.split(";");
+							dataresults.pop();
+							for(var i =0;i<dataresults.length;i++)
+							{
+								
+								switch (dataresults[i])
+								{
+								     case "train_station":
+								     	data.train_station = true;
+								   	 break;
+								     case "university":
+										data.university = true;
+								     break;
+								     case "backpack": 
+										data.backpack = true;
+								    break;
+								     case "park": 
+										data.park = true;
+								    break;
+								     case "school": 
+										data.school = true;
+								    break;
+								     case "big_family": 
+										data.big_family = true;
+								    break;
+								     case "shopping_mall": 
+										data.shopping_mall = true;
+								    break;
+								     case "offical_rental": 
+										data.offical_rental = true;
+								    break;
+								  /* default: 
+								   		data.train_station =false;
+										data.university =false;
+										data.backpack =false;
+										data.park =false;
+										data.school =false;
+										data.big_family =false;
+										data.shopping_mall =false;
+										data.offical_rental =false;
+								      	 break;*/
+								}
+							}
+							
+						});
 						scope.carouselimages = data;
-						
+						console.log("scope.carouselimages",scope.carouselimages);
 					});
 					scope.prev = function(){
 						if(scope.imageid >4 ){
@@ -189,19 +236,13 @@
 						}
 					}
 					scope.next = function(){
-					if(scope.imageid <scope.carouselimages.length ){
-//						alert(scope.carouselimages.length);
-						scope.imageid++;
-						scope.left = scope.left-341.25;
-						element.find("ul").css({
-							'left': scope.left + 'px'
-						});
-					}
-					/*scope.imageid = (scope.imageid  + scope.imageid - 1) % scope.carouselimages.length; 
-					scope.carouseleft=true;
-					scope.carouseright=false;
-					scope.moveleft = scope.imageid & scope.carouseleft;
-					scope.moveright = scope.imageid & scope.carouseright;*/
+						if(scope.imageid <scope.carouselimages.length ){
+							scope.imageid++;
+							scope.left = scope.left-341.25;
+							element.find("ul").css({
+								'left': scope.left + 'px'
+							});
+						}
 					}
 				}
 			}

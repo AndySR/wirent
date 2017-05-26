@@ -476,13 +476,13 @@
 	line-height: normal
 }
 
-.banner-search .dream-homes-title:after {
+/*.banner-search .dream-homes-title:after {
 	display: block;
 	width: 60px;
 	margin: 20px auto;
 	border-bottom: 1px solid #fff;
 	content: ''
-}
+}*/
 
 .banner-search .dream-homes-title-project-name,
 .banner-search .dream-homes-title-agency-name,
@@ -519,13 +519,13 @@
 }
 
 .banner-search .dream-homes-title-suburb {
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 600
 }
 
 @media(min-width:1441px) {
 	.banner-search .dream-homes-title-suburb {
-		font-size: 36px
+		font-size: 24px
 	}
 }
 

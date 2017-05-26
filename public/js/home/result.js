@@ -47,7 +47,7 @@
 				 	console.log('$localStorage.settings other conditions',$localStorage.settings);
 				 }
 				 
-				 $scope.selected = datafromhome.ER_Suburb+','+datafromhome.ER_Region;
+				 $scope.selected = datafromhome.ER_Suburb+' '+datafromhome.ER_Region;
 				 angular.forEach(vm.shops, function(data,index,array){
 				//data等价于array[index]
 					var dataresults = data.ER_Description.split(";");
@@ -81,7 +81,7 @@
 						     case "offical_rental": 
 								data.offical_rental = true;
 						    break;
-						   default: 
+						  /* default: 
 						   		data.train_station =false;
 								data.university =false;
 								data.backpack =false;
@@ -90,7 +90,7 @@
 								data.big_family =false;
 								data.shopping_mall =false;
 								data.offical_rental =false;
-						      	 break;
+						      	 break;*/
 						}
 					}
 					
@@ -224,7 +224,7 @@
 				/*datepicker end*/
 				/*update submit*/
 				$scope.update = function(){
-					
+						alert($scope.train);
 					/*console.log($scope.x);
 					if($scope.x) {
 						var address = $scope.x[0].split(",");
@@ -238,9 +238,9 @@
 							ER_BedRoomMin: $scope.minBedNum,
 							ER_BedRoomMax: $scope.maxBedNum,
 							ER_BathRoomMin: $scope.minBathNum,
-							ER_BathRoomMax: 5,
-							ER_ParkingMin: $scope.myParkingNum,
-							ER_ParkingMax: 5,
+							ER_BathRoomMax: $scope.maxBathNum,
+							ER_ParkingMin: $scope.minParkingNum,
+							ER_ParkingMax: $scope.maxParkingNum,
 							ER_AreaMin: 0,
 							ER_AreaMax: 5000,
 							ER_AvailableDate: '2020-01-01',

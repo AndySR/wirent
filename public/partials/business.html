@@ -74,14 +74,14 @@
 					<h2 style="font-size:14px;">共有<span>3811</span>个搬家公司</h2></div>
 				<div class="list-wrap">
 					<ul class="agent-lst">
-						<li class="hover_checked" ng-repeat="businessman in serviceData" >
+						<li class="hover_checked" ng-repeat="businessman in serviceData" ui-sref="app.businessDetails">
 							<div class="pic-panel">
-								<a ng-show="![:businessman.links:]" href="[:businessman.TPLink:]"><img  ng-src="[:businessman.TPLogo:]"></a>
+								<a ng-show="![:businessman.links:]"><img  ng-src="[:businessman.TPLogo:]"></a>
 								<a target="_blank" ng-show="[:businessman.links:]" href="http://[:businessman.TPLink:]"><img  ng-src="[:businessman.TPLogo:]"></a>
 							</div>
 							<div class="info-panel">
 								<div class="agent-name">
-									<a ng-show="![:businessman.links:]" href="[:businessman.TPLink:]">
+									<a ng-show="![:businessman.links:]">
 										<h2>[:businessman.TPName:]</h2>
 									</a>
 									<a target="_blank" ng-show="[:businessman.links:]" href="http://[:businessman.TPLink:]">

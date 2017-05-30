@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 22/05/2017 08:57
+    Creation date: 26/05/2017 02:19
     */
 
     @font-face {
@@ -36,72 +36,80 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-puzzle:before { content: "\f100"; }
-.flaticon-food:before { content: "\f101"; }
-.flaticon-office-worker:before { content: "\f102"; }
-.flaticon-vacuum:before { content: "\f103"; }
-.flaticon-train-on-railroad:before { content: "\f104"; }
-.flaticon-shopping-cart:before { content: "\f105"; }
-.flaticon-man-standing-up:before { content: "\f106"; }
-.flaticon-double-king-size-bed:before { content: "\f107"; }
-.flaticon-turn-microphone-off-button:before { content: "\f108"; }
-.flaticon-washing-machine:before { content: "\f109"; }
-.flaticon-bedroom-black-closed-closet-for-clothes:before { content: "\f10a"; }
-.flaticon-green-park-city-space:before { content: "\f10b"; }
-.flaticon-minisplit:before { content: "\f10c"; }
-.flaticon-female-silhouette:before { content: "\f10d"; }
-.flaticon-no-smoking-sign:before { content: "\f10e"; }
-.flaticon-man-in-office-desk-with-computer:before { content: "\f10f"; }
-.flaticon-people:before { content: "\f110"; }
-.flaticon-no-dogs:before { content: "\f111"; }
-.flaticon-tumble-dryer:before { content: "\f112"; }
-.flaticon-college-graduation:before { content: "\f113"; }
-.flaticon-cabinet:before { content: "\f114"; }
-.flaticon-microwave:before { content: "\f115"; }
-.flaticon-fridge:before { content: "\f116"; }
-.flaticon-open-book:before { content: "\f117"; }
-.flaticon-settings:before { content: "\f118"; }
-.flaticon-stove:before { content: "\f119"; }
-.flaticon-dishwasher:before { content: "\f11a"; }
-.flaticon-wifi:before { content: "\f11b"; }
-.flaticon-socket:before { content: "\f11c"; }
-.flaticon-business:before { content: "\f11d"; }
-.flaticon-gas-level:before { content: "\f11e"; }
-.flaticon-backpack:before { content: "\f11f"; }
-.flaticon-bed:before { content: "\f120"; }
-.flaticon-plug:before { content: "\f121"; }
+    .flaticon-handyman-tools:before { content: "\f100"; }
+.flaticon-paintbrush:before { content: "\f101"; }
+.flaticon-factory-stock-house:before { content: "\f102"; }
+.flaticon-moving-home-transport-for-boxes:before { content: "\f103"; }
+.flaticon-puzzle:before { content: "\f104"; }
+.flaticon-food:before { content: "\f105"; }
+.flaticon-office-worker:before { content: "\f106"; }
+.flaticon-vacuum:before { content: "\f107"; }
+.flaticon-train-on-railroad:before { content: "\f108"; }
+.flaticon-shopping-cart:before { content: "\f109"; }
+.flaticon-man-standing-up:before { content: "\f10a"; }
+.flaticon-double-king-size-bed:before { content: "\f10b"; }
+.flaticon-turn-microphone-off-button:before { content: "\f10c"; }
+.flaticon-washing-machine:before { content: "\f10d"; }
+.flaticon-bedroom-black-closed-closet-for-clothes:before { content: "\f10e"; }
+.flaticon-green-park-city-space:before { content: "\f10f"; }
+.flaticon-minisplit:before { content: "\f110"; }
+.flaticon-female-silhouette:before { content: "\f111"; }
+.flaticon-no-smoking-sign:before { content: "\f112"; }
+.flaticon-man-in-office-desk-with-computer:before { content: "\f113"; }
+.flaticon-people:before { content: "\f114"; }
+.flaticon-no-dogs:before { content: "\f115"; }
+.flaticon-tumble-dryer:before { content: "\f116"; }
+.flaticon-college-graduation:before { content: "\f117"; }
+.flaticon-cabinet:before { content: "\f118"; }
+.flaticon-microwave:before { content: "\f119"; }
+.flaticon-fridge:before { content: "\f11a"; }
+.flaticon-open-book:before { content: "\f11b"; }
+.flaticon-settings:before { content: "\f11c"; }
+.flaticon-stove:before { content: "\f11d"; }
+.flaticon-dishwasher:before { content: "\f11e"; }
+.flaticon-wifi:before { content: "\f11f"; }
+.flaticon-socket:before { content: "\f120"; }
+.flaticon-business:before { content: "\f121"; }
+.flaticon-gas-level:before { content: "\f122"; }
+.flaticon-backpack:before { content: "\f123"; }
+.flaticon-bed:before { content: "\f124"; }
+.flaticon-plug:before { content: "\f125"; }
     
-    $font-Flaticon-puzzle: "\f100";
-    $font-Flaticon-food: "\f101";
-    $font-Flaticon-office-worker: "\f102";
-    $font-Flaticon-vacuum: "\f103";
-    $font-Flaticon-train-on-railroad: "\f104";
-    $font-Flaticon-shopping-cart: "\f105";
-    $font-Flaticon-man-standing-up: "\f106";
-    $font-Flaticon-double-king-size-bed: "\f107";
-    $font-Flaticon-turn-microphone-off-button: "\f108";
-    $font-Flaticon-washing-machine: "\f109";
-    $font-Flaticon-bedroom-black-closed-closet-for-clothes: "\f10a";
-    $font-Flaticon-green-park-city-space: "\f10b";
-    $font-Flaticon-minisplit: "\f10c";
-    $font-Flaticon-female-silhouette: "\f10d";
-    $font-Flaticon-no-smoking-sign: "\f10e";
-    $font-Flaticon-man-in-office-desk-with-computer: "\f10f";
-    $font-Flaticon-people: "\f110";
-    $font-Flaticon-no-dogs: "\f111";
-    $font-Flaticon-tumble-dryer: "\f112";
-    $font-Flaticon-college-graduation: "\f113";
-    $font-Flaticon-cabinet: "\f114";
-    $font-Flaticon-microwave: "\f115";
-    $font-Flaticon-fridge: "\f116";
-    $font-Flaticon-open-book: "\f117";
-    $font-Flaticon-settings: "\f118";
-    $font-Flaticon-stove: "\f119";
-    $font-Flaticon-dishwasher: "\f11a";
-    $font-Flaticon-wifi: "\f11b";
-    $font-Flaticon-socket: "\f11c";
-    $font-Flaticon-business: "\f11d";
-    $font-Flaticon-gas-level: "\f11e";
-    $font-Flaticon-backpack: "\f11f";
-    $font-Flaticon-bed: "\f120";
-    $font-Flaticon-plug: "\f121";
+    $font-Flaticon-handyman-tools: "\f100";
+    $font-Flaticon-paintbrush: "\f101";
+    $font-Flaticon-factory-stock-house: "\f102";
+    $font-Flaticon-moving-home-transport-for-boxes: "\f103";
+    $font-Flaticon-puzzle: "\f104";
+    $font-Flaticon-food: "\f105";
+    $font-Flaticon-office-worker: "\f106";
+    $font-Flaticon-vacuum: "\f107";
+    $font-Flaticon-train-on-railroad: "\f108";
+    $font-Flaticon-shopping-cart: "\f109";
+    $font-Flaticon-man-standing-up: "\f10a";
+    $font-Flaticon-double-king-size-bed: "\f10b";
+    $font-Flaticon-turn-microphone-off-button: "\f10c";
+    $font-Flaticon-washing-machine: "\f10d";
+    $font-Flaticon-bedroom-black-closed-closet-for-clothes: "\f10e";
+    $font-Flaticon-green-park-city-space: "\f10f";
+    $font-Flaticon-minisplit: "\f110";
+    $font-Flaticon-female-silhouette: "\f111";
+    $font-Flaticon-no-smoking-sign: "\f112";
+    $font-Flaticon-man-in-office-desk-with-computer: "\f113";
+    $font-Flaticon-people: "\f114";
+    $font-Flaticon-no-dogs: "\f115";
+    $font-Flaticon-tumble-dryer: "\f116";
+    $font-Flaticon-college-graduation: "\f117";
+    $font-Flaticon-cabinet: "\f118";
+    $font-Flaticon-microwave: "\f119";
+    $font-Flaticon-fridge: "\f11a";
+    $font-Flaticon-open-book: "\f11b";
+    $font-Flaticon-settings: "\f11c";
+    $font-Flaticon-stove: "\f11d";
+    $font-Flaticon-dishwasher: "\f11e";
+    $font-Flaticon-wifi: "\f11f";
+    $font-Flaticon-socket: "\f120";
+    $font-Flaticon-business: "\f121";
+    $font-Flaticon-gas-level: "\f122";
+    $font-Flaticon-backpack: "\f123";
+    $font-Flaticon-bed: "\f124";
+    $font-Flaticon-plug: "\f125";

@@ -95,10 +95,10 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/shortlist/insert',	['middleware' => 'cus','uses'=>'CustomerController@shortlist_insert']);	
 
 	$app->group(['prefix' => 'msg'], function () use ($app){
-		$app->get('/notice',		['middleware' => 'cus','uses'=>'CustomerController@msg_notice']);	
+		$app->post('/notice',		['middleware' => 'cus','uses'=>'CustomerController@msg_notice']);	
 		$app->get('/confirm',		['middleware' => 'cus','uses'=>'CustomerController@msg_confirm']);	
-		$app->get('/received',		['middleware' => 'cus','uses'=>'CustomerController@msg_received']);	//msg_receive is php function
-		$app->get('/write',			['middleware' => 'cus','uses'=>'CustomerController@msg_write']);
+		$app->post('/received',		['middleware' => 'cus','uses'=>'CustomerController@msg_received']);	//msg_receive is php function
+		$app->post('/write',			['middleware' => 'cus','uses'=>'CustomerController@msg_write']);
 	});			
 });
 //landlord entrance 
@@ -124,7 +124,7 @@ $app->group(['prefix' => 'landlord'], function () use ($app){
 		$app->get('/notice',		['middleware' => 'lord','uses'=>'LandlordController@msg_notice']);	
 		$app->get('/confirm',		['middleware' => 'lord','uses'=>'LandlordController@msg_confirm']);	
 		$app->get('/received',		['middleware' => 'lord','uses'=>'LandlordController@msg_received']);	//msg_receive is php function 
-		$app->get('/write',			['middleware' => 'lord','uses'=>'LandlordController@msg_write']);
+		$app->post('/write',			['middleware' => 'lord','uses'=>'LandlordController@msg_write']);
 	});
 });
 //thirdparty entrance

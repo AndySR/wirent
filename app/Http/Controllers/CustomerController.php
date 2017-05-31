@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Aws\S3\S3Client;
+use Aws\Credentials\CredentialProvider;
+
 /*
  * return 默认stdClass, 根据前端需求修改。
  * stdClass 成员变量直接以对象形式表示及赋值：$a->b=c, 无key=>value格式：$a['b']=c
@@ -219,7 +222,13 @@ class CustomerController extends Controller
 				$ER_ID = $item->ER_ID;
 				$sql = "call $proc_Name('{$ER_ID}')";	
 				$itempic = DB::select($sql);
-				$item->picset = $itempic;	
+				foreach ($itempic as $itemp)
+				{
+					if ($itemp->PicDescription=='Form')
+					{$item->comment = $itemp;}
+					else{$item->picset[] = $itemp;}
+				}
+//				$item->picset = $itempic;	
 			}
 			return $data;
 		}
@@ -517,14 +526,16 @@ class CustomerController extends Controller
 	{
 		$title = $request->input('title');
 		$content = $request->input('content');
-		$createTime =  date("Y-m-d h:i:sa");
+		$createTime =  $request->input('createTime');
 		$IdSender = $request->input('CID');
 		$IdReceiver = $request->input('IdReceiver');						
 		$msg_direct_comment = $request->input('msg_direct_comment'); 	//e.g.'Landlord to Staff';
 		$proc_Name = 'msg_write';
 		$sql = "call $proc_Name('{$title}','{$content}','{$createTime}',{$IdSender},{$IdReceiver},'{$msg_direct_comment}')";  
+//		return $sql;
+		
 		$result = DB::insert($sql);
-		return $result;
+		return json_encode($result);
 	}	
 	
 	public function filt_thirdparty(Request $request)
@@ -537,5 +548,24 @@ class CustomerController extends Controller
 		return $result;
 	}
 	
-		
+	public function upload(Request $request)
+	{
+		$SourceFile = $request->input('SourceFile');
+		$key = $request->input('key');
+		$provider = CredentialProvider::env();	
+			
+		$options = [
+		    'region'            => 'ap-southeast-2',
+		    'version'           => '2006-03-01',
+	        'credentials' => $provider
+		];
+		$s3 = new S3Client($options);
+		$s3->putObject(array(
+		    'Bucket'     => 'wirent',
+		    'Key'        => $key,
+		    'SourceFile' => $SourceFile,
+		    'ACL' =>'public-read'
+		));
+
+	}	
 }

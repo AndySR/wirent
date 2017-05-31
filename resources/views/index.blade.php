@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="/css/winning/search-option.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/profile.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/infowindow.css" type="text/css" />
-	<!--<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />-->
+	<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/shortlist.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/login.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/listpage.css" type="text/css"/>

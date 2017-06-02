@@ -22,7 +22,7 @@
 		.service('BaseService', ['$state', '$http', function($state, $http,$localStorage) {
 
 		}])
-		.controller('WinCtrl', ['$scope', '$window', '$http','UserService','readLetters','$localStorage', function($scope, $window, $http,UserService,readLetters,$localStorage) {
+		.controller('WinCtrl', ['$scope', '$state','$window', '$http','UserService','readLetters','$localStorage', function($scope, $state,$window, $http,UserService,readLetters,$localStorage) {
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
 			$scope.letternums = 0;
@@ -45,14 +45,29 @@
 						location.href = '/';
 					});
 			}
+			$scope.read_Letters = function(){
+				$http.get('/customer/profile')
+						.then(function(r){
+							if(r.data=="login"){
+								$state.go("app.login");
+							}else{
+								
+							}
+						},function(e){
+							$state.go("app.login");
+						})
 			
-			var promise=readLetters.query();
-		    promise.then(function (data) {
-//		    	alert("147");
-		    	$localStorage.headerSetting.letternums = data[0]['count(*)'];
-		    	$scope.letternums = $localStorage.headerSetting.letternums;
-		    });
-			$scope.letternums = $localStorage.headerSetting.letternums;
+					}
+			/*********************obtain unread messages number***********************************/
+				var promise=readLetters.query();
+			    promise.then(function (data) {
+			    	console.log("===data===",data);
+			    	$localStorage.headerSetting.letternums = data[0]['count(*)'];
+			    	$scope.letternums = $localStorage.headerSetting.letternums;
+			    });
+					$scope.letternums = $localStorage.headerSetting.letternums;
+					
+			/*********************obtain unread messages number***********************************/
 			
 		}])
 			

@@ -101,7 +101,10 @@
 											<span class="view-num">Viewed:  20</span>
 										</div>-->
 										<div class="save">
-											<span class="save-delete-shortlist"><i class="fa fa-lg fa-heart-o">&nbsp;Save</i></span>
+											<span class="save-delete-shortlist" ng-click="addShortlist();add2short=!add2short">
+												<i ng-show="add2short" style="color: pink;" class="fa fa-lg fa-heart">&nbsp;Save</i>
+												<i ng-show="!add2short" class="fa fa-lg fa-heart-o">&nbsp;Save</i>
+											</span>
 										</div>
 									</div>
 		
@@ -112,7 +115,7 @@
 				</div>
 				</div>
 				<div class="row-sm-5 m-l-xs" >
-						<ng-map center="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" zoom="18" style="width: 426px!important; height: 144px!important;">
+						<ng-map center="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" zoom="18" zoom-control="false" style="width: 426px!important; height: 144px!important;">
 							<marker position="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region:]" title="Hello World!" optimized="false" animation="Animation.BOUNCE" icon="{
 						        url:'img/blue.png',
 						        scaledSize:[30,30],
@@ -375,7 +378,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<ng-map center="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" zoom="18">
+		<ng-map center="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" zoom="18"  scrollwheel="false"> <!--draggable="false" zoom-control="false"-->
 			<marker position="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" title="Hello World!" optimized="false" animation="Animation.BOUNCE" icon="{
 		        url:'img/blue.png',
 		        scaledSize:[30,30],

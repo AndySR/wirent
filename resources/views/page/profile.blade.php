@@ -7,11 +7,11 @@
             	</div>
 			</div>
 			<div class="row">
-                <div class="col-sm-12 feedback success" role="alert" style="display:block;">
+                <div class="col-sm-12 feedback success fadeInUp" role="alert" ng-show="success">
                     <h4>Success</h4>    
                     <p>Your profile has been updated.</p>
                 </div>
-                <div class="col-sm-12 w-full feedback error" role="alert" style="display:block;">
+                <div class="col-sm-12 w-full feedback error" role="alert" ng-show="error">
                     <h4>That didn't work</h4>
                     
                     <p>Your preferences have not been updated, please try again.</p>
@@ -20,40 +20,58 @@
             <div class="row">
             	<div class="col-sm-3 profile-nav">
                     <ul class="tabNav" role="tablist">
-                        <li ng-class="{'active': tabs[0]}" class="active" role="presentation">
-                            <a href ng-click="tab(0)" class="f-icon with-text" id="tab-myProfile" role="tab" aria-active="true" tabindex="0">
-                                <span class="icon fa fa-user"></span>
+                        <li ng-class="{'selected': tabs[0]}" class="active selected" role="presentation">
+                            <a href ng-click="tab(0);" class="f-icon with-text " id="tab-myProfile" role="tab" aria-active="true" tabindex="0">
+                                <span class="icon flaticon-man-user1"></span>
                                 <span class="copy">My profile</span>
                             </a>
                         </li>
-                        <li ng-class="{'active': tabs[1]}" role="presentation">
-                            <a href ng-click="tab(1)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="fa fa-dollar" aria-hidden="true"></i></span>
+                        <li ng-class="{'selected': tabs[1]}" role="presentation">
+                            <a href ng-click="tab(1);myPayment()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                                <span class="icon "><i class="flaticon-banknote1" aria-hidden="true"></i></span>
                                 <span class="copy">My Payments</span>
                             </a>
                         </li>
-                         <li ng-class="{'active': tabs[2]}" role="presentation">
-                            <a href ng-click="tab(2)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="fa fa-suitcase" aria-hidden="true"></i></span>
+                         <li ng-class="{'selected': tabs[2]}" role="presentation">
+                            <a href ng-click="tab(2);propMgm()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                                <span class="icon "><i class="flaticon-properties-information1" aria-hidden="true"></i></span>
                                 <span class="copy">Property Management</span>
                             </a>
                         </li>
-                        <li ng-class="{'active': tabs[3]}" role="presentation">
-                            <a href ng-click="tab(3)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="fa fa-suitcase" aria-hidden="true"></i></span>
-                                <span class="copy">Repair & Service</span>
+                        <li ng-class="{'selected': tabs[3]}" role="presentation">
+                            <a href ng-click="tab(3);mtApply()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                                <span class="icon "><i class="flaticon-tool1" aria-hidden="true"></i></span>
+                                <span class="copy">Maintenance&nbsp;Apply</span>
                             </a>
                         </li>
-						 <li ng-class="{'active': tabs[4]}" role="presentation">
-                            <a href ng-click="tab(4)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
-                                <span class="icon "><i class="fa fa-suitcase" aria-hidden="true"></i></span>
-                                <span class="copy">Service History</span>
+                        <li ng-class="{'selected': tabs[4]}" role="presentation">
+                            <a href ng-click="tab(4);mtCheck()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                                <span class="icon "><i class="flaticon-spanner1" aria-hidden="true"></i></span>
+                                <span class="copy">Maintenance&nbsp;History</span>
+                            </a>
+                        </li>
+                        <li ng-class="{'selected': tabs[5]}" role="presentation">
+                            <a href ng-click="tab(5)" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                                <span class="icon "><i class="flaticon-businesswoman1" aria-hidden="true"></i></span>
+                                <span class="copy">Service&nbsp;Apply</span>
+                            </a>
+                        </li>
+						 <li ng-class="{'selected': tabs[6]}" role="presentation">
+                            <a href ng-click="tab(6);svHistory()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                                <span class="icon "><i class="flaticon-conversation1" aria-hidden="true"></i></span>
+                                <span class="copy">Service&nbsp;History</span>
+                            </a>
+                        </li>
+                        <li ng-class="{'selected': tabs[7]}" role="presentation">
+                            <a href ng-click="tab(7);msg()" class="f-icon with-text" id="tab-emailPreferences" role="tab" aria-active="false" tabindex="-1">
+                                <span class="icon "><i class="flaticon-close-envelope1" aria-hidden="true"></i></span>
+                                <span class="copy">Message</span>
                             </a>
                         </li>
                     </ul>
                 </div>
                 
-               <div class="col-sm-9 tab-content "> 
+               <div class="col-sm-9 tab-content " > 
                 <div class="tab-pane tabPanel active profile-detail" ng-class="{'active': tabs[0]}">
                     <div class="tab-pane tabPanel active" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
                     <div class="card">
@@ -96,52 +114,64 @@
                                 <div class="half">
 
                                     <fieldset>
+                                    	<div class="frm-main no-indent" ng-show="he">
+                                            <label for="CID">CID</label>
+                                            <div class="inner-wrap">
+                                                <input aria-required="false" id="CID" name="CID"   ng-readonly="readonly" type="text" ng-model="data.CID">
+                                            </div>
+                                        </div>
                                         <div class="frm-main no-indent">
                                             <label for="FirstName">First name</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="FirstName" name="FirstName" readonly="readonly" type="text" value="Ran">
+                                                <input aria-required="false" id="FirstName" name="FirstName" ng-readonly="readonly" type="text" ng-model="data.CName">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="LastName">Last name</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="LastName" name="LastName" readonly="readonly" type="text" value="Sun">
+                                                <input aria-required="false" id="LastName" name="LastName" ng-readonly="readonly" type="text" value="">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="Phone">Phone</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Phone" name="Phone" readonly="readonly" type="text" value="0424909328">
+                                                <input aria-required="false" id="Phone" name="Phone" ng-readonly="readonly" type="text" ng-model="data.CPhone">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="CurrStat">CurrentState</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="CurrStat" name="CurrStat" readonly="readonly" type="text" value="Citizen">
+                                                <input aria-required="false" id="CurrStat" name="CurrStat" ng-readonly="readonly" type="text" ng-model="data.CCurrStat">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="IDType">IDType</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="IDType" name="IDType" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="IDType" name="IDType" ng-readonly="readonly" type="text"  ng-model="data.CIDType">
                                             </div>
                                         </div>
                                          <div class="frm-main no-indent">
                                             <label for="Income">Income</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Income" name="Income" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Income" name="Income" ng-readonly="readonly" type="text" ng-model="data.CIncomeProfile">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="Saving">Saving</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Saving" name="Saving" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Saving" name="Saving" ng-readonly="readonly" type="text"  value=""/>
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="PartenerID">PartenerID</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="PartenerID" name="PartenerID" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="PartenerID" name="PartenerID"  ng-readonly="readonly" type="text" ng-model="data.CPartenerID">
+                                            </div>
+                                        </div>
+                                        <div class="frm-main no-indent">
+                                            <label for="CLastContDate">Last Contact Date</label>
+                                            <div class="inner-wrap">
+                                                <input aria-required="false" id="CLastContDate"  ng-readonly="readonly" type="text" ng-model="data.CLastContDate"/>
                                             </div>
                                         </div>
                                     </fieldset>
@@ -152,55 +182,55 @@
                                     	 <div class="frm-main no-indent">
                                             <label for="Gender">Gender</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Gender" name="Gender" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Gender" name="Gender" ng-readonly="readonly" type="text" ng-model="data.CSex">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="Age">Age</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Age" name="Age" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Age" name="Age" ng-readonly="readonly" type="text"  ng-model="data.CAge">
                                             </div>
                                         </div>
                                          <div class="frm-main no-indent">
                                             <label for="Work">Work</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Work" name="Work" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Work" name="Work" ng-readonly="readonly" type="text"  ng-model="data.CWorking">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="Pet">Pet</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Pet" name="Pet" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Pet" name="Pet" ng-readonly="readonly" type="text"  ng-model="data.CPet">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="Smoking">Smoking</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Smoking" name="Smoking" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Smoking" name="Smoking" ng-readonly="readonly" type="text" ng-model="data.CSmoking">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="Budget">Budget</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Budget" name="Budget" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Budget" name="Budget"  ng-readonly="readonly" type="text" ng-model="data.CBudget">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="Password">Password</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Password" name="Password" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Password" name="Password"  ng-readonly="readonly" value="123456" type="password" ng-model="data.CPassword" >
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="EmailAddress">Email address</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="true" id="EmailAddress" name="EmailAddress" readonly="readonly" type="text" value="464824361@qq.com">
+                                                <input aria-required="true" id="EmailAddress" name="EmailAddress" ng-readonly="readonly" type="text" ng-model="data.CEmail">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <div class="inner-wrap">
-                                                <a href="javascript:;" class="btn lowlight ">Reset</a>
-                                                 <a href="javascript:;" class="btn lowlight">Save</a>
+                                                <a class="btn lowlight " ng-click="readonly=!readonly">Reset</a>
+                                                 <a  class="btn lowlight"  ng-click="saveProfile()">Save</a>
                                             </div>
                                             
                                         </div>
@@ -219,7 +249,9 @@
 						<div class="card">
 							 <div class="inner-wrap clear">
 								<header>
-									<h3>My Payments</h3>									
+									<h3>My Payments</h3>
+									<h3 ng-bind="payment.BillDateMin" ng-show="false"></h3>
+									<h3 ng-bind="payment.BillDateMax" ng-show="false"></h3>
 								</header>
 								
 								<div class="content-wrap clear">
@@ -231,98 +263,52 @@
 									<div class="panel-body b-b b-light">
 									  Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r" placeholder="input the date to search"/>
 									</div>
-									<div>
-									  <table class="table m-b-none"  data-filter="#filter" data-page-size="5">
+									<div class="table-responsive">
+									  <table class="table m-b-none"  data-filter="#filter" data-page-size="5" >
 										<thead>
 										  <tr>
-											  <th data-toggle="true">
-												 Name
+										  	   <th ng-show="false">
+												 BLID
+											  </th>
+											  <th ng-show="false">
+												 CID
+											  </th>
+											  <th ng-show="false">
+												 ER_ID
 											  </th>
 											  <th>
-												  Start Date
+												  BillType
 											  </th>
 											  <th data-hide="phone,tablet">
-												  End Date
+												  BillAmount
 											  </th>
 											  <th data-hide="phone,tablet" data-name="Date Of Birth">
-												  Address
+												  BillCopy
 											  </th>
 											  <th data-hide="phone">
-												  Status
+												  BillDate
+											  </th>
+											   <th data-hide="phone">
+												  BillReceipt
+											  </th>
+											  <th data-hide="phone">
+												  BillComment
 											  </th>
 										  </tr>
 										</thead>
 										<tbody>
 										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-success" title="Active">Paied</span></td>
+											  <td  ng-show="false">[:payment.BLID:]</td>
+											  <td  ng-show="false">[:payment.CID:]</td>
+											  <td  ng-show="false">[:payment.ER_ID:]</td>
+											  <td>[:payment.BillType:]</td>
+											  <td>[:payment.BillAmount:]</td>
+											  <td><span>[:payment.BillCopy:]</span></td>
+											  <td>[:payment.BillDate:]</td>
+											  <td>[:payment.BillReceipt:]</td>
+											  <td data-value="1"><span class="label bg-success" title="Active">paid</span></td>
 										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-success" title="Active">Paied</span></td>
-										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-warning" title="Pending">Pending</span></td>
-										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-success" title="Active">Paied</span></td>
-										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-success" title="Active">Paied</span></td>
-										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-warning" title="Pending">Pending</span></td>
-										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-success" title="Active">Paied</span></td>
-										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-warning" title="Pending">Pending</span></td>
-										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-success" title="Active">Paied</span></td>
-										  </tr>
-										  <tr>
-											  <td>Andy</td>
-											  <td>2017-01-12</td>
-											  <td>2017-02-12</td>
-											  <td data-value="78025368997">9/20 Harbourne Road Kingsford</td>
-											  <td data-value="1"><span class="label bg-success" title="Active">Paied</span></td>
-										  </tr>
+										  
 										</tbody>
 										<tfoot class="hide-if-no-paging">
 										  <tr>
@@ -374,89 +360,26 @@
 										</div>
 										
 										<div class="table-responsive">
-										  <table class="table table-striped b-t b-light">
+										  <table class="table table-striped b-t b-light" >
 											<thead>
 											  <tr>
-												<th style="width:20px;">
-												  <label class="i-checks m-b-none">
-													<input type="checkbox"><i></i>
-												  </label>
+												<th style="width:40px;">
+													CLID
 												</th>
-												<th>Property</th>
-												<th>Rental(Week)</th>
-												<th>Contract End Date</th>
+												<th>Contract File</th>
+												<th>CLDate</th>
+												<th>Contract Comment</th>
+												<th>Address</th>
 												<th style="width:30px;">state</th>
 											  </tr>
 											</thead>
 											<tbody>
 											  <tr>
-												<td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-												<td>9/20 harbourne road kingsford</td>
-												<td>$650</td>
-												<td>Jul-25-2013</td>
-												<td>
-												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-												</td>
-											  </tr>
-											  <tr>
-												<td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-												<td>9/20 harbourne road kingsford</td>
-												<td>$650</td>
-												<td>Jul-22-2013</td>
-												<td>
-												  <a href ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-												</td>
-											  </tr>
-											  <tr>
-												<td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-												<td>9/20 harbourne road kingsford</td>
-												<td>$650</td>
-												<td>Jul-15-2013</td>
-												<td>
-												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-												</td>
-											  </tr>
-											  <tr>
-												<td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-												<td>9/20 harbourne road kingsford</td>
-												<td>$650</td>
-												<td>Jul-11-2013</td>
-												<td>
-												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-												</td>
-											  </tr>
-											  <tr>
-												<td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-												<td>9/20 harbourne road kingsford</td>
-												<td>$650</td>
-												<td>Jul-7-2013</td>
-												<td>
-												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-												</td>
-											  </tr>
-											  <tr>
-												<td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-												<td>9/20 harbourne road kingsford</td>
-												<td>$650</td>
-												<td>Jul-3-2013</td>
-												<td>
-												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-												</td>
-											  </tr>
-											  <tr>
-												<td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-												<td>9/20 harbourne road kingsford</td>
-												<td>$650</td>
-												<td>Jul-2-2013</td>
-												<td>
-												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-												</td>
-											  </tr>
-											  <tr>
-												<td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-												<td>9/20 harbourne road kingsford</td>
-												<td>$650</td>
-												<td>Jul-1-2013</td>
+												<td>[:management.CLID:]</td>
+												<td>[:management.ContractFile:]</td>
+												<td>[:management.CLDate:]</td>
+												<td>[:management.ContractComment:]</td>
+												<td>[:management.ER_No+" "+management.ER_St+" "+management.ER_Suburb+","+management.ER_Region+" "+management.postcode:]</td>
 												<td>
 												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
 												</td>
@@ -492,69 +415,73 @@
 				 <div class="tab-pane tabPanel" ng-class="{'active': tabs[3]}">
                     <div class="col-sm-12 tabPanel" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
 						<div class="card">
-							<div class="inner-wrap clear">
+							<div class="inner-wrap ">
 								<header>
-									<h3>Repair & Service Application Form</h3>
+									<h3>Maintenance&nbsp;Apply</h3>
 									
 								</header>
-								<div class="content-wrap clear">
+								<div class="content-wrap">
 
                                 <div class="">
 
                                     <fieldset>
                                         <div class="frm-main no-indent">
-                                            <label for="FirstName">First name</label>
+                                            <label for="Name">Name</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="FirstName" name="FirstName"  readonly="readonly" type="text" value="Ran">
+                                                <input aria-required="false" id="Name" name="Name"  readonly="readonly" type="text" ng-model="data.CName">
                                             </div>
                                         </div>
-                                        <div class="frm-main no-indent">
-                                            <label for="LastName">Last name</label>
-                                            <div class="inner-wrap">
-                                                <input aria-required="false" id="LastName" name="LastName"  readonly="readonly" type="text" value="Sun">
-                                            </div>
-                                        </div>
-                                       
 										 <div class="frm-main no-indent">
-                                            <label for="LastName">Property Address</label>
+                                            <label for="Address">Property Address</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="LastName" name="LastName"  readonly="readonly" type="text" value="Sun">
+                                                <input aria-required="false" id="Address" name="Address"  readonly="readonly" type="text" ng-model='management.address'>
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="Phone">Phone</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="Phone" name="Phone" readonly="readonly" type="text" value="0424909328">
-                                            </div>
-                                        </div>
-										<div class="frm-main no-indent">
-                                            <label for="Password">Password</label>
-                                            <div class="inner-wrap">
-                                                <input aria-required="false" id="Password" name="Password" readonly="readonly" type="text" readonly="readonly" type="text" value="">
+                                                <input aria-required="false" id="Phone" name="Phone" readonly="readonly" type="text" ng-model="data.CPhone">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="EmailAddress">Email address</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="true" id="EmailAddress" name="EmailAddress" readonly="readonly" type="text" value="464824361@qq.com">
+                                                <input aria-required="true" id="EmailAddress" name="EmailAddress" readonly="readonly" type="text" ng-model="data.CEmail">
                                             </div>
+                                        </div>
+                                        <div class="frm-main no-indent">
+                                        	<div class="row">
+                                        		<div class="col-sm-3 m-b-xs">
+										    		<label style="color: #979da7;">Property type</label>
+										       		<select class="input-lg form-control w-sm inline v-middle" ng-model="MType"  ng-options="mType.MType as mType.MType for mType in MTypes">
+        											</select>
+									    		</div>
+									    		<div class="col-sm-9 m-b-xs">
+									    			<label for="Feature" style="color: #979da7;">Feature</label>
+		                                            <div class="inner-wrap">
+		                                                <input aria-required="true" id="Feature" name="Feature"  type="text" ng-model="maintenance.feature">
+		                                            </div>
+									    		</div>
+									    		
+                                        	</div>
+                                        	
                                         </div>
 										 <div class="frm-main no-indent">
                                             <label for="LastName">When did the problem start?</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="LastName" name="LastName"   type="text" value="Sun">
+                                                <input aria-required="false" id="LastName" name="LastName"   type="text" ng-model="maintenance.q1">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="LastName">Do you have any idea what cause the problem?</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="LastName" name="LastName"   type="text" value="Sun">
+                                                <input aria-required="false" id="LastName" name="LastName"   type="text" ng-model="maintenance.q2">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
                                             <label for="LastName">What were you doing when the problem occurred?</label>
                                             <div class="inner-wrap">
-                                                <input aria-required="false" id="LastName" name="LastName"   type="text" value="Sun">
+                                                <input aria-required="false" id="LastName" name="LastName"   type="text" ng-model="maintenance.q3">
                                             </div>
                                         </div>
                                         <div class="frm-main no-indent">
@@ -563,7 +490,7 @@
                                             	<div class="row">
                                             		<div class="col-sm-4">
                                             			<p class="input-group">
-											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="maintenance.dt1" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
 											              <span class="input-group-btn">
 											                <button type="button" class="btn btn-lg btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 											              </span>
@@ -571,17 +498,17 @@
                                             		</div>
                                             		<div class="col-sm-4">
                                             			<p class="input-group">
-											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="maintenance.dt2" is-open="opened2" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
 											              <span class="input-group-btn">
-											                <button type="button" class="btn btn-lg btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+											                <button type="button" class="btn btn-lg btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 											              </span>
 											            </p>  
                                             		</div>
                                             		<div class="col-sm-4">
                                             			<p class="input-group">
-											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+											              <input type="text" class="form-control input-lg" datepicker-popup="[:format:]" ng-model="maintenance.dt3" is-open="opened3" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
 											              <span class="input-group-btn">
-											                <button type="button" class="btn btn-lg btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+											                <button type="button" class="btn btn-lg btn-default" ng-click="open3($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 											              </span>
 											            </p>  
                                             		</div>
@@ -591,12 +518,15 @@
                                         <div class="frm-main no-indent">
                                             <label for="LastName">What were you doing when the problem occurred?</label>
                                             <div class="inner-wrap">
-                                            	<div class="row">
+                                                <input aria-required="false" id="LastName" name="LastName"   type="text" ng-model="maintenance.q4">
+                                            </div>
+                                            <div class="inner-wrap">
+                                            	<div class="row m-t-md">
                                             		<div class="col-sm-4">
                                             			
                                             		</div>
                                             		<div class="col-sm-4">
-                                            			 <a id="myBtn" class="btn lowlight">Submit</a>
+                                            			 <a id="myBtn" ng-click="submit()" class="btn lowlight">Submit</a>
                                             		</div>
                                             		<div class="col-sm-4">
                                             			
@@ -617,7 +547,7 @@
 						<div class="card">
 							<div class="inner-wrap clear">
 								<header>
-									<h3>Service History</h3>
+									<h3>Maintenace&nbsp;History</h3>
 									
 								</header>
 								<div class="content-wrap clear">
@@ -627,39 +557,176 @@
 											  <span class="label bg-danger pull-right m-t-xs">1 left</span>
 											  Tasks
 											</div>
-											<table class="table table-striped m-b-none">
+											<div class="table-responsive">
+											<table class="table table-striped m-b-none" style="table-layout:fixed ; width: 100%;">
 											  <thead>
 												<tr>
-												  <th>Service Type</th>
-												  <th>Progress</th>
-												  <th>Apply Date</th>
-												  <th style="width:30px;">state</th>
+												  <th style="width:40px;">CID</th>
+												  <th style="width:80px;">Service Type</th>
+												  <th style="width:80px;">MApplyForm</th>
+												  <th style="width:100px;">Mstat</th>
+												  <th style="width:80px;">Apply Date</th>
+												  <th style="width:40px;">MConfirm</th>
 												</tr>
 											  </thead>
 											  <tbody>
-												<tr>
-												  <td>Plumb Repair</td>
+												<tr ng-repeat="data in mtCheckDataResult.data">
+												  <td>[:data.CID:]</td>
+												  <td>[:data.MType:]</td>
+												  <td>[:data.MApplyForm:]</td>
 												  <td>
 													<div class="progress progress-sm progress-striped active m-t-xs m-b-none">
 													  <div class="progress-bar bg-success" data-toggle="tooltip" data-original-title="80%" style="width: 80%"></div>
 													</div>
 												  </td>
-												  <td>21-02-2017</td>
+												  <td>[:data.MApplyDate:]</td>
 												  <td>
 												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
 												</td>
 												</tr>
 											  </tbody>
 											</table>
-										  </div>
+										 	</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
+				
+				 <div class="tab-pane tabPanel" ng-class="{'active': tabs[5]}">
+                    <div class="col-sm-12 tabPanel" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
+						<div class="card">
+							<div class="inner-wrap clear">
+								<header>
+									<h3>Service Apply</h3>
+								</header>	
+							</div>
+						</div>
+					</div>
 				</div>
+				<div class="tab-pane tabPanel" ng-class="{'active': tabs[6]}">
+                    <div class="col-sm-12 tabPanel" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
+						<div class="card">
+							<div class="inner-wrap clear">
+								<header>
+									<h3>Service History</h3>
+								</header>	
+								<div class="content-wrap clear">
+									<div class="wrapper-md">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+											  <span class="label bg-danger pull-right m-t-xs">1 left</span>
+											  Tasks
+											</div>
+											<div class="table-responsive">
+											<table class="table table-striped m-b-none" style="table-layout:fixed ; width: 100%;">
+											  <thead>
+												<tr>
+												  <th style="width:40px;">SLID</th>
+												  <th style="width:80px;">ServiceType</th>
+												  <th style="width:80px;">ServiceFile</th>
+												  <th style="width:100px;">ServiceComment</th>
+												  <th style="width:80px;">Service Date</th>
+												  <th style="width:40px;">ServiceSate</th>
+												</tr>
+											  </thead>
+											  <tbody>
+												<tr ng-repeat="data in serviceHistoryData.data">
+												  <td>[:data.SLID:]</td>
+												  <td>[:data.ServiceType:]</td>
+												  <td>[:data.ServiceFile:]</td>
+												  <td>[:data.ServiceComment:]</td>
+												  <td>[:data.ServiceDate:]</td>
+												  <td>
+												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+												</td>
+												</tr>
+											  </tbody>
+											</table>
+										 	</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			  	<div class="tab-pane tabPanel" ng-class="{'active': tabs[7]}">
+                    <div class="col-sm-12 tabPanel" id="myProfile" role="tabpanel" aria-hidden="false" aria-labelledby="tab-myProfile">
+						<div class="card">
+							<div class="inner-wrap clear">
+								<header>
+									<h3>Messages</h3>
+								</header>	
+								<div class="content-wrap clear">
+									<div class="wrapper-md">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+											  <span class="label bg-danger pull-right m-t-xs">1 left</span>
+											  Tasks
+											</div>
+											<div class="table-responsive">
+											<table class="table table-striped m-b-none" style="table-layout:fixed ; width: 100%;">
+											  <thead>
+												<tr>
+												  <th style="width:80px;">Title</th>
+												  <th style="width:200px;">Content</th>
+												  <th style="width:120px;">CreateTime</th>
+												  <th style="width:100px;">Confirm</th>
+												</tr>
+											  </thead>
+											  <tbody>
+												<tr ng-repeat="data in messageData.data">
+												  <td>[:data.title:]</td>
+												  <td ng-click="msg_click($index)">[:data.content:]</td>
+												  <td>[:data.createTime:]</td>
+												  <td>
+												  <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
+												</td>
+												</tr>
+											  </tbody>
+											</table>
+										 	</div>
+										</div>
+										
+										<!--popup-->
+											<div class="popup" ng-show = "msg_content" ng-mouseleave = "msg_content=!msg_content">
+											 <div class="m-l-lg panel b-a">
+									            <div class="panel-heading pos-rlt b-b b-light">
+									              <span class="arrow left"></span>
+									              <a href>Libin Zhang</a>
+									              <label class="label bg-info m-l-xs">Customer</label> 
+									              <span class="text-muted m-l-sm pull-right">
+									                <i class="fa fa-clock-o"></i>
+									                [:msg_read.createTime:]
+									              </span>
+									            </div>
+									            <div class="panel-body">
+									              <div>[:msg_read.content:]</div>
+									              <div class="m-t-sm">
+									                <a href ui-toggle-class class="btn btn-default btn-xs active">
+									                  <i class="fa fa-star-o text-muted text"></i>
+									                  <i class="fa fa-star text-danger text-active"></i> 
+									                  Like
+									                </a>
+									                <a href class="btn btn-default btn-xs">
+									                  <i class="fa fa-mail-reply text-muted"></i> Reply
+									                </a>
+									              </div>
+									            </div>
+									          </div>
+										</div>
+										<!--popup-->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+               </div>
 			</div>
 		</div>
 	</section>

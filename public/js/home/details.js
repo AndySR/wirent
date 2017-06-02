@@ -40,10 +40,16 @@
 	    $scope.cancel = function () {
 	      $modalInstance.dismiss('cancel');
 	    };
+	    
+	    
+	  
+	   
 	  }])
-	.controller('detailsController',['$scope','$stateParams','$cookies','$rootScope','$localStorage','$modal', '$log','SearchService','readJSON','mouseEvent',function ($scope,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent){
+	.controller('detailsController',['$http','$scope','$state','$window','$stateParams','$cookies','$rootScope','$localStorage','$modal', '$log','SearchService','readJSON','mouseEvent','utilConvertDateToString',function ($http,$scope,$state,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString){
 		var datapackage = {};
 		$scope.detailsData = {};
+		$scope.shortlistInsert = {};
+		$(window).scrollTop(0,0);
 		if(JSON.stringify(SearchService.get()) != "{}"){
 		 	$localStorage.settings = SearchService.get().data;
 		 	console.log('$localStorage.settings',$localStorage.settings);
@@ -55,6 +61,17 @@
 		 }
 		 $scope.datapackage = datapackage;
 		 console.log($stateParams.id +"<======>"+$stateParams.name);
+		 	/*$scope.shortlistData = {};
+			$scope.shortlistDelete={};
+			$scope.shortlistData.CID = 0;
+			$scope.shortlistData.CLType='FavorSave';
+			$http.post('/customer/shortlist',$scope.shortlistData)
+						.then(function(r){
+							$scope.shortlistData = r.data;
+//							console.log("$scope.shortlistData",$scope.shortlistData);
+						},function(e){
+							
+						});*/
 		 angular.forEach(datapackage, function(data,index,array){
 					//data等价于array[index]
 					//console.log("ER_ID",data.ER_ID);
@@ -63,6 +80,34 @@
 //						alert($stateParams.id);
 					}
 				});
+				
+		/****************************add shortlist**********************************/
+		
+		   	$scope.addShortlist = function (){
+		   		$http.get('/customer/profile')
+				.then(function(r) {
+					console.log(r);
+					if(r.data.customer_login_status){
+						$scope.shortlistInsert.CID = $scope.detailsData.CID;
+						$scope.shortlistInsert.CLType="FavorSave";
+						$scope.shortlistInsert.CLDetail=$scope.detailsData.ER_ID+'';;
+						$scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+						console.log("shortlistInsert",$scope.shortlistInsert);
+						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
+								.then(function(r){
+									console.log('r',r);				
+								},function(e){
+									console.log("数据有误");
+								});
+					}else{
+						$state.go('app.login');
+					}
+				},function(e){
+						console.log("数据有误");
+					})
+						
+			}
+	   	/****************************add shortlist**********************************/
 		   /* $scope.myInterval = 5000;
 		    var slides = $scope.slides = [];
 		    $scope.addSlide = function() {
@@ -255,6 +300,7 @@
    link: function (scope, element, attr) {
     var datapackage = {};
 	scope.detailsData = {};
+	scope.indexNum = 0;
 	if(JSON.stringify(SearchService.get()) != "{}"){
 	 	$localStorage.settings = SearchService.get().data;
 	 	console.log('$localStorage.settings',$localStorage.settings);
@@ -274,39 +320,58 @@
 		//alert($stateParams.id);
 		}
 	});
-    var step=0;
-    var time=null;
-   /* promise.then(function (data) {
-     scope.img1=data[0];
-     scope.img2=data[1];
-     scope.img3=data[2];
-     scope.img4=data[3];
-     scope.img5=data[4];
-    });*/
-    var stepFun= function () {
-     element.find("li").removeClass("active");
-     element.find("li").eq(step+1).addClass("active");
-     scope.pic=step;
-     step++;
-     step=step%5;
-     time=$timeout(function () {
-      stepFun();
-     },5000);
-    };
-    stepFun();
-    /*点击事件*/
-    scope.clickEvent= function (number) {
-     scope.pic=number;
-     element.find("li").removeClass("active");
-     element.find("li").eq(number+1).addClass("active");
-     $timeout.cancel(time);
-     step=number;
-    };
-    /*鼠标移除动画重新开始*/
-    scope.start= function () {
-     $timeout.cancel(time);
-     stepFun();
-    }
+	var step = 0;
+	var time = null;
+	var stepFun = function() {
+		step = step % scope.detailsData.picset.length;
+		scope.pic = step;
+		element.find("li").removeClass("active");
+		element.find("li").eq(scope.pic-1).addClass("active");
+		step++;
+		time = $timeout(function() {
+			stepFun();
+		}, 5000);
+	};
+	stepFun();
+	/*点击事件*/
+	scope.clickEvent = function(number) {
+		$timeout.cancel(time);
+//		$timeout.clear(time);
+		scope.pic = number;
+//		alert(number);
+		element.find("li").removeClass("active");
+		element.find("li").eq(number).addClass("active");
+		step = number;
+	};
+	scope.next = function (){
+		$timeout.cancel(time);
+		step ++;
+		step = step % scope.detailsData.picset.length;
+		scope.pic = step;
+		element.find("li").removeClass("active");
+		element.find("li").eq(step).addClass("active");
+		
+	}
+	scope.prev = function (){
+		$timeout.cancel(time);
+		if(step-- !=0)
+		{ 
+			step--;
+		}else {
+			step = 0;
+		}
+		step = step % scope.detailsData.picset.length;
+		scope.pic = step;
+		element.find("li").removeClass("active");
+		element.find("li").eq(step).addClass("active");
+		
+	}
+	/*鼠标移除动画重新开始*/
+	scope.start = function() {
+		$timeout.cancel(time);
+		stepFun();
+	}
+	
    }
   }
  }])

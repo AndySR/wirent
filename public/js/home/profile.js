@@ -20,7 +20,7 @@
 			me.profiledata = {};
 			
 			alert("111");
-			me.propMgm() = function(){
+			me.propMgm = function(){
 					alert("111");
 					$http.get('/customer/maintenance')
 						.then(function(r){

@@ -215,9 +215,9 @@
 						position:vm.shopss[0].ER_No+' '+vm.shopss[0].ER_St+' '+vm.shopss[0].ER_Suburb+' '+vm.shopss[0].ER_Region
 					}
 				];*/
-				 
+				 	/**************************************************/
 				  /*   vm.myInterval = 5000;
-				   *   var slides = vm.slides = [];
+				      var slides = vm.slides = [];
 				    vm.addSlide = function() {
 				      slides.push({
 				        image: 'img/b1' + slides.length + '.jpg',
@@ -227,22 +227,34 @@
 				    for (var i=0; i<4; i++) {
 				      vm.addSlide();
 				    }*/
-				    
+				/**************************************************/
+				
+				/**********************add to shortlist**********************************************/    
 				vm.addShortlist = function (){
-					alert("clicked");
-					shortlistInsert.CID = 1;
-					shortlistInsert.CLType="FavorSave";
-					shortlistInsert.CLDetail=vm.shop.ER_ID+'';;
-					shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
-					console.log("shortlistInsert",shortlistInsert);
-					$http.post('/customer/shortlist/insert', shortlistInsert)
+				$http.get('/customer/profile')
+					.then(function(r) {
+						console.log(r);
+						if(r.data.customer_login_status){
+							shortlistInsert.CID = 1;
+							shortlistInsert.CLType="FavorSave";
+							shortlistInsert.CLDetail=vm.shop.ER_ID+'';;
+							shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+							console.log("shortlistInsert",shortlistInsert);
+							$http.post('/customer/shortlist/insert', shortlistInsert)
 							.then(function(r){
 								console.log('r',r);				
 									console.log("r",r);
 							},function(e){
 								console.log("数据有误");
 							})
+						}else{
+							$state.go("app.login");
+						}
+					});
+					
 				}
+				
+				/*********************************************************************/
 				vm.shop = vm.shops[0];
 				vm.showDetail = function(e, shop) {
 					vm.shop = shop;

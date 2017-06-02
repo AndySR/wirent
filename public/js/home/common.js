@@ -1,7 +1,37 @@
 ﻿;
 (function() {
 	'use strict';
-	angular.module('home', ['ui.bootstrap'])
+	angular.module('home', [])
+		.filter('propsFilter', function() {
+		    return function(items, props) {
+		        var out = [];
+		
+		        if (angular.isArray(items)) {
+		          items.forEach(function(item) {
+		            var itemMatches = false;
+		
+		            var keys = Object.keys(props);
+		            for (var i = 0; i < keys.length; i++) {
+		              var prop = keys[i];
+		              var text = props[prop].toLowerCase();
+		              if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+		                itemMatches = true;
+		                break;
+		              }
+		            }
+		
+		            if (itemMatches) {
+		              out.push(item);
+		            }
+		          });
+		        } else {
+		          // Let the output be the input untouched
+		          out = items;
+		        }
+		
+		        return out;
+		    };
+		})
 		.factory('readData', ['$http', '$q', function($http, $q) {
 			return {
 				query: function() {
@@ -134,11 +164,10 @@
 		}])
 		.directive('selectSearch', function($compile) {
 			return {
-				restrict: 'AE', //attribute or element  
+				restrict: 'AE',
 				scope: {
 					datas: '=',
 					x: '=',
-					//bindAttr: '='
 					searchField: '=bind',
 					getData: "&",
 					change: "&"
@@ -314,6 +343,21 @@
 				$scope.datas = []; //下拉框选项
 				var entireData = {};
 				var ER_Feature = '';
+				/*******************************************location input**************************/
+		    $scope.person = {};
+	        $scope.people = [
+	        { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
+	        { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
+	        { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
+	        { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
+	        { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
+	        { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
+	        { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
+	        { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
+	        { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
+	        { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
+	        ];
+	        /***************************************************************/
 				//model types
 				$scope.myMode = 'Entire';
 				$scope.Modes = [{
@@ -698,7 +742,7 @@
 							//							SetCredentials(r);
 							console.log('r===>', r);
 							if(r.data.length > 0) {
-								$state.go('app.googlemap');
+								$state.go('app.listpage');
 							}
 							//							
 
@@ -997,12 +1041,12 @@
 							console.log('r===>', r);
 							if(r.data.length > 0) {
 //								$state.go('app.listpage');
-								$state.go('app.googlemap');
+								$state.go('app.listpage');
 							}
 							//							
 
 						}, function(e) {
-
+								console.log('r===>', e);
 						});
 		}
 				
@@ -1081,6 +1125,7 @@
 					$http.post('/customer/filt_thirdparty', business)
 						.then(function(r) {
 							SearchService.set(r);
+							updateService.set(TPDetail);
 							console.log('r===>', r);
 							if(r.data.length > 0) {
 								$state.go('app.business');
@@ -1157,7 +1202,8 @@
 		        $log.info('Modal dismissed at: ' + new Date());
 		      });
 		    };
-		    /**********************************modal code starts***********************************/
+		    /**********************************modal code ends***********************************/
+			
 			}
 		])
 		.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {

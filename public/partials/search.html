@@ -1,4 +1,29 @@
 <div class="banner-search" ng-controller="HomeController">
+	<!--<div class="row">
+		<div class="col-md-5">
+			<form class="form-horizontal">
+			    <fieldset>
+				 <div class="form-group">
+			        <label class="col-sm-2 control-label text-left">Location</label>
+			        <div class="col-sm-9">
+			          <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" >
+			            <ui-select-match placeholder="Select location...">[:$item.name:] &lt;[:$item.email:]&gt;</ui-select-match>
+			            <ui-select-choices group-by="someGroupFn" repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
+			              <div ng-bind-html="person.name | highlight: $select.search"></div>
+			              <small>
+			                email: [:person.email:]
+			                age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+			              </small>
+			            </ui-select-choices>
+			          </ui-select>
+			        </div>
+			        <div class="col-sm-1"></div>
+			      </div>
+			    </fieldset>
+			  </form>
+		</div>
+	</div>-->
+
 	<div class="clear">
 		<div class="header" data-stellar-background-ratio="0.07">
 			<div class="wrapper">
@@ -15,7 +40,6 @@
 								<div ng-include="'partials/tpl/modal.html'"></div>
 							</script>
 							<div animatesearch tips="tips" features="features" boxshow="boxshow">
-								<!--<div animatesearch tips="tips" openmodal = openmodal('lg')>-->
 							</div>
 							<div class="search">
 								<div class="box" ng-show="boxshow">
@@ -36,12 +60,12 @@
 								</div>
 								<div class="free-advs clear" ng-show="tips">
 									<ul>
-										<li>
+										<li ui-sref="app.documentation">
 											<h2>Need a room?</h2>
 											<p>Place a free Room Wanted ad and make sure people with rooms can find you.</p>
 											<button class="btn-warning">Place a free advert</button>
 										</li>
-										<li>
+										<li  ui-sref="app.documentation">
 											<h2>Get a room to let?</h2>
 											<p>Place a free ad and rent your room in days find out more.</p>
 											<button class="btn-warning">Place a free advert</button>
@@ -243,14 +267,15 @@
 						</header>
 						<div class="pics pics1">
 							<div class="left1">
-								<div class="wh city-pic" ng-click="search('university')">
+								<div class="wh city-pic" ng-click="search('university')" >
 									<a ng-click="search('university')" title="学生公寓">
-										<span class="flaticon-college-graduation"></span>
-
+										<img src="../img/uni.jpg" alt="学生公寓">
+										<span class="flaticon-college-graduation2" style="opacity: .8; color: lightblue;"></span>
 									</a>
-									<div class="holder">
+									<div class="holder1">
 										<i></i>
-										<p class="desTile">
+										<p class="desTile1">
+											<span class="flaticon-college-graduation2" style="opacity: .8; color: lightblue;"></span>
 											<a class="city-title" rel="nofollow" ng-click="search('university')" title="学生公寓"><em>学生公寓</em></a>
 											<!--<a href="#" title="学生公寓"><span><strong>学生公寓</strong></span></a>
 										<a href="#" title="学生公寓"><span><strong>学生公寓</strong></span></a>-->
@@ -258,7 +283,7 @@
 									</div>
 									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
-								<div class="w city-pic railroad" ng-click="search('train_station')">
+								<div class="w city-pic railroad" ng-click="search('train_station')" style="background: url(/img/station01Warm.jpg);">
 									<a ng-click="search('train_station')" title="火车站">
 										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/bj.jpg?_v=20170515195947" alt="搬家服务">-->
 										<i class="flaticon-train-on-railroad"></i>
@@ -275,20 +300,21 @@
 								</div>
 								<div class="wh city-pic graduation" ng-click="search('backpack')">
 									<a ng-click="search('backpack')" title="背包客">
-										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/cd.jpg?_v=20170515195947" alt="水电网服务">-->
-										<i class="flaticon-backpack"></i>
+										
+										<img src="../img/backpacker02Warm.jpg" alt="背包客">
+										<i class="flaticon-backpack2" style="z-index: 1; position: absolute; top: 70px;left: 60px;"></i>
 									</a>
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="水电网服务"><em>背包客</em></a>
+											<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="背包客"><em>背包客</em></a>
 											<!--<a href="#" title="水电网服务"><span><strong>水电网服务</strong></span></a>
 										<a href="#" title="水电网服务"><span><strong>电话预约</strong></span></a>-->
 										</p>
 									</div>
 									<!--<h3 class="title">水电网服务</h3>-->
 								</div>
-								<div class="wh city-pic park-city-space" ng-click="search('park')">
+								<div class="wh city-pic park-city-space" ng-click="search('park')" style="background:url(../img/park01Warm.jpg)">
 									<a ng-click="search('park')" title="近公园绿地">
 										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="清洁服务">-->
 										<i class="flaticon-green-park-city-space"></i>
@@ -303,7 +329,7 @@
 									</div>
 									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
-								<div class="wh city-pic open-book" ng-click="search('school')">
+								<div class="wh city-pic open-book" ng-click="search('school')" style="background:url(../img/schoolzone02Warm.jpg)">
 									<a ng-click="search('school')" title="学区房">
 										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/hz.jpg?_v=20170515195947" alt="代收包裹">-->
 										<i class="flaticon-open-book"></i>
@@ -320,7 +346,7 @@
 								</div>
 							</div>
 							<div class="left1 clear">
-								<div class="wh city-pic flaticonpeople" ng-click="search('big_family')">
+								<div class="wh city-pic flaticonpeople" ng-click="search('big_family')" style="background:url(../img/grand-front-yard-entranceWarm.jpg)">
 									<a ng-click="search('big_family')" title="大家庭/大庭院">
 										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/qd.jpg?_v=20170515195947" alt="清洁服务">-->
 										<i class="flaticon-people"></i>
@@ -335,7 +361,7 @@
 									</div>
 									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
-								<div class="wh city-pic shoppingcart" ng-click="search('shopping_mall')">
+								<div class="wh city-pic shoppingcart" ng-click="search('shopping_mall')" style="background:url(../img/Westfield_shopping_centre02Warm.jpg)">
 									<a ng-click="search('shopping_mall')" title="购物商场">
 										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/dl.jpg?_v=20170515195947" alt="房屋装修">-->
 										<i class="flaticon-shopping-cart"></i>
@@ -350,7 +376,7 @@
 									</div>
 									<!--<h3 class="title">房屋装修</h3>-->
 								</div>
-								<div class="right1 city-pic business-rental" ng-click="search('offical_rental')">
+								<div class="right1 city-pic business-rental" ng-click="search('offical_rental')" style="background:url(../img/officerental02Warm.jpg)">
 									<a ng-click="search('offical_rental')" title="Office Rental">
 										<!--<img src="http://s1.ljcdn.com/feroot/pc/asset/img/www/sh.jpg?_v=20170515195947" alt="开锁&配钥匙服务">-->
 										<i class="flaticon-business"></i>

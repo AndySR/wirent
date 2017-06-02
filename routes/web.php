@@ -37,6 +37,9 @@ $app->group(['prefix' => '/tpl/page'], function () use ($app){
 	$app->get('/adminlogin',function () {
 		return view('page.login');	
 	});
+	$app->get('/login',function () {
+		return view('page.login');	
+	});
 	$app->get('/result',function () {
 		return view('page.result');	
 	});

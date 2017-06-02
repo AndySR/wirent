@@ -811,5 +811,48 @@
 //					alert("updated");
 				}
 				/********************************filter update code ends*****************************/
-	}])
+			
+			/************************filter orderby*******************************/
+			$scope.sortBy = function(orderName){
+				if(orderName==='ER_Price'){
+					$scope.sortPrice=true;
+					$scope.sortDate=false;
+				}else if(orderName==='ER_AvailableDate'){
+					$scope.sortPrice=false;
+					$scope.sortDate=true;
+				}
+				
+				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
+    			$scope.orderName = orderName;
+//				$scope.orderName = order+'';
+			}
+			/************************filter orderby*******************************/
+			
+			/***********************add to shortlist************************************/
+			$scope.save2shortlist = function(){
+				$http.get('/customer/profile')
+				.then(function(r) {
+					console.log(r);
+					if(r.data.customer_login_status){
+						$scope.shortlistInsert.CID = $scope.detailsData.CID;
+						$scope.shortlistInsert.CLType="FavorSave";
+						$scope.shortlistInsert.CLDetail=$scope.detailsData.ER_ID+'';;
+						$scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+						console.log("shortlistInsert",$scope.shortlistInsert);
+						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
+								.then(function(r){
+									console.log('r',r);				
+								},function(e){
+									console.log("数据有误");
+								});
+					}else{
+						$state.go('app.login');
+					}
+				},function(e){
+						console.log("数据有误");
+					})
+			}
+			/**********************************************************************/
+			
+		}])
 })();

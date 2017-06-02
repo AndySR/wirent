@@ -5,21 +5,28 @@
  .details-page .lunbo {
  	position: relative;
  	/*margin: 0 auto;*/
- 	left: -25px;
- 	top: 0;
+ 	width: 878px;
+ 	height: 354px;
+ 	left: 15px;
+ 	top: 10px;
+ 	overflow: hidden;
  }
  
  .details-page .lunbo ul {
- 	/*position: absolute;*/
+ 	position: absolute;
+ 	width: 878px;
+ 	height: 354px;
  }
  
  .details-page .lunbo ul li {
  	list-style-type: none;
  	position: absolute;
+ 	width: 878px;
+ 	height: 354px;
  }
  
  .details-page .lunbo ul li a img {
- 	display: block;
+ 	display: inline-block;
  	width: 878px;
  	height: 354px;
  }
@@ -55,7 +62,7 @@
 	text-align: center;
 	position:absolute;
 	top: 50%;
-	margin-top: -20px;
+	margin-top: -26px;
 	width: 40px;
 	height: 80px;
 	background-color: gray;
@@ -63,7 +70,7 @@
 	font: 800;
 }
 .details-page .hander-left{
-	left: 0;
+	left: 40px;
 }
 .details-page .hander-right {
 	right: 0;

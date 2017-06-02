@@ -50,23 +50,38 @@
 				})
 				.state('app.signup',{
 					url:'/signup',
-					templateUrl:'/partials/signup.html'
+					templateUrl:'/tpl/page/signup'
 				})
 				.state('app.login',{
 					url:'/login',
-					templateUrl:'/partials/login.html'
+					templateUrl:'/tpl/page/login'
 				})
 				.state('app.profile',{
 					url:'/profile',
-					templateUrl:'/partials/profile.html'
+					templateUrl:'/tpl/page/profile'
 				})
 				.state('user',{
 					url:'/user/:id',
 					templateUrl:'/tpl/page/user'
 				})
+//				.state('app.search',{
+//					url:'/search',
+//					templateUrl:'/partials/search.html'
+//				})
 				.state('app.search',{
 					url:'/search',
-					templateUrl:'/partials/search.html'
+					templateUrl:'/partials/search.html',
+					controller: 'HomeController',
+                  	resolve: {
+	                      deps: ['$ocLazyLoad',
+	                        function( $ocLazyLoad ){
+	                          return $ocLazyLoad.load('ui.select').then(
+	                              function(){
+	                                  return $ocLazyLoad.load('js/home/common.js');
+	                              }
+	                          );
+	                      }]
+                  	}
 				})
 				.state('app.businessDetails',{
 					url:'/businessDetails',
@@ -97,7 +112,7 @@
               })
 				.state('app.shortlist', {
                   url: '/shortlist',
-                  templateUrl: '/partials/shortlist.html'
+                  templateUrl: '/tpl/page/shortlist'
               })
 				.state('app.details', {
                   url: '/details?id&name',

@@ -1,6 +1,6 @@
 <div ng-mouseleave="start()" class="lunbo">
 	<ul>
-		<li class="fade-in "  ng-repeat="img in detailsData.picset">
+		<li class="fade-in "  ng-repeat="img in imgdata.picset">
 			<div ng-if="$index==pic">
 				<a><img ng-src="[:img.PicFile:]" alt="" /></a>
 			</div>
@@ -24,7 +24,7 @@
 		</li>
 	</ul>-->
 	<ul class="listContent">
-		<li class="list" ng-repeat="img in detailsData.picset" ng-click="clickEvent($index)">[:$index+1:]</li>
+		<li class="list" ng-repeat="img in imgdata.picset" ng-click="clickEvent($index)">[:$index+1:]</li>
 		<!--<li class="list" ng-click="clickEvent(1)">2</li>
 		<li class="list" ng-click="clickEvent(2)">3</li>
 		<li class="list" ng-click="clickEvent(3)">4</li>

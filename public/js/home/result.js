@@ -15,12 +15,13 @@
 		        }  
 		    };  
 		}])
-	.controller('MyCtrl',function($scope,$http,$location,$state,$log,NgMap,$cookies,$rootScope,$localStorage,SearchService,updateService,utilConvertDateToString) {
+	.controller('MyCtrl',function($scope,$animate,$http,$location,$state,$log,NgMap,$cookies,$rootScope,$localStorage,SearchService,updateService,utilConvertDateToString) {
 				var shortlistInsert = {};
 				var entireData = {};
 				var datafromhome = {};
 				var ER_Feature = [];
 				var vm = this;
+				
 				NgMap.getMap().then(function(map) {
 					vm.map = map;
 					
@@ -28,6 +29,7 @@
 				vm.clicked = function() {
 					alert('Clicked a link inside infoWindow');
 				};
+				$animate.enabled(false);//消除carousel bug
 				/*
 				 * when SearchService.get() has children, set the result to localstorage,
 				 * when searchservice has no child, the localstorage will keep the previous 

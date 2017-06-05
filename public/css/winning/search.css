@@ -775,14 +775,14 @@
 	padding: 15px 0 15px 15px;
 }
 .banner-search .top-cities .pics .city-pic:hover .holder1 {
-	bottom: 35px;
+	bottom: 20px;
 	text-align: center;
 }
 .banner-search .top-cities .pics .city-pic .holder1 {
 	z-index: 199;
 	position: absolute;
 	width: 100%;
-	height: 110px;
+	height: 140px;
 	bottom: -100%;
 	font-size: 0;
 	overflow: hidden;

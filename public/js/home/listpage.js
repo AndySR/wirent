@@ -32,11 +32,11 @@
 		        return out;
 		    };
 		})
-		.controller('listPageCtrl', ['$scope', 
+		.controller('listPageCtrl', ['$scope','$animate',
 			'$log','$timeout','$http','$state',
 			'$cookies','$rootScope','$localStorage',
 			'SearchService','updateService','utilConvertDateToString',
-			function($scope,$log,$timeout,
+			function($scope,$animate,$log,$timeout,
 			$http,$state,$cookies,$rootScope,
 			$localStorage,SearchService,
 			updateService,utilConvertDateToString) {
@@ -44,6 +44,7 @@
 			var datafromhome = {};
 			$scope.totalItems = 64;
 		    $scope.currentPage = 4;
+		     $animate.enabled(false);//消除carousel bug
 		    var ER_Feature = [];
 		    $scope.setPage = function (pageNo) {
 		      $scope.currentPage = pageNo;

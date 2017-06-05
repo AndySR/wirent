@@ -28,10 +28,10 @@
 			<li><a href="#about">Rental</a></li>
 			<li><a href="http://www.winninginvestment.com.au/project-en">Buy</a></li>
 			<li><a ui-sref="app.new">News</a></li>
-			<li><a ui-sref="app.documentation">Guide</a></li>
+			<!--<li><a ui-sref="app.documentation">Guide</a></li>-->
 			<li><a href="http://www.winninginvestment.com.au/contantus">Contact</a></li>
 			<li><a href="http://www.winninginvestment.com.au/aboutus">About</a></li>
-			<li><a ui-sref="app.trainmap">trainmap</a></li>
+			<!--<li><a ui-sref="app.trainmap">trainmap</a></li>-->
 		</ul>
         <!-- / link and dropdown -->
 
@@ -43,8 +43,8 @@
         <ul class="nav navbar-nav navbar-right">
       <!-- 
 		-->
-		  <li class="dropdown" >
-            <a href class="dropdown-toggle"  ui-sref="app.shortlist"  style="color: deeppink;">
+		  <li class="dropdown" ng-click="go2Shortlist()">
+            <a href class="dropdown-toggle"  style="color: deeppink;">
               <i class="fa fa-x fa-heart fa-fw"></i>
               <span class="visible-xs-inline">Shortlist</span>
               <span class="badge badge-sm up bg-danger pull-right-xs"></span>

@@ -65,6 +65,23 @@
 			}
 
 		})
+		.factory('hotRentService', function() {
+			var savedData = {}
+
+			function set(data) {
+				savedData = data;
+			}
+
+			function get() {
+				return savedData;
+			}
+
+			return {
+				set: set,
+				get: get
+			}
+
+		})
 		.factory('updateService', function() {
 			var savedData = {}
 
@@ -220,7 +237,7 @@
 				}
 			};
 		})
-		.directive('hotrent', ['readData','$timeout', 'mouseEvent', function(readData, $timeout, mouseEvent) {
+		.directive('hotrent', ['readData','$timeout', 'mouseEvent','hotRentService', function(readData, $timeout, mouseEvent,hotRentService) {
 			return {
 				restrict: 'EA',
 				templateUrl: '/partials/mydirectives/directive-hotrent.html',
@@ -294,6 +311,7 @@
 						}
 					});
 						scope.carouselimages = data;
+						hotRentService.set(data);
 						console.log("scope.carouselimages",scope.carouselimages);
 					});
 					scope.prev = function(){

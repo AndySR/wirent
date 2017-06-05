@@ -45,7 +45,7 @@
 	  
 	   
 	  }])
-	.controller('detailsController',['$http','$scope','$state','$window','$stateParams','$cookies','$rootScope','$localStorage','$modal', '$log','SearchService','readJSON','mouseEvent','utilConvertDateToString',function ($http,$scope,$state,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString){
+	.controller('detailsController',['$http','$scope','$state','$window','$stateParams','$cookies','$rootScope','$localStorage','$modal', '$log','SearchService','readJSON','mouseEvent','utilConvertDateToString','hotRentService',function ($http,$scope,$state,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
 		var datapackage = {};
 		$scope.detailsData = {};
 		$scope.shortlistInsert = {};
@@ -55,11 +55,13 @@
 		 	console.log('$localStorage.settings',$localStorage.settings);
 		 	datapackage = $localStorage.settings;
 			console.log('datapackage',datapackage);
+			
 		 }else{
 		 	datapackage = $localStorage.settings;
 		 	console.log('$localStorage.settings',$localStorage.settings);
 		 }
-		 $scope.datapackage = datapackage;
+//		 $scope.datapackage = datapackage;
+		 console.log("=====datapackage=====",datapackage);
 		 console.log($stateParams.id +"<======>"+$stateParams.name);
 		 	/*$scope.shortlistData = {};
 			$scope.shortlistDelete={};
@@ -72,15 +74,28 @@
 						},function(e){
 							
 						});*/
-		 angular.forEach(datapackage, function(data,index,array){
+		if (typeof($scope.datapackage) === "undefined")
+		 {	
+		 	if(JSON.stringify(hotRentService.get()) != "{}"){
+		 	$localStorage.settings = hotRentService.get();
+		 	console.log('$localStorage.settings',$localStorage.settings);
+		 	datapackage = $localStorage.settings;
+			console.log('datapackage',datapackage);
+		 }else{
+		 	datapackage = $localStorage.settings;
+		 	console.log('$localStorage.settings',$localStorage.settings);
+		 }
+		}
+		  $scope.datapackage = datapackage;
+		  console.log("=====datapackage=====",datapackage);
+		 angular.forEach($scope.datapackage, function(data,index,array){
 					//data等价于array[index]
-					//console.log("ER_ID",data.ER_ID);
+					console.log("ER_ID",data.ER_ID);
 					if($stateParams.id==data.ER_ID){
 						$scope.detailsData = data;
-//						alert($stateParams.id);
 					}
 				});
-				
+		console.log("$scope.datapackage======>",$scope.datapackage );
 		/****************************add shortlist**********************************/
 		
 		   	$scope.addShortlist = function (){
@@ -194,7 +209,7 @@
    }
   }
  })
-.directive('rentrecommend', ['readData','$timeout', 'mouseEvent', function(readData, $timeout, mouseEvent) {
+.directive('rentrecommend', ['readData','$timeout','$localStorage', 'mouseEvent', 'hotRentService',function(readData, $timeout,$localStorage,mouseEvent,hotRentService) {
 		return {
 			restrict: 'EA',
 			templateUrl: '/partials/mydirectives/directive-hotrent.html',
@@ -203,73 +218,87 @@
 			link: function(scope, element, attr) {
 				scope.imageid = 4;
 				scope.left = 0;
-				var promise = readData.query();
+				var datapackage = {};
+				scope.datapackage = {};
+//				var promise = readData.query();
 				var step = 0;
 				var time = null;
-				promise.then(function(data) {
-					 angular.forEach(data, function(data,index,array){
-					//data等价于array[index]
-					data.train_station = false;
-					data.backpack = false;
-					data.park = false;
-					data.school = false;
-					data.big_family = false;
-					data.shopping_mall = false;
-					data.offical_rental = false;
-					data.university = false;
-					var dataresults = data.ER_Description.split(";");
-					console.log("lengthhhh",dataresults);
-					var uniindex = 0
-					dataresults.pop();
-					uniindex = dataresults.indexOf('university');
-					console.log("length",dataresults.length);
-					for(var i =0;i<dataresults.length;i++)
+//				promise.then(function(data) {
+//					
+//				});
+				if(JSON.stringify(hotRentService.get()) != "{}"){
+				 	$localStorage.hotrent = hotRentService.get();
+				 	console.log('$localStorage.hotrent',$localStorage.hotrent);
+				 	datapackage = $localStorage.hotrent;
+				 	scope.datapackage = datapackage;
+					console.log('datapackage',datapackage);
+				 }else{
+				 	datapackage = $localStorage.hotrent;
+				 	console.log('$localStorage.hotrent',$localStorage.hotrent);
+				 }
+				angular.forEach(datapackage, function(data,index,array){
+				//data等价于array[index]
+				data.train_station = false;
+				data.backpack = false;
+				data.park = false;
+				data.school = false;
+				data.big_family = false;
+				data.shopping_mall = false;
+				data.offical_rental = false;
+				data.university = false;
+				var dataresults = data.ER_Description.split(";");
+				console.log("lengthhhh",dataresults);
+				var uniindex = 0
+				dataresults.pop();
+				uniindex = dataresults.indexOf('university');
+				console.log("length",dataresults.length);
+				for(var i =0;i<dataresults.length;i++)
+				{
+					switch (dataresults[i])
 					{
-						switch (dataresults[i])
-						{
-						     case "train_station":
-						     	data.train_station = true;
-						   	 break;
-						     case "backpack": 
-								data.backpack = true;
-						    break;
-						     case "park": 
-								data.park = true;
-						    break;
-						     case "school": 
-								data.school = true;
-						    break;
-						     case "big_family": 
-								data.big_family = true;
-						    break;
-						     case "shopping_mall": 
-								data.shopping_mall = true;
-						    break;
-						     case "offical_rental": 
-								data.offical_rental = true;
-						    break;
-						    case "university":
-						     	data.university = true;
-						     break;
-						    case "":
-						    	data.university = false;
-						    	 break;
-						    default:
-						    	data.university = true;
-						    	 break;
-						    	
-						}
+					     case "train_station":
+					     	data.train_station = true;
+					   	 break;
+					     case "backpack": 
+							data.backpack = true;
+					    break;
+					     case "park": 
+							data.park = true;
+					    break;
+					     case "school": 
+							data.school = true;
+					    break;
+					     case "big_family": 
+							data.big_family = true;
+					    break;
+					     case "shopping_mall": 
+							data.shopping_mall = true;
+					    break;
+					     case "offical_rental": 
+							data.offical_rental = true;
+					    break;
+					    case "university":
+					     	data.university = true;
+					     break;
+					    case "":
+					    	data.university = false;
+					    	 break;
+					    default:
+					    	data.university = true;
+					    	 break;
+					    	
 					}
-					if (uniindex == dataresults.length-1 || uniindex==-1){
-							data.university = false;
-						}
-					if(data.university){
-						data.uniname = dataresults[uniindex + 1];
+				}
+				if (uniindex == dataresults.length-1 || uniindex==-1){
+						data.university = false;
 					}
+				if(data.university){
+					data.uniname = dataresults[uniindex + 1];
+				}
 				});
-					scope.carouselimages = data;
-					console.log("scope.carouselimages",scope.carouselimages);
-				});
+				scope.carouselimages = datapackage;
+				console.log("scope.carouselimages",scope.carouselimages);
+				
 				scope.prev = function(){
 					if(scope.imageid >4 ){
 						scope.imageid--;
@@ -291,7 +320,7 @@
 			}
 		}
 	}])
-.directive('imagelunbo',['SearchService','$timeout','$localStorage','$stateParams','mouseEvent' ,function (SearchService,$timeout,$localStorage,$stateParams,mouseEvent) {
+.directive('imagelunbo',['SearchService','$timeout','$localStorage','$stateParams','mouseEvent' ,'hotRentService',function (SearchService,$timeout,$localStorage,$stateParams,mouseEvent,hotRentService) {
   return{
    restrict:'EA',
    templateUrl:'/partials/mydirectives/directive-lunbo.html',
@@ -312,6 +341,20 @@
 	 }
 	 scope.datapackage = datapackage;
 	 console.log($stateParams.id +"<======>"+$stateParams.name);
+	  console.log("scope.datapackage" +"<======>"+scope.datapackage);
+	 if (typeof(scope.datapackage) === "undefined")
+	 {	
+	 	if(JSON.stringify(hotRentService.get()) != "{}"){
+	 	$localStorage.settings = hotRentService.get();
+	 	console.log('$localStorage.settings',$localStorage.settings);
+	 	datapackage = $localStorage.settings;
+		console.log('datapackage',datapackage);
+	 }else{
+	 	datapackage = $localStorage.settings;
+	 	console.log('$localStorage.settings',$localStorage.settings);
+	 }
+	 scope.datapackage = datapackage;
+	 }
 	 angular.forEach(datapackage, function(data,index,array){
 		//data等价于array[index]
 		//console.log("ER_ID",data.ER_ID);

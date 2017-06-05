@@ -39,7 +39,7 @@
 .documentation .clearfix{
     zoom:1;
 }
-.documentation .dream-homes-container:before {
+/*.documentation .dream-homes-container:before {
 	padding-bottom: 56.05%
 }
 
@@ -53,7 +53,7 @@
 	.documentation .dream-homes-container:before {
 		padding-bottom: 18.55%
 	}
-}
+}*/
 
 .documentation .dream-homes-item {
 	width: 100%
@@ -83,7 +83,8 @@
 }
 
 .documentation .dream-homes-container {
-	/*position: relative;*/
+	position: relative;
+	height: 755px;
 	width: 100%;
 	overflow: hidden
 }
@@ -100,7 +101,7 @@
 .documentation .dream-homes-list {
 	-webkit-transition: left .8s;
 	transition: left .8s;
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 	left: 0;
 	width: 100%;

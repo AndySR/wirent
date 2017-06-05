@@ -71,6 +71,7 @@
 	<script src="/js/home/new.js"></script>
 	<script src="/js/home/trainmap.js"></script>
 	<script src="/js/home/business.js"></script>
+	<script src="/js/home/documentation.js"></script>
 	
 </body>
 	

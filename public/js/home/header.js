@@ -2,7 +2,7 @@
 (function() {
 	'use strict';
 	angular.module('header',['andy','user'])
-		.factory('readLetters', ['$http', '$q', function($http, $q) {
+		.factory('readLetters', ['$http', '$q', 'SearchService',function($http, $q,SearchService) {
 			return {
 				query: function() {
 					var deferred = $q.defer();
@@ -22,7 +22,7 @@
 		.service('BaseService', ['$state', '$http', function($state, $http,$localStorage) {
 
 		}])
-		.controller('WinCtrl', ['$scope', '$state','$window', '$http','UserService','readLetters','$localStorage', function($scope, $state,$window, $http,UserService,readLetters,$localStorage) {
+		.controller('WinCtrl', ['$scope', '$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($scope, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
 			$scope.letternums = 0;
@@ -48,10 +48,11 @@
 			$scope.read_Letters = function(){
 				$http.get('/customer/profile')
 						.then(function(r){
+							console.log("=============",r);
 							if(r.data=="login"){
 								$state.go("app.login");
 							}else{
-								
+						
 							}
 						},function(e){
 							$state.go("app.login");
@@ -68,6 +69,34 @@
 					$scope.letternums = $localStorage.headerSetting.letternums;
 					
 			/*********************obtain unread messages number***********************************/
+			
+			/*********************go to shortlist******************************************/
+			$scope.go2Shortlist = function(){
+				$http.get('/customer/profile')
+						.then(function(r){
+							if(r.data=="login"){
+								$state.go("app.login");
+							}else{
+								$scope.shortlistData = {};
+								$scope.shortlistDelete={};
+								$scope.shortlistData.CID = 0;
+								$scope.shortlistData.CLType='FavorSave';
+								$http.post('/customer/shortlist',$scope.shortlistData)
+									.then(function(r){
+										SearchService.set(r.data);
+										$state.go("app.shortlist");
+								//console.log("$scope.shortlistData",$scope.shortlistData);
+									},function(e){
+										
+									});
+							}
+						},function(e){
+							$state.go("app.login");
+						})
+				
+			}
+			/*********************go to shortlist******************************************/
+		
 			
 		}])
 			

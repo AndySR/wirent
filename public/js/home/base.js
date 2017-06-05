@@ -23,7 +23,8 @@
 							'listpage',
 							'lunbo',
 							'trainmap',
-							'business'
+							'business',
+							'documentation'
 							])
 		.config(function($interpolateProvider,
 								$stateProvider,

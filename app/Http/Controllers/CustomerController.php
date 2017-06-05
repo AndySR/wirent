@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 use Aws\S3\S3Client;
 use Aws\Credentials\CredentialProvider;
 
@@ -118,15 +119,21 @@ class CustomerController extends Controller
 		$data = DB::select($sql);
 
 			//循环查询图片库
-		$proc_Name = 'check_EntireRentPicture_by_ERID';	
-		foreach($data as $item)
-		{
-			$ER_ID = $item->ER_ID;
-			$sql = "call $proc_Name('{$ER_ID}')";	
-			$itempic = DB::select($sql);
-			$item->picset = $itempic;	
-		}
-		return $data;
+			$proc_Name = 'check_EntireRentPicture_by_ERID';	
+			foreach($data as $item)
+			{
+				$ER_ID = $item->ER_ID;
+				$sql = "call $proc_Name('{$ER_ID}')";	
+				$itempic = DB::select($sql);
+				foreach ($itempic as $itemp)
+				{
+					if ($itemp->PicDescription=='Form')
+					{$item->comment = $itemp;}
+					else{$item->picset[] = $itemp;}
+				}
+//				$item->picset = $itempic;	
+			}
+			return $data;
 	}
 	
 	/*
@@ -155,14 +162,20 @@ class CustomerController extends Controller
 								)";
 		$data = DB::select($sql);
 
-			//循环查询图片库
+		//循环查询图片库
 		$proc_Name = 'check_EntireRentPicture_by_ERID';	
 		foreach($data as $item)
 		{
 			$ER_ID = $item->ER_ID;
 			$sql = "call $proc_Name('{$ER_ID}')";	
 			$itempic = DB::select($sql);
-			$item->picset = $itempic;	
+			foreach ($itempic as $itemp)
+			{
+				if ($itemp->PicDescription=='Form')
+				{$item->comment = $itemp;}
+				else{$item->picset[] = $itemp;}
+			}
+//				$item->picset = $itempic;	
 		}
 		return $data;
 	} 
@@ -203,7 +216,7 @@ class CustomerController extends Controller
 		
 		$data = array();
 		$dataSet = array();
-	
+
 		//执行存储过程
 		try{
 			$proc_name = 'filt_Check_EntireRent';
@@ -214,7 +227,43 @@ class CustomerController extends Controller
 									'{$ER_AvailableDate}'
 									)";
 			$data = DB::select($sql);
-
+			
+			/*
+			 * 查询无结果解决办法:
+			 * step1:检查所有条件,排序,并设置默认值
+			 * step2:将最后一个非默认值条件设为默认值，查询
+			 * step3:有结果返回结果集无结果返回step2
+			 */ 
+			//step1: 
+			$optionlist_init = [
+				'','','','2200-01-01','','',10000,0,
+				20,0,10,0,10,0,50000,0
+			];
+			
+			$optionlist_input = [
+				$ER_Region,$ER_Suburb,$ER_Type,$ER_AvailableDate,$ER_Description,$ER_Feature,$ER_PriceMax,$ER_PriceMin,
+				$ER_BedRoomMax,$ER_BedRoomMin,$ER_BathRoomMax,$ER_BathRoomMin,$ER_ParkingMax,$ER_ParkingMin,$ER_AreaMax,$ER_AreaMin
+			];	
+			$i=15;	
+			//step 2,3
+			while($data == null && $i>=0){
+				if ($optionlist_input[$i]==$optionlist_init[$i])
+				{$i--; }	
+				else{
+					$optionlist_input[$i]=$optionlist_init[$i];	
+					$proc_name = 'filt_Check_EntireRent';
+					$sql = "call $proc_name(
+											'{$optionlist_input[1]}','{$optionlist_input[0]}','{$optionlist_input[2]}','{$optionlist_input[9]}','{$optionlist_input[8]}',
+											'{$optionlist_input[11]}','{$optionlist_input[10]}','{$optionlist_input[13]}','{$optionlist_input[12]}','{$optionlist_input[5]}',
+											'{$optionlist_input[4]}','{$optionlist_input[15]}','{$optionlist_input[14]}','{$optionlist_input[7]}','{$optionlist_input[6]}',
+											'{$optionlist_input[3]}'
+											)";
+					$data = DB::select($sql);
+					$i--;
+				}	
+			}
+			if ($data==''){return Exception("error:404|error:500'");}
+			
 			//循环查询图片库
 			$proc_Name = 'check_EntireRentPicture_by_ERID';	
 			foreach($data as $item)
@@ -251,9 +300,15 @@ class CustomerController extends Controller
 			$ER_ID = $item->ER_ID;
 			$sql = "call $proc_Name('{$ER_ID}')";	
 			$itempic = DB::select($sql);
-			$item->picset = $itempic;	
+			foreach ($itempic as $itemp)
+			{
+				if ($itemp->PicDescription=='Form')
+				{$item->comment = $itemp;}
+				else{$item->picset[] = $itemp;}
+			}
+//				$item->picset = $itempic;	
 		}
-		return $data;	
+		return $data;
 	}
 	
 	/*
@@ -283,6 +338,44 @@ class CustomerController extends Controller
 								'{$ER_Description}'
 								)";
 		$data = DB::select($sql);	
+		
+		/*
+			 * 查询无结果解决办法:
+			 * step1:检查所有条件,排序,并设置默认值
+			 * step2:将最后一个非默认值条件设为默认值，查询
+			 * step3:有结果返回结果集无结果返回step2
+			 */ 
+			//step1: 
+			$optionlist_init = [
+				'','','','','2200-01-01','','',0,
+				2000,0,1000
+			];
+			
+			$optionlist_input = [
+				$ER_Region,$ER_Suburb,$ER_Type,$SRName,$SRAvailableDate,$ER_Description,$ER_Feature,$SRPriceMin,$SRPriceMax,
+				$SRAreaMin,$SRAreaMax
+			];	
+			$i=10;	
+			//step 2,3
+			while($data == null && $i>=0){
+				if ($optionlist_input[$i]==$optionlist_init[$i])
+				{$i--; }	
+				else{
+					$optionlist_input[$i]=$optionlist_init[$i];	
+					$proc_name = 'filt_Check_SharingRent';
+					$sql = "call $proc_name(
+											'{$optionlist_input[1]}','{$optionlist_input[0]}','{$optionlist_input[2]}','{$optionlist_input[3]}','{$optionlist_input[9]}',
+											'{$optionlist_input[10]}','{$optionlist_input[7]}','{$optionlist_input[8]}','{$optionlist_input[4]}','{$optionlist_input[6]}',
+											'{$optionlist_input[5]}'
+											)";
+					$data = DB::select($sql);
+					$i--;
+				}	
+			}
+			if ($data==''){return Exception("error:404|error:500'");}
+		
+		
+		
 		//循环查询图片库
 		$proc_Name = 'check_EntireRentPicture_by_ERID';	
 		foreach($data as $item)
@@ -294,9 +387,13 @@ class CustomerController extends Controller
 			$partial = array();
 			foreach ($itempic as $total)
 			{				
-				if ($total->SRID==$item->SRID||$total->SRID==null)
+				if ($total->SRID==$item->SRID||$total->SRID==null&&$total->PicDescription!='Form')
 				{
 					$partial[]=$total;
+				}
+				else if($total->PicDescription=='Form') 
+				{
+					$item->comment = $total;
 				}
 			}
 			$item->picset = $partial;	
@@ -531,9 +628,7 @@ class CustomerController extends Controller
 		$IdReceiver = $request->input('IdReceiver');						
 		$msg_direct_comment = $request->input('msg_direct_comment'); 	//e.g.'Landlord to Staff';
 		$proc_Name = 'msg_write';
-		$sql = "call $proc_Name('{$title}','{$content}','{$createTime}',{$IdSender},{$IdReceiver},'{$msg_direct_comment}')";  
-//		return $sql;
-		
+		$sql = "call $proc_Name('{$title}','{$content}','{$createTime}',{$IdSender},{$IdReceiver},'{$msg_direct_comment}')";  		
 		$result = DB::insert($sql);
 		return json_encode($result);
 	}	
@@ -547,25 +642,5 @@ class CustomerController extends Controller
 		$result = DB::select($sql);
 		return $result;
 	}
-	
-	public function upload(Request $request)
-	{
-		$SourceFile = $request->input('SourceFile');
-		$key = $request->input('key');
-		$provider = CredentialProvider::env();	
-			
-		$options = [
-		    'region'            => 'ap-southeast-2',
-		    'version'           => '2006-03-01',
-	        'credentials' => $provider
-		];
-		$s3 = new S3Client($options);
-		$s3->putObject(array(
-		    'Bucket'     => 'wirent',
-		    'Key'        => $key,
-		    'SourceFile' => $SourceFile,
-		    'ACL' =>'public-read'
-		));
 
-	}	
 }

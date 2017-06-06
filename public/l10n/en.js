@@ -8,7 +8,9 @@
       "PROJECT" : "Projects",
       "TASK" : "Task",
       "USER" : "User",
-      "EMAIL" : "Email"
+      "EMAIL" : "Email",
+      "Login" : "Login",
+      "Regist": "Regist"
     },
     "NOTIFICATIONS" : "Notifications"
   }

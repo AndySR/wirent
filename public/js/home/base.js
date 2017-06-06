@@ -10,6 +10,7 @@
 							'ngStorage',
 							'ngSanitize',
 							'oc.lazyLoad',
+							'pascalprecht.translate',
 							'header',
 							'user',
 							'home',

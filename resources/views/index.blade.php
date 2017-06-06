@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="/font/flaticon.css" />
 	<link rel="stylesheet" href="/css/winning/newsDetail.css" type="text/css"/>
 	</head>
-<body>
+<body ng-controller="MainCtrl">
 
 	<div style="height: 100%;" ui-view></div>
 	 <!-- jQuery -->
@@ -59,6 +59,8 @@
 	<script src="/js/home/map/load-google-maps.js"></script>
 	<script src="/js/home/result.js"></script>
 	<script src="/js/home/base.js"></script>
+	<script src="/js/home/config.js"></script>
+	<script src="/js/home/main.js"></script>
 	<script src="/js/home/base.lazyload.js"></script>
 	<script src="/js/home/user.js"></script>
 	<script src="/js/home/header.js"></script>

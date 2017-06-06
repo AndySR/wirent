@@ -90,11 +90,25 @@
               	<span class="badge badge-sm up bg-danger pull-right-xs">[:letternums:]</span>
 			</a>
 		  </li>
+		  <!--translate-->
+		  <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              [:selectLang:] <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li ng-repeat="(langKey, label) in langs">
+                <a ng-click="setLang(langKey, $event)" href>[:label:]</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+		  <!--translate-->
       <li ng-if="!profile">
-			<a ui-sref="app.login"><span class="badge badge-lg bg-success" >登录</span></a>
+			<a ui-sref="app.login"><span class="badge badge-lg bg-success" translate="header.navbar.new.Login">登录</span></a>
 		  </li>
 		  <li ng-if="!profile">
-			<a ui-sref="app.signup"><span class="badge badge-lg bg-success" >注册</span></a>
+			<a ui-sref="app.signup"><span class="badge badge-lg bg-success" translate="header.navbar.new.Regist">注册</span></a>
 		  </li>
 		 
 		 <li ng-if="profile" class="dropdown" dropdown>

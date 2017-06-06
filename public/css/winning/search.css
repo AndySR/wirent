@@ -697,7 +697,22 @@
 .top-cities .pics .city-pic h3 {
 	color: #000;
 }
-
+/***********add hover on theme topics*************/
+/*.banner-search .top-cities .pics .city-pic .cover-img{
+	display: block;
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    position: relative;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+.banner-search .top-cities .pics .city-pic .cover-img:hover {
+	background: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}*/
+/***********************/
 .banner-search .top-cities .pics .city-pic:hover a{
 	color: chocolate;
 }
@@ -775,17 +790,18 @@
 	padding: 15px 0 15px 15px;
 }
 .banner-search .top-cities .pics .city-pic:hover .holder1 {
-	bottom: 20px;
+	bottom: 0;
 	text-align: center;
 }
 .banner-search .top-cities .pics .city-pic .holder1 {
 	z-index: 199;
 	position: absolute;
 	width: 100%;
-	height: 140px;
+	height: 200px;
 	bottom: -100%;
 	font-size: 0;
 	overflow: hidden;
+	background: rgba(0, 0, 0, 0.6);
 	-moz-transition: bottom .5s;
 	-webkit-transition: bottom .5s;
 	-o-transition: bottom .5s;
@@ -796,7 +812,7 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	bottom: 20;
+	bottom: -50px;
 	/*padding: 15px 0 15px 15px;*/
 }
 .banner-search .top-cities .pics .city-pic .holder1 .desTile1 .city-title:hover {
@@ -808,8 +824,9 @@
 .banner-search .top-cities .pics .city-pic .holder1 .desTile1 em {
 	display: block;
 	font-size: 20px;
+	color: white;
 }.banner-search .top-cities .pics .city-pic .holder1 .desTile1 em:hover {
-	color: #a40000;
+	/*color: #a40000;*/
 }
 .banner-search .top-cities .pics .city-pic .holder1 .desTile1 span:hover {
 	color: #a40000;

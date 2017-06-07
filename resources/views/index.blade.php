@@ -26,6 +26,15 @@
 	<link rel="stylesheet" href="/css/winning/guide.css" type="text/css"/>
 	<link rel="stylesheet" href="/font/flaticon.css" />
 	<link rel="stylesheet" href="/css/winning/newsDetail.css" type="text/css"/>
+	<!--<style>
+		@media print  
+		{
+	    div{
+	        page-break-inside: avoid;
+	    }
+	   	div{ page-break-after:auto; }
+		}
+	</style>-->
 	</head>
 <body ng-controller="MainCtrl">
 

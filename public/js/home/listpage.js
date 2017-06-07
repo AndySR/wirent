@@ -814,13 +814,17 @@
 				/********************************filter update code ends*****************************/
 			
 			/************************filter orderby*******************************/
+			$scope.orderleft = false;
+			$scope.orderright = false;
 			$scope.sortBy = function(orderName){
 				if(orderName==='ER_Price'){
-					$scope.sortPrice=true;
-					$scope.sortDate=false;
+					$scope.orderright = false;
+					$scope.orderleft = true;
+					$scope.sortPrice=!$scope.sortPrice;
 				}else if(orderName==='ER_AvailableDate'){
-					$scope.sortPrice=false;
-					$scope.sortDate=true;
+					$scope.orderleft = false;
+					$scope.orderright = true;
+					$scope.sortDate=!$scope.sortDate;
 				}
 				
 				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;

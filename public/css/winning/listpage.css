@@ -176,6 +176,9 @@
 	line-height: 34px;
 	position: absolute;
 }
+.list-page .info-panel .rooms a:hover {
+	cursor:default;
+}
 .list-page .info-panel .rooms .icon1{
 	position: absolute;
 	top: 10px;
@@ -234,8 +237,8 @@
 .list-page .info-panel .address a:hover {
 	line-height: 34px;
 	font: 100 15px/15px "microsoft yahei";
-	color: red;
-	text-decoration: underline;
+	color: #C81623;
+	/*text-decoration: underline;*/
 }
 
 
@@ -246,7 +249,9 @@
 	left: 10px;
 	top: 160px;
 }
-
+.list-page .info-panel .benefits a:hover {
+	 cursor:default;
+}
 
 /*.list-page .info-panel .benefits .train {
 	position: absolute;
@@ -324,17 +329,21 @@
 	height: 50px;
 	margin: 25px 65px 0 0;
 	position: absolute;
-	top: 80px;
-	left:600px;
+	top: 125px;
+	left:380px;
 }
 .list-page .info-panel .view .view-num {
 	display: block;
-	font: 300 15px/20px "microsoft yahei";
+	font: 400 16px/20px "microsoft yahei";
 	width: 100px;
 	height: 50;
 	/*left: 460px;*/
 	margin-top: 20px;
+	color: darkgrey;
+}
+.list-page .info-panel .view .view-num:hover {
 	color: #C81623;
+	cursor: pointer;
 }
 .list-page .info-panel .save{
 	width: 40px;
@@ -342,6 +351,9 @@
 	position: absolute;
 	top: 30px;
 	left: 380px;
+}
+.list-page .info-panel .save a:hover {
+	color: #C81623;
 }
 .list-page .pagination-bottom {
 	padding-left: 210px;

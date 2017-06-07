@@ -196,7 +196,7 @@
 				template: '<input type = "test"' +
 					'class="input-lg form-control" autocomplete="off" name="inputStr" data-val="true" data-val-required="Please choose a location to search." ng-minlength="2"  placeholder="Search by suburb, region, postcode or address" type="text"' +
 					'ng-change="changeKeyValue(searchField)" ng-keyup="getData({val:searchField})" ng-model="searchField" ' +
-					' value="{{searchField}}" style="width:605px; height:55px;border:none"/>' +
+					' value="{{searchField}}" style="width:400px; height:55px;border:none"/>' +
 					'<div  ng-hide="hidden" style = "position:absolute; top:55px; z-index: 1000;">' +
 					'   <select style = "width:605px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;" ng-change="change(x)" ng-model="x" multiple>' +
 					'       <option ng-repeat="data in datas track by $index" style="padding-left:16px;padding-bottom:10px">{{data}}</option>' +
@@ -361,6 +361,10 @@
 				$scope.datas = []; //下拉框选项
 				var entireData = {};
 				var ER_Feature = '';
+				/*****************anchorscroll********************/
+				
+				/************************************************/
+			
 				/*******************************************location input**************************/
 		    $scope.person = {};
 	        $scope.people = [
@@ -1222,6 +1226,26 @@
 		    };
 		    /**********************************modal code ends***********************************/
 			
+			/************************filter orderby*******************************/
+			$scope.orderleft = false;
+			$scope.orderright = false;
+			$scope.sortBy = function(orderName){
+				alert("000");
+				if(orderName==='ER_Price'){
+					$scope.orderright = false;
+					$scope.orderleft = true;
+					$scope.sortPrice=!$scope.sortPrice;
+				}else if(orderName==='ER_AvailableDate'){
+					$scope.orderleft = false;
+					$scope.orderright = true;
+					$scope.sortDate=!$scope.sortDate;
+				}
+				
+				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
+    			$scope.orderName = orderName;
+//				$scope.orderName = order+'';
+			}
+			/************************filter orderby*******************************/
 			}
 		])
 		.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {

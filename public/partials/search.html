@@ -26,27 +26,264 @@
 
 	<div class="clear">
 		<div class="header" data-stellar-background-ratio="0.07">
-			<div class="wrapper">
+			<!--<div class="top-topics">
+					<ul>
+						<li class="tab selected" ng-click="clickEvent(0)" ><span>租房</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(1);openmodal('lg');" ><span>火车站</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(2)"><span>主题</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(3);tips!=tips" ><span>Tips</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(4)"><span>一步到位</span></li>
+						<div class="sc-info-line"></div>
+						<li class="tab " ng-click="clickEvent(5)"><span>找商家</span></li>
+						<a href="" class="js-buy-trigger buy-trigger">立即订阅</a>
+					</ul>
+					<i></i>
+				</div>
+-->
+			<div class="wrapper1">
 				<!--<div class="fl">
 					<a href="#" title="Winning Investment" class="logo" target="_self">WinningInvestment</a>
 					<span class="exchange"><i></i>Sydney</span>
 					</div>
 					<!--[if lte IE 8]><div class="old-browser-popup" id="old" >亲，您当前正在使用旧版本的IE浏览器，为了保证您的浏览体验，唯赢网建议您使用：<label class="chrome-borwser-ico"></label><a href="//rj.baidu.com/soft/detail/14744.html?ald" target="_blank">谷歌浏览器</a>&nbsp;或&nbsp;&nbsp;<label class="firefox-borwser-ico"></label><a href="//rj.baidu.com/soft/detail/11843.html?ald" target="_blank">火狐浏览器</a><span id="oldclose"></span></div><![endif]-->
 				<!--<div class="clear"></div>-->
-				<div class="header-wrap">
-					<div class="search-box-wrap" log-mod="search">
-						<div class="search-box-con">
+				<div class="header-wrap1">
+					<div class="search-box-wrap1 left-box" log-mod="search">
+						<div class="search-box-con1">
 							<script type="text/ng-template" id="myModalContent.html">
 								<div ng-include="'partials/tpl/modal.html'"></div>
 							</script>
 							<div animatesearch tips="tips" features="features" boxshow="boxshow">
 							</div>
-							<div class="search">
-								<div class="box" ng-show="boxshow">
-									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
+							<div class="search1">
+								<div class="box1" ng-show="boxshow">
+									<div class="searchBox1" style="z-index: 10;" data-action="/ershoufang/rs">
 										<select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search>
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-										<button class="btn btn-lg btn-success" style="position: absolute; left: 605px;top: 0;" ng-click="entireSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 400px;top: 0;" ng-click="entireSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
+										<button class="btn home-ico ico-search left" id="findHouse" type="button">
+												Search
+												<a style="color:white;margin-left: 5px;"><i class="fa fa-lg fa-search"></i></a>
+										</button>-->
+										<div id="userNews" class="savesearch">
+				
+										</div>
+									</div>
+									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
+								</div>
+								<div class="free-advs clear" ng-show="tips">
+									<ul>
+										<li ui-sref="app.documentation">
+											<h2>Need a room?</h2>
+											<p>Place a free Room Wanted ad and make sure people with rooms can find you.</p>
+											<button class="btn-warning">Place a free advert</button>
+										</li>
+										<li  ui-sref="app.documentation">
+											<h2>Get a room to let?</h2>
+											<p>Place a free ad and rent your room in days find out more.</p>
+											<button class="btn-warning">Place a free advert</button>
+										</li>
+									</ul>
+								</div>
+								<div class="row m-l-xs m-r-xs" ng-if="features">
+									<div class="features-bcg clear">
+										<div class="col-xs-6">
+											<div class="row">
+												<div class="col-xs-4">
+													<ul class="list-unstyled l-h-2x">
+														<li>
+															<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
+															<!--<label for="featureproductrankRefineCb0"></label>-->
+															<span title="all_requirements" ng-click="col_requirements()">
+							                      		<i ng-show="all_requirements" style="color: purple;" class="flaticon-puzzle20"></i>
+							                      		<i ng-show="!all_requirements" class="flaticon-puzzle20"></i>
+							                      	</span>
+														</li>
+														<li>
+															<span title="no_smoking" ng-click="nosmoking()">
+							                      			<i ng-show="no_smoking" style="color: purple;" class="flaticon-no-smoking-sign18"></i>
+							                      			<i ng-show="!no_smoking" class="flaticon-no-smoking-sign18"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="no_pets" ng-click="nopets()">
+							                      			<i ng-show="no_pets" style="color: purple;" class="flaticon-no-dogs18"></i>
+							                      			<i ng-show="!no_pets" class="flaticon-no-dogs18"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="girl_only" ng-click="girlonly()">
+							                      			<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette18"></i>
+							                      			<i ng-show="!girl_only" class="flaticon-female-silhouette18"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="boy_only" ng-click="boyonly()">
+							                      			<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up18"></i>
+							                      			<i ng-show="!boy_only" class="flaticon-man-standing-up18"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="no_party" ng-click="noparty()">
+							                      			<i ng-show="no_party" style="color: purple;" class="flaticon-turn-microphone-off-button18"></i>
+							                      			<i ng-show="!no_party" class="flaticon-turn-microphone-off-button18"></i>
+							                      		</span>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4">
+													<ul class="list-unstyled l-h-2x">
+														<li>
+															<span title="appliances" ng-click="col_appliances()">
+							                      		<i ng-show="appliances" style="color: purple;" class="flaticon-socket20"></i>
+							                      		<i ng-show="!appliances" class="flaticon-socket20"></i>
+							                      	</span>
+														</li>
+														<li>
+															<span title="stove" ng-click="stove_click()">
+							                      			<i ng-show="stove" style="color: purple;" class="flaticon-stove16"></i>
+							                      			<i ng-show="!stove" class="flaticon-stove16"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="dishwasher" ng-click="dishwasher_click()">
+							                      			<i ng-show="dishwasher" style="color: purple;" class="flaticon-dishwasher16"></i>
+							                      			<i ng-show="!dishwasher" class="flaticon-dishwasher16"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="dryer" ng-click="dryer_click()">
+							                      			<i ng-show="dryer" style="color: purple;" class="flaticon-tumble-dryer16"></i>
+							                      			<i ng-show="!dryer" class="flaticon-tumble-dryer16"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="aircondition" ng-click="aircondition_click()">
+							                      			<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit16"></i>
+							                      			<i ng-show="!aircondition" class="flaticon-minisplit16"></i>
+							                      		</span>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4">
+													<ul class="list-unstyled l-h-2x">
+														<li>
+															<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
+															<!--<label for="featureproductrankRefineCb0"></label>-->
+															<span title="furniture" ng-click="col_furniture()">
+							                      		<i ng-show="furniture" style="color: purple;" class="flaticon-cabinet20"></i>
+							                      		<i ng-show="!furniture" class="flaticon-cabinet20"></i>
+							                      	</span>
+														</li>
+														<li>
+															<span title="bed" ng-click="bed_click()">
+							                      			<i ng-show="bed" style="color: purple;" class="flaticon-bed16"></i>
+							                      			<i ng-show="!bed" class="flaticon-bed16"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="desk" ng-click="desk_click()">
+							                      			<i ng-show="desk" style="color: purple;" class="flaticon-man-in-office-desk-with-computer16"></i>
+							                      			<i ng-show="!desk" class="flaticon-man-in-office-desk-with-computer16"></i>
+							                      		</span>
+														</li>
+														<li>
+															<span title="wardrob" ng-click="wardrob_click()">
+							                      			<i ng-show="wardrob" style="color: purple;" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
+							                      			<i ng-show="!wardrob" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
+							                      		</span>
+														</li>
+														<!--<li>
+							                      		<span><i class="flaticon-minisplit16"></i></span>
+							                      	</li>-->
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="row">
+												<div class="col-xs-4">
+													<ul class="list-unstyled l-h-2x">
+														<li>
+															<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
+															<!--<label for="featureproductrankRefineCb0"></label>-->
+															<span title="other_appliance" ng-click="col_other_appliance()">
+								                      		<i ng-show="other_appliance" style="color: purple;" class="flaticon-plug20"></i>
+								                      		<i ng-show="!other_appliance" class="flaticon-plug20"></i>
+								                      	</span>
+														</li>
+														<li>
+															<span title="refrigerator" ng-click="refrigerator_click()">
+								                      			<i ng-show="refrigerator" style="color: purple;" class="flaticon-fridge16"></i>
+								                      			<i ng-show="!refrigerator" class="flaticon-fridge16"></i>
+								                      		</span>
+														</li>
+														<li>
+															<span title="laundry" ng-click="laundry_click()">
+								                      			<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine16"></i>
+								                      			<i ng-show="!laundry" class="flaticon-washing-machine16"></i>
+								                      		</span>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4">
+													<ul class="list-unstyled l-h-2x">
+														<li>
+															<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
+															<!--<label for="featureproductrankRefineCb0"></label>-->
+															<span title="other_essential" ng-click="col_other_essential()">
+									                      		<i ng-show="other_essential" style="color: purple;" class="flaticon-settings20"></i>
+									                      		<i ng-show="!other_essential" class="flaticon-settings20"></i>
+									                      	</span>
+														</li>
+														<li>
+															<span title="wifi" ng-click="wifi_click()">
+									                      			<i ng-show="wifi" style="color: purple;" class="flaticon-wifi16"></i>
+									                      			<i ng-show="!wifi" class="flaticon-wifi16"></i>
+									                      		</span>
+														</li>
+														<li>
+															<span title="gas" ng-click="gas_click()">
+									                      			<i ng-show="gas" style="color: purple;" class="flaticon-gas-level16"></i>
+									                      			<i ng-show="!gas" class="flaticon-gas-level16"></i>
+									                      		</span>
+														</li>
+													</ul>
+												</div>
+												<div class="col-xs-4"></div>
+											</div>
+											<div style="margin-left: 190px; margin-top: 40px; text-align: center;">
+												<button class="btn-warning btn-lg" ng-click="features_Submit()">Submit</button>
+											</div>
+										</div>
+									</div>
+								</div>
+				
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wrapper2">
+				<div class="header-wrap2">
+					<div class="search-box-wrap2 right-box" log-mod="search">
+						<div class="search-box-con2">
+							<script type="text/ng-template" id="myModalContent.html">
+								<div ng-include="'partials/tpl/modal.html'"></div>
+							</script>
+							<div animatesearch tips="tips" features="features" boxshow="boxshow">
+							</div>
+							<div class="search2">
+								<div class="box2" ng-show="boxshow">
+									<div class="searchBox2" style="z-index: 10;" >
+										<select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search>
+										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 400px;top: 0;" ng-click="entireSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search

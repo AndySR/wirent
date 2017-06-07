@@ -5,9 +5,9 @@
  .details-page .lunbo {
  	position: relative;
  	/*margin: 0 auto;*/
- 	width: 878px;
+ 	width: 918px;
  	height: 354px;
- 	left: 15px;
+ 	left: -25px;
  	top: 10px;
  	overflow: hidden;
  }
@@ -135,6 +135,9 @@
 	line-height: 34px;
 	position: absolute;
 }
+.details-page .info-panel .rooms a:hover {
+	cursor: default;
+}
 .details-page .info-panel .rooms .icon1{
 	position: absolute;
 	top: 10px;
@@ -185,6 +188,9 @@
 	top: 130px;
 	left: 10px;
 }
+.details-page .info-panel .address a:hover {
+	cursor: default;
+}
 .details-page .info-panel .address span {
 	line-height: 34px;
 	font: 100 15px/15px "microsoft yahei";
@@ -200,7 +206,9 @@
 	left: 10px;
 	top: 160px;
 }
-
+.details-page .info-panel .benefits a:hover {
+	cursor: default;
+}
 
 /*.details-page .info-panel .benefits .train {
 	position: absolute;
@@ -297,7 +305,21 @@
 	top: 30px;
 	left: 310px;
 }
-/*dream homes*/
+.details-page .info-panel .save span:hover{
+	color: #C81623;
+	cursor: pointer;
+}
+.details-page .info-panel .print{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 30px;
+	left: 230px;
+}
+.details-page .info-panel .print a:hover {
+	color: #C81623;
+}
+/*dream homes starts*/
 
 .details-page .dream-homes-main-title {
 	text-align: center;

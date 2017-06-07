@@ -96,6 +96,40 @@
 					}
 				});
 		console.log("$scope.datapackage======>",$scope.datapackage );
+		
+		/**************************Advertisements carousel********************************/
+		$scope.myInterval = 5000;
+	    var slides = $scope.slides = [];
+	    $scope.addSlide = function() {
+	      slides.push({
+	        image: 'img/c' + slides.length + '.jpg',
+	        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
+	      });
+	    };
+	    for (var i=0; i<4; i++) {
+	      $scope.addSlide();
+	    }
+		
+		/****************************************************************/
+		
+		/************print web page*****************/
+		$scope.printDiv = function (div){
+			var printContents = document.getElementById(div).innerHTML;
+            var popupWin = window.open('', '_blank', 'width=800,height=800,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no,top=50');
+            popupWin.window.focus();
+            popupWin.document.open();
+            popupWin.document.write('<!DOCTYPE html><html><head><title>TITLE OF THE PRINT OUT</title>' 
+                                    +'<link rel="stylesheet" type="text/css" href="app/directory/file.css" />' 
+                                    +'</head><body onload="window.print(); window.close();"><div>' 
+                                    + printContents + '</div></html>');
+            popupWin.document.close();
+		}
+		
+		
+		/*******************************/
+		
+		
+		
 		/****************************add shortlist**********************************/
 		
 		   	$scope.addShortlist = function (){

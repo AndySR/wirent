@@ -356,8 +356,20 @@
 	          <div class="m-b-sm m-r-lg">
 	          	<!--<div>features:</div>-->
 		        <div class="btn-group btn-group-justified features-filter">
-		          <a href class="btn btn-success" ng-click="sortBy('ER_Price')">Price</a>
-		          <a href class="btn btn-primary" ng-click="sortBy('ER_AvailableDate')">Available Time</a>
+		          <a href class="btn btn-success" ng-click="sortBy('ER_Price')">
+		          		Price&nbsp; 
+		          		  <span ng-if="orderleft">
+                     		<i ng-show="sortPrice" class="fa fa-caret-down"></i>
+                     		<i ng-show="!sortPrice" class="fa fa-caret-up"></i>
+		          		  </span>
+		          </a>
+		          <a href class="btn btn-primary" ng-click="sortBy('ER_AvailableDate')">
+		          		Available Time&nbsp;
+		          		<span ng-if="orderright">
+			          		<i ng-show="sortDate" class="fa fa-caret-down"></i>
+	                     	<i ng-show="!sortDate" class="fa fa-caret-up"></i>
+		          		</span>
+		          </a>
 		        </div>
 		      </div>
 	          <div class="clear pagination-top">
@@ -435,7 +447,6 @@
 								                <i class="fa fa-car fa-stack-1x "></i>
 								            </span>
 						                </div>
-						                
 						              </a>
 						          </div>
 								</div>
@@ -482,14 +493,14 @@
 									<span class="num">$[:property.ER_Price:]<span class="period">per week</span></span>
 									<span class="available">Available Time:&nbsp;&nbsp;<i style="color: darkred; font-size: 12px;">[:property.ER_AvailableDate:]</i></span>
 								</div>
-								<!--<div class="view">
-									<span class="view-num">Viewed:  20</span>
-								</div>-->
+								<div class="view" ui-sref="app.details({id:property.ER_ID,name:property.ER_No+' '+property.ER_St+' '+property.ER_Suburb+' '+property.ER_Region})">
+									<span class="view-num">Details <i class="fa fa-angle-right" aria-hidden="true"></i></span>
+								</div>
 								<div class="save">
-									<span class="save-delete-shortlist" ng-click="save2shortlist();favorsave=!favorsave">
+									<a class="save-delete-shortlist" ng-click="save2shortlist();favorsave=!favorsave">
 										<i ng-show="favorsave" style="color: pink;" class="fa fa-lg fa-heart">&nbsp;Save</i>
 										<i ng-show="!favorsave" class="fa fa-lg fa-heart-o">&nbsp;Save</i>
-									</span>
+									</a>
 								</div>
 							</div>
 

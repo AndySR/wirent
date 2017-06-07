@@ -53,17 +53,24 @@
 	font-size: 14px;
 	margin-left: 5px;
 }
+
 .map-page .info-right .address {
 	font: 200 12px/20px "microsoft sans serif" "microsoft yahei";
 	color: grey;
 	margin-top: 15px;
+}
+.map-page .info-right .address a:hover {
+	color: #C81623;
 }
 .map-page .info-right em {
 	font-weight: 800;
 	font: 400 12px/20px "microsoft sans serif" "microsoft yahei";
 	color: dimgrey;
 }
-
+.map-page .info-right .listing-features .details:hover {
+	color: #C81623;
+	cursor: pointer;
+}
 
 /*ads window*/
 .map-page .adv {
@@ -207,7 +214,26 @@
 	width: 490px;
 	margin-left: -40px;
 }*/
-
+.map-page .map_feature_filter {
+	position: absolute;
+	top: 65px;
+	left: 980px;
+	z-index: 100;
+}
+.map-page .map_feature_filter > li {
+	list-style: none;
+	text-decoration: none;
+}
+.map-page .map_feature_filter li > ul {
+	margin-top: 15px;
+} 
+.map-page .map_feature_filter > li > a {
+	color: lightgray;
+}
+.map-page .map_feature_filter > li > a:hover {
+	color: purple;
+    /*border-bottom: 3px solid rgb(150, 65, 137);*/
+}
 .map-page .adv .ad ol {
 	position: absolute;
 	/*right: 10px;*/
@@ -338,8 +364,8 @@
 .map-page .adv .info-panel .address a:hover {
 	line-height: 34px;
 	font: 100 15px/15px "microsoft yahei";
-	color: purple;
-	text-decoration: underline;
+	color: #C81623;
+	/*text-decoration: underline;*/
 }
 .map-page .adv .info-panel .address a {
 	line-height: 34px;
@@ -369,6 +395,9 @@
     position: relative;
     top: 60px;
     left: 0px;
+}
+.map-page .adv .info-panel .benefits a:hover {
+	cursor: default;
 }
 .map-page .adv .info-panel .benefits .train {
 	position: absolute;
@@ -484,12 +513,16 @@
 }
 .map-page .adv .info-panel .view .view-num {
 	display: block;
-	font: 300 15px/20px "microsoft yahei";
+	font: 400 16px/20px "microsoft yahei";
 	width: 100px;
 	height: 50;
 	/*left: 460px;*/
 	margin-top: 10px;
+	color: darkgrey;
+}
+.map-page .adv .info-panel .view .view-num:hover {
 	color: #C81623;
+	cursor: pointer;
 }
 .map-page .adv .icon {
     margin-left: 12px;
@@ -589,6 +622,9 @@
 	height: 70px;
 	/*background: black;*/
 	z-index: 10;
+}
+.map-page .shortlist-star a:hover {
+	color: #C81623;
 }
 .map-page .list-map a {
 	margin-right: 20px;

@@ -1,5 +1,3 @@
-;(function()
-{
 	'use strict';
 	angular.module('andy',[
 							'ngAnimate',
@@ -11,21 +9,10 @@
 							'ngSanitize',
 							'oc.lazyLoad',
 							'pascalprecht.translate',
-							'header',
-							'user',
-							'home',
 							'ui.jq',
 							'ui.load',
-							'map',
 							'ngMap',
-							'detail',
-							'profile',
-							'shortlist',
-							'listpage',
-							'lunbo',
-							'trainmap',
-							'business',
-							'documentation'
+							'map'
 							])
 		.config(function($interpolateProvider,
 								$stateProvider,
@@ -132,6 +119,10 @@
 					url:'/new',
 					templateUrl:'/partials/new.html'
 				})
+				.state('app.tips',{
+					url:'/tips',
+					templateUrl:'/partials/tips.html'
+				})
 				.state('app.newsDetail',{
 					url:'/newsDetail',
 					templateUrl:'/partials/newsDetail.html'
@@ -144,4 +135,3 @@
 		})
 		
 	
-})();

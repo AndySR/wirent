@@ -2,6 +2,7 @@
 
 "header" : {
   "navbar" : {
+  	"HOME" : "home",
     "UPLOAD" : "Upload",
     "new" : {
       "NEW" : "New",
@@ -9,8 +10,8 @@
       "TASK" : "Task",
       "USER" : "User",
       "EMAIL" : "Email",
-      "Login" : "Login",
-      "Regist": "Regist"
+      "LOGIN" : "Login",
+      "REGIST": "Regist"
     },
     "NOTIFICATIONS" : "Notifications"
   }

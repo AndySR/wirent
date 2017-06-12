@@ -10,18 +10,19 @@
 			        </li>
 			        <li class="tl-item" ng-repeat="data in guideData">
 			          <div class="tl-wrap">
-			            <span class="tl-date">[:data.step:]</span>
+			            <span class="tl-date" ui-sref="app.login" style="width: 15.5em;margin-left: -18.5em;text-align: left">[:data.step:]</span>
 			             <div  class="panel b-a" set-ng-animate="false" style="width: 350px;height: 300px; ">
 				              <div class="panel-heading">
-					          [:data.description:]
+					          <!--[:data.images[step].href:]-->
 					          </div>
 					        <carousel interval="myInterval">
 				          <slide ng-repeat="slide in data.images" active="slide.active" style="margin:auto; overflow: hidden;">
-				            <img ng-src="[:slide.src:]" style="margin:auto; overflow: hidden; width: 350px;height: 200px;">
-				            <!--<div class="carousel-caption">
-				              <h4>Slide [:$index:]</h4>
+				            <img  ng-src="[:slide.src:]" style="margin:auto; overflow: hidden; width: 350px;height: 200px;">
+				            <div class="carousel-caption">
+				              <h4>Step [:$index+1:]</h4>
+				              <input ng-model="slide" ng-change="valuechanged(slide.href)" class="sr-only"/>
 				              <p>[:slide.text:]</p>
-				            </div>-->
+				            </div>
 				          </slide>
 				         
 				        </carousel>

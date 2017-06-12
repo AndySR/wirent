@@ -13,7 +13,7 @@
 	color: gray;
 }
 .list-page .content {
-	/*width: 1000px;*/
+	/*/*width: 1000px;*/   /*there seems some problem here */
 	position: relative;
 	margin: 0 auto;
 	padding: 0px 30px 0 5px;

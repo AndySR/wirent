@@ -1,6 +1,6 @@
 ;(function() {
 	'use strict';
-	angular.module('business', []).controller('businessCtrl', ['$scope','$http','$cookies','$rootScope','$localStorage','SearchService','updateService', function($scope,$http,$cookies,$rootScope,$localStorage,SearchService,updateService) {
+	angular.module('andy').controller('businessCtrl', ['$scope','$http','$cookies','$rootScope','$localStorage','SearchService','updateService', function($scope,$http,$cookies,$rootScope,$localStorage,SearchService,updateService) {
 		var businessData = {};
 		var datafromhome = {};
 		$scope.datafromhome = '';

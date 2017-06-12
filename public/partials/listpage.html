@@ -107,23 +107,23 @@
 	                        </li>
 	                          <li ng-show="hello">
 	                          	<label class="m-t-xxs">Descriptions:</label>
-	                          	<ul style="list-style: none; padding-right: 0;">
+	                          	<ul style="list-style: none; padding:0; margin-left: 53px;">
 	                          		<li>
 	                          			<a class="" title="near train station" ng-click="train=!train">
-	                          				<i ng-show="train" class="flaticon-train-on-railroad1" style="color: orange;" aria-hidden="true"></i>
-	                          				<i ng-show="!train" class="flaticon-train-on-railroad1" aria-hidden="true"></i>
+	                          				<i ng-show="train" class="flaticon-train-on-railroad30" style="color: orange;" aria-hidden="true"></i>
+	                          				<i ng-show="!train" class="flaticon-train-on-railroad30" aria-hidden="true"></i>
 	                          			</a>
 			                          	<a class="" title="near university" ng-click="university=!university">
-			                          		<i ng-show="university" class="flaticon-college-graduation1" style="color: chocolate;" aria-hidden="true"></i>
-			                          		<i ng-show="!university" class="flaticon-college-graduation1" aria-hidden="true"></i>
+			                          		<i ng-show="university" class="flaticon-college-graduation30" style="color: chocolate;" aria-hidden="true"></i>
+			                          		<i ng-show="!university" class="flaticon-college-graduation30" aria-hidden="true"></i>
 			                          	</a>
 			                          	<a class="" title="near hotel YHA" ng-click="backpack=!backpack">
-			                          		<i ng-show="backpack" class="flaticon-backpack1" style="color: greenyellow;" aria-hidden="true"></i>
-			                          		<i ng-show="!backpack" class="flaticon-backpack1" aria-hidden="true"></i>
+			                          		<i ng-show="backpack" class="flaticon-backpack30" style="color: greenyellow;" aria-hidden="true"></i>
+			                          		<i ng-show="!backpack" class="flaticon-backpack30" aria-hidden="true"></i>
 			                          	</a>
 			                          	<a class="" title="near park" ng-click="park=!park">
-			                          		<i ng-show="park" class="flaticon-green-park-city-space1" style="color: green;" aria-hidden="true"></i>
-			                          		<i ng-show="!park" class="flaticon-green-park-city-space1" aria-hidden="true"></i>
+			                          		<i ng-show="park" class="flaticon-green-park-city-space30" style="color: green;" aria-hidden="true"></i>
+			                          		<i ng-show="!park" class="flaticon-green-park-city-space30" aria-hidden="true"></i>
 			                          	</a>
 	                          		</li>
 	                          	</ul>
@@ -140,23 +140,23 @@
 							<input type="text" class="form-control input-sm" ng-model="maxArea" style="width: 149px;height: 40px;" placeholder="maxArea" aria-describedby="basic-addon1">
 	                        </li>
 	                        <li ng-show="hello" style="list-style: none; margin-top: 196px; padding-left: 0;">
-								<ul>
-	                          		<li style="list-style: none;">
+								<ul style="list-style: none; padding:0; margin-right: 50px;">
+	                          		<li>
 	                          			<a class="" title="near school" ng-click="school=!school">
-	                          				<i ng-show="school" class="flaticon-open-book1" style="color: yellow;" aria-hidden="true"></i>
-	                          				<i ng-show="!school" class="flaticon-open-book1" aria-hidden="true"></i>
+	                          				<i ng-show="school" class="flaticon-open-book30" style="color: yellow;" aria-hidden="true"></i>
+	                          				<i ng-show="!school" class="flaticon-open-book30" aria-hidden="true"></i>
 	                          			</a>
 	                          			<a class="" title="big family" ng-click="family=!family">
-	                          				<i ng-show="family" class="flaticon-people1" style="color: pink;" aria-hidden="true"></i>
-	                          				<i ng-show="!family" class="flaticon-people1" aria-hidden="true"></i>
+	                          				<i ng-show="family" class="flaticon-people30" style="color: pink;" aria-hidden="true"></i>
+	                          				<i ng-show="!family" class="flaticon-people30" aria-hidden="true"></i>
 	                          			</a>
 			                          	<a class="" title="near shoppingcenter" ng-click="shoppingcenter=!shoppingcenter">
-			                          		<i ng-show="shoppingcenter" class="flaticon-shopping-cart1" style="color: darkred;" aria-hidden="true"></i>
-			                          		<i ng-show="!shoppingcenter" class="flaticon-shopping-cart1" aria-hidden="true"></i>
+			                          		<i ng-show="shoppingcenter" class="flaticon-shopping-cart30" style="color: darkred;" aria-hidden="true"></i>
+			                          		<i ng-show="!shoppingcenter" class="flaticon-shopping-cart30" aria-hidden="true"></i>
 			                          	</a>
 			                          	<a class="" title="officerental" ng-click="officerental=!officerental">
-			                          		<i ng-show="officerental" class="flaticon-business1" style="color: blue;" aria-hidden="true"></i>
-			                          		<i ng-show="!officerental" class="flaticon-business1" aria-hidden="true"></i>
+			                          		<i ng-show="officerental" class="flaticon-business30" style="color: blue;" aria-hidden="true"></i>
+			                          		<i ng-show="!officerental" class="flaticon-business30" aria-hidden="true"></i>
 			                          	</a>
 	                          		</li>
 	                          	</ul>
@@ -167,172 +167,40 @@
 	                </div>
 	                <div class=" m-l-n-xxs" ng-show="hello">
 	                  <label>Features:</label>
-	                   <div class="row  m-l-md">
-		                    <div class="col-xs-6">
-		                    	<div class="row">
-		                    		<div class="col-xs-4">
-		                    			 <ul class="list-unstyled l-h-2x">
-					                      	<li>
-					                      	<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
-					                      	<!--<label for="featureproductrankRefineCb0"></label>-->
-					                      	<span title="all_requirements" ng-click="col_requirements()">
-					                      		<i ng-show="all_requirements" style="color: purple;" class="flaticon-puzzle20"></i>
-					                      		<i ng-show="!all_requirements" class="flaticon-puzzle20"></i>
-					                      	</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="no_smoking" ng-click="nosmoking()">
-					                      			<i ng-show="no_smoking" style="color: purple;" class="flaticon-no-smoking-sign18"></i>
-					                      			<i ng-show="!no_smoking" class="flaticon-no-smoking-sign18"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="no_pets" ng-click="nopets()">
-					                      			<i ng-show="no_pets" style="color: purple;" class="flaticon-no-dogs18"></i>
-					                      			<i ng-show="!no_pets" class="flaticon-no-dogs18"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="girl_only" ng-click="girlonly()">
-					                      			<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette18"></i>
-					                      			<i ng-show="!girl_only" class="flaticon-female-silhouette18"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="boy_only" ng-click="boyonly()">
-					                      			<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up18"></i>
-					                      			<i ng-show="!boy_only" class="flaticon-man-standing-up18"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="no_party" ng-click="noparty()">
-					                      			<i ng-show="no_party" style="color: purple;" class="flaticon-turn-microphone-off-button18"></i>
-					                      			<i ng-show="!no_party" class="flaticon-turn-microphone-off-button18"></i>
-					                      		</span>
-					                      	</li>
-					                      </ul>
-		                    		</div>
-		                    		<div class="col-xs-4">
-		                    			 <ul class="list-unstyled l-h-2x m-l-sm">
-					                      	<li>
-					                      	<span title="appliances" ng-click="col_appliances()">
-					                      		<i ng-show="appliances" style="color: purple;" class="flaticon-socket20"></i>
-					                      		<i ng-show="!appliances" class="flaticon-socket20"></i>
-					                      	</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="stove" ng-click="stove_click()">
-					                      			<i ng-show="stove" style="color: purple;" class="flaticon-stove16"></i>
-					                      			<i ng-show="!stove" class="flaticon-stove16"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="dishwasher" ng-click="dishwasher_click()">
-					                      			<i ng-show="dishwasher" style="color: purple;" class="flaticon-dishwasher16"></i>
-					                      			<i ng-show="!dishwasher" class="flaticon-dishwasher16"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="dryer" ng-click="dryer_click()">
-					                      			<i ng-show="dryer" style="color: purple;" class="flaticon-tumble-dryer16"></i>
-					                      			<i ng-show="!dryer" class="flaticon-tumble-dryer16"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="aircondition" ng-click="aircondition_click()">
-					                      			<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit16"></i>
-					                      			<i ng-show="!aircondition" class="flaticon-minisplit16"></i>
-					                      		</span>
-					                      	</li>
-					                    </ul>
-		                    		</div>
-		                    		<div class="col-xs-4">
-		                    			  <ul class="list-unstyled l-h-2x m-l-md">
-					                      	<li>
-					                      	<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
-					                      	<!--<label for="featureproductrankRefineCb0"></label>-->
-					                      	<span title="furniture" ng-click="col_furniture()">
-					                      		<i ng-show="furniture" style="color: purple;" class="flaticon-cabinet20"></i>
-					                      		<i ng-show="!furniture" class="flaticon-cabinet20"></i>
-					                      	</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="bed" ng-click="bed_click()">
-					                      			<i ng-show="bed" style="color: purple;" class="flaticon-bed16"></i>
-					                      			<i ng-show="!bed" class="flaticon-bed16"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="desk" ng-click="desk_click()">
-					                      			<i ng-show="desk" style="color: purple;" class="flaticon-man-in-office-desk-with-computer16"></i>
-					                      			<i ng-show="!desk" class="flaticon-man-in-office-desk-with-computer16"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="wardrob" ng-click="wardrob_click()">
-					                      			<i ng-show="wardrob" style="color: purple;" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
-					                      			<i ng-show="!wardrob" class="flaticon-bedroom-black-closed-closet-for-clothes16"></i>
-					                      		</span>
-					                      	</li>
-					                      	<!--<li>
-					                      		<span><i class="flaticon-minisplit16"></i></span>
-					                      	</li>-->
-					                      </ul>
-		                    		</div>
-		                    	</div>
-		                     </div>
-		                     <div class="col-xs-6">
-		                     	<div class="row">
-		                    		<div class="col-xs-6">
-		                    			 <ul class="list-unstyled l-h-2x m-l-xl">
-					                      	<li>
-					                      	<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
-					                      	<!--<label for="featureproductrankRefineCb0"></label>-->
-					                      	<span title="other_appliance" ng-click="col_other_appliance()">
-					                      		<i ng-show="other_appliance" style="color: purple;" class="flaticon-plug20"></i>
-					                      		<i ng-show="!other_appliance" class="flaticon-plug20"></i>
-					                      	</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="refrigerator" ng-click="refrigerator_click()">
-					                      			<i ng-show="refrigerator" style="color: purple;" class="flaticon-fridge16"></i>
-					                      			<i ng-show="!refrigerator" class="flaticon-fridge16"></i>
-					                      		</span>
-					                      	</li>
-					                      	<li>
-					                      		<span title="laundry" ng-click="laundry_click()">
-					                      			<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine16"></i>
-					                      			<i ng-show="!laundry" class="flaticon-washing-machine16"></i>
-					                      		</span>
-					                      	</li>
-					                      </ul>
-		                    		</div>
-		                    		<div class="col-xs-6">
-		                    			  <ul class="list-unstyled l-h-2x">
-						                      <li>
-						                      	<!--<input type="checkbox" name="featureproductrank" id="featureproductrankRefineCb0" value="premier-only" tabindex="18">-->
-						                      	<!--<label for="featureproductrankRefineCb0"></label>-->
-						                      	<span title="other_essential" ng-click="col_other_essential()">
-						                      		<i ng-show="other_essential" style="color: purple;" class="flaticon-settings20"></i>
-						                      		<i ng-show="!other_essential" class="flaticon-settings20"></i>
-						                      	</span>
-						                      	</li>
-						                      	<li>
-						                      		<span title="wifi" ng-click="wifi_click()">
-						                      			<i ng-show="wifi" style="color: purple;" class="flaticon-wifi16"></i>
-						                      			<i ng-show="!wifi" class="flaticon-wifi16"></i>
-						                      		</span>
-						                      	</li>
-						                      	<li>
-						                      		<span title="gas" ng-click="gas_click()">
-						                      			<i ng-show="gas" style="color: purple;" class="flaticon-gas-level16"></i>
-						                      			<i ng-show="!gas" class="flaticon-gas-level16"></i>
-						                      		</span>
-						                      	</li>
-					                      </ul>
-		                    		</div>
-		                    	</div>
-		                     </div>
+	                   <div class="row">
+		                    <ul class="list-unstyled" style="padding-left: 65px;">
+		                    	<li>
+		                    		<span title="girl_only" ng-click="girlonly()">
+		                      			<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette30"></i>
+		                      			<i ng-show="!girl_only" class="flaticon-female-silhouette30"></i>&nbsp;&nbsp;&nbsp;Girls Only
+	                      			</span>
+		                    	</li>
+		                    	<li>
+		                    		<span title="boy_only" ng-click="boyonly()">
+		                      			<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up30"></i>
+		                      			<i ng-show="!boy_only" class="flaticon-man-standing-up30"></i>&nbsp;&nbsp;&nbsp;Boys Only
+	                      			</span>
+		                    	</li>
+		                    	<li>
+		                    		<span title="aircondition" ng-click="aircondition_click()">
+		                      			<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit30"></i>
+		                      			<i ng-show="!aircondition" class="flaticon-minisplit30"></i>&nbsp;&nbsp;&nbsp;Aircondition
+	                      			</span>
+		                    	</li>
+		                    	<li>
+		                    		<span title="stove" ng-click="stove_click()">
+		                      			<i ng-show="stove" style="color: purple;" class="flaticon-stove30"></i>
+		                      			<i ng-show="!stove" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;Stove
+	                      			</span>
+		                    	</li>
+		                    	<li>
+		                    		<span title="laundry" ng-click="laundry_click()">
+		                      			<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine30"></i>
+		                      			<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;Lundry
+	                      			</span>
+		                    	</li>
+		                    	<li></li>
+		                    </ul>
 	                   </div>
 	                </div>
 	              </div>
@@ -352,7 +220,7 @@
 		<div class="col-md-7">
 			  <!-- pagination -->
 	      <div class="right-top clear">
-		      <h4>Limit the maximum visible buttons <span class="text-sm">(Page: [:bigCurrentPage:] / [:numPages:])</span></h4>
+		      <h4>385 Properties for rent in Kingsford, NSW, 2032</h4>
 	          <div class="m-b-sm m-r-lg">
 	          	<!--<div>features:</div>-->
 		        <div class="btn-group btn-group-justified features-filter">

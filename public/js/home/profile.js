@@ -1,6 +1,6 @@
 ;(function(){
 	'use strict';
-	angular.module('profile',[])
+	angular.module('andy')
 		.factory('utilConvertDateToString', ['$filter', function ($filter) {  
 		    return {  
 		        getDateToString: function (date, format) {  

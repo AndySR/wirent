@@ -1,7 +1,7 @@
 ;
 (function() {
 	'use strict';
-	angular.module('header',['andy','user'])
+	angular.module('andy')
 		.factory('readLetters', ['$http', '$q', 'SearchService',function($http, $q,SearchService) {
 			return {
 				query: function() {

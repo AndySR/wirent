@@ -1,6 +1,6 @@
 ;(function(){
 	'use strict';
-	angular.module('shortlist',[])
+	angular.module('andy')
 		.controller('shortlistCtrl',['$scope','$http','SearchService',function($scope,$http,SearchService){
 			$scope.shortlistData=SearchService.get();
 			$scope.remove = function(key){

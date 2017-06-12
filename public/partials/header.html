@@ -11,10 +11,10 @@
 	  -->
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-wikipedia-w"></i>
-          <!--<img src="/img/logo.png" />-->
+          <!--<i class="fa fa-wikipedia-w"></i>-->
+          <img src="../img/rsz_wi_origin.png" style="width: 50px;max-height: 48px;position: relative; top: 5px;left: 0;"/>
          
-          <span class="hidden-folded m-l-xs">[:name:]</span>
+          <!--<span class="hidden-folded m-l-xs">[:name:]</span>-->
         </a>
         <!-- / brand -->
       </div>
@@ -24,9 +24,9 @@
       <div class="collapse pos-rlt navbar-collapse box-shadow">
         <!-- link and dropdown -->
 		<ul class="nav navbar-nav hidden-sm">
-			<li><a ui-sref="app.search">Home</a></li>
+			<li><a ui-sref="app.search" translate="header.navbar.HOME">Home</a></li>
 			<li><a href="#about">Rental</a></li>
-			<li><a href="http://www.winninginvestment.com.au/project-en">Buy</a></li>
+			<li><a ui-sref="app.tips">一步到位</a></li>
 			<li><a ui-sref="app.new">News</a></li>
 			<li><a ui-sref="app.guides">Guide</a></li>
 			<li><a href="http://www.winninginvestment.com.au/contantus">Contact</a></li>
@@ -105,10 +105,10 @@
           </li>
 		  <!--translate-->
       <li ng-if="!profile">
-			<a ui-sref="app.login"><span class="badge badge-lg bg-success" translate="header.navbar.new.Login">登录</span></a>
+			<a ui-sref="app.login"><span class="badge badge-lg bg-success" translate="header.navbar.new.LOGIN">登录</span></a>
 		  </li>
 		  <li ng-if="!profile">
-			<a ui-sref="app.signup"><span class="badge badge-lg bg-success" translate="header.navbar.new.Regist">注册</span></a>
+			<a ui-sref="app.signup"><span class="badge badge-lg bg-success" translate="header.navbar.new.REGIST">注册</span></a>
 		  </li>
 		 
 		 <li ng-if="profile" class="dropdown" dropdown>

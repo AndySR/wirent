@@ -1,7 +1,7 @@
 ;
 (function() {
 	'use strict';
-	angular.module('documentation',['ngAnimate'])
+	angular.module('andy')
 		.factory('readJSONData', ['$http', '$q', function($http, $q) {
 			return {
 				query: function() {
@@ -132,7 +132,7 @@
 				}
 			}
 		}])
-		.controller('DocumentationCtrl', ['$scope','$animate','readJSONData',function($scope,$animate,readJSONData) {
+		.controller('DocumentationCtrl', ['$scope','$animate','readJSONData','$timeout',function($scope,$animate,readJSONData,$timeout) {
 			$scope.active=0;
 		    $scope.myInterval = 5000;
 		    $scope.guideData ={};
@@ -152,6 +152,40 @@
 					$scope.guideData = data;
 					console.log("=====>>>>",data);
 				});
+				/*$scope.valuechanged = function(str){
+					alert(str);
+					console.log(str);
+				}
+				console.log($scope.slide);*/
+				var a =0;
+				$scope.next =function(){
+					a++;
+					alert(a);
+				}
+				/******************************************/
+				   //10 seconds delay
+//		        $timeout( function(){
+//		            $scope.test1 = "Hello World!";
+//		        }, 5000 );
+		
+		        //time
+		        $scope.time = 0;
+		        $scope.step = 0;
+		        //timer callback
+		       /* var timer = function() {
+		            if( $scope.time < 5000 ) {
+		                $scope.time += 1000;
+		                $timeout(timer, 1000);
+		            }
+		            $timeout.cancel(timer);
+		            $scope.step++;
+		            $scope.time = 0;
+		            $timeout(timer, 1000);  
+		        }
+		        
+		        $timeout(timer, 1000);  */
+				/*****************************************/
+				
 		}])
 			
 		

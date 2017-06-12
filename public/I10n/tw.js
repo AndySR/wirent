@@ -2,6 +2,7 @@
 
 "header" : {
   "navbar" : {
+  	"HOME" : "首頁",
     "UPLOAD" : "Upload",
     "new" : {
       "NEW" : "New",
@@ -9,8 +10,8 @@
       "TASK" : "Task",
       "USER" : "User",
       "EMAIL" : "Email",
-      "Login" : "Login",
-      "Regist": "Regist"
+      "LOGIN" : "登錄",
+      "REGIST": "註冊"
     },
     "NOTIFICATIONS" : "Notifications"
   }

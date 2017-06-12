@@ -3,8 +3,122 @@
 /* Controllers */
 
 angular.module('andy')
-  .controller('MainCtrl', ['$scope', '$translate', '$localStorage', '$window', 
-    function(              $scope,   $translate,   $localStorage,   $window ) {
+	.factory('indexService', function() {
+			var savedData = {}
+
+			function set(data) {
+				savedData = data;
+			}
+
+			function get() {
+				return savedData;
+			}
+
+			return {
+				set: set,
+				get: get
+			}
+
+		})
+	.factory('readData', ['$http', '$q', function($http, $q) {
+			return {
+				query: function() {
+					var deferred = $q.defer();
+					$http({
+						method: 'GET',
+						url: '/customer/hotrent'
+					}).success(function(data, status, header, config) {
+						deferred.resolve(data);
+					}).error(function(data, status, header, config) {
+						deferred.reject(data);
+					});
+					return deferred.promise;
+				}
+			}
+		}])
+	.factory('SearchService', function() {
+		var savedData = {}
+
+		function set(data) {
+			savedData = data;
+		}
+
+		function get() {
+			return savedData;
+		}
+
+		return {
+			set: set,
+			get: get
+		}
+
+	})
+	.factory('hotRentService', function() {
+		var savedData = {}
+
+		function set(data) {
+			savedData = data;
+		}
+
+		function get() {
+			return savedData;
+		}
+
+		return {
+			set: set,
+			get: get
+		}
+
+	})
+	.factory('updateService', function() {
+		var savedData = {}
+
+		function set(data) {
+			savedData = data;
+		}
+
+		function get() {
+			return savedData;
+		}
+
+		return {
+			set: set,
+			get: get
+		}
+
+	})
+	.filter('propsFilter', function() {
+		    return function(items, props) {
+		        var out = [];
+		
+		        if (angular.isArray(items)) {
+		          items.forEach(function(item) {
+		            var itemMatches = false;
+		
+		            var keys = Object.keys(props);
+		            for (var i = 0; i < keys.length; i++) {
+		              var prop = keys[i];
+		              var text = props[prop].toLowerCase();
+		              if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+		                itemMatches = true;
+		                break;
+		              }
+		            }
+		
+		            if (itemMatches) {
+		              out.push(item);
+		            }
+		          });
+		        } else {
+		          // Let the output be the input untouched
+		          out = items;
+		        }
+		
+		        return out;
+		    };
+		})
+  .controller('MainCtrl', ['$scope', '$translate', '$localStorage', '$window','indexService', 
+    function(              $scope,   $translate,   $localStorage,   $window,indexService ) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -55,7 +169,7 @@ angular.module('andy')
 
       // angular translate
       $scope.lang = { isopen: false };
-      $scope.langs = {en:'English', ch_SP:'简体中文',ch_CP:'繁體中文',de_DE:'German', it_IT:'Italian'};
+      $scope.langs = {en:'English', tw:'繁體中文',ch:'简体中文'};
       $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "English";
       $scope.setLang = function(langKey, $event) {
         // set the current lang

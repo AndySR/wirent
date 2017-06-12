@@ -1,6 +1,6 @@
 ;(function(){
 	'use strict';
-	angular.module('map',['ngMap','home'])
+	angular.module('map',['ngMap'])
 		.factory('utilConvertDateToString', ['$filter','$scope', function ($filter,$scope) {  
 		    return {  
 		        getDateToString: function (date, format) {  
@@ -21,7 +21,6 @@
 				var datafromhome = {};
 				var ER_Feature = [];
 				var vm = this;
-				
 				NgMap.getMap().then(function(map) {
 					vm.map = map;
 					
@@ -817,7 +816,7 @@
 									     	data.university = true;
 									     break;
 									    case "":
-									    	data.university = false;
+									    	data.university = true;
 									    	 break;
 									    default:
 									    	data.university = true;

@@ -1,7 +1,7 @@
 ;
 (function() {
 	'use strict';
-	angular.module('detail', [])
+	angular.module('andy')
 	.controller('ModalInstanceCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
 	    $scope.contact = {};
 	    $scope.customer = {};

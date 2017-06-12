@@ -26,16 +26,8 @@
 	<link rel="stylesheet" href="/css/winning/guide.css" type="text/css"/>
 	<link rel="stylesheet" href="/font/flaticon.css" />
 	<link rel="stylesheet" href="/css/winning/newsDetail.css" type="text/css"/>
-	<!--<style>
-		@media print  
-		{
-	    div{
-	        page-break-inside: avoid;
-	    }
-	   	div{ page-break-after:auto; }
-		}
-	</style>-->
-	</head>
+	<link rel="stylesheet" href="/css/winning/fixright.css" type="text/css"/>
+</head>
 <body ng-controller="MainCtrl">
 
 	<div style="height: 100%;" ui-view></div>
@@ -83,7 +75,7 @@
 	<script src="/js/home/trainmap.js"></script>
 	<script src="/js/home/business.js"></script>
 	<script src="/js/home/documentation.js"></script>
-	
+	<script src="/js/home/rightfix.js"></script>
 </body>
 	
 </html>

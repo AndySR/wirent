@@ -1,6 +1,6 @@
 ;(function(){
 	'use strict';
-	 angular.module('lunbo',[])
+	 angular.module('andy')
   		.controller('lunboController',['$scope','$animate','readJSON','mouseEvent' ,function ($scope,$animate,readJSON,mouseEvent) {
 			$scope.active=0;
 		    $scope.myInterval = 5000;

@@ -431,7 +431,7 @@
 /**************************/
 /***********trainstation section****************/
 .trainstation {
-	
+
 }
 .banner-search .step-wrap {
   position: relative;
@@ -683,14 +683,14 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-.banner-search .filter-wrapper-right .more-options-right {
+.banner-search .bottom-filter-right .more-options-right {
   position: relative;
   width: 20px;
   height: 10px;
   left: 0;
-  top: 10px;
+  top: 20px;
 }
-.banner-search .bottom-filter-right .filter-wrapper-right .more-options-right a{
+.banner-search .bottom-filter-right .more-options-right a{
 	position: absolute;
 	width: 150px;
 	left: 500px;
@@ -814,14 +814,14 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-.banner-search .bottom-filter-left .filter-wrapper-left .more-options-right {
+.banner-search .bottom-filter-left .more-options-right {
   position: relative;
   width: 20px;
   height: 10px;
   left: 0;
-  top: 10px;
+  top: 20px;
 }
-.banner-search .bottom-filter-left .filter-wrapper-left .more-options-right a{
+.banner-search .bottom-filter-left .more-options-right a{
 	position: absolute;
 	width: 150px;
 	left: 500px;
@@ -978,7 +978,7 @@
 	transition: left 0.5s;
 }*/
 .banner-search .centered {
-	
+
 }
 .banner-search .dreamhomesitemleft {
 	left: -341.25px;

@@ -9,7 +9,7 @@
 					$http({
 						method: 'POST',
 						url: '/customer/msg/notice',
-						data: {  CID: 1,msg_direct_comment:'% to customer' } 
+						data: {  CID: 1,msg_direct_comment:'% to customer' }
 					}).success(function(data, status, header, config) {
 						deferred.resolve(data);
 					}).error(function(data, status, header, config) {
@@ -26,7 +26,7 @@
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
 			$scope.letternums = 0;
-			
+
 			$http.get('/customer/profile')
 				.then(function(r) {
 					console.log(r);
@@ -35,7 +35,7 @@
 					else
 						$scope.profile = false;
 				})
-			
+
 			$scope.profile = UserService.profile;
 			console.log($scope.profile);
 			$scope.logout = function() {
@@ -52,12 +52,12 @@
 							if(r.data=="login"){
 								$state.go("app.login");
 							}else{
-						
+
 							}
 						},function(e){
 							$state.go("app.login");
 						})
-			
+
 					}
 			/*********************obtain unread messages number***********************************/
 				var promise=readLetters.query();
@@ -67,9 +67,9 @@
 			    	$scope.letternums = $localStorage.headerSetting.letternums;
 			    });
 					$scope.letternums = $localStorage.headerSetting.letternums;
-					
+
 			/*********************obtain unread messages number***********************************/
-			
+
 			/*********************go to shortlist******************************************/
 			$scope.go2Shortlist = function(){
 				$http.get('/customer/profile')
@@ -79,7 +79,7 @@
 							}else{
 								$scope.shortlistData = {};
 								$scope.shortlistDelete={};
-								$scope.shortlistData.CID = 0;
+								$scope.shortlistData.CID = 1;
 								$scope.shortlistData.CLType='FavorSave';
 								$http.post('/customer/shortlist',$scope.shortlistData)
 									.then(function(r){
@@ -87,18 +87,18 @@
 										$state.go("app.shortlist");
 								//console.log("$scope.shortlistData",$scope.shortlistData);
 									},function(e){
-										
+
 									});
 							}
 						},function(e){
 							$state.go("app.login");
 						})
-				
+
 			}
 			/*********************go to shortlist******************************************/
-		
-			
+
+
 		}])
-			
-		
+
+
 })();

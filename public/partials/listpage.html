@@ -36,16 +36,16 @@
 	                        </li>
 	                        <li class="m-b-md">
 	                          <label>Beds</label>
-							  <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
+							  						<select class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
 	                          </select>
 	                        </li>
 	                        <li class="m-b-md">
 	                          <label>Baths</label>
 						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 16px;" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum"  >
-						         
+
 						        </select>
 	                        </li>
-	                        
+
 	                      </ul>
 	                    </div>
 	                    <div class="col-xs-6 right-li">
@@ -63,7 +63,7 @@
 						        </select>
 	                        </li>
 	                        <li>
-	                          
+
 	                        </li>
 	                      </ul>
 	                    </div>
@@ -103,7 +103,7 @@
 					              <span class="input-group-btn">
 					                <button type="button" class="btn btn-default btn-md" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 					              </span>
-					            </p>   
+					            </p>
 	                        </li>
 	                          <li ng-show="hello">
 	                          	<label class="m-t-xxs">Descriptions:</label>
@@ -160,7 +160,7 @@
 			                          	</a>
 	                          		</li>
 	                          	</ul>
-							</li>  	
+							</li>
 	                      </ul>
 	                    </div>
 	                  </div>
@@ -210,7 +210,7 @@
 		    	<div class="col-sm-4">
 		    		<a style="color: rgb(150, 65, 137); display: block; width: 100px;height: 20px;" ng-click="hello = !hello">
 		    			<span ng-show="!hello">more options&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-		    			<span ng-show="hello">less option&nbsp;<i class="fa fa-chevron-circle-up"></i></span>			
+		    			<span ng-show="hello">less option&nbsp;<i class="fa fa-chevron-circle-up"></i></span>
 		    		</a>
 		    	</div>
 		      </div>
@@ -225,7 +225,7 @@
 	          	<!--<div>features:</div>-->
 		        <div class="btn-group btn-group-justified features-filter">
 		          <a href class="btn btn-success" ng-click="sortBy('ER_Price')">
-		          		Price&nbsp; 
+		          		Price&nbsp;
 		          		  <span ng-if="orderleft">
                      		<i ng-show="sortPrice" class="fa fa-caret-down"></i>
                      		<i ng-show="!sortPrice" class="fa fa-caret-up"></i>
@@ -285,17 +285,17 @@
 							</div>
 							<div class="info-panel">
 								<div class="rooms cl">
-									 <div class="hbox text-center">          
+									 <div class="hbox text-center">
 						              <a href class="col padder-v text-muted">
 						                <div class="h4">
 						                	 <span>[:property.ER_BedRoom:]</span>
 						                	 <span class="fa-stack fa-lg">
 								                <i class="fa fa-circle fa-stack-2x text-white"></i>
 								                <i class="fa fa-bed fa-stack-1x "></i>
-								            </span> 
-								           
+								            </span>
+
 						                </div>
-						               
+
 						              </a>
 						              <a href class="col padder-v text-muted">
 						                <div class="h4">
@@ -305,7 +305,7 @@
 								                <i class="fa fa-bath fa-stack-1x "></i>
 								            </span>
 						                </div>
-						                
+
 						              </a>
 						              <a href class="col padder-v text-muted">
 						                <div class="h4">
@@ -383,7 +383,6 @@
 		</div>
 		</div>
 	</div>
-	
-		
+
+
 </div>
-	

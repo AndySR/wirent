@@ -2,343 +2,6 @@
 (function() {
 	'use strict';
 	angular.module('andy')
-		/*.filter('propsFilter', function() {
-		    return function(items, props) {
-		        var out = [];
-		
-		        if (angular.isArray(items)) {
-		          items.forEach(function(item) {
-		            var itemMatches = false;
-		
-		            var keys = Object.keys(props);
-		            for (var i = 0; i < keys.length; i++) {
-		              var prop = keys[i];
-		              var text = props[prop].toLowerCase();
-		              if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
-		                itemMatches = true;
-		                break;
-		              }
-		            }
-		
-		            if (itemMatches) {
-		              out.push(item);
-		            }
-		          });
-		        } else {
-		          // Let the output be the input untouched
-		          out = items;
-		        }
-		
-		        return out;
-		    };
-		})*/
-		/*.factory('readData', ['$http', '$q', function($http, $q) {
-			return {
-				query: function() {
-					var deferred = $q.defer();
-					$http({
-						method: 'GET',
-						url: '/customer/hotrent'
-					}).success(function(data, status, header, config) {
-						deferred.resolve(data);
-					}).error(function(data, status, header, config) {
-						deferred.reject(data);
-					});
-					return deferred.promise;
-				}
-			}
-		}])
-		.factory('SearchService', function() {
-			var savedData = {}
-
-			function set(data) {
-				savedData = data;
-			}
-
-			function get() {
-				return savedData;
-			}
-
-			return {
-				set: set,
-				get: get
-			}
-
-		})
-		.factory('hotRentService', function() {
-			var savedData = {}
-
-			function set(data) {
-				savedData = data;
-			}
-
-			function get() {
-				return savedData;
-			}
-
-			return {
-				set: set,
-				get: get
-			}
-
-		})
-		.factory('updateService', function() {
-			var savedData = {}
-
-			function set(data) {
-				savedData = data;
-			}
-
-			function get() {
-				return savedData;
-			}
-
-			return {
-				set: set,
-				get: get
-			}
-
-		})*/
-		.directive('animatesearch', ['$timeout', function($timeout) {
-			return {
-				restrict: 'EA',
-				templateUrl: '/partials/mydirectives/directive-search.html',
-				//			   css: 'css/winning/new.css',
-				scope: {
-					tips : '=',
-					features : '=',
-					boxshow : '=',
-					openmodal : "&"
-				},
-				controller: function($scope) {
-//					$scope.openmodal();
-				},
-				link: function(scope, element, attr) {
-//					scope.openmodal();
-					scope.tips=false;
-					scope.features=false;
-					scope.boxshow=true;
-					/*点击事件*/
-					scope.clickEvent = function(event) {
-						var left = 0;
-						var opacity=0;
-//						left = left + 63 * event;
-						if(event == 0) {
-							left = 0;
-							opacity=1;
-							scope.tips=false;
-							scope.features=false;
-							scope.boxshow=true;
-							element.find("i").css({'opacity': 1,'left': left + 90 + 'px'});
-						} else if(event == 1) {
-							left = 90;
-							opacity=1;
-							scope.tips=true;
-							scope.features=false;
-							scope.boxshow=true;
-							element.find("i").css({'opacity': 1,'left': left + 90 + 'px'});
-						}
-						 else if(event == 2) {
-							left = 130;
-							opacity=1;
-							scope.tips=false;
-							scope.features=false;
-							scope.boxshow=true;
-							element.find("i").css({'opacity': 1,'left': left + 56 + 'px'});
-						}
-						  else if(event == 3) {
-							left = 186;
-							opacity=1;
-							scope.tips=true;
-							scope.features=false;
-							scope.boxshow=false;
-							element.find("i").css({'opacity': 0,'left': left + 56 + 'px'});
-						}
-						   else if(event == 4) {
-							left = 256;
-							opacity=1;
-							scope.tips=false;
-							scope.features=true;
-							scope.boxshow=false;
-							element.find("i").css({'opacity': 0,'left': left + 56 + 'px'});
-						}
-						 else if(event == 5) {
-						 	left = 334;
-						 	opacity=1;
-							scope.tips=false;
-							scope.features=false;
-							scope.boxshow=true;
-							element.find("i").css({'opacity': 1,'left': left + 56 + 'px'});
-						}
-						element.find("li").removeClass("selected");
-						element.find("li").eq(event).addClass("selected");
-						/*element.find("i").css({
-							'left': left + 56 + 'px'
-						});*/
-					};
-				}
-			}
-		}])
-		.directive('selectSearch', function($compile) {
-			return {
-				restrict: 'AE',
-				scope: {
-					datas: '=',
-					x: '=',
-					searchField: '=bind',
-					getData: "&",
-					change: "&"
-				},
-				controller: function($scope) {
-					$scope.getData();
-					$scope.change();
-				},
-				template: '<input type = "test"' +
-					'class="input-lg form-control" autocomplete="off" name="inputStr" data-val="true" data-val-required="Please choose a location to search." ng-minlength="2"  placeholder="Search by suburb, region, postcode or address" type="text"' +
-					'ng-change="changeKeyValue(searchField)" ng-keyup="getData({val:searchField})" ng-model="searchField" ' +
-					' value="{{searchField}}" style="width:414px; height:55px;border:none"/>' +
-					'<div  ng-hide="hidden" style = "position:absolute; top:55px; z-index: 1000;">' +
-					'   <select style = "width:605px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;" ng-change="change(x)" ng-model="x" multiple>' +
-					'       <option ng-repeat="data in datas track by $index" style="padding-left:16px;padding-bottom:10px">{{data}}</option>' +
-					'   </select>' +
-					'</div>',
-				//    replace: true,  overflow-y:hidden;remove the y-direction overflow-hidden
-				link: function($scope, elem, attr, ctrl) {
-					$scope.getData();
-					$scope.change();
-					$scope.tempdatas = $scope.datas; //下拉框选项副本  
-					$scope.hidden = true; //选择框是否隐藏  
-					$scope.searchField = ''; //文本框数据  
-					//将下拉选的数据值赋值给文本框  
-					$scope.change = function(x) {
-						$scope.searchField = x;
-						$scope.hidden = true;
-					}
-					//获取的数据值与下拉选逐个比较，如果包含则放在临时变量副本，并用临时变量副本替换下拉选原先的数值，如果数据为空或找不到，就用初始下拉选项副本替换  
-					$scope.changeKeyValue = function(v) {
-
-						var newDate = []; //临时下拉选副本  
-						//如果包含就添加  
-						angular.forEach($scope.datas, function(data, index, array) {
-							if((data + "").indexOf(v) >= 0) {
-								newDate.unshift(data);
-							}
-						});
-						//用下拉选副本替换原来的数据  
-						$scope.datas = newDate;
-						//下拉选展示  
-						$scope.hidden = false;
-						//如果不包含或者输入的是空字符串则用初始变量副本做替换  
-						if($scope.datas.length == 0 || '' == v) {
-							$scope.datas = $scope.tempdatas;
-						}
-						console.log($scope.datas);
-					}
-				}
-			};
-		})
-		.directive('hotrent', ['readData','$timeout', 'mouseEvent','hotRentService', function(readData, $timeout, mouseEvent,hotRentService) {
-			return {
-				restrict: 'EA',
-				templateUrl: '/partials/mydirectives/directive-hotrent.html',
-				scope: {
-				},
-				link: function(scope, element, attr) {
-					scope.imageid = 4;
-					scope.left = 0;
-					var promise = readData.query();
-					var step = 0;
-					var time = null;
-					promise.then(function(data) {
-						 angular.forEach(data, function(data,index,array){
-						//data等价于array[index]
-						data.train_station = false;
-						data.backpack = false;
-						data.park = false;
-						data.school = false;
-						data.big_family = false;
-						data.shopping_mall = false;
-						data.offical_rental = false;
-						data.university = false;
-						var dataresults = data.ER_Description.split(";");
-						console.log("lengthhhh",dataresults);
-						var uniindex = 0
-						dataresults.pop();
-						uniindex = dataresults.indexOf('university');
-						console.log("length",dataresults.length);
-						for(var i =0;i<dataresults.length;i++)
-						{
-							switch (dataresults[i])
-							{
-							     case "train_station":
-							     	data.train_station = true;
-							   	 break;
-							     case "backpack": 
-									data.backpack = true;
-							    break;
-							     case "park": 
-									data.park = true;
-							    break;
-							     case "school": 
-									data.school = true;
-							    break;
-							     case "big_family": 
-									data.big_family = true;
-							    break;
-							     case "shopping_mall": 
-									data.shopping_mall = true;
-							    break;
-							     case "offical_rental": 
-									data.offical_rental = true;
-							    break;
-							    case "university":
-							     	data.university = true;
-							     break;
-							    case "":
-							    	data.university = false;
-							    	 break;
-							    default:
-							    	data.university = true;
-							    	 break;
-							    	
-							}
-						}
-						if (uniindex == dataresults.length-1 || uniindex==-1){
-								data.university = false;
-							}
-						if(data.university){
-							data.uniname = dataresults[uniindex + 1];
-						}
-					});
-						scope.carouselimages = data;
-						hotRentService.set(data);
-						console.log("scope.carouselimages",scope.carouselimages);
-					});
-					scope.prev = function(){
-						if(scope.imageid >4 ){
-							scope.imageid--;
-							scope.left = scope.left+341.25;
-							element.find("ul").css({
-								'left': scope.left + 'px'
-							});
-						}
-					}
-					scope.next = function(){
-						if(scope.imageid <scope.carouselimages.length ){
-							scope.imageid++;
-							scope.left = scope.left-341.25;
-							element.find("ul").css({
-								'left': scope.left + 'px'
-							});
-						}
-					}
-				}
-			}
-		}])
-		.service('commonHeader', ['$scope', function() {
-			
-			
-		}])
 		.controller('HomeController', [
 			'$cookies',
 			'$rootScope',
@@ -348,7 +11,7 @@
 			'$http',
 			'SearchService',
 			'updateService',
-			'$modal', 
+			'$modal',
 			'$log',
 			function($cookies, $rootScope, $state, $scope, $element, $http, SearchService, updateService,$modal,$log) {
 				var hello = true;
@@ -369,9 +32,9 @@
 				var t6Arr = [];
 				var t7Arr = [];
 				/*****************anchorscroll********************/
-				
+
 				/************************************************/
-			
+
 				/*******************************************location input**************************/
 		    $scope.person = {};
 	        $scope.people = [
@@ -449,195 +112,108 @@
 				];
 
 				//select minPrice
-				$scope.myMinPrice = 0;
-				$scope.minPrices = [{
-					id: 1,
-					price: ''
-				}, {
-					id: 2,
-					price: '50'
-				}, {
-					id: 3,
-					price: '100'
-				}, {
-					id: 4,
-					price: '150'
-				}, {
-					id: 5,
-					price: '200'
-				}, {
-					id: 6,
-					price: '250'
-				}, {
-					id: 7,
-					price: '300'
-				}, {
-					id: 8,
-					price: '350'
-				}, {
-					id: 9,
-					price: '400'
-				}, {
-					id: 10,
-					price: '450'
-				}, {
-					id: 11,
-					price: '500'
-				}, {
-					id: 12,
-					price: '550'
-				}, {
-					id: 13,
-					price: '600'
-				}, {
-					id: 14,
-					price: '650'
-				}, {
-					id: 15,
-					price: '700'
-				}, {
-					id: 16,
-					price: '750'
-				}, {
-					id: 17,
-					price: '800'
-				}, {
-					id: 18,
-					price: '850'
-				}, {
-					id: 19,
-					price: '900'
-				}, {
-					id: 20,
-					price: '950'
-				}, {
-					id: 21,
-					price: '1000'
-				}, {
-					id: 22,
-					price: '1100'
-				}, {
-					id: 23,
-					price: '1200'
-				}, {
-					id: 24,
-					price: '1300'
-				}, {
-					id: 25,
-					price: '1400'
-				}, {
-					id: 26,
-					price: '1500'
-				}, {
-					id: 27,
-					price: '1600'
-				}, {
-					id: 28,
-					price: '1700'
-				}, {
-					id: 29,
-					price: '1800'
-				}, {
-					id: 30,
-					price: '1900'
-				}];
-
+				$scope.myMinPrice = '0';
 				//select maxPrice
-				$scope.myMaxPrice = 2000;
-				$scope.maxPrices = [{
+				$scope.myMaxPrice = '$2000';
+				$scope.myMinPrice_Share = '0';
+				//select maxPrice
+				$scope.myMaxPrice_Share = '$2000';
+				$scope.Prices = [{
 					id: 1,
 					price: ''
 				}, {
 					id: 2,
-					price: '50'
+					price: '$50'
 				}, {
 					id: 3,
-					price: '100'
+					price: '$100'
 				}, {
 					id: 4,
-					price: '150'
+					price: '$150'
 				}, {
 					id: 5,
-					price: '200'
+					price: '$200'
 				}, {
 					id: 6,
-					price: '250'
+					price: '$250'
 				}, {
 					id: 7,
-					price: '300'
+					price: '$300'
 				}, {
 					id: 8,
-					price: '350'
+					price: '$350'
 				}, {
 					id: 9,
-					price: '400'
+					price: '$400'
 				}, {
 					id: 10,
-					price: '450'
+					price: '$450'
 				}, {
 					id: 11,
-					price: '500'
+					price: '$500'
 				}, {
 					id: 12,
-					price: '550'
+					price: '$550'
 				}, {
 					id: 13,
-					price: '600'
+					price: '$600'
 				}, {
 					id: 14,
-					price: '650'
+					price: '$650'
 				}, {
 					id: 15,
-					price: '700'
+					price: '$700'
 				}, {
 					id: 16,
-					price: '750'
+					price: '$750'
 				}, {
 					id: 17,
-					price: '800'
+					price: '$800'
 				}, {
 					id: 18,
-					price: '850'
+					price: '$850'
 				}, {
 					id: 19,
-					price: '900'
+					price: '$900'
 				}, {
 					id: 20,
-					price: '950'
+					price: '$950'
 				}, {
 					id: 21,
-					price: '1000'
+					price: '$1000'
 				}, {
 					id: 22,
-					price: '1100'
+					price: '$1100'
 				}, {
 					id: 23,
-					price: '1200'
+					price: '$1200'
 				}, {
 					id: 24,
-					price: '1300'
+					price: '$1300'
 				}, {
 					id: 25,
-					price: '1400'
+					price: '$1400'
 				}, {
 					id: 26,
-					price: '1500'
+					price: '$1500'
 				}, {
 					id: 27,
-					price: '1600'
+					price: '$1600'
 				}, {
 					id: 28,
-					price: '1700'
+					price: '$1700'
 				}, {
 					id: 29,
-					price: '1800'
+					price: '$1800'
 				}, {
 					id: 30,
-					price: '1900'
+					price: '$1900'
 				}];
 				//select bedsNum
-				$scope.minBedNum = 0;
-				$scope.maxBedNum = 5;
+				$scope.minBedNum = '0';
+				$scope.maxBedNum = '5';
+				$scope.minBedNum_Share = '0';
+				$scope.maxBedNum_Share = '5';
 				$scope.bedsNum = [{
 					id: 1,
 					num: ''
@@ -660,6 +236,8 @@
 				//select bathNum
 				$scope.minBathNum = 0;
 				$scope.maxBathNum = 5;
+				$scope.minBathNum_Share = 0;
+				$scope.maxBathNum_Share = 5;
 				$scope.bathsNum = [{
 					id: 1,
 					num: ''
@@ -682,6 +260,10 @@
 
 				//select parkingNum
 				$scope.myParkingNum = 0;
+				$scope.minParkingNum = 0;
+				$scope.maxParkingNum = 0;
+				$scope.minParkingNum_Share = 0;
+				$scope.maxParkingNum_Share = 0;
 				$scope.parkingsNum = [{
 					id: 1,
 					num: ''
@@ -773,7 +355,7 @@
 							if(r.data.length > 0) {
 								$state.go('app.listpage');
 							}
-							//							
+							//
 
 						}, function(e) {
 
@@ -829,10 +411,10 @@
 						$scope.all_requirements = false;
 					}
 				}
-				
+
 				$scope.col_requirements = function(){
 					$scope.all_requirements = !$scope.all_requirements;
-					
+
 					if($scope.all_requirements)
 					{
 						$scope.no_smoking = true;
@@ -848,7 +430,7 @@
 						$scope.boy_only = false;
 						$scope.no_party = false;
 					}
-					
+
 				}
 				// colum2
 				//appliances
@@ -888,7 +470,7 @@
 						$scope.appliances = false;
 					}
 				}
-				
+
 				$scope.col_appliances = function(){
 					$scope.appliances = !$scope.appliances;
 					if($scope.appliances)
@@ -935,7 +517,7 @@
 						$scope.furniture = false;
 					}
 				}
-				
+
 				$scope.col_furniture = function(){
 					$scope.furniture = !$scope.furniture;
 					if($scope.furniture)
@@ -970,8 +552,8 @@
 						$scope.other_appliance = false;
 					}
 				}
-				
-				
+
+
 				$scope.col_other_appliance = function(){
 					$scope.other_appliance = !$scope.other_appliance;
 					if($scope.other_appliance)
@@ -1016,10 +598,10 @@
 						$scope.gas = false;
 					}
 				}
-				
-				
+
+
 		/***************************features update ends *******************************************/
-		
+
 		/*******************************************************************************************
 		 * search by different features
 		 *******************************************************************************************/
@@ -1072,14 +654,14 @@
 //								$state.go('app.listpage');
 								$state.go('app.listpage');
 							}
-							//							
+							//
 
 						}, function(e) {
 								console.log('r===>', e);
 						});
 		}
-				
-				
+
+
 		/*****************theme title search********************************************************/
 				$scope.search = function(keywords) {
 //					console.log($scope.x);
@@ -1138,15 +720,15 @@
 //								$state.go('app.listpage');
 								$state.go('app.listpage');
 							}
-							//							
+							//
 
 						}, function(e) {
 
 						});
 				}
 		/*****************theme title search ends********************************************************/
-		
-		
+
+
 		/**************************************商家专区 starts****************************************************/
 				$scope.businessSearch = function(TPDetail){
 					business.TPDetail = TPDetail;
@@ -1159,14 +741,14 @@
 							if(r.data.length > 0) {
 								$state.go('app.business');
 							}
-							//							
+							//
 
 						}, function(e) {
 
 						});
 				}
 		/**************************************商家专区 ends****************************************************/
-		
+
 				/****************************datepicker control code************************************/
 				$scope.today = function() {
 					$scope.dt = new Date();
@@ -1207,10 +789,10 @@
 
 			/**********************************modal code starts***********************************/
 		    $scope.items = ['item1', 'item2', 'item3'];
-		    
+
 		    $scope.openmodal = function (size) {
 //		    	alert("modal");
-				
+
 		      var modalInstance = $modal.open({
 		        templateUrl: 'myModalContent.html',
 		        controller: 'ModalInstanceCtrl',
@@ -1224,7 +806,7 @@
 		          }
 		        }
 		      });
-			 
+
 		      modalInstance.result.then(function (selectedItem) {
 		        $scope.selected = selectedItem;
 		      }, function () {
@@ -1232,7 +814,7 @@
 		      });
 		    };
 		    /**********************************modal code ends***********************************/
-			
+
 			/************************filter orderby*******************************/
 			$scope.orderleft = false;
 			$scope.orderright = false;
@@ -1247,13 +829,13 @@
 					$scope.orderright = true;
 					$scope.sortDate=!$scope.sortDate;
 				}
-				
+
 				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
     			$scope.orderName = orderName;
 //				$scope.orderName = order+'';
 			}
 			/************************filter orderby*******************************/
-			
+
 			/****************************train filter starts*****************************/
 			/* $scope.get_Chatswood = function(str1,str2){
 			 		 	if(t1Arr.length<=0){
@@ -1295,7 +877,7 @@
 			 	$scope.Chatswood=false;$scope.Hornsby=false;$scope.Epping=false;$scope.MQ_Uni=false;$scope.Rodes=false;$scope.allT1=false;
 				$scope.Burwood=false;$scope.Straithfield=false;$scope.Greensquare=false;$scope.Mascot=false;$scope.Lidcome_T2=false;$scope.allT2=false;
 				$scope.Central_T3=false;$scope.Sydenham=false;$scope.Campsie=false;$scope.Bankstown=false;$scope.Liverpool_T3=false;$scope.allT3=false;
-				$scope.Central_T4=false;$scope.Redfern=false;$scope.Wollicreek=false;$scope.Rockdale=false;$scope.Hurstville=false;$scope.allT4=false;				
+				$scope.Central_T4=false;$scope.Redfern=false;$scope.Wollicreek=false;$scope.Rockdale=false;$scope.Hurstville=false;$scope.allT4=false;
 				$scope.Parramatta=false;$scope.Westmead=false;$scope.Blacktown=false;$scope.Merrylands=false;$scope.Liverpool_T5=false;$scope.allT5=false;
 			 	$scope.Clyde=false;$scope.Rosehill=false;$scope.Camellia=false;$scope.Carlingford=false;$scope.allT6=false;
 				$scope.Lidcome_T7=false;$scope.Olympic_Park=false;$scope.allT7=false;
@@ -1311,13 +893,13 @@
 						$scope.allT1 = false;
 					}
 					station_selection();
-				
+
 				}
-				
+
 				$scope.get_Hornsby = function (){
 					$scope.Hornsby = !$scope.Hornsby;
 					if($scope.Chatswood==true &&$scope.Hornsby==true&&$scope.Epping==true&&$scope.MQ_Uni==true&&$scope.Rodes==true)
-					{	
+					{
 						$scope.allT1 = true;
 						$scope.Chatswood=false ;$scope.Hornsby=false; $scope.Epping=false; $scope.MQ_Uni=false; $scope.Rodes=false;
 					}else if($scope.Chatswood==false || $scope.Hornsby==false || $scope.Epping==false || $scope.MQ_Uni==false || $scope.Rodes==false){
@@ -1328,7 +910,7 @@
 				$scope.get_Epping = function (){
 					$scope.Epping = !$scope.Epping;
 					if($scope.Chatswood==true &&$scope.Hornsby==true&&$scope.Epping==true&&$scope.MQ_Uni==true&&$scope.Rodes==true)
-					{	
+					{
 						$scope.allT1 = true;
 						$scope.Chatswood=false ;$scope.Hornsby=false; $scope.Epping=false; $scope.MQ_Uni=false; $scope.Rodes=false;
 					}else if($scope.Chatswood==false || $scope.Hornsby==false || $scope.Epping==false || $scope.MQ_Uni==false || $scope.Rodes==false){
@@ -1342,7 +924,7 @@
 					{
 						$scope.allT1 = true;
 						$scope.Chatswood=false ;$scope.Hornsby=false; $scope.Epping=false; $scope.MQ_Uni=false; $scope.Rodes=false;
-						
+
 					}else if($scope.Chatswood==false || $scope.Hornsby==false || $scope.Epping==false || $scope.MQ_Uni==false || $scope.Rodes==false){
 						$scope.allT1 = false;
 					}
@@ -1359,10 +941,10 @@
 					}
 					station_selection();
 				}
-				
+
 				$scope.get_All_T1 = function(){
 					$scope.allT1 = !$scope.allT1;
-					
+
 					if($scope.allT1)
 					{
 						$scope.Chatswood = false;
@@ -1376,7 +958,7 @@
 					}
 					station_selection();
 				}
-				
+
 				// T2
 				$scope.get_Burwood = function (){
 					$scope.Burwood = !$scope.Burwood;
@@ -1433,12 +1015,12 @@
 					}
 					station_selection();
 				}
-				
+
 				$scope.get_All_T2 = function(){
 					$scope.allT2 = !$scope.allT2;
-					
+
 					if($scope.allT2)
-					{	
+					{
 						$scope.Burwood = false;
 						$scope.Straithfield = false;
 						$scope.Greensquare = false;
@@ -1450,7 +1032,7 @@
 					}
 					station_selection();
 				}
-			
+
 				// T3
 				$scope.get_Central_T3 = function (){
 					$scope.Central_T3 = !$scope.Central_T3;
@@ -1507,12 +1089,12 @@
 					}
 					station_selection();
 				}
-				
+
 				$scope.get_All_T3 = function(){
 					$scope.allT3 = !$scope.allT3;
-					
+
 					if($scope.allT3)
-					{	
+					{
 						$scope.Central_T3 = false;
 						$scope.Sydenham = false;
 						$scope.Campsie = false;
@@ -1524,7 +1106,7 @@
 					}
 					station_selection();
 				}
-				
+
 				// T4
 				$scope.get_Central_T4 = function (){
 					$scope.Central_T4 = !$scope.Central_T4;
@@ -1581,12 +1163,12 @@
 					}
 					station_selection();
 				}
-				
+
 				$scope.get_All_T4 = function(){
 					$scope.allT4 = !$scope.allT4;
-					
+
 					if($scope.allT4)
-					{	
+					{
 						$scope.Central_T4 = false;
 						$scope.Redfern = false;
 						$scope.Wollicreek = false;
@@ -1594,11 +1176,11 @@
 						$scope.Hurstville = false;
 					}
 					else{
-						
+
 					}
 					station_selection();
 				}
-				
+
 				// T5
 				$scope.get_Parramatta = function (){
 					$scope.Parramatta = !$scope.Parramatta;
@@ -1655,11 +1237,11 @@
 					}
 					station_selection();
 				}
-				
+
 				$scope.get_All_T5 = function(){
 					$scope.allT5 = !$scope.allT5;
 					if($scope.allT5)
-					{	
+					{
 						$scope.Parramatta = false;
 						$scope.Westmead = false;
 						$scope.Blacktown = false;
@@ -1667,7 +1249,7 @@
 						$scope.Liverpool_T5 = false;
 					}
 					else{
-						
+
 					}
 					station_selection();
 				}
@@ -1719,7 +1301,7 @@
 				$scope.get_All_T6 = function(){
 					$scope.allT6 = !$scope.allT6;
 					if($scope.allT6)
-					{	
+					{
 						$scope.Clyde = false;
 						$scope.Rosehill = false;
 						$scope.Camellia = false;
@@ -1756,12 +1338,12 @@
 				$scope.get_All_T7 = function(){
 					$scope.allT7 = !$scope.allT7;
 					if($scope.allT7)
-					{	
+					{
 						$scope.Lidcome_T7 = false;
 						$scope.Olympic_Park = false;
 					}
 					else{
-						
+
 					}
 					station_selection();
 				}
@@ -1770,7 +1352,7 @@
 					$scope.Chatswood,$scope.Hornsby,$scope.Epping,$scope.MQ_Uni,$scope.Rodes,$scope.allT1,
 					$scope.Burwood,$scope.Straithfield,$scope.Greensquare,$scope.Mascot,$scope.Lidcome_T2,$scope.allT2,
 					$scope.Central_T3,$scope.Sydenham,$scope.Campsie,$scope.Bankstown,$scope.Liverpool_T3,$scope.allT3,
-					$scope.Central_T4,$scope.Redfern,$scope.Wollicreek,$scope.Rockdale,$scope.Hurstville,$scope.allT4,				
+					$scope.Central_T4,$scope.Redfern,$scope.Wollicreek,$scope.Rockdale,$scope.Hurstville,$scope.allT4,
 					$scope.Parramatta,$scope.Westmead,$scope.Blacktown,$scope.Merrylands,$scope.Liverpool_T5,$scope.allT5,
 					$scope.Clyde,$scope.Rosehill,$scope.Camellia,$scope.Carlingford,$scope.allT6,
 					$scope.Lidcome_T7,$scope.Olympic_Park,$scope.allT7
@@ -1799,20 +1381,20 @@
 							}else if(i>=0){
 								angular.element("."+station_value[i]).css({'background-color': '#fcb514'});
 							}
-							
+
 						}else{
 							angular.element("."+station_value[i]).css({'background-color': '#4d555d'});
 						}
 					}
-				}	
-				
+				}
+
 				/*****************************************************************
 			     ********************share rental station filter*****************
 			     ****************************************************************/
 			 	$scope._Chatswood=false;$scope._Hornsby=false;$scope._Epping=false;$scope._MQ_Uni=false;$scope._Rodes=false;$scope._allT1=false;
 				$scope._Burwood=false;$scope._Straithfield=false;$scope._Greensquare=false;$scope._Mascot=false;$scope._Lidcome_T2=false;$scope._allT2=false;
 				$scope._Central_T3=false;$scope._Sydenham=false;$scope._Campsie=false;$scope._Bankstown=false;$scope._Liverpool_T3=false;$scope._allT3=false;
-				$scope._Central_T4=false;$scope._Redfern=false;$scope._Wollicreek=false;$scope._Rockdale=false;$scope._Hurstville=false;$scope._allT4=false;				
+				$scope._Central_T4=false;$scope._Redfern=false;$scope._Wollicreek=false;$scope._Rockdale=false;$scope._Hurstville=false;$scope._allT4=false;
 				$scope._Parramatta=false;$scope._Westmead=false;$scope._Blacktown=false;$scope._Merrylands=false;$scope._Liverpool_T5=false;$scope._allT5=false;
 			 	$scope._Clyde=false;$scope._Rosehill=false;$scope._Camellia=false;$scope._Carlingford=false;$scope._allT6=false;
 				$scope._Lidcome_T7=false;$scope._Olympic_Park=false;$scope._allT7=false;
@@ -1827,9 +1409,9 @@
 						$scope._allT1 = false;
 					}
 					_station_selection();
-				
+
 				}
-				
+
 				$scope._get_Hornsby = function (){
 					$scope._Hornsby = !$scope._Hornsby;
 					if($scope._Chatswood==true &&$scope._Hornsby==true&&$scope._Epping==true&&$scope._MQ_Uni==true&&$scope._Rodes==true)
@@ -1874,10 +1456,10 @@
 					}
 					_station_selection();
 				}
-				
+
 				$scope._get_All_T1 = function(){
 					$scope._allT1 = !$scope._allT1;
-					
+
 					if($scope._allT1)
 					{
 						$scope._Chatswood = false;
@@ -1891,7 +1473,7 @@
 					}
 					_station_selection();
 				}
-				
+
 				// T2
 				$scope._get_Burwood = function (){
 					$scope._Burwood = !$scope._Burwood;
@@ -1948,12 +1530,12 @@
 					}
 					_station_selection();
 				}
-				
+
 				$scope._get_All_T2 = function(){
 					$scope._allT2 = !$scope._allT2;
-					
+
 					if($scope._allT2)
-					{	
+					{
 						$scope._Burwood = false;
 						$scope._Straithfield = false;
 						$scope._Greensquare = false;
@@ -1961,11 +1543,11 @@
 						$scope._Lidcome_T2 = false;
 					}
 					else{
-						
+
 					}
 					_station_selection();
 				}
-			
+
 				// T3
 				$scope._get_Central_T3 = function (){
 					$scope._Central_T3 = !$scope._Central_T3;
@@ -2022,12 +1604,12 @@
 					}
 					_station_selection();
 				}
-				
+
 				$scope._get_All_T3 = function(){
 					$scope._allT3 = !$scope._allT3;
-					
+
 					if($scope._allT3)
-					{	
+					{
 						$scope._Central_T3 = false;
 						$scope._Sydenham = false;
 						$scope._Campsie = false;
@@ -2039,7 +1621,7 @@
 					}
 					_station_selection();
 				}
-				
+
 				// T4
 				$scope._get_Central_T4 = function (){
 					$scope._Central_T4 = !$scope._Central_T4;
@@ -2096,12 +1678,12 @@
 					}
 					_station_selection();
 				}
-				
+
 				$scope._get_All_T4 = function(){
 					$scope._allT4 = !$scope._allT4;
-					
+
 					if($scope._allT4)
-					{	
+					{
 						$scope._Central_T4 = false;
 						$scope._Redfern = false;
 						$scope._Wollicreek = false;
@@ -2109,12 +1691,12 @@
 						$scope._Hurstville = false;
 					}
 					else{
-						
-						
+
+
 					}
 					_station_selection();
 				}
-				
+
 				// T5
 				$scope._get_Parramatta = function (){
 					$scope._Parramatta = !$scope._Parramatta;
@@ -2171,11 +1753,11 @@
 					}
 					_station_selection();
 				}
-				
+
 				$scope._get_All_T5 = function(){
 					$scope._allT5 = !$scope._allT5;
 					if($scope._allT5)
-					{	
+					{
 						$scope._Parramatta = false;
 						$scope._Westmead = false;
 						$scope._Blacktown = false;
@@ -2183,7 +1765,7 @@
 						$scope._Liverpool_T5 = false;
 					}
 					else{
-						
+
 					}
 					_station_selection();
 				}
@@ -2235,15 +1817,15 @@
 				$scope._get_All_T6 = function(){
 					$scope._allT6 = !$scope._allT6;
 					if($scope._allT6)
-					{	
+					{
 						$scope._Clyde = false;
 						$scope._Rosehill = false;
 						$scope._Camellia = false;
 						$scope._Carlingford = false;
 					}
 					else{
-						
-						
+
+
 					}
 					_station_selection();
 				}
@@ -2273,12 +1855,12 @@
 				$scope._get_All_T7 = function(){
 					$scope._allT7 = !$scope._allT7;
 					if($scope.allT7)
-					{	
+					{
 						$scope._Lidcome_T7 = false;
 						$scope._Olympic_Park = false;
 					}
 					else{
-					
+
 					}
 					_station_selection();
 				}
@@ -2287,7 +1869,7 @@
 					$scope._Chatswood,$scope._Hornsby,$scope._Epping,$scope._MQ_Uni,$scope._Rodes,$scope._allT1,
 					$scope._Burwood,$scope._Straithfield,$scope._Greensquare,$scope._Mascot,$scope._Lidcome_T2,$scope._allT2,
 					$scope._Central_T3,$scope._Sydenham,$scope._Campsie,$scope._Bankstown,$scope._Liverpool_T3,$scope._allT3,
-					$scope._Central_T4,$scope._Redfern,$scope._Wollicreek,$scope._Rockdale,$scope._Hurstville,$scope._allT4,				
+					$scope._Central_T4,$scope._Redfern,$scope._Wollicreek,$scope._Rockdale,$scope._Hurstville,$scope._allT4,
 					$scope._Parramatta,$scope._Westmead,$scope._Blacktown,$scope._Merrylands,$scope._Liverpool_T5,$scope._allT5,
 					$scope._Clyde,$scope._Rosehill,$scope._Camellia,$scope._Carlingford,$scope._allT6,
 					$scope._Lidcome_T7,$scope._Olympic_Park,$scope._allT7
@@ -2316,36 +1898,36 @@
 							}else if(i>=0){
 								angular.element("."+_station_value[i]).css({'background-color': '#fcb514'});
 							}
-							
+
 						}else{
 							angular.element("."+_station_value[i]).css({'background-color': '#4d555d'});
 						}
 					}
-				}	
-				
-				
+				}
+
+
 			/****************************train filter ends*****************************/
 			}
 		])
 		.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
-		   
+
 		    $scope.items = items;
 		    $scope.selected = {
 		      item: $scope.items[0]
 		    };
-		
+
 		    $scope.ok = function () {
 		      $modalInstance.close($scope.selected.item);
 		    };
-		
+
 		    $scope.cancel = function () {
 		      $modalInstance.dismiss('cancel');
 		    };
 		  }]);
-		
-		
-		
-  
+
+
+
+
 	/*.animation('.fold-animation', ['$animateCss', function($animateCss) {
 	  return {
 	    enter: function(element, doneFn) {
@@ -2353,7 +1935,7 @@
 	      return $animateCss(element, {
 	        from: { height:'0px' },
 	        to: { height:left + 'px' },
-	        duration: 1 
+	        duration: 1
 	      });
 	    }
 	  }

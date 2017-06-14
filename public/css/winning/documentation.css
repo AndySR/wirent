@@ -13,7 +13,107 @@
 	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
+/*left steps starts*/
+.documentation .tl-wrap {
+	    border-color: #0f9d0e!important;
+}
+.documentation .btn-info {
+		border-color: #23b7e5;
+	}
+.documentation .step1 {
+	width: 15.5em!important;
+	margin-left: -18.5em!important;
+	text-align: left!important;
+}
+.documentation .step1::before,
+.documentation .step1::after {
+	display: table;
+	content: " ";
+}
+.documentation .step1::before {
+	position: relative;
+	top: 15px;
+	left: 232px;
+	float: left;
+	width: 10px;
+	height: 10px;
+	margin-left: 0;
+	background: #edf1f2;
+	border-color: rgb(187, 187, 187);
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 50%;
+	content: "";
+	box-shadow: 0 0 0 4px #f0f3f4;
+}
+.documentation .step1:hover::before {
+	background: transparent;
+	border-color: #fff;
+}
 
+.documentation .step2 {
+	 width: 15.5em!important;
+	 margin-left: -18.5em!important;
+	 text-align: left!important;
+	 margin-top: 5em;
+}
+.documentation .step2::before,
+.documentation .step2::after {
+	display: table;
+	content: " ";
+}
+.documentation .step2::before {
+	position: relative;
+	top: 15px;
+	left: 232px;
+	float: left;
+	width: 10px;
+	height: 10px;
+	margin-left: 0;
+	background: #edf1f2;
+	border-color:#0f9d0e;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 50%;
+	content: "";
+	box-shadow: 0 0 0 4px #f0f3f4;
+}
+.documentation .step2:hover::before {
+	background: transparent;
+	border-color: #fff;
+}
+.documentation .step3 {
+	 width: 15.5em!important;
+	 margin-left: -18.5em!important;
+	 text-align: left!important;
+	 margin-top: 10em;
+}
+.documentation .step3::before,
+.documentation .step3::after {
+	display: table;
+	content: " ";
+}
+.documentation .step3::before {
+	position: relative;
+	top: 15px;
+	left: 232px;
+	float: left;
+	width: 10px;
+	height: 10px;
+	margin-left: 0;
+	background: #0aab30;
+	border-color: #ffffff;
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 50%;
+	content: "";
+	box-shadow: 0 0 0 4px #0f9d0e;
+}
+.documentation .step3:hover::before {
+	background: transparent;
+	border-color: #fff;
+}
+/*left steps starts*/
 
 /*dream homes*/
 

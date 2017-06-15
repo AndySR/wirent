@@ -1,75 +1,305 @@
 {
-
-"header" : {
-  "navbar" : {
-  	"HOME" : "首页",
-    "UPLOAD" : "Upload",
-    "new" : {
-      "NEW" : "New",
-      "PROJECT" : "Projects",
-      "TASK" : "Task",
-      "USER" : "User",
-      "EMAIL" : "Email",
-      "LOGIN" : "登录",
-      "REGIST": "注册"
-    },
-    "NOTIFICATIONS" : "Notifications"
-  }
-},
-"aside" : {
-  "nav" : {
-    "HEADER" : "Navigation",
-    "DASHBOARD" : "Dashboard",
-    "CALENDAR" : "Calendar",
-    "EMAIL" : "Email",
-    "WIDGETS" : "Widgets",
-    "components" : {
-      "COMPONENTS" : "Components",
-      "ui_kits" : {
-        "UI_KITS" : "UI Kits",
-        "BUTTONS" : "Buttons",
-        "ICONS" : "Icons",
-        "GRID" : "Grid",
-        "BOOTSTRAP" : "Bootstrap",
-        "SORTABLE" : "Sortable",
-        "PORTLET" : "Portlet",
-        "TIMELINE" : "Timeline",
-        "VECTOR_MAP" : "Vector Map"
-      },
-      "table" : {
-        "TABLE" : "Table",
-        "TABLE_STATIC" : "Table static",
-        "DATATABLE" : "Datatable",
-        "FOOTABLE" : "Footable"
-      },
-      "form" : {
-        "FORM" : "Form",
-        "FORM_ELEMENTS" : "Form elements",
-        "FORM_VALIDATION" : "Form validation",
-        "FORM_WIZARD" : "Form wizard"
-      },
-      "CHART" : "Chart",
-      "pages" : {
-        "PAGES" : "Customer Pages",
-        "PROFILE" : "Profile",
-        "POST" : "CustomerAdmin",
-        "SEARCH" : "CustomerServer",
-        "INVOICE" : "CustomerLog",
-        "LOCK_SCREEN" : "Lock screen",
-        "SIGNIN" : "Signin",
-        "SIGNUP" : "Signup",
-        "FORGOT_PASSWORD" : "Forgot password",
-        "404" : "404"
-      }
-    },
-    "your_stuff" : {
-      "YOUR_STUFF": "Your Stuff",
-      "PROFILE" : "Profile",
-      "DOCUMENTS" : "Documents"
-    }
-  },
-  "MILESTONE" : "Milestone",
-  "RELEASE" : "Release"
-}
-
+	"header": {
+			"HOME": "首页",
+			"RENT"	:"租房",
+			"BUY"	:"买房",
+			"ONESETP": 
+			{
+				"OneStep":"一步到位",
+				"tenant":"租客",
+				"landlord":"业主",
+				"tenant_enquiry":"想要租房吗？",
+				"landlord_enquiry":"有房想出租？"
+			},						
+			"BUSINESS":"商务",
+			"NEWS"	: "新闻",
+			"RECRUIMENT":"招聘",
+			"ABOUT" : "关于",
+			"CONTACT":
+			{
+				"Contact":"联系我们",
+				"Message":"站内信",
+				"Wechat":"Wechat",
+				"Phone":"Phone",
+				"Facebook":"Facebook",
+				"YouTube":"YouTube",
+				"Twitter":"Twitter",
+				"Instagram":"Instagram"
+			},			
+			"LOGIN": {
+				"Login":"登录",
+				"Login_enquiry":"还没有注册?",
+				"Logout":"注销",
+				"Profile":"个人管理"
+			},			
+			"REGIST": {
+				"Regist":"注册",
+				"Regist_enquiry":"注册老用户"
+			}
+	},
+	"profile":{
+		"TITLE":"我的账户",
+		"UPDATE":{
+			"Success":{
+				"header":"更新 已完成",
+				"details":"更新 已上传至服务器."
+			},
+			"Error":{
+				"header":"更新失败",
+				"details":"服务器拒绝更新，请检查您的网络连接后电话或邮件联系我们"
+			}
+		},
+		"SECTION":{
+			"Profile":
+			{
+				"header":"个人资料",
+				"photo_upload":"头像上传",
+				"table":
+					{
+					"email":"Email",
+					"password":"密码",					
+					"name":"姓名",
+					"phone":"电话",
+					"currentStatus":"当前租房状态",
+					"idType":
+					{
+						"title":"身份类型",
+						"option_1":"澳洲国民",
+						"option_2":"永久签证",
+						"option_3":"海外人士"
+					},
+					"idProfile":"证件",
+					"incomeProfile":"收入证明",
+					"savingProfile":"存款证明",
+					"partnerID":"室友会员号",
+					"lastContactDate":"上次员工联系日期",
+					"gender":
+					{
+						"title":"性别",
+						"option_1":"男",
+						"option_2":"女"
+					},
+					"age":"年龄",
+					"work":
+					{
+						"title":"工作状态",
+						"option_1":"在职",
+						"option_2":"尚未工作",
+						"option_3":"退休"
+					},
+					"pet":
+					{
+						"title":"是否有宠物",
+						"option_1":"无",
+						"option_2":"有"						
+					},
+					"smoking":
+					{
+						"title":"是否吸烟",
+						"option_1":"无",
+						"option_2":"有"						
+					},
+					"budget":"租房预算",
+					"save":"保存并更新",
+					"reset":"重置"
+				}
+			},
+			"Bill":
+			{
+				"title":"查询账单",
+				"search":
+				{
+					"title":"查询",
+					"dateMin":"起始日期",
+					"dateMax":"截止日期"
+				},
+				"table":
+				{
+					"col1":"账单类型",
+					"col2":"金额",
+					"col3":"账单副本",
+					"col4":"出账日期",
+					"col5":"收据",
+					"col6":"备注"
+				}				
+			},
+			"Property":
+			{
+				"title":"租房合同",
+				"table":
+				{
+					"col1":"id",
+					"col2":"副本",
+					"col3":"签署日期",
+					"col4":"备注",
+					"col5":"地址"
+				}								
+			},
+			"Maintenance":
+			{
+				"apply":
+				{
+					"title":"维修申请",
+					"table":
+					{
+						"name":"姓名",
+						"address":"地址",
+						"phone":"电话",
+						"email":"邮件",
+						"type":
+						{
+							"title":"类型",
+							"option_1":"家具",
+							"option_2":"家电",
+							"option_3":"给排水",
+							"option_4":"其它"
+						},
+						"form":
+						{
+							"feature":"名称",
+							"q1":"何时发生该问题?",
+							"q2":"由何引发该问题?",
+							"q3":"当时您在做什么?",
+							"date":"您何时在家(请选择3个让技术人员上门服务的时间):",
+							"q4":"问题发生时您做了什么相应的处理?"
+						},
+						"submit":"提交"
+					}
+				},
+				"history":
+				{
+					"title":"维修记录",
+					"table":
+					{
+						"col1":"类型",
+						"col2":"表单",
+						"col3":"进度",
+						"col4":"申请提交日期",
+						"col5":"完工确认"
+					}
+				}
+			},
+			"Service":
+			{
+				"apply":
+				{
+					"title":"服务申请",
+					"table":
+					{
+						"tpl":"新功能将于下个版本更新后开放!"
+					}
+				},
+				"history":
+				{
+					"title":"服务记录",
+					"table":
+					{
+						"id":"序号",
+						"type":"类型",
+						"file":"记录副本",
+						"comment":"备注",
+						"date":"日期",
+						"status":"进度"
+					}
+				}
+			},
+			"Message":
+			{
+				"title":"站内信",
+				"table":
+				{
+					"title":"标题",
+					"content":"内容",
+					"time":"时间",
+					"confirm":"已读"
+				},
+				"write":"写新邮件",
+				"reply":"回复"
+			}
+		}
+	},
+	"listpage":
+	{
+		"title":"列表",
+		"filter":
+		{
+			"title":"查询条件",
+			"location":"地区",
+			"price":"价格",
+			"beds":"卧室",
+			"baths":"卫浴",
+			"parking":"车位",
+			"area":"面积",
+			"type":"房屋类型",
+			"available":"入住日期",
+			"description":
+			{
+				"title":"房屋特色",
+				"train_station":"近火车站",
+				"uni":"近校区",
+				"backpack":"短租",
+				"park":"近公园",
+				"school":"近学区",
+				"big_family":"大户型",
+				"shopping_mall":"近商场",
+				"office_rental":"办公租赁"
+			},
+			"feature":
+			{
+				"title":"室内设施",
+				"girl":"仅限女生",
+				"boy":"仅限男生",
+				"aircondition":"空调",
+				"kitchen":"厨具齐备",
+				"laundry":"洗衣机"
+			},
+			"search":"查询",
+			"option":
+			{
+				"more":"更多",
+				"less":"收起"
+			}
+		},
+		"entrance":"上次查询条件",
+		"list":
+		{
+			"orderBy":
+			{
+				"title":"排序方式",
+				"price":"按价格排序",
+				"time":"按日期排序"
+			},
+			"switch":
+			{
+				"list":"列表",
+				"map":"地图"
+			},
+			"pages":
+			{
+				"first":"首页",
+				"pre":"上一页",
+				"next":"下一页",
+				"last":"尾页"
+			},
+			"row":
+			{
+				"price_unit":"/周",
+				"time":"可入住日期：",
+				"save":"Save",
+				"details":"详情"
+			}
+		}
+	},
+	"shortlist":
+	{
+		"title":"ShortList"		
+	},
+	"search":
+	{
+		"title":"Search"
+	},
+	"detail":
+	{
+		"title":"Detail"
+	}
 }

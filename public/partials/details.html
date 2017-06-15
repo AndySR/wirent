@@ -1,4 +1,4 @@
-<div ng-controller="detailsController" class="details-page" id="printableArea">
+<div ng-controller="detailsController" class="details-page">
 
 	<div class="row">
 		<div class="col-sm-8">
@@ -186,6 +186,30 @@
 								</ul>
 							</div>
 						</div>
+						<div class="feature">
+							<div class="name">房源描述</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									our beautiful office settle here and lots of footcourt supply all region's delicious food.
+									Good sea view and Convenient transport to whole NSW
+								</p>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">Others</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									our beautiful office settle here and lots of footcourt supply all region's delicious food.
+									Good sea view and Convenient transport to whole NSW
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -267,6 +291,30 @@
 										<span class="text">Sydney Girls High school</span>
 									</li>
 								</ul>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">房源描述</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									our beautiful office settle here and lots of footcourt supply all region's delicious food.
+									Good sea view and Convenient transport to whole NSW
+								</p>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">Others</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									our beautiful office settle here and lots of footcourt supply all region's delicious food.
+									Good sea view and Convenient transport to whole NSW
+								</p>
 							</div>
 						</div>
 					</div>
@@ -356,5 +404,392 @@
 	<div class="clear">
 			<section rentrecommend class="dream-homes">
 			</section>
-		</div>
+	</div>
+	<div id="printableArea" style="display:none;">
+		<!-- <div class="wrapper-md">
+				<div>
+					<i class="fa fa-apple fa fa-3x"></i>
+					<div class="row">
+						<div class="col-xs-6">
+			 				<p style="text-align:center;">
+								<img href="http://www.winninginvestment.com" src="/img/logo.png" style="width:100%;">
+							</p>
+							<p>Level 2, 84 Pitt St<br>
+								Sydney, NSW 2000<br>
+								Australia
+							</p>
+							<p>
+								Telephone:  800-692-7753<br>
+								Fax:  800-692-7753
+							</p>
+						</div>
+						<div class="col-xs-6 text-right">
+							<p class="h4">#9048392</p>
+							<h5>29th Mar 2013</h5>
+						</div>
+					</div>
+					<div class="well m-t bg-light lt">
+						<div class="row">
+							<div class="col-xs-6">
+								<strong>TO:</strong>
+								<h4>John Smith</h4>
+								<p>
+									2nd Floor<br>
+									St John Street, Aberdeenshire 2541<br>
+									United Kingdom<br>
+									Phone: 031-432-678<br>
+									Email: youemail@gmail.com<br>
+								</p>
+							</div>
+							<div class="col-xs-6">
+								<strong>SHIP TO:</strong>
+								<h4>John Smith</h4>
+								<p>
+									2nd Floor<br>
+									St John Street, Aberdeenshire 2541<br>
+									United Kingdom<br>
+									Phone: 031-432-678<br>
+									Email: youemail@gmail.com<br>
+								</p>
+							</div>
+						</div>
+					</div>
+					<p class="m-t m-b">Order date: <strong>26th Mar 2013</strong><br>
+							Order status: <span class="label bg-success">Shipped</span><br>
+							Order ID: <strong>#9399034</strong>
+					</p>
+					<div class="line"></div>
+					<table class="table table-striped bg-white b-a">
+						<thead>
+							<tr>
+								<th style="width: 60px">QTY</th>
+								<th>DESCRIPTION</th>
+								<th style="width: 140px">UNIT PRICE</th>
+								<th style="width: 90px">TOTAL</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>iPhone 5 32GB White & Silver (GSM) Unlocked</td>
+								<td>$749.00</td>
+								<td>$749.00</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>iPad mini with Wi-Fi 32GB - White & Silver</td>
+								<td>$429.00</td>
+								<td>$858.00</td>
+							</tr>
+							<tr>
+								<td colspan="3" class="text-right"><strong>Subtotal</strong></td>
+								<td>$1607.00</td>
+							</tr>
+							<tr>
+								<td colspan="3" class="text-right no-border"><strong>Shipping</strong></td>
+								<td>$0.00</td>
+							</tr>
+							<tr>
+								<td colspan="3" class="text-right no-border"><strong>VAT Included in Total</strong></td>
+								<td>$0.00</td>
+							</tr>
+							<tr>
+								<td colspan="3" class="text-right no-border"><strong>Total</strong></td>
+								<td><strong>$1607.00</strong></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div> -->
+			<div class="content">
+				<div id="results">
+					<div class="list-wrap">
+						<ul id="house-list" class="house-list">
+							<li class="first">
+								<div class="info-panel">
+									<div class="rooms cl">
+										 <div class="hbox text-center">
+														<a href class="col padder-v text-muted">
+															<div class="h4">
+																 <span>[:detailsData.ER_BedRoom:]</span>
+																 <span class="fa-stack fa-lg">
+																	<i class="fa fa-circle fa-stack-2x text-white"></i>
+																	<i class="fa fa-bed fa-stack-1x "></i>
+															</span>
+
+															</div>
+
+														</a>
+														<a href class="col padder-v text-muted">
+															<div class="h4">
+																<span>[:detailsData.ER_BathRoom:]</span>
+																<span class="fa-stack fa-lg">
+																	<i class="fa fa-circle fa-stack-2x text-white"></i>
+																	<i class="fa fa-bath fa-stack-1x "></i>
+															</span>
+															</div>
+
+														</a>
+														<a href class="col padder-v text-muted">
+															<div class="h4">
+																<span>[:detailsData.ER_Parking:]</span>
+																<span class="fa-stack fa-lg">
+																	<i class="fa fa-circle fa-stack-2x text-white"></i>
+																	<i class="fa fa-car fa-stack-1x "></i>
+															</span>
+															</div>
+
+														</a>
+												</div>
+									</div>
+									<div class="address">
+										<a>
+											<span>[:detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+' '+detailsData.ER_Region:]</span>
+										</a>
+									</div>
+									<div class="benefits">
+										<a href class="f-icon with-text train" title="near train station">
+												<span class="icon " ng-show="detailsData.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
+												 <!--<span class="icon " ng-show="!detailsData.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
+										</a>
+										<a href class="f-icon with-text university" title="near university">
+											<span class="icon " ng-show="detailsData.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+												<span class="icon " ng-show="!detailsData.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+										</a>
+										<a href class="f-icon with-text backpack" title="backpack">
+											<span class="icon " ng-show="detailsData.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
+												<!--<span class="icon " ng-show="!detailsData.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
+										</a>
+										<a href class="f-icon with-text park" title="near park">
+											 <span class="icon " ng-show="detailsData.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
+												<!--<span class="icon " ng-show="!detailsData.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
+										</a>
+										<a href class="f-icon with-text school" title="near school">
+											<span class="icon " ng-show="detailsData.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
+												<!--<span class="icon " ng-show="!detailsData.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
+										</a>
+										<a href class="f-icon with-text bigfamily" title="big family">
+											 <span class="icon " ng-show="detailsData.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
+												<!--<span class="icon " ng-show="!detailsData.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
+										</a>
+										<a href class="f-icon with-text shoppingmall" title="near shopping center">
+											<span class="icon " ng-show="detailsData.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
+												<!--<span class="icon " ng-show="!detailsData.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
+										</a>
+										<a href class="f-icon with-text offical_rental" title="office rental">
+											<span class="icon " ng-show="detailsData.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
+												<!--<span class="icon " ng-show="!detailsData.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
+										</a>
+									</div>
+									<div class="price">
+										<span class="num">$[:detailsData.ER_Price:]<span class="period">per week</span></span>
+										<span class="available">Available Time:&nbsp;[:detailsData.ER_AvailableDate:]</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="content-wrapper introduction-wrapper" id="introduction">
+				<div class="introduction">
+					<div class="title">房源介绍</div>
+					<div class="introContent">
+						<div class="base">
+							<div class="name">基本属性</div>
+							<div class="content">
+								<ul>
+									<li><span class="label">Address：</span>Level 2, 84 Pitt Street, Sydney 2000</li>
+									<li>
+										<span class="label">Rental Fee：</span> $750/ week
+									</li>
+									<li><span class="label">Property Type：</span>Apartment</li>
+									<li>
+										<span class="label">Fit Out：</span>1 Bath/ 1 Bed / 1 Parking
+										<!-- 1<i class="fa fa-bed"></i>
+										1<i class="fa fa-bath"></i>
+										1<i class="fa fa-car"></i> -->
+									</li>
+									<li><span class="label">Including：</span> Air-conditioner  Internet</li>
+									<li><span class="label">Available Time：</span>01/06/2017</li>
+									<li>
+										<span class="label">Bond：</span> $2280
+									</li>
+									<li><span class="label">房屋现状：</span>整租</li>
+								</ul>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">房源特色</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<ul>
+									<li>
+										<span class="label">Facilities：</span>
+										<span class="text">Pool/ Gym</span>
+									</li>
+									<li>
+										<span class="label">交通出行：</span>
+										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									</li>
+									<li>
+										<span class="label">Retails/ Shops：</span>
+										<span class="text">Woolworths, Priceline</span>
+									</li>
+									<li>
+										<span class="label">School：</span>
+										<span class="text">Sydney Girls High school</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">房源描述</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									our beautiful office settle here and lots of footcourt supply all region's delicious food.
+									Good sea view and Convenient transport to whole NSW
+								</p>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">Others</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									our beautiful office settle here and lots of footcourt supply all region's delicious food.
+									Good sea view and Convenient transport to whole NSW
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content-wrapper introduction-wrapper" id="introduction">
+				<div class="introduction">
+					<div class="title">房源介绍</div>
+					<div class="introContent">
+						<div class="base">
+							<div class="name">基本属性</div>
+							<div class="content">
+								<ul>
+									<li><span class="label">Address：</span>Level 2, 84 Pitt Street, Sydney 2000</li>
+									<li>
+										<span class="label">Rental Fee：</span>$350/ week
+									</li>
+									<li><span class="label">Property Type：</span>Apartment</li>
+									<li><span class="label">Room Type：</span>Single room</li>
+									<li><span class="label">Fit Out：</span>1 Bath/ 1 Bed / 1 Parking</li>
+									<li><span class="label">Including：</span> Air-conditioner  Internet</li>
+									<li><span class="label">Available Time：</span>01/06/2017</li>
+									<li>
+										<span class="label">Bond：</span> $2280
+									</li>
+									<li><span class="label">房屋现状：</span>分租</li>
+								</ul>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">房源特色</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<ul>
+									<li>
+										<span class="label">Facilities：</span>
+										<span class="text">Pool/ Gym</span>
+									</li>
+									<li>
+										<span class="label">交通出行：</span>
+										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+									</li>
+
+									<li>
+										<span class="label">Furniture：</span>
+										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;Room&nbsp;&nbsp;&nbsp;&nbsp;Build-In Wardrobes  Furnished bed, desk and chair</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp; Kitchen&nbsp;&nbsp;&nbsp;&nbsp; Furnished stove, microwave and fridge</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Laundry&nbsp;&nbsp;&nbsp;&nbsp;Washing machine</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp; Living/ Dinning&nbsp;&nbsp;&nbsp;&nbsp; Air-conditioner</span>
+									</li>
+
+									<li>
+										<span class="label">Retails/ Shops：</span>
+										<span class="text">Woolworths, Priceline</span>
+									</li>
+									<li>
+										<span class="label">School：</span>
+										<span class="text">Sydney Girls High school</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">房源描述</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									our beautiful office settle here and lots of footcourt supply all region's delicious food.
+									Good sea view and Convenient transport to whole NSW
+								</p>
+							</div>
+						</div>
+						<div class="feature">
+							<div class="name">Others</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									our beautiful office settle here and lots of footcourt supply all region's delicious food.
+									Good sea view and Convenient transport to whole NSW
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
 </div>

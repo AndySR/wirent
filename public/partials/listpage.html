@@ -5,7 +5,7 @@
 			  <form class="form-horizontal">
 			    <fieldset>
 				 <div class="form-group">
-			        <label class="col-sm-2 control-label text-left">Location</label>
+			        <label class="col-sm-2 control-label text-left" translate="listpage.filter.location">Location</label>
 			        <div class="col-sm-9">
 			          <ui-select multiple ng-model="multipleDemo.selectedPeopleWithGroupBy" theme="bootstrap" ng-disabled="disabled">
 			            <ui-select-match placeholder="Select location...">[:$item.name:] &lt;[:$item.email:]&gt;</ui-select-match>
@@ -31,21 +31,20 @@
 	                    	<label style="margin-left: 115px;margin-bottom: 10px">min</label>
 	                      <ul class="list-unstyled l-h-2x">
 	                        <li class="m-b-md">
-	                         <label>Price</label>
+	                         <label translate="listpage.filter.price">Price</label>
 							 <input type="text" ng-model="myMinPrice" style="width: 149px;height: 40px; margin-left: 18px;" class="form-control input-sm inline" placeholder="minPrice" aria-describedby="basic-addon1">
 	                        </li>
 	                        <li class="m-b-md">
-	                          <label>Beds</label>
-							  						<select class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
+	                          <label translate="listpage.filter.beds">Beds</label>
+							  <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
 	                          </select>
 	                        </li>
 	                        <li class="m-b-md">
-	                          <label>Baths</label>
-						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 16px;" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum"  >
-
+	                          <label translate="listpage.filter.baths">Baths</label>
+						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 16px;" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum">						         
 						        </select>
 	                        </li>
-
+	                        
 	                      </ul>
 	                    </div>
 	                    <div class="col-xs-6 right-li">
@@ -62,9 +61,6 @@
 						        <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
 						        </select>
 	                        </li>
-	                        <li>
-
-	                        </li>
 	                      </ul>
 	                    </div>
 	                  </div>
@@ -74,16 +70,16 @@
 	                    <div class="col-xs-6 left-li">
 	                      <ul class="list-unstyled l-h-2x">
 	                        <li class="m-b-md">
-	                          <label>Parking</label>
+	                          <label translate="listpage.filter.parking">Parking</label>
 						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 5px;"ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
 						        </select>
 	                        </li>
 	                         <li class="m-b-md">
-	                         <label>Area</label>
+	                         <label translate="listpage.filter.area">Area</label>
 							 <input type="text" ng-model="minArea" style="width: 149px;height: 40px; margin-left: 23px;" class="form-control input-sm inline" placeholder="minArea" aria-describedby="basic-addon1">
 	                        </li>
 	                        <li class="m-b-md">
-	                          <label>Type</label>
+	                          	<label translate="listpage.filter.type">Type</label>
 						        <select class="input-sm form-control w-sm inline v-middle" style="margin-left: 19px;" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
 						        </select>
 	                        </li>
@@ -97,16 +93,16 @@
 								<input type="text" class="form-control input-lg" ng-model="features" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
 	                        </li>-->
 	                        <li ng-show="hello">
-	                         <label class="m-t-xxs pull-left" >Available:</label>
+	                         <label class="m-t-xxs pull-left" translate="listpage.filter.available">Available:</label>
 					            <p class="input-group inline">
 					              <input type="text" class="form-control input-sm" style="width: 149px;height: 34px; margin-left: 53px;" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
 					              <span class="input-group-btn">
 					                <button type="button" class="btn btn-default btn-md" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 					              </span>
-					            </p>
+					            </p>   
 	                        </li>
 	                          <li ng-show="hello">
-	                          	<label class="m-t-xxs">Descriptions:</label>
+	                          	<label class="m-t-xxs" translate="listpage.filter.discription.title">Descriptions:</label>
 	                          	<ul style="list-style: none; padding:0; margin-left: 53px;">
 	                          		<li>
 	                          			<a class="" title="near train station" ng-click="train=!train">
@@ -160,43 +156,48 @@
 			                          	</a>
 	                          		</li>
 	                          	</ul>
-							</li>
+							</li>  	
 	                      </ul>
 	                    </div>
 	                  </div>
 	                </div>
 	                <div class=" m-l-n-xxs" ng-show="hello">
-	                  <label>Features:</label>
+	                  <label translate="listpage.filter.feature.title">Features:</label>
 	                   <div class="row">
 		                    <ul class="list-unstyled" style="padding-left: 65px;">
 		                    	<li>
-		                    		<span title="girl_only" ng-click="girlonly()">
+		                    		<span title="girl_only" ng-click="girlonly()" >
 		                      			<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette30"></i>
-		                      			<i ng-show="!girl_only" class="flaticon-female-silhouette30"></i>&nbsp;&nbsp;&nbsp;Girls Only
+		                      			<i ng-show="!girl_only" class="flaticon-female-silhouette30"></i>&nbsp;&nbsp;&nbsp; 
+		                      			<a translate="listpage.filter.feature.girl"></a> 
 	                      			</span>
 		                    	</li>
 		                    	<li>
 		                    		<span title="boy_only" ng-click="boyonly()">
 		                      			<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up30"></i>
-		                      			<i ng-show="!boy_only" class="flaticon-man-standing-up30"></i>&nbsp;&nbsp;&nbsp;Boys Only
+		                      			<i ng-show="!boy_only" class="flaticon-man-standing-up30"></i>&nbsp;&nbsp;&nbsp;
+		                      			<a translate="listpage.filter.feature.boy"></a>
 	                      			</span>
 		                    	</li>
 		                    	<li>
 		                    		<span title="aircondition" ng-click="aircondition_click()">
 		                      			<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit30"></i>
-		                      			<i ng-show="!aircondition" class="flaticon-minisplit30"></i>&nbsp;&nbsp;&nbsp;Aircondition
+		                      			<i ng-show="!aircondition" class="flaticon-minisplit30"></i>&nbsp;&nbsp;&nbsp;
+		                      			<a translate="listpage.filter.feature.aircondition"></a>
 	                      			</span>
 		                    	</li>
 		                    	<li>
 		                    		<span title="stove" ng-click="stove_click()">
 		                      			<i ng-show="stove" style="color: purple;" class="flaticon-stove30"></i>
-		                      			<i ng-show="!stove" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;Stove
+		                      			<i ng-show="!stove" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;
+		                      			<a translate="listpage.filter.feature.kitchen"></a>
 	                      			</span>
 		                    	</li>
 		                    	<li>
 		                    		<span title="laundry" ng-click="laundry_click()">
 		                      			<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine30"></i>
-		                      			<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;Lundry
+		                      			<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;
+		                      			<a translate="listpage.filter.feature.laundry"></a>
 	                      			</span>
 		                    	</li>
 		                    	<li></li>
@@ -209,30 +210,34 @@
 		    	<div class="col-sm-8"></div>
 		    	<div class="col-sm-4">
 		    		<a style="color: rgb(150, 65, 137); display: block; width: 100px;height: 20px;" ng-click="hello = !hello">
-		    			<span ng-show="!hello">more options&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
-		    			<span ng-show="hello">less option&nbsp;<i class="fa fa-chevron-circle-up"></i></span>
+		    			<span ng-show="!hello"><i translate="listpage.filter.option.more"></i>&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></span>
+		    			<span ng-show="hello"><i translate="listpage.filter.option.less"></i>&nbsp;<i class="fa fa-chevron-circle-up"></i></span>			
 		    		</a>
 		    	</div>
 		      </div>
-			  <button type="submit" class="btn-success plusplus" ng-click="update()" tabindex="23"><span>Update search</span></button>
+			  <button type="submit" class="btn-success plusplus" ng-click="update()" tabindex="23"><span translate="listpage.filter.search">Update search</span></button>
 			</div>
 		</div>
 		<div class="col-md-7">
 			  <!-- pagination -->
 	      <div class="right-top clear">
-		      <h4>385 Properties for rent in Kingsford, NSW, 2032</h4>
+		      <!--filt by what-->
+		      <h4 translate="listpage.entrance"></h4>
+		      <!--label end-->
 	          <div class="m-b-sm m-r-lg">
 	          	<!--<div>features:</div>-->
 		        <div class="btn-group btn-group-justified features-filter">
 		          <a href class="btn btn-success" ng-click="sortBy('ER_Price')">
-		          		Price&nbsp;
-		          		  <span ng-if="orderleft">
-                     		<i ng-show="sortPrice" class="fa fa-caret-down"></i>
-                     		<i ng-show="!sortPrice" class="fa fa-caret-up"></i>
-		          		  </span>
+	          		  <i translate="listpage.list.orderBy.price"></i>	
+		          		&nbsp; 
+	          		  <span ng-if="orderleft">
+	             		<i ng-show="sortPrice" class="fa fa-caret-down"></i>
+	             		<i ng-show="!sortPrice" class="fa fa-caret-up"></i>
+	          		  </span>
 		          </a>
 		          <a href class="btn btn-primary" ng-click="sortBy('ER_AvailableDate')">
-		          		Available Time&nbsp;
+		          		<i translate="listpage.list.orderBy.time"></i>
+		          		&nbsp;
 		          		<span ng-if="orderright">
 			          		<i ng-show="sortDate" class="fa fa-caret-down"></i>
 	                     	<i ng-show="!sortDate" class="fa fa-caret-up"></i>
@@ -243,10 +248,10 @@
 	          <div class="clear pagination-top">
 		          	<div class="pull-left">
 		          		<a style="color: purple; border-bottom: 3px solid rgb(150, 65, 137);">
-		          			<i  class="fa fa-lg fa-list"></i>&nbsp;List
+		          			<i  class="fa fa-lg fa-list"></i>&nbsp;<i translate="listpage.list.switch.list"></i>
 		          		</a>
 		          		<a ui-sref="app.googlemap">
-		          			<i class="fa fa-lg fa-map-marker" ></i>&nbsp;Map
+		          			<i class="fa fa-lg fa-map-marker" ></i>&nbsp;<i translate="listpage.list.switch.map"></i>
 		          		</a>
 		          	</div>
 	          	 <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm m-r-lg pull-right" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
@@ -285,17 +290,17 @@
 							</div>
 							<div class="info-panel">
 								<div class="rooms cl">
-									 <div class="hbox text-center">
+									 <div class="hbox text-center">          
 						              <a href class="col padder-v text-muted">
 						                <div class="h4">
 						                	 <span>[:property.ER_BedRoom:]</span>
 						                	 <span class="fa-stack fa-lg">
 								                <i class="fa fa-circle fa-stack-2x text-white"></i>
 								                <i class="fa fa-bed fa-stack-1x "></i>
-								            </span>
-
+								            </span> 
+								           
 						                </div>
-
+						               
 						              </a>
 						              <a href class="col padder-v text-muted">
 						                <div class="h4">
@@ -305,7 +310,7 @@
 								                <i class="fa fa-bath fa-stack-1x "></i>
 								            </span>
 						                </div>
-
+						                
 						              </a>
 						              <a href class="col padder-v text-muted">
 						                <div class="h4">
@@ -358,16 +363,16 @@
 		                            </a>
 								</div>
 								<div class="price">
-									<span class="num">$[:property.ER_Price:]<span class="period">per week</span></span>
-									<span class="available">Available Time:&nbsp;&nbsp;<i style="color: darkred; font-size: 12px;">[:property.ER_AvailableDate:]</i></span>
+									<span class="num">$[:property.ER_Price:]<span class="period"><i translate="listpage.list.row.price_unit"></i></span></span>
+									<span class="available"><i translate="listpage.list.row.time"></i>:&nbsp;&nbsp;<i style="color: darkred; font-size: 12px;">[:property.ER_AvailableDate:]</i></span>
 								</div>
 								<div class="view" ui-sref="app.details({id:property.ER_ID,name:property.ER_No+' '+property.ER_St+' '+property.ER_Suburb+' '+property.ER_Region})">
-									<span class="view-num">Details <i class="fa fa-angle-right" aria-hidden="true"></i></span>
+									<span class="view-num"><i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right" aria-hidden="true"></i></span>
 								</div>
 								<div class="save">
 									<a class="save-delete-shortlist" ng-click="save2shortlist();favorsave=!favorsave">
-										<i ng-show="favorsave" style="color: pink;" class="fa fa-lg fa-heart">&nbsp;Save</i>
-										<i ng-show="!favorsave" class="fa fa-lg fa-heart-o">&nbsp;Save</i>
+										<i ng-show="favorsave" style="color: pink;" class="fa fa-lg fa-heart">&nbsp;<i translate="listpage.list.row.save"></i></i>
+										<i ng-show="!favorsave" class="fa fa-lg fa-heart-o">&nbsp;<i translate="listpage.list.row.save"></i></i>
 									</a>
 								</div>
 							</div>
@@ -383,6 +388,7 @@
 		</div>
 		</div>
 	</div>
-
-
+	
+		
 </div>
+	

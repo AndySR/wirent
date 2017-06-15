@@ -1,12 +1,12 @@
 <div ng-controller="MyCtrl as vm" >
-			<div class="map-page">
-				    <div style="position: fixed; right: 0;width:100%; height: 50px; z-index: 100; background-color: #f6f8f8;">
-							<div class="pull-left">
-							<form>
+	<div class="map-page">
+	    <div style="position: fixed; right: 0;width:100%; height: 50px; z-index: 100; background-color: #f6f8f8;">
+			<div class="pull-left">
+				<form>
 								<ul class="nav navbar-nav more-options">
 							          <li class="dropdown pos-stc">
 							            <a href class="dropdown-toggle btn-primary" ng-click="dropdown=!dropdown">
-							              <span>Filters</span> 
+							              <span translate="listpage.filter.title"></span> 
 							              <span class="caret"></span>
 							            </a>
 							            <div class=" wrapper w-full bg-white cust-m-t" style="position: fixed; top: 100px; left: 0;z-index: 100;" ng-show="dropdown">
@@ -16,26 +16,25 @@
 							                    <div class="col-xs-6 left-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
-							                         <label>Price</label>
+							                         <label translate="listpage.filter.price">Price</label>
     												<input type="text" ng-model="myMinPrice" class="form-control input-sm" placeholder="minPrice" aria-describedby="basic-addon1">
 							                        </li>
 							                        <li>
-							                          <label>Beds</label>
+							                          <label translate="listpage.filter.beds">Beds</label>
         											  <select class="input-sm form-control w-sm inline v-middle" ng-model="minBedNum" ng-options="minBed.num as minBed.num for minBed in bedsNum">
 							                          </select>
 							                        </li>
 							                        <li>
-							                          <label>Baths</label>
-												        <select class="input-lg form-control w-sm inline v-middle" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum"  >
-												         
+							                          <label translate="listpage.filter.baths">Baths</label>
+												        <select class="input-lg form-control w-sm inline v-middle" ng-model="minBathNum" ng-options="minBath.num as minBath.num for minBath in bathsNum"  >												         
 												        </select>
 							                        </li>
 							                        <li>
-							                         <label>Area</label>
+							                         <label translate="listpage.filter.area">Area</label>
     												<input type="text" ng-model="minArea" class="form-control input-sm" placeholder="minArea" aria-describedby="basic-addon1">
 							                        </li>
 							                        <li>
-							                          <label>Type</label>
+							                          <label translate="listpage.filter.type">Type</label>
 												        <select class="input-lg form-control w-sm inline v-middle" ng-model="myPropertyType"  ng-options="property.propertyType as property.propertyType for property in propertyTypes">
 												        </select>
 							                        </li>
@@ -67,7 +66,7 @@
 							                    <div class="col-xs-6 left-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
-							                          <label>Parking</label>
+							                          <label translate="listpage.filter.parking">Parking</label>
 												        <select class="input-sm form-control w-sm inline v-middle" ng-model="minParkingNum" ng-options="parking.num as parking.num for parking in parkingsNum" >
 												        </select>
 							                        </li>
@@ -81,7 +80,7 @@
     													<input type="text" class="form-control input-lg" ng-model="features" placeholder="freatures,e.g. pets allowed.." aria-describedby="basic-addon1">
 							                        </li>-->
 							                        <li>
-							                         <label class="m-t-xxs">Available:</label>
+							                         <label class="m-t-xxs" translate="listpage.filter.available">Available:</label>
 											            <p class="input-group">
 											              <input type="text" class="form-control input-sm" datepicker-popup="[:format:]" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2018-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
 											              <span class="input-group-btn">
@@ -90,7 +89,7 @@
 											            </p>   
 							                        </li>
 							                          <li>
-							                          	<label class="m-t-xxs">Descriptions:</label>
+							                          	<label class="m-t-xxs" translate="listpage.filter.description.title">Descriptions:</label>
 							                          	<ul style="list-style: none; padding-left: 28px;">
 							                          		<li>
 							                          			<a class="" title="near train station" ng-click="train=!train">
@@ -124,7 +123,7 @@
 							                          	<a style="display: block;"></a>
 							                        </li>
 							                        <li style="visibility: hidden;">
-							                           <label>descriptions:</label>
+							                           <label translate="listpage.filter.description.title">descriptions:</label>
     												   <input type="text" class="form-control input-lg"  style="background: white; border: none;" aria-describedby="basic-addon1">
 							                        </li>
 							                          	<ul style="list-style: none; margin-top: 46px; padding-left: 0;">
@@ -155,35 +154,40 @@
 							                  <div class="row">
 							                    <div class="col-xs-6">
 							                    	  <div class="row">
-										                    <ul class="list-unstyled"">
+										                    <ul class="list-unstyled">
 										                    	<li>
 										                    		<span title="girl_only" ng-click="girlonly()">
 										                      			<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette30"></i>
-										                      			<i ng-show="!girl_only" class="flaticon-female-silhouette30"></i>&nbsp;&nbsp;&nbsp;Girls Only
+										                      			<i ng-show="!girl_only" class="flaticon-female-silhouette30"></i>&nbsp;&nbsp;&nbsp;
+										                      			<a translate="listpage.filter.feature.girl"></a>
 									                      			</span>
 										                    	</li>
 										                    	<li>
 										                    		<span title="boy_only" ng-click="boyonly()">
 										                      			<i ng-show="boy_only" style="color: purple;" class="flaticon-man-standing-up30"></i>
-										                      			<i ng-show="!boy_only" class="flaticon-man-standing-up30"></i>&nbsp;&nbsp;&nbsp;Boys Only
+										                      			<i ng-show="!boy_only" class="flaticon-man-standing-up30"></i>&nbsp;&nbsp;&nbsp;
+										                      			<a translate="listpage.filter.feature.boy"></a>
 									                      			</span>
 										                    	</li>
 										                    	<li>
 										                    		<span title="aircondition" ng-click="aircondition_click()">
 										                      			<i ng-show="aircondition" style="color: purple;" class="flaticon-minisplit30"></i>
-										                      			<i ng-show="!aircondition" class="flaticon-minisplit30"></i>&nbsp;&nbsp;&nbsp;Aircondition
+										                      			<i ng-show="!aircondition" class="flaticon-minisplit30"></i>&nbsp;&nbsp;&nbsp;
+										                      			<a translate="listpage.filter.feature.aircondition"></a>
 									                      			</span>
 										                    	</li>
 										                    	<li>
 										                    		<span title="stove" ng-click="stove_click()">
 										                      			<i ng-show="stove" style="color: purple;" class="flaticon-stove30"></i>
-										                      			<i ng-show="!stove" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;Stove
+										                      			<i ng-show="!stove" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;
+										                      			<a translate="listpage.filter.feature.kitchen"></a>
 									                      			</span>
 										                    	</li>
 										                    	<li>
 										                    		<span title="laundry" ng-click="laundry_click()">
 										                      			<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine30"></i>
-										                      			<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;Lundry
+										                      			<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;
+										                      			<a translate="listpage.filter.feature.laundry"></a>
 									                      			</span>
 										                    	</li>
 										                    	<li></li>
@@ -193,7 +197,7 @@
 							                     <div class="col-xs-6">
 							                     	<div class="row">
 							                   			<div>
-							                    			<button type="submit" class="button btn-success plusplus" style="margin-top: 170px;margin-left: 30px;" ng-click="update();dropdown=false" tabindex="23"><span>Update search</span></button>
+							                    			<button type="submit" class="button btn-success plusplus" style="margin-top: 170px;margin-left: 30px;" ng-click="update();dropdown=false" tabindex="23"><span translate="listpage.filter.search">Update search</span></button>
 							                    		</div>
 							                    	</div>
 							                     </div>
@@ -219,14 +223,14 @@
 							</div>
 							<div class="pull-right " style="margin: 10px; text-align: center;">
 								<div class="m-t-xs pull-left ">
-									<p class="inline m-l-sm m-r-sm" style="margin-bottom: 10px;">385 Properties for rent in Kingsford, NSW, 2032</p>
+									<p class="inline m-l-sm m-r-sm" style="margin-bottom: 10px;" translate="listpage.entrance"></p>
 								</div>
 								<div class="m-t-xs pull-left list-map" style="margin-right: 140px; margin-left: 190px;">
 					          		<a ui-sref="app.listpage">
-					          			<i  class="fa fa-lg fa-list"></i>&nbsp;List
+					          			<i  class="fa fa-lg fa-list"></i>&nbsp;<i translate="listpage.list.switch.list"></i>
 					          		</a>
 					          		<a  style="color: purple; border-bottom: 3px solid rgb(150, 65, 137); margin-right: 10px;">
-					          			<i class="fa fa-lg fa-map-marker" ></i>&nbsp;Map
+					          			<i class="fa fa-lg fa-map-marker" ></i>&nbsp;<i translate="listpage.list.switch.map"></i>
 					          		</a>
 					          	</div>
 					          	
@@ -252,7 +256,7 @@
 																		<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" style="width:100px; align-content: center;">
 																	</div>
 																	<div class="info-right">
-																		  <p class="price">$[:vm.shop.ER_Price:]<span>per week</span></p>
+																		  <p class="price">$[:vm.shop.ER_Price:]<i translate="listpage.list.row.price_unit"></i></p>
 																		  <p class="address">
 																		  		<a ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})">
 																		  			[:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region:]
@@ -278,7 +282,7 @@
 																					<span class="icon fa fa-car"></span>
 																				</span>
 																				<span class="details" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="margin-left: 20px;">
-																					Details <i class="fa fa-angle-right"></i>
+																					<i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i>
 																				</span>
 																			</div>
 																			
@@ -288,26 +292,28 @@
 									</info-window>
 							</ng-map>
 					</div>
-					<div class="map_feature_filter">
+				<div class="map_feature_filter">
 								 <li class="dropdown" dropdown>
 						            <a class="dropdown-toggle" dropdown-toggle>
 						              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-						              <span >Features</span> <span class="caret"></span>
+						              <span translate="listpage.list.orderBy.title">Features</span> <span class="caret"></span>
 						            </a>
 						            <ul class="dropdown-menu" role="menu">
 						              <li>
 						              	<a ng-click="sortBy('ER_Price')">
-						              	Lowest Price&nbsp;
-						              		  <span ng-if="orderleft">
+						              	  	<i translate="listpage.list.orderBy.price"></i>
+						              		&nbsp;
+					              		    <span ng-if="orderleft">
 					                     		<i ng-show="sortPrice" class="fa fa-caret-down"></i>
 					                     		<i ng-show="!sortPrice" class="fa fa-caret-up"></i>
-							          		  </span>
+						          		    </span>
 						              	</a>
 						              </li>
 						              <li class="divider"></li>
 						              <li>
 						                <a ng-click="sortBy('ER_AvailableDate')">
-						                  Available Time&nbsp;
+						                  	<i translate="listpage.list.orderBy.time"></i>
+						                  	&nbsp;
 						                    <span ng-if="orderright">
 								          		<i ng-show="sortDate" class="fa fa-caret-down"></i>
 						                     	<i ng-show="!sortDate" class="fa fa-caret-up"></i>
@@ -317,8 +323,8 @@
 						            </ul>
 						          </li>
 							</div>
-					<div class="adv clear">
-							<div class="relative-position">
+			<div class="adv clear">
+		<div class="relative-position">
 	<ul class="clear">
 		<li ng-repeat="shop in vm.shops | orderBy: orderName:reverse" ng-mouseover="vm.showDetail(e,shop)">
 			<div id="box" class="all clear panel b-a" set-ng-animate="false">
@@ -351,18 +357,18 @@
 			<div class="description">
 				<div class="info-panel">
 					<div class="listing-features rooms">
-											<span class="f-icon with-text" style="color: purple;">
-				                            <span class="copy"><em class="ng-binding">[:shop.ER_BedRoom:]</em></span>
-																<span class="icon fa fa-bed" ></span>
-																</span>
-											<span class="f-icon with-text" style="color: purple;">
-                        <span class="copy"><em class="ng-binding">[:shop.ER_BathRoom:]</em></span>
-											<span class="icon fa fa-bath" ></span>
-											</span>
-											<span class="f-icon with-text" style="color: purple;">
-                        <span class="copy"><em class="ng-binding">[:shop.ER_Parking:]</em></span>
-											<span class="icon fa fa-car" ></span>
-											</span>
+						<span class="f-icon with-text" style="color: purple;">
+                        	<span class="copy"><em class="ng-binding">[:shop.ER_BedRoom:]</em></span>
+							<span class="icon fa fa-bed" ></span>
+						</span>
+						<span class="f-icon with-text" style="color: purple;">
+                        	<span class="copy"><em class="ng-binding">[:shop.ER_BathRoom:]</em></span>
+							<span class="icon fa fa-bath" ></span>
+						</span>
+						<span class="f-icon with-text" style="color: purple;">
+                    		<span class="copy"><em class="ng-binding">[:shop.ER_Parking:]</em></span>
+							<span class="icon fa fa-car" ></span>
+						</span>
 					</div>
 					<div class="address">
 						<a ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
@@ -406,17 +412,15 @@
 					</div>
 					<div class="price">
 						<span class="num">$[:shop.ER_Price:]</span>
-						<span class="period">per week</span>
-						<span class="available">Available Time:&nbsp;&nbsp;<i style="color: darkred;font-size: 16px;">[:shop.ER_AvailableDate:]</i></span>
+						<span class="period" translate="listpage.list.row.price_unit">per week</span>
+						<span class="available"><i translate="listpage.list.row.time"></i>:&nbsp;&nbsp;<i style="color: darkred;font-size: 16px;">[:shop.ER_AvailableDate:]</i></span>
 					</div>
 					<div class="view" ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
-						<span class="view-num">Details <i class="fa fa-angle-right"></i></span>
+						<span class="view-num"><i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i></span>
 					</div>
 				</div>
-
 			</div>
-		</li>
-												
+		</li>												
 	</ul>
 </div>
 					</div>

@@ -24,11 +24,11 @@
 				}*/
 //				$modalInstance.dismiss('cancel');
 			},function(e){
-				
+
 			})
-			
+
 		}
-		
+
 		$scope.items = items;
 	    $scope.selected = {
 	      item: $scope.items[0]
@@ -36,14 +36,10 @@
 	    $scope.ok = function () {
 	      $modalInstance.close($scope.selected.item);
 	    };
-	
+
 	    $scope.cancel = function () {
 	      $modalInstance.dismiss('cancel');
 	    };
-	    
-	    
-	  
-	   
 	  }])
 	.controller('detailsController',['$http','$scope','$state','$window','$stateParams','$cookies','$rootScope','$localStorage','$modal', '$log','SearchService','readJSON','mouseEvent','utilConvertDateToString','hotRentService',function ($http,$scope,$state,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
 		var datapackage = {};
@@ -55,7 +51,7 @@
 		 	console.log('$localStorage.settings',$localStorage.settings);
 		 	datapackage = $localStorage.settings;
 			console.log('datapackage',datapackage);
-			
+
 		 }else{
 		 	datapackage = $localStorage.settings;
 		 	console.log('$localStorage.settings',$localStorage.settings);
@@ -72,10 +68,10 @@
 							$scope.shortlistData = r.data;
 //							console.log("$scope.shortlistData",$scope.shortlistData);
 						},function(e){
-							
+
 						});*/
 		if (typeof($scope.datapackage) === "undefined")
-		 {	
+		 {
 		 	if(JSON.stringify(hotRentService.get()) != "{}"){
 		 	$localStorage.settings = hotRentService.get();
 		 	console.log('$localStorage.settings',$localStorage.settings);
@@ -96,7 +92,7 @@
 					}
 				});
 		console.log("$scope.datapackage======>",$scope.datapackage );
-		
+
 		/**************************Advertisements carousel********************************/
 		$scope.myInterval = 5000;
 	    var slides = $scope.slides = [];
@@ -109,29 +105,32 @@
 	    for (var i=0; i<4; i++) {
 	      $scope.addSlide();
 	    }
-		
+
 		/****************************************************************/
-		
+
 		/************print web page*****************/
 		$scope.printDiv = function (div){
 			var printContents = document.getElementById(div).innerHTML;
             var popupWin = window.open('', '_blank', 'width=800,height=800,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no,top=50');
-            popupWin.window.focus();
+            // popupWin.window.focus();
             popupWin.document.open();
-            popupWin.document.write('<!DOCTYPE html><html><head><title>TITLE OF THE PRINT OUT</title>' 
-                                    +'<link rel="stylesheet" type="text/css" href="app/directory/file.css" />' 
-                                    +'</head><body onload="window.print(); window.close();"><div>' 
-                                    + printContents + '</div></html>');
+            popupWin.document.write('<!DOCTYPE html><html><head><title>TITLE OF THE PRINT OUT</title>'
+                                    +'<link rel="stylesheet" type="text/css" href="app/directory/file.css" />'
+																		+'<link rel="stylesheet" type="text/css" href="/fonts/css/font-awesome.min.css" />'
+																		+'<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />'
+																		+'<link rel="stylesheet" type="text/css" href="css/winning/app.css" />'
+																		+'<link rel="stylesheet" type="text/css" href="css/winning/details.css" />'
+                                    +'</head><body onload="window.print()">');
+																		popupWin.document.write(printContents);
+																		popupWin.document.write('</body></html>');
             popupWin.document.close();
 		}
-		
-		
 		/*******************************/
-		
-		
-		
+
+
+
 		/****************************add shortlist**********************************/
-		
+
 		   	$scope.addShortlist = function (){
 		   		$http.get('/customer/profile')
 				.then(function(r) {
@@ -144,7 +143,7 @@
 						console.log("shortlistInsert",$scope.shortlistInsert);
 						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
 								.then(function(r){
-									console.log('r',r);				
+									console.log('r',r);
 								},function(e){
 									console.log("数据有误");
 								});
@@ -154,7 +153,7 @@
 				},function(e){
 						console.log("数据有误");
 					})
-						
+
 			}
 	   	/****************************add shortlist**********************************/
 		   /* $scope.myInterval = 5000;
@@ -186,7 +185,7 @@
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
-    }; 
+    };
 	}])
 .factory('readData', ['$http', '$q', function($http, $q) {
 		return {
@@ -258,7 +257,7 @@
 				var step = 0;
 				var time = null;
 //				promise.then(function(data) {
-//					
+//
 //				});
 				if(JSON.stringify(hotRentService.get()) != "{}"){
 				 	$localStorage.hotrent = hotRentService.get();
@@ -293,22 +292,22 @@
 					     case "train_station":
 					     	data.train_station = true;
 					   	 break;
-					     case "backpack": 
+					     case "backpack":
 							data.backpack = true;
 					    break;
-					     case "park": 
+					     case "park":
 							data.park = true;
 					    break;
-					     case "school": 
+					     case "school":
 							data.school = true;
 					    break;
-					     case "big_family": 
+					     case "big_family":
 							data.big_family = true;
 					    break;
-					     case "shopping_mall": 
+					     case "shopping_mall":
 							data.shopping_mall = true;
 					    break;
-					     case "offical_rental": 
+					     case "offical_rental":
 							data.offical_rental = true;
 					    break;
 					    case "university":
@@ -320,7 +319,7 @@
 					    default:
 					    	data.university = true;
 					    	 break;
-					    	
+
 					}
 				}
 				if (uniindex == dataresults.length-1 || uniindex==-1){
@@ -332,7 +331,7 @@
 				});
 				scope.carouselimages = datapackage;
 				console.log("scope.carouselimages",scope.carouselimages);
-				
+
 				scope.prev = function(){
 					if(scope.imageid >4 ){
 						scope.imageid--;
@@ -377,7 +376,7 @@
 	 console.log($stateParams.id +"<======>"+$stateParams.name);
 	  console.log("scope.datapackage" +"<======>"+scope.datapackage);
 	 if (typeof(scope.datapackage) === "undefined")
-	 {	
+	 {
 	 	if(JSON.stringify(hotRentService.get()) != "{}"){
 	 	$localStorage.settings = hotRentService.get();
 	 	console.log('$localStorage.settings',$localStorage.settings);
@@ -427,12 +426,12 @@
 		scope.pic = step;
 		element.find("li").removeClass("active");
 		element.find("li").eq(step).addClass("active");
-		
+
 	}
 	scope.prev = function (){
 		$timeout.cancel(time);
 		if(step-- !=0)
-		{ 
+		{
 			step--;
 		}else {
 			step = 0;
@@ -441,14 +440,14 @@
 		scope.pic = step;
 		element.find("li").removeClass("active");
 		element.find("li").eq(step).addClass("active");
-		
+
 	}
 	/*鼠标移除动画重新开始*/
 	scope.start = function() {
 		$timeout.cancel(time);
 		stepFun();
 	}
-	
+
    }
   }
  }])

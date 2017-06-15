@@ -28,18 +28,21 @@
 				<!--<div class="clear"></div>-->
 				<div class="header-wrap1">
 					<div class="search-box-wrap1 left-box" log-mod="search">
+						<div class="header-wrap1-title">
+							<h1>Share Rental</h1>
+						</div>
 						<div class="search-box-con1">
 							<script type="text/ng-template" id="myModalContent.html">
 								<div ng-include="'partials/tpl/modal.html'"></div>
 							</script>
-							<div animatesearch tips="tips" features="features" boxshow="boxshow">
+							<div animatesearch1 tips1="tips1" features1="features1" boxshow1="boxshow1">
 							</div>
 							<div class="search1">
-								<div class="box1" ng-show="boxshow">
+								<div class="box1" ng-show="boxshow1">
 									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
-										<select-search2 datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search2>
+										<select-search1 datas1="datas1" get-data1="getData1(searchField1)" change1="change1(x1)" bind="searchField1" x1="x1"></select-search1>
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="entireSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="shareSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
@@ -52,7 +55,7 @@
 									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
 								</div>
 								<!-- trainstation -->
-								<div class="trainstation" ng-show="tips">
+								<div class="trainstation" ng-show="tips1">
 									<div class="step-wrap openstyle" id="Step">
 											<ul class="clearfix">
 												<div class="sc-course-cart" >
@@ -120,7 +123,7 @@
 												<div class="sc-course-cart" ng-click="_get_Rodes()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Rodes">
-															Rodes
+															Rhodes
 														</div>
 
 													</div>
@@ -172,7 +175,7 @@
 												<div class="sc-course-cart" ng-click="_get_Straithfield()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t _Straithfield">
-															Straithfield
+															Strathfield
 														</div>
 
 													</div>
@@ -646,7 +649,7 @@
 									</div>
 								</div>
 								<!-- trainstation end -->
-								<div class="bottom-filter-right">
+								<div class="bottom-filter-right" ng-show="!tips1">
 									<div class="filter-wrapper-right" ng-show="more_options_right_right">
 										<ul class="clearfix">
 											<li>
@@ -717,6 +720,9 @@
 			<div class="wrapper2">
 				<div class="header-wrap2">
 					<div class="search-box-wrap2 right-box" log-mod="search">
+						<div class="header-wrap2-title">
+							<h1>Entire Rental</h1>
+						</div>
 						<div class="search-box-con2">
 							<script type="text/ng-template" id="myModalContent.html">
 								<div ng-include="'partials/tpl/modal.html'"></div>
@@ -809,7 +815,7 @@
 												<div class="sc-course-cart" ng-click="get_Rodes()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Rodes">
-															Rodes
+															Rhodes
 														</div>
 
 													</div>
@@ -861,7 +867,7 @@
 												<div class="sc-course-cart" ng-click="get_Straithfield()">
 													<div class="sc-course-cart-wrap">
 														<div class="sc-cart-t Straithfield">
-															Straithfield
+															Strathfield
 														</div>
 
 													</div>
@@ -935,7 +941,6 @@
 														<div class="sc-cart-t" style="background-color: #f47424;">
 															T3
 														</div>
-
 													</div>
 												</div>
 												<div class="sc-course-cart" ng-click="get_Central_T3()">
@@ -1336,7 +1341,7 @@
 									<!-- trainstation end -->
 
 								</div>
-								<div class="bottom-filter-left">
+								<div class="bottom-filter-left" ng-show="!tips">
 									<div class="filter-wrapper-left" ng-show="more_options_right_left">
 										<ul class="clearfix">
 											<li>

@@ -62,73 +62,72 @@ angular.module('andy', [
     controller: 'HomeController',
     resolve: {
         deps: ['$ocLazyLoad',
-          function ($ocLazyLoad){
+          function ($ocLazyLoad) {
             return $ocLazyLoad.load('ui.select').then(
-                function(){
+                function () {
                     return $ocLazyLoad.load('js/home/common.js');
-                }
-            );
-        }]
-    }
-   })
-   .state('app.businessDetails',{
-    url:'/businessDetails',
-    templateUrl:'/partials/businessDetails.html'
-   })
-   .state('app.listpage',{
-    url:'/listpage',
-    templateUrl:'/partials/listpage.html',
-    controller: 'listPageCtrl',
-                  resolve: {
-                      deps: ['$ocLazyLoad',
-                        function( $ocLazyLoad ){
-                          return $ocLazyLoad.load('ui.select').then(
-                              function(){
-                                  return $ocLazyLoad.load('js/home/listpage.js');
-                              }
-                          );
-                      }]
                   }
-   })
-   .state('app.business',{
-    url:'/business',
-    templateUrl:'/partials/business.html'
-   })
+            );
+          }, ],
+      },
+  })
+   .state('app.businessDetails', {
+    url: '/businessDetails',
+    templateUrl: '/partials/businessDetails.html',
+  })
+   .state('app.listpage', {
+    url: '/listpage',
+    templateUrl: '/partials/listpage.html',
+    controller: 'listPageCtrl',
+    resolve: {
+        deps: ['$ocLazyLoad',
+          function ($ocLazyLoad) {
+            return $ocLazyLoad.load('ui.select').then(
+                function () {
+                    return $ocLazyLoad.load('js/home/listpage.js');
+                  }
+            );
+          }, ],
+      },
+  })
+   .state('app.business', {
+    url: '/business',
+    templateUrl: '/partials/business.html',
+  })
    .state('app.documentation', {
-                 url: '/documentation',
-                 templateUrl: '/partials/documentation.html'
-             })
+                url: '/documentation',
+                templateUrl: '/partials/documentation.html',
+              })
    .state('app.shortlist', {
-                 url: '/shortlist',
-                 templateUrl: '/tpl/page/shortlist'
-             })
+                url: '/shortlist',
+                templateUrl: '/tpl/page/shortlist',
+              })
    .state('app.details', {
-                 url: '/details?id&name',
-                 templateUrl: '/partials/details.html'
-             })
-   .state('app.serviceTypes',{
-    url:'/serviceTypes',
-    templateUrl:'/partials/serviceTypes.html'
-   })
-   .state('app.guides',{
-    url:'/guides',
-    templateUrl:'/partials/guide.html'
-   })
-   .state('app.new',{
-    url:'/new',
-    templateUrl:'/partials/new.html'
-   })
-   .state('app.tips',{
-    url:'/tips',
-    templateUrl:'/partials/tips.html'
-   })
-   .state('app.newsDetail',{
-    url:'/newsDetail',
-    templateUrl:'/partials/newsDetail.html'
-   })
+                url: '/details?id&name',
+                templateUrl: '/partials/details.html',
+              })
+   .state('app.serviceTypes', {
+    url: '/serviceTypes',
+    templateUrl: '/partials/serviceTypes.html',
+  })
+   .state('app.guides', {
+    url: '/guides',
+    templateUrl: '/partials/guide.html',
+  })
+   .state('app.new', {
+    url: '/new',
+    templateUrl: '/partials/new.html',
+  })
+   .state('app.tips', {
+    url: '/tips',
+    templateUrl: '/partials/tips.html',
+  })
+   .state('app.newsDetail', {
+    url: '/newsDetail',
+    templateUrl: '/partials/newsDetail.html',
+  })
    .state('app.trainmap', {
-                 url: '/trainmap',
-                 templateUrl: '/partials/trainmap.html'
-             })
-
- })
+                url: '/trainmap',
+                templateUrl: '/partials/trainmap.html',
+              });
+});

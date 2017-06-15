@@ -40,9 +40,9 @@
 	<script src="vendor/angular/angular-css.min.js"></script>
 	<script src="vendor/angular/angular-sanitize/angular-sanitize.js"></script>
 	<script src="vendor/angular/angular-translate/angular-translate.js"></script>
-    <script src="vendor/angular/angular-translate/loader-static-files.js"></script>
-    <script src="vendor/angular/angular-translate/storage-cookie.js"></script>
-    <script src="vendor/angular/angular-translate/storage-local.js"></script>
+  <script src="vendor/angular/angular-translate/loader-static-files.js"></script>
+  <script src="vendor/angular/angular-translate/storage-cookie.js"></script>
+  <script src="vendor/angular/angular-translate/storage-local.js"></script>
 	<script src="/node_modules/bootstrap.min.js"></script>
 	<script src="/node_modules/jquery.slimscroll.min.js"></script>
 	<script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -77,5 +77,5 @@
 	<script src="/js/home/documentation.js"></script>
 	<script src="/js/home/rightfix.js"></script>
 </body>
-	
+
 </html>

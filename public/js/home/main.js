@@ -3,96 +3,97 @@
 /* Controllers */
 
 angular.module('andy')
-	.factory('indexService', function() {
-			var savedData = {}
+	.factory('indexService', function () {
+    var savedData = {};
 
-			function set(data) {
-				savedData = data;
-			}
+    function set(data) {
+      savedData = data;
+    }
 
-			function get() {
-				return savedData;
-			}
+    function get() {
+      return savedData;
+    }
 
-			return {
-				set: set,
-				get: get
-			}
+    return {
+      set: set,
+      get: get,
+    };
 
 		})
-	.factory('readData', ['$http', '$q', function($http, $q) {
-			return {
-				query: function() {
-					var deferred = $q.defer();
-					$http({
-						method: 'GET',
-						url: '/customer/hotrent'
-					}).success(function(data, status, header, config) {
-						deferred.resolve(data);
-					}).error(function(data, status, header, config) {
-						deferred.reject(data);
-					});
-					return deferred.promise;
-				}
-			}
-		}])
-	.factory('SearchService', function() {
-		var savedData = {}
+	.factory('readData', ['$http', '$q', function ($http, $q) {
+    return {
+      query: function () {
+        var deferred = $q.defer();
+        $http({
+          method: 'GET',
+          url: '/customer/hotrent',
+        }).success(function (data, status, header, config) {
+          deferred.resolve(data);
+        }).error(function (data, status, header, config) {
+          deferred.reject(data);
+        });
+
+        return deferred.promise;
+      },
+    };
+		}, ])
+	.factory('SearchService', function () {
+		var savedData = {};
 
 		function set(data) {
-			savedData = data;
+    savedData = data;
 		}
 
 		function get() {
-			return savedData;
+    return savedData;
 		}
 
 		return {
-			set: set,
-			get: get
-		}
+    set: set,
+    get: get,
+		};
 
-	})
-	.factory('hotRentService', function() {
-		var savedData = {}
+})
+	.factory('hotRentService', function () {
+		var savedData = {};
 
 		function set(data) {
-			savedData = data;
+    savedData = data;
 		}
 
 		function get() {
-			return savedData;
+    return savedData;
 		}
 
 		return {
-			set: set,
-			get: get
-		}
+    set: set,
+    get: get,
+		};
 
-	})
-	.factory('updateService', function() {
-		var savedData = {}
+})
+	.factory('updateService', function () {
+		var savedData = {};
 
 		function set(data) {
-			savedData = data;
+    savedData = data;
 		}
 
 		function get() {
-			return savedData;
+    return savedData;
 		}
 
 		return {
-			set: set,
-			get: get
-		}
+    set: set,
+    get: get,
+		};
 
-	})
-	.filter('propsFilter', function() {
-		    return function(items, props) {
+})
+	.filter('propsFilter', function () {
+		    return function (items, props) {
 		        var out = [];
 
 		        if (angular.isArray(items)) {
-		          items.forEach(function(item) {
+		          items.forEach(function (item) {
 		            var itemMatches = false;
 
 		            var keys = Object.keys(props);
@@ -197,6 +198,86 @@ angular.module('andy')
 				}
 			}
 		}])
+		.directive('animatesearch1', ['$timeout', function($timeout) {
+			return {
+				restrict: 'EA',
+				templateUrl: '/partials/mydirectives/directive-search.html',
+				//			   css: 'css/winning/new.css',
+				scope: {
+					tips1 : '=',
+					features1 : '=',
+					boxshow1 : '=',
+					openmodal : "&"
+				},
+				controller: function($scope) {
+//					$scope.openmodal();
+				},
+				link: function(scope, element, attr) {
+//					scope.openmodal();
+					scope.tips1=false;
+					scope.features1=false;
+					scope.boxshow1=true;
+					/*点击事件*/
+					scope.clickEvent = function(event) {
+						var left = 0;
+						var opacity=0;
+//						left = left + 63 * event;
+						if(event == 0) {
+							left = 0;
+							opacity=1;
+							scope.tips1=false;
+							scope.features1=false;
+							scope.boxshow1=true;
+							element.find("i").css({'opacity': 1,'left': left + 90 + 'px'});
+						} else if(event == 1) {
+							left = 90;
+							opacity=1;
+							scope.tips1=true;
+							scope.features1=false;
+							scope.boxshow1=true;
+							element.find("i").css({'opacity': 1,'left': left + 90 + 'px'});
+						}
+						 else if(event == 2) {
+							left = 130;
+							opacity=1;
+							scope.tips1=false;
+							scope.features1=false;
+							scope.boxshow1=true;
+							element.find("i").css({'opacity': 1,'left': left + 56 + 'px'});
+						}
+						  else if(event == 3) {
+							left = 186;
+							opacity=1;
+							scope.tips1=true;
+							scope.features1=false;
+							scope.boxshow1=false;
+							element.find("i").css({'opacity': 0,'left': left + 56 + 'px'});
+						}
+						   else if(event == 4) {
+							left = 256;
+							opacity=1;
+							scope.tips1=false;
+							scope.features1=true;
+							scope.boxshow1=false;
+							element.find("i").css({'opacity': 0,'left': left + 56 + 'px'});
+						}
+						 else if(event == 5) {
+						 	left = 334;
+						 	opacity=1;
+							scope.tips1=false;
+							scope.features1=false;
+							scope.boxshow1=true;
+							element.find("i").css({'opacity': 1,'left': left + 56 + 'px'});
+						}
+						element.find("li").removeClass("selected");
+						element.find("li").eq(event).addClass("selected");
+						/*element.find("i").css({
+							'left': left + 56 + 'px'
+						});*/
+					};
+				}
+			}
+		}])
 		.directive('selectSearch', function($compile) {
 			return {
 				restrict: 'AE',
@@ -216,7 +297,7 @@ angular.module('andy')
 					'ng-change="changeKeyValue(searchField)" ng-keyup="getData({val:searchField})" ng-model="searchField" ' +
 					' value="{{searchField}}" style="width:414px; height:55px;border:none"/>' +
 					'<div  ng-hide="hidden" style = "position:absolute; top:55px; z-index: 1000;">' +
-					'   <select style = "width:605px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;" ng-change="change(x)" ng-model="x" multiple>' +
+					'   <select style = "width:413px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;" ng-change="change(x)" ng-model="x" multiple>' +
 					'       <option ng-repeat="data in datas track by $index" style="padding-left:16px;padding-bottom:10px">{{data}}</option>' +
 					'   </select>' +
 					'</div>',
@@ -255,60 +336,60 @@ angular.module('andy')
 				}
 			};
 		})
-		.directive('selectSearch2', function($compile) {
+		.directive('selectSearch1', function($compile) {
 			return {
 				restrict: 'AE',
 				scope: {
-					datas: '=',
-					x: '=',
-					searchField: '=bind',
-					getData: "&",
-					change: "&"
+					datas1: '=',
+					x1: '=',
+					searchField1: '=bind',
+					getData1: "&",
+					change1: "&"
 				},
 				controller: function($scope) {
-					$scope.getData();
-					$scope.change();
+					$scope.getData1();
+					$scope.change1();
 				},
 				template: '<input type = "test"' +
 					'class="input-lg form-control" autocomplete="off" name="inputStr" data-val="true" data-val-required="Please choose a location to search." ng-minlength="2"  placeholder="Search by suburb, region, postcode or address" type="text"' +
-					'ng-change="changeKeyValue(searchField)" ng-keyup="getData({val:searchField})" ng-model="searchField" ' +
-					' value="{{searchField}}" style="width:414px; height:55px;border:none"/>' +
+					'ng-change="changeKeyValue1(searchField1)" ng-keyup="getData1({val:searchField1})" ng-model="searchField1" ' +
+					' value="{{searchField1}}" style="width:414px; height:55px;border:none"/>' +
 					'<div  ng-hide="hidden" style = "position:absolute; top:55px; z-index: 1000;">' +
-					'   <select style = "width:605px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;" ng-change="change(x)" ng-model="x" multiple>' +
-					'       <option ng-repeat="data in datas track by $index" style="padding-left:16px;padding-bottom:10px">{{data}}</option>' +
+					'   <select style = "width:413px; border:none;border-bottom-left-radius:2px;border-bottom-right-radius:4px; overflow-x:hidden;" ng-change="change1(x1)" ng-model="x1" multiple>' +
+					'       <option ng-repeat="data in datas1 track by $index" style="padding-left:16px;padding-bottom:10px">{{data}}</option>' +
 					'   </select>' +
 					'</div>',
 				//    replace: true,  overflow-y:hidden;remove the y-direction overflow-hidden
 				link: function($scope, elem, attr, ctrl) {
-					$scope.getData();
-					$scope.change();
-					$scope.tempdatas = $scope.datas; //下拉框选项副本
+					$scope.getData1();
+					$scope.change1();
+					$scope.tempdatas = $scope.datas1; //下拉框选项副本
 					$scope.hidden = true; //选择框是否隐藏
-					$scope.searchField = ''; //文本框数据
+					$scope.searchField1 = ''; //文本框数据
 					//将下拉选的数据值赋值给文本框
-					$scope.change = function(x) {
-						$scope.searchField = x;
+					$scope.change1 = function(x) {
+						$scope.searchField1 = x;
 						$scope.hidden = true;
 					}
 					//获取的数据值与下拉选逐个比较，如果包含则放在临时变量副本，并用临时变量副本替换下拉选原先的数值，如果数据为空或找不到，就用初始下拉选项副本替换
-					$scope.changeKeyValue = function(v) {
+					$scope.changeKeyValue1 = function(v) {
 
 						var newDate = []; //临时下拉选副本
 						//如果包含就添加
-						angular.forEach($scope.datas, function(data, index, array) {
+						angular.forEach($scope.datas1, function(data, index, array) {
 							if((data + "").indexOf(v) >= 0) {
 								newDate.unshift(data);
 							}
 						});
 						//用下拉选副本替换原来的数据
-						$scope.datas = newDate;
+						$scope.datas1 = newDate;
 						//下拉选展示
 						$scope.hidden = false;
 						//如果不包含或者输入的是空字符串则用初始变量副本做替换
-						if($scope.datas.length == 0 || '' == v) {
-							$scope.datas = $scope.tempdatas;
+						if($scope.datas1.length == 0 || '' == v) {
+							$scope.datas1 = $scope.tempdatas;
 						}
-						console.log($scope.datas);
+						console.log($scope.datas1);
 					}
 				}
 			};

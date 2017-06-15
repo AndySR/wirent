@@ -7,13 +7,14 @@
 	background-color: #fafbfc;
 	margin: 10px 5px 0 30px;
 	border-radius: 3px;
+	box-shadow: 2px 2px 2px lavender;
 }
 /*left side filter end*/
 .list-page label {
 	color: gray;
 }
 .list-page .content {
-	/*/*width: 1000px;*/   /*there seems some problem here */
+	/*width: 1000px;*/   /*there seems some problem here */
 	position: relative;
 	margin: 0 auto;
 	padding: 0px 30px 0 5px;
@@ -46,11 +47,11 @@
 }
 /*.list-page .ranking_active {
 	background-color: rgb(150, 65, 137);
-	color: white!important; 
+	color: white!important;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	}*/
-.list-page .content .list-wrap ul, 
+.list-page .content .list-wrap ul,
 .list-page .content .list-wrap li {
 	list-style: none;
 	padding: 0;
@@ -69,7 +70,7 @@
 .list-page .content .list-wrap .w-slider {
 	width: 233px;
 	height: 265px;
-	
+
 	overflow: hidden;
 }
 .list-page .content .list-wrap .w-slider .slider {
@@ -350,13 +351,16 @@
 	height: 40px;
 	position: absolute;
 	top: 30px;
-	left: 380px;
+	left: 300px;
 }
 .list-page .info-panel .save a:hover {
 	color: #C81623;
 }
 .list-page .pagination-bottom {
 	padding-left: 210px;
+}
+.list-page .pagination-top {
+	box-shadow: 2px 2px 2px lavender;
 }
 .list-page .pagination-top div{
 	margin:25px 0 0 10px;

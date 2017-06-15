@@ -3,14 +3,14 @@
 			"HOME": "首页",
 			"RENT"	:"租房",
 			"BUY"	:"买房",
-			"ONESETP": 
+			"ONESETP":
 			{
 				"OneStep":"一步到位",
 				"tenant":"租客",
 				"landlord":"业主",
 				"tenant_enquiry":"想要租房吗？",
 				"landlord_enquiry":"有房想出租？"
-			},						
+			},
 			"BUSINESS":"商务",
 			"NEWS"	: "新闻",
 			"RECRUIMENT":"招聘",
@@ -25,13 +25,13 @@
 				"YouTube":"YouTube",
 				"Twitter":"Twitter",
 				"Instagram":"Instagram"
-			},			
+			},
 			"LOGIN": {
 				"Login":"登录",
 				"Login_enquiry":"还没有注册?",
 				"Logout":"注销",
 				"Profile":"个人管理"
-			},			
+			},
 			"REGIST": {
 				"Regist":"注册",
 				"Regist_enquiry":"注册老用户"
@@ -57,7 +57,7 @@
 				"table":
 					{
 					"email":"Email",
-					"password":"密码",					
+					"password":"密码",
 					"name":"姓名",
 					"phone":"电话",
 					"currentStatus":"当前租房状态",
@@ -91,13 +91,13 @@
 					{
 						"title":"是否有宠物",
 						"option_1":"无",
-						"option_2":"有"						
+						"option_2":"有"
 					},
 					"smoking":
 					{
 						"title":"是否吸烟",
 						"option_1":"无",
-						"option_2":"有"						
+						"option_2":"有"
 					},
 					"budget":"租房预算",
 					"save":"保存并更新",
@@ -121,7 +121,7 @@
 					"col4":"出账日期",
 					"col5":"收据",
 					"col6":"备注"
-				}				
+				}
 			},
 			"Property":
 			{
@@ -133,7 +133,7 @@
 					"col3":"签署日期",
 					"col4":"备注",
 					"col5":"地址"
-				}								
+				}
 			},
 			"Maintenance":
 			{
@@ -285,14 +285,14 @@
 			{
 				"price_unit":"/周",
 				"time":"可入住日期：",
-				"save":"Save",
+				"save":"收藏",
 				"details":"详情"
 			}
 		}
 	},
 	"shortlist":
 	{
-		"title":"ShortList"		
+		"title":"ShortList"
 	},
 	"search":
 	{

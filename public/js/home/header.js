@@ -22,11 +22,11 @@
 		.service('BaseService', ['$state', '$http', function($state, $http,$localStorage) {
 
 		}])
-		.controller('WinCtrl', ['$scope', '$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($scope, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
+		.controller('WinCtrl', ['$scope', '$filter','$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($scope,$filter, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
 			$scope.letternums = 0;
-
+			
 			$http.get('/customer/profile')
 				.then(function(r) {
 					console.log(r);

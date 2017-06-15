@@ -110,20 +110,23 @@
 
 		/************print web page*****************/
 		$scope.printDiv = function (div){
-			var printContents = document.getElementById(div).innerHTML;
+			var printContents = document.getElementById(div);
             var popupWin = window.open('', '_blank', 'width=800,height=800,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no,top=50');
-            // popupWin.window.focus();
+            popupWin.window.focus();
             popupWin.document.open();
             popupWin.document.write('<!DOCTYPE html><html><head><title>TITLE OF THE PRINT OUT</title>'
-                                    +'<link rel="stylesheet" type="text/css" href="app/directory/file.css" />'
 																		+'<link rel="stylesheet" type="text/css" href="/fonts/css/font-awesome.min.css" />'
-																		+'<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />'
-																		+'<link rel="stylesheet" type="text/css" href="css/winning/app.css" />'
-																		+'<link rel="stylesheet" type="text/css" href="css/winning/details.css" />'
-                                    +'</head><body onload="window.print()">');
-																		popupWin.document.write(printContents);
-																		popupWin.document.write('</body></html>');
-            popupWin.document.close();
+																		+'<link rel="stylesheet" type="text/css"  href="/font/flaticon.css" />'
+																		+'<link rel="stylesheet" type="text/css"  href="css/winning/app.css" />'
+																		+'<link rel="stylesheet" type="text/css" media="print" href="css/winning/print.css" />'
+																		+'<script src="vendor/angular/angular.js"></script>'
+                                    +'</head><body onload="window.print(); "><div>');
+                                    popupWin.document.write(printContents.innerHTML);
+																		popupWin.document.write('</div></body></html>');
+																		popupWin.focus();
+																		// popupWin.print();
+																		// popupWin.close();
+																	  popupWin.document.close();
 		}
 		/*******************************/
 

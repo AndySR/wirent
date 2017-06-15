@@ -3,14 +3,14 @@
 			"HOME": "首頁",
 			"RENT"	:"租房",
 			"BUY"	:"買房",
-			"ONESETP": 
+			"ONESETP":
 			{
 				"OneStep":"一步到位",
 				"tenant":"租客",
 				"landlord":"業主",
 				"tenant_enquiry":"想要租房嗎？",
 				"landlord_enquiry":"想要賺租金？"
-			},			
+			},
 			"BUSINESS":"商務",
 			"NEWS"	: "新聞",
 			"RECRUIMENT":"招聘",
@@ -25,10 +25,10 @@
 				"YouTube":"YouTube",
 				"Twitter":"Twitter",
 				"Instagram":"Instagram"
-			},									
+			},
 			"LOGIN": {
 				"Login":"登錄",
-				"Login_enquiry":"還沒賬戶?",    
+				"Login_enquiry":"還沒賬戶?",
 				"Logout":"注銷",
 				"Profile":"個人管理"
 			},
@@ -48,7 +48,7 @@
 				"header":"更新失敗",
 				"details":"服務器拒絕更新，請檢查您的網絡連接後電話或郵件聯繫我們."
 			}
-		},		
+		},
 		"SECTION":{
 			"Profile":
 			{
@@ -57,7 +57,7 @@
 				"table":
 					{
 					"email":"Email",
-					"password":"密碼",					
+					"password":"密碼",
 					"name":"姓名",
 					"phone":"電話",
 					"currentStatus":"當前租房狀態",
@@ -91,13 +91,13 @@
 					{
 						"title":"是否有寵物",
 						"option_1":"無",
-						"option_2":"有"						
+						"option_2":"有"
 					},
 					"smoking":
 					{
 						"title":"是否吸煙",
 						"option_1":"無",
-						"option_2":"有"							
+						"option_2":"有"
 					},
 					"budget":"租房預算",
 					"save":"保存並更新",
@@ -121,7 +121,7 @@
 					"col4":"出賬日",
 					"col5":"收據",
 					"col6":"備注"
-				}				
+				}
 			},
 			"Property":
 			{
@@ -133,7 +133,7 @@
 					"col3":"簽約日期",
 					"col4":"備注",
 					"col5":"地址"
-				}								
+				}
 			},
 			"Maintenance":
 			{
@@ -285,14 +285,14 @@
 			{
 				"price_unit":"每周",
 				"time":"可入住日期",
-				"save":"Save",
+				"save":"收藏",
 				"details":"詳情"
 			}
 		}
 	},
 	"shortlist":
 	{
-		"title":"ShortList"		
+		"title":"ShortList"
 	},
 	"search":
 	{

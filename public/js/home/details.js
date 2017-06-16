@@ -111,7 +111,7 @@
 		/************print web page*****************/
 		$scope.printDiv = function (div){
 			var printContents = document.getElementById(div);
-            var popupWin = window.open('', '_blank', 'width=800,height=800,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no,top=50');
+            var popupWin = window.open('', '_blank', 'width=880,height=800,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no,top=200,bottom=200');
             popupWin.window.focus();
             popupWin.document.open();
             popupWin.document.write('<!DOCTYPE html><html><head><title>TITLE OF THE PRINT OUT</title>'

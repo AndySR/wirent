@@ -363,6 +363,7 @@
     display: inline-block;
     width: 808px;
     vertical-align: top;
+    margin-bottom: 20px;
 }
 .details-page .introduction-wrapper .introduction .name {
     font-size: 16px;
@@ -399,6 +400,24 @@
 .details-page .introduction-wrapper .introduction .introContent .content ul li {
     width: 50%;
 }
+.details-page .introduction-wrapper .introduction .introContent .content ul li.list-features {
+    width: 20%;
+}
+
+/*********************features section start********************************/
+.details-page .introduction-wrapper .introduction .introContent .content ul li .features {
+  width: 100%;
+  text-align: center;
+}
+.details-page .introduction-wrapper .introduction .introContent .content ul li .features .icon {
+  display: block;
+  width: 100%;
+}
+.details-page .introduction-wrapper .introduction .introContent .content ul li .features .description {
+  display: block;
+  width: 100%;
+}
+/*********************features section ends********************************/
 .details-page .introduction-wrapper .introduction .introContent .content ul li .label {
     color: #999999;
     font-weight: 500;
@@ -765,6 +784,78 @@
 .details-page .dream-homes-container.is-carousel .dream-homes-next-btn {
 	display: block
 }
-
-
 /*dream homes end*/
+
+/************************************/
+.introduction-wrapper .print-head {
+  width: 100%
+}
+.introduction-wrapper .print-head .print-head-wrapper {
+  height: 190px;
+  background-color: #111c40;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.introduction-wrapper .print-head .print-head-wrapper .left-image {
+  padding: 30px 10px;
+  float: left;
+}
+.introduction-wrapper .print-head .print-head-wrapper .left-image img{
+  width: 270.8px;
+  height: 130px;
+}
+.introduction-wrapper .print-head .print-head-wrapper .right-descriptions {
+    float: right;
+    padding: 10px 10px
+}
+.introduction-wrapper .print-head .print-head-wrapper .right-descriptions .desc-text ul li.center-text{
+  margin:auto 70px;
+}
+.introduction-wrapper .print-head .print-head-wrapper .right-descriptions .desc-text .price {
+  font:500 24px/32px "microsoft yahei";
+  color: white;
+}
+.introduction-wrapper .print-head .print-head-wrapper .right-descriptions .desc-text .period {
+    font:500 12px/32px "microsoft yahei";
+}
+.introduction-wrapper .print-head .print-head-wrapper .right-descriptions .desc-text .time {
+    font:500 14px/32px "microsoft yahei";
+    color: white;
+}
+.introduction-wrapper .print-head .print-head-wrapper .right-descriptions .desc-text .date {
+    font:500 18px/32px "microsoft yahei";
+    color: red;
+}
+.introduction-wrapper .print-head .print-head-wrapper .right-descriptions .desc-text ul li span {
+    font:500 16px/32px "microsoft yahei";
+    margin-right: 5px;
+    color:white;
+}
+.introduction-wrapper .print-image{
+    width: 100%;
+}
+.introduction-wrapper .print-image .image-description .left-side-image {
+    width: 70%;
+    float: left;
+}
+.introduction-wrapper .print-image .image-description .right-side-image{
+    width: 30%;
+    float: left;
+}
+.introduction-wrapper .print-image .image-description .left-side-image img{
+  width: 616px;
+  height: 100%;
+  padding: 5px 5px 0 0;
+  display: inline-block;
+}
+.introduction-wrapper .print-image .image-description .right-side-image img:first-child {
+  width: 100%;
+  height: 206px;
+  padding: 5px 0 5px 0;
+}
+.introduction-wrapper .print-image .image-description .right-side-image img:last-child {
+  width: 100%;
+  height: 206px;
+  padding: 0;
+}
+/************************************/

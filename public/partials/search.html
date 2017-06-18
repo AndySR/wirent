@@ -29,7 +29,7 @@
 				<div class="header-wrap1">
 					<div class="search-box-wrap1 left-box" log-mod="search">
 						<div class="header-wrap1-title">
-							<h1>Share Rental</h1>
+							<h1 translate="search.sr">Share Rental</h1>
 						</div>
 						<div class="search-box-con1">
 							<script type="text/ng-template" id="myModalContent.html">
@@ -42,14 +42,13 @@
 									<div class="searchBox" style="z-index: 10;" data-action="/ershoufang/rs">
 										<select-search1 datas1="datas1" get-data1="getData1(searchField1)" change1="change1(x1)" bind="searchField1" x1="x1"></select-search1>
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="shareSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="shareSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
 												<a style="color:white;margin-left: 5px;"><i class="fa fa-lg fa-search"></i></a>
 										</button>-->
 										<div id="userNews" class="savesearch">
-
 										</div>
 									</div>
 									<div id="suggest-cont" class="suggest-wrap" data-bl="sug" data-el="sug" style="width: 646px;"></div>
@@ -699,16 +698,13 @@
 										</ul>
 										 <div class="surrounding-suburbs-more-options">
 										      <input type="checkbox" value="None" id="roundedOne" name="check" checked />
-										      <label for="roundedOne">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surrounding&nbsp;&nbsp;Suburbs</label>
+										      <label for="roundedOne_right"></label><i translate="search.surround" style="width: 200px!important; height: 20px; display: inline-block; position: absolute; left: 0;top: 0; color: white;"></i>
 									    </div>
 									</div>
 									<div class="more-options-right">
 										<a class="angle-icon" ng-click="more_options_right_right=!more_options_right_right">
-											more
-											<span>
-												<i ng-show="!more_options_right_right" class="fa fa-angle-down"></i>
-												<i ng-show="more_options_right_right" class="fa fa-angle-up"></i>
-											</span>
+			 								<span ng-show="!more_options_right_right"><i translate="search.more"></i>&nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i></span>
+											<span ng-show="more_options_right_right"><i translate="search.less"></i>&nbsp;<i class="fa fa-angle-up"></i></span>
 										</a>
 									</div>
 								</div>
@@ -721,7 +717,7 @@
 				<div class="header-wrap2">
 					<div class="search-box-wrap2 right-box" log-mod="search">
 						<div class="header-wrap2-title">
-							<h1>Entire Rental</h1>
+							<h1 translate="search.er">Entire Rental</h1>
 						</div>
 						<div class="search-box-con2">
 							<script type="text/ng-template" id="myModalContent.html">
@@ -734,7 +730,7 @@
 									<div class="searchBox2" style="z-index: 10;" >
 										<select-search datas="datas" get-data="getData(searchField)" change="change(x)" bind="searchField" x="x"></select-search>
 										<!--<input type="text" class="input-lg form-control" placeholder="Search">-->
-										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="entireSearch()" type="button">Search&nbsp;<a style="color:white; "><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
+										<button class="btn btn-lg btn-success" style="position: absolute; left: 473px;top: 0;" ng-click="entireSearch()" type="button"><a translate="search.title" style="color:white;"></a>&nbsp;<a style="color:white;"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></button>
 										<!--<input class="text left txt searchVal autoSuggest" name="keyword" autocomplete="off" placeholder="Search by suburb, region, postcode or address..." id="keyword-box">
 										<button class="btn home-ico ico-search left" id="findHouse" type="button">
 												Search
@@ -1391,16 +1387,13 @@
 										</ul>
 										 <div class="surrounding-suburbs-more-options-left">
 										      <input type="checkbox" value="None" id="roundedOne_left" name="check" checked />
-										      <label for="roundedOne_left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surrounding&nbsp;&nbsp;Suburbs</label>
+										      <label for="roundedOne_left"></label><i translate="search.surround" style="width: 200px!important; height: 20px; display: inline-block; position: absolute; left: 0;top: 0; color: white;"></i>
 									    </div>
 									 </div>
 									 <div class="more-options-right">
-										 <a class="angle-icon" ng-click="more_options_right_left=!more_options_right_left">
-											 more
-											 <span>
-												 <i ng-show="!more_options_right_left" class="fa fa-angle-down"></i>
-												 <i ng-show="more_options_right_left" class="fa fa-angle-up"></i>
-											 </span>
+										 <a class="angle-icon" ng-click="more_options_right_left=!more_options_right_left">				 
+										 	<span ng-show="!more_options_right_left"><i translate="search.more"></i>&nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i></span>
+											<span ng-show="more_options_right_left"><i translate="search.less"></i>&nbsp;<i class="fa fa-angle-up"></i></span>																						 
 										 </a>
 									 </div>
 								</div>
@@ -1422,59 +1415,47 @@
 					<div class="top-cities clear">
 						<header class="latest-news-header">
 							<a class="latest-news-title-link">
-								<h1 class="latest-news-title h1">主题专区</h1></a>
+								<h1 class="latest-news-title h1"  translate="tips.descriptions.title">主题专区</h1></a>
 						</header>
 						<div class="pics pics1">
 							<div class="left1">
 								<div class="wh city-pic" ng-click="search('university')" >
-									<a ng-click="search('university')" title="学生公寓">
+									<a ng-click="search('university')">
 										<a class="cover-img"></a>
-										<img src="../img/uni.jpg" alt="学生公寓">
+										<img src="../img/uni.jpg">
 										<span class="flaticon-college-graduation2" style="opacity: 1; color: lightblue;"></span>
 									</a>
 									<div class="holder1">
 										<i></i>
 										<p class="desTile1">
 											<span class="flaticon-college-graduation2" style="opacity: 1; color: chocolate;"></span>
-											<a class="city-title" rel="nofollow" ng-click="search('university')" title="学生公寓"><em>学生公寓</em></a>
-											<!--<a href="#" title="学生公寓"><span><strong>学生公寓</strong></span></a>
-										<a href="#" title="学生公寓"><span><strong>学生公寓</strong></span></a>-->
+											<a class="city-title" rel="nofollow" ng-click="search('university')"><em translate='tips.descriptions.uni'></em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
 								<div class="w city-pic railroad" ng-click="search('train_station')" >
-									<a ng-click="search('train_station')" title="火车站">
-										<img src="img/station01Warm.jpg" alt="火车站">
+									<a ng-click="search('train_station')">
+										<img src="img/station01Warm.jpg">
 										<i class="flaticon-train-on-railroad"></i>
 									</a>
 									<div class="holder1">
-										<i></i>
 										<p class="desTile1">
 											<i class="flaticon-train-on-railroad2" style="opacity: 1; color: orange;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('train_station')" title="火车站"><em>火车站</em></a>
-											<!--<a href="#" title="北京二手房"><span><strong>长途搬家</strong></span></a>
-										<a href="#" title="搬家服务"><span><strong>短途搬家</strong></span></a>-->
+											<a class="city-title" rel="nofollow" ng-click="search('train_station')"><em translate='tips.descriptions.station'>火车站</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">搬家服务</h3>-->
 								</div>
 								<div class="wh city-pic graduation" ng-click="search('backpack')">
 									<a ng-click="search('backpack')" title="背包客">
-
 										<img src="../img/backpacker02Warm.jpg" alt="背包客">
-										<!--<i class="flaticon-backpack2" style="z-index: 1; position: absolute; top: 70px;left: 60px;"></i>-->
 									</a>
 									<div class="holder1">
 										<i></i>
 										<p class="desTile1">
 											<i class="flaticon-backpack2" style="opacity: 1; color: greenyellow;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="背包客"><em>背包客</em></a>
-											<!--<a href="#" title="水电网服务"><span><strong>水电网服务</strong></span></a>
-										<a href="#" title="水电网服务"><span><strong>电话预约</strong></span></a>-->
+											<a class="city-title" rel="nofollow" ng-click="search('backpack')" title="背包客"><em translate='tips.descriptions.backpack'>背包客</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">水电网服务</h3>-->
 								</div>
 								<div class="wh city-pic park-city-space" ng-click="search('park')" >
 									<a ng-click="search('park')" title="近公园绿地">
@@ -1485,12 +1466,9 @@
 										<i></i>
 										<p class="desTile1">
 											<i class="flaticon-green-park-city-space2" style="opacity: 1; color: green;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('park')" title="近公园绿地"><em>近公园绿地</em></a>
-											<!--<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
-										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>-->
+											<a class="city-title" rel="nofollow" ng-click="search('park')" title="近公园绿地"><em translate='tips.descriptions.park'>近公园绿地</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">清洁服务</h3>-->
 								</div>
 								<div class="wh city-pic open-book" ng-click="search('school')" >
 									<a ng-click="search('school')" title="学区房">
@@ -1501,12 +1479,9 @@
 										<i></i>
 										<p class="desTile1">
 											<i class="flaticon-open-book2" style="opacity: 1; color: yellow;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('school')" title="学区房"><em>学区房</em></a>
-											<!--<a href="#" title="代收包裹"><span><strong>邮寄包裹</strong></span></a>
-										<a href="#" title="代收包裹"><span><strong>代收包裹</strong></span></a>-->
+											<a class="city-title" rel="nofollow" ng-click="search('school')" title="学区房"><em translate='tips.descriptions.school'>学区房</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">代收包裹</h3>-->
 								</div>
 							</div>
 							<div class="left1 clear">
@@ -1519,9 +1494,7 @@
 										<i></i>
 										<p class="desTile1">
 											<i class="flaticon-people2" style="opacity: 1; color: pink;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('big_family')" title="大家庭/大庭院"><em>大庭院</em></a>
-											<!--<a href="#" title="清洁服务"><span><strong>搬家清洁</strong></span></a>
-										<a href="#" title="清洁服务"><span><strong>电话预约</strong></span></a>-->
+											<a class="city-title" rel="nofollow" ng-click="search('big_family')" title="大家庭/大庭院"><em translate='tips.descriptions.bigfamily'>大庭院</em></a>
 										</p>
 									</div>
 									<!--<h3 class="title">清洁服务</h3>-->
@@ -1535,12 +1508,9 @@
 										<i></i>
 										<p class="desTile1">
 												<i class="flaticon-shopping-cart2" style="opacity: 1; color: darkred;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('shopping_mall')" title="购物商场"><em>购物商场</em></a>
-											<!--<a href="#" title="房屋装修"><span><strong>房屋翻新</strong></span></a>
-										<a href="#" title="房屋装修"><span><strong>局部装修</strong></span></a>-->
+											<a class="city-title" rel="nofollow" ng-click="search('shopping_mall')" title="购物商场"><em translate='tips.descriptions.shop'>购物商场</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">房屋装修</h3>-->
 								</div>
 								<div class="right1 city-pic business-rental" ng-click="search('offical_rental')" >
 									<a ng-click="search('offical_rental')" title="Office Rental">
@@ -1551,12 +1521,9 @@
 										<i></i>
 										<p class="desTile1">
 											<i class="flaticon-business2" style="opacity: 1; color: blue;"></i>
-											<a class="city-title" rel="nofollow" ng-click="search('offical_rental')" title="Office Rental"><em>Office Rental</em></a>
-											<!--<a href="#" title="开锁&配钥匙服务"><span><strong>其他</strong></span></a>
-										<a href="#" title="开锁&配钥匙服务"><span><strong>其他</strong></span></a>-->
+											<a class="city-title" rel="nofollow" ng-click="search('offical_rental')" title="Office Rental"><em translate='tips.descriptions.office'>Office Rental</em></a>
 										</p>
 									</div>
-									<!--<h3 class="title">Cut Keys</h3>-->
 								</div>
 							</div>
 						</div>
@@ -1571,7 +1538,7 @@
 						<div class="top-cities clear">
 							<header class="latest-news-header">
 								<a class="latest-news-title-link">
-									<h1 class="latest-news-title h1">商家专区</h1></a>
+									<h1 class="latest-news-title h1" translate='tips.business.title'>商家专区</h1></a>
 							</header>
 							<div class="pics clear">
 								<div class="left">
@@ -1583,9 +1550,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" title="搬家服务"><em>搬家服务</em></a>
-												<a ng-click="businessSearch('move')" title="北京二手房"><span><strong>长途搬家</strong></span></a>
-												<a ng-click="businessSearch('move')" title="搬家服务"><span><strong>短途搬家</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('move')" title="搬家服务"><em translate='tips.business.move.title'>搬家服务</em></a>
+												<a ng-click="businessSearch('move')" title="北京二手房"><span><strong translate='tips.business.move.tip_1'>长途搬家</strong></span></a>
+												<a ng-click="businessSearch('move')" title="搬家服务"><span><strong translate='tips.business.move.tip_2'>短途搬家</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">搬家服务</h3>-->
@@ -1598,9 +1565,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')" title="房屋装修"><em>painting</em></a>
-												<a ng-click="businessSearch('painting')" title="painting"><span><strong>房屋粉刷</strong></span></a>
-												<a ng-click="businessSearch('painting')" title="painting"><span><strong>局部装修</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('painting')" title="房屋装修"><em translate='tips.business.painting.title'>painting</em></a>
+												<a ng-click="businessSearch('painting')" title="painting"><span><strong translate='tips.business.painting.tip_1'>房屋粉刷</strong></span></a>
+												<a ng-click="businessSearch('painting')" title="painting"><span><strong translate='tips.business.painting.tip_2'>局部装修</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">painting</h3>-->
@@ -1613,9 +1580,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')" title="上海站"><em>仓储</em></a>
-												<a ng-click="businessSearch('storage')" title="仓储"><span><strong>仓储</strong></span></a>
-												<a ng-click="businessSearch('storage')" title="仓储"><span><strong>仓储</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('storage')" title="上海站"><em translate='tips.business.store.title'>仓储</em></a>
+												<a ng-click="businessSearch('storage')" title="仓储"><span><strong translate='tips.business.store.tip_1'>仓储</strong></span></a>
+												<a ng-click="businessSearch('storage')" title="仓储"><span><strong translate='tips.business.store.tip_2'>仓储</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">仓储</h3>-->
@@ -1628,9 +1595,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')" title="Handyman"><em>Handyman</em></a>
-												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong>pulumber</strong></span></a>
-												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong>水工</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('handyman')" title="Handyman"><em translate='tips.business.handyman.title'>Handyman</em></a>
+												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong translate='tips.business.handyman.tip_1'>pulumber</strong></span></a>
+												<a ng-click="businessSearch('handyman')" title="Handyman"><span><strong translate='tips.business.handyman.tip_2'> 水工</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">Handyman</h3>-->
@@ -1643,9 +1610,9 @@
 										<div class="holder">
 											<i></i>
 											<p class="desTile">
-												<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')" title="清洁服务"><em>清洁服务</em></a>
-												<a ng-click="businessSearch('clean')" title="天津二手房"><span><strong>上门服务</strong></span></a>
-												<a ng-click="businessSearch('clean')" title="清洁服务"><span><strong>电话预约</strong></span></a>
+												<a class="city-title" rel="nofollow" ng-click="businessSearch('clean')" title="清洁服务"><em translate='tips.business.clean.title'>清洁服务</em></a>
+												<a ng-click="businessSearch('clean')" title="天津二手房"><span><strong translate='tips.business.clean.tip_1'>上门服务</strong></span></a>
+												<a ng-click="businessSearch('clean')" title="清洁服务"><span><strong translate='tips.business.clean.tip_2'>电话预约</strong></span></a>
 											</p>
 										</div>
 										<!--<h3 class="title">清洁服务</h3>-->
@@ -1658,9 +1625,9 @@
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')" title="家电"><em>家电</em></a>
-											<a ng-click="businessSearch('appliance')" title="家电"><span><strong>家电</strong></span></a>
-											<a ng-click="businessSearch('appliance')" title="家电"><span><strong>电话预约</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('appliance')" title="家电"><em translate='tips.business.app.title'>家电</em></a>
+											<a ng-click="businessSearch('appliance')" title="家电"><span><strong translate='tips.business.app.tip_1'>家电</strong></span></a>
+											<a ng-click="businessSearch('appliance')" title="家电"><span><strong translate='tips.business.app.tip_2'> 电话预约</strong></span></a>
 										</p>
 									</div>
 									<!--<h3 class="title">家电</h3>-->
@@ -1674,9 +1641,9 @@
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')" title="代收包裹"><em>外卖</em></a>
-											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong>外卖</strong></span></a>
-											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong>外卖</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('take_away')" title="代收包裹"><em translate='tips.business.food.title'>外卖</em></a>
+											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong translate='tips.business.food.tip_1'>外卖</strong></span></a>
+											<a ng-click="businessSearch('take_away')" title="外卖"><span><strong translate='tips.business.food.tip_2'>外卖</strong></span></a>
 										</p>
 									</div>
 									<!--<h3 class="title">外卖</h3>-->
@@ -1689,9 +1656,9 @@
 									<div class="holder">
 										<i></i>
 										<p class="desTile">
-											<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')" title="freepost"><em>freepost</em></a>
-											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong>freepost</strong></span></a>
-											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong>freepost</strong></span></a>
+											<a class="city-title" rel="nofollow" ng-click="businessSearch('free_post')" title="freepost"><em translate='tips.business.post.title'>freepost</em></a>
+											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong translate='tips.business.post.tip_1'>freepost</strong></span></a>
+											<a ng-click="businessSearch('free_post')" title="freepost"><span><strong translate='tips.business.post.tip_2'>freepost</strong></span></a>
 										</p>
 									</div>
 									<!--<h3 class="title">freepost</h3>-->

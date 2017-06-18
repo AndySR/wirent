@@ -300,11 +300,124 @@
 	},
 	"search":
 	{
-		"title":"Search"
+		"title":"Search",
+		"er":"Entire Rental",
+		"sr":"Share Rental",
+		"address":"Address",
+		"address_tips":"Search by surburb,region,postcode",
+		"train": "Train Station",
+		"train_tips":"Search by train station nearby",
+		"surround":"Surrond Suburb Including",
+		"more":"more",
+		"less":"tiny"
+	},
+	"hotrent":"Hot Rent",
+	"tips":
+	{
+		"title":"Tips",
+		"guide":
+		{
+			"tenant":"Need a room?",
+			"landlord":"Need rents?"
+		},
+		"descriptions":
+		{
+			"title":"Themes",
+			"station":"Train_station",
+			"uni":"Uni Nearby",
+			"backpack":"Backpack",
+			"park":"Park Nearby",
+			"school":"School Zone",
+			"bigfamily":"Big Family Capatible",
+			"shop":"Shopping Mall Nearby",
+			"office":"Office Rental"
+		},
+		"business":
+		{
+			"title":"Business",
+			"move":
+			{
+				"title":"Move",
+				"tip_1":"Surrond Area",
+				"tip_2":"Long Distance"
+			},
+			"painting":
+			{
+				"title":"Painting",
+				"tip_1":"Entire Area",
+				"tip_2":"Partial Area"
+			},
+			"store":
+			{
+				"title":"Storage",
+				"tip_1":"Luggage",
+				"tip_2":"Container"
+			},	
+			"handyman":
+			{
+				"title":"Handyman",
+				"tip_1":"Repair",
+				"tip_2":"Maintenance"
+			},	
+			"clean":
+			{
+				"title":"Cleaning",
+				"tip_1":"Short term",
+				"tip_2":"Long term"
+			},	
+			"app":
+			{
+				"title":"Appliance",
+				"tip_1":"Brands",
+				"tip_2":"Dealer"
+			},	
+			"food":
+			{
+				"title":"Take Away",
+				"tip_1":"Restaurant",
+				"tip_2":"Cafe"
+			},
+			"post":
+			{
+				"title":"Free Post",
+				"tip_1":"New",
+				"tip_2":"Resale"
+			}
+		}
 	},
 	"detail":
 	{
 		"title":"Detail"
+	},
+	"business":
+	{
+		"title":"Business",
+		"counts":
+		{
+			"part_1":"total",
+			"part_2":" ",
+			"part_3":"company"
+		},
+		"row":
+		{
+			"location":"Service Locations",
+			"contact":
+			{
+				"title":"Contact",
+				"phone":"Phone",
+				"email":"email",
+				"website":"website"
+			},
+			"score":
+			{
+				"General":"General",
+				"Quality":"Quality",
+				"Attitude":"Attitude",
+				"Efficency":"Efficency",
+				"Recommond":"Recommond"
+			},
+			"comments":"Comments"
+		}
 	},
 	"onestep":
 	{
@@ -355,15 +468,12 @@
 			{
 				"title":"Section_1",
 				"step_1":"Sign up as a landlord and update your basic personal information in 'Profile|my Profile'",
-				"step_2":"",
+				"step_2":"add your rental property in 'Profile|Property Management'",
 				"tips":"You can contact us to introduce all your and your properties' information for rental requirement on business hours directly."				
 			}
+			
 		}
 	},
-	"footer":
-	{
-		"title":"Footer"
-	},	
 	"conditions of use":
 	{
 		"title":"conditions of use"

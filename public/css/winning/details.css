@@ -786,7 +786,7 @@
 /*dream homes end*/
 
 /************************************/
-.introduction-head {
+/*.introduction-head {
   width: 880px;
   margin: 0 auto;
 }
@@ -849,7 +849,6 @@
   width: 616px;
   height: 100%;
   padding: 5px 5px 0 0;
-  /*display: inline-block;*/
 }
 .introduction-head .details-image .image-description .right-side-image img:first-child {
   width: 100%;
@@ -860,5 +859,5 @@
   width: 100%;
   height: 206px;
   padding: 0;
-}
+}*/
 /************************************/

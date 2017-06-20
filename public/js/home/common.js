@@ -56,20 +56,8 @@
           /***************************************************************/
      //model types
      $scope.myMode = 'Entire';
-     $scope.Modes = [{
-      id: 1,
-      name: 'Entire'
-     }, {
-      id: 2,
-      name: 'Share'
-     }, {
-      id: 3,
-      name: 'New Homes'
-     }, {
-      id: 4,
-      name: 'Sold'
-     }];
-
+     $scope.Modes = [{id: 1,name: 'Entire'}, {id: 2,name: 'Share'},
+     {id: 3, name: 'New Homes'}, {id: 4,name: 'Sold'}];
      // input address
      $scope.getData = function(val) {
       $scope.datas = [];
@@ -94,7 +82,6 @@
       } else {
        $scope.datas = [""];
       }
-
      }
      /*share get datas starts*/
      $scope.getData1 = function(val) {
@@ -120,27 +107,14 @@
       } else {
        $scope.datas1 = [""];
       }
-
      }
      /***share get datas ends***/
 
      // property types
      $scope.myPropertyType = '';
-     $scope.propertyTypes = [{
-       id: 1,
-       propertyType: 'House'
-      }, {
-       id: 2,
-       propertyType: 'Apartment'
-      },
-      {
-       id: 3,
-       propertyType: 'Unit'
-      }, {
-       id: 4,
-       propertyType: 'Studio'
-      }
-     ];
+     $scope.propertyTypes = [{ id: 1,propertyType: 'House'},
+     {id: 2, propertyType: 'Apartment'},{id: 3,propertyType: 'Unit'},
+     {id: 4, propertyType: 'Studio'}];
 
      //select minPrice
      $scope.myMinPrice = '0';
@@ -149,174 +123,37 @@
      $scope.myMinPrice_Share = '0';
      //select maxPrice
      $scope.myMaxPrice_Share = '$2000';
-     $scope.Prices = [{
-      id: 1,
-      price: ''
-     }, {
-      id: 2,
-      price: '$50'
-     }, {
-      id: 3,
-      price: '$100'
-     }, {
-      id: 4,
-      price: '$150'
-     }, {
-      id: 5,
-      price: '$200'
-     }, {
-      id: 6,
-      price: '$250'
-     }, {
-      id: 7,
-      price: '$300'
-     }, {
-      id: 8,
-      price: '$350'
-     }, {
-      id: 9,
-      price: '$400'
-     }, {
-      id: 10,
-      price: '$450'
-     }, {
-      id: 11,
-      price: '$500'
-     }, {
-      id: 12,
-      price: '$550'
-     }, {
-      id: 13,
-      price: '$600'
-     }, {
-      id: 14,
-      price: '$650'
-     }, {
-      id: 15,
-      price: '$700'
-     }, {
-      id: 16,
-      price: '$750'
-     }, {
-      id: 17,
-      price: '$800'
-     }, {
-      id: 18,
-      price: '$850'
-     }, {
-      id: 19,
-      price: '$900'
-     }, {
-      id: 20,
-      price: '$950'
-     }, {
-      id: 21,
-      price: '$1000'
-     }, {
-      id: 22,
-      price: '$1100'
-     }, {
-      id: 23,
-      price: '$1200'
-     }, {
-      id: 24,
-      price: '$1300'
-     }, {
-      id: 25,
-      price: '$1400'
-     }, {
-      id: 26,
-      price: '$1500'
-     }, {
-      id: 27,
-      price: '$1600'
-     }, {
-      id: 28,
-      price: '$1700'
-     }, {
-      id: 29,
-      price: '$1800'
-     }, {
-      id: 30,
-      price: '$1900'
-     }];
+     $scope.Prices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
+               ,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
+               ,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
+               ,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
+               ,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
+               ,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
+               ,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
+               ,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
      //select bedsNum
-     $scope.minBedNum = '0';
-     $scope.maxBedNum = '5';
-     $scope.minBedNum_Share = '0';
-     $scope.maxBedNum_Share = '5';
-     $scope.bedsNum = [{
-      id: 1,
-      num: ''
-     }, {
-      id: 2,
-      num: '1'
-     }, {
-      id: 3,
-      num: '2'
-     }, {
-      id: 4,
-      num: '3'
-     }, {
-      id: 5,
-      num: '4'
-     }, {
-      id: 6,
-      num: '5'
-     }];
+     $scope.minBedNum = 0;
+     $scope.maxBedNum = 0;
+     $scope.minBedNum_Share = 0;
+     $scope.maxBedNum_Share = 0;
+     $scope.bedsNum = [{ id: 1, num: '1' }, { id: 2, num: '2' }, { id: 3, num: '3' },{ id: 4, num: '4' }
+             ,{ id: 5, num: '5' },{ id: 6, num: '6' },{ id: 7, num: '7' },{ id: 8, num: '8' },{ id: 9, num: '9' }
+             ,{ id: 10, num: '10' }];
      //select bathNum
      $scope.minBathNum = 0;
-     $scope.maxBathNum = 5;
+     $scope.maxBathNum = 0;
      $scope.minBathNum_Share = 0;
-     $scope.maxBathNum_Share = 5;
-     $scope.bathsNum = [{
-      id: 1,
-      num: ''
-     }, {
-      id: 2,
-      num: '1'
-     }, {
-      id: 3,
-      num: '2'
-     }, {
-      id: 4,
-      num: '3'
-     }, {
-      id: 5,
-      num: '4'
-     }, {
-      id: 6,
-      num: '5'
-     }];
-
+     $scope.maxBathNum_Share = 0;
+     $scope.bathsNum = [{ id: 1, num: '0' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
+             ,{ id: 5, num: '4' },{ id: 6, num: '5' },{ id: 7, num: '6' },{ id: 8, num: '7' },{ id: 9, num: '8' },{ id: 10, num: '9' },{ id: 11, num: '10' }];
      //select parkingNum
      $scope.myParkingNum = 0;
      $scope.minParkingNum = 0;
      $scope.maxParkingNum = 0;
      $scope.minParkingNum_Share = 0;
      $scope.maxParkingNum_Share = 0;
-     $scope.parkingsNum = [{
-      id: 1,
-      num: ''
-     }, {
-      id: 2,
-      num: '0'
-     }, {
-      id: 3,
-      num: '1'
-     }, {
-      id: 4,
-      num: '2'
-     }, {
-      id: 5,
-      num: '3'
-     }, {
-      id: 6,
-      num: '4'
-     }, {
-      id: 7,
-      num: '5'
-     }];
+     $scope.parkingsNum = [{ id: 1, num: '0' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
+             ,{ id: 5, num: '4' },{ id: 6, num: '5' },{ id: 7, num: '6' },{ id: 8, num: '7' },{ id: 9, num: '8' },{ id: 10, num: '9' },{ id: 11, num: '10' }];
 
      function SetCredentials(searchData) {
       $rootScope.globals = {
@@ -329,127 +166,6 @@
       cookieExp.setDate(cookieExp.getDate() + 7);
       $cookies.globals = $rootScope.globals;
      }
-     //search for the results of properties
-     $scope.entireSearch = function() {
-      //selected items which are an array
-      console.log('$scope.x',$scope.x);
-      if($scope.x) {
-       var address = $scope.x[0].split(",");
-       console.log("xxx", address);
-       entireData = {
-        ER_Suburb: address[0],
-        ER_Region: address[1],
-        ER_Type: $scope.myPropertyType,
-        ER_PriceMin: $scope.myMinPrice,
-        ER_PriceMax: $scope.myMaxPrice,
-        ER_BedRoomMin: $scope.minBedNum,
-        ER_BedRoomMax: $scope.maxBedNum,
-        ER_BathRoomMin: $scope.minBathNum,
-        ER_BathRoomMax: $scope.maxBathNum,
-        ER_ParkingMin: $scope.minParkingNum,
-        ER_ParkingMax: $scope.maxParkingNum,
-        ER_AreaMin: 0,
-        ER_AreaMax: 50000,
-        ER_AvailableDate: '2200-01-01',
-        ER_Description:'',
-        ER_Feature: ER_Feature
-       };
-      } else {
-       entireData = {
-        ER_Suburb: '',
-        ER_Region: '',
-        ER_Type: $scope.myPropertyType,
-        ER_PriceMin: $scope.myMinPrice,
-        ER_PriceMax: $scope.myMaxPrice,
-        ER_BedRoomMin: $scope.minBedNum,
-        ER_BedRoomMax: $scope.maxBedNum,
-        ER_BathRoomMin: $scope.minBathNum,
-        ER_BathRoomMax: $scope.maxBathNum,
-        ER_ParkingMin: $scope.minParkingNum,
-        ER_ParkingMax: $scope.maxParkingNum,
-        ER_AreaMin: 0,
-        ER_AreaMax: 5000,
-        ER_AvailableDate: '2200-01-01',
-        ER_Description:'',
-        ER_Feature: ER_Feature
-       }
-      }
-
-      // $state.go('app.googlemap');
-      console.log(entireData);
-      $http.post('/customer/filt/entire', entireData)
-       .then(function(r) {
-        SearchService.set(r);
-        updateService.set(entireData);
-        //							SetCredentials(r);
-        console.log('r===>', r);
-        if(r.data.length > 0) {
-         $state.go('app.listpage');
-        }
-        //
-
-       }, function(e) {
-
-       });
-     }
-		 /************share rooms data filter get starts**************/
-		 $scope.shareSearch = function(){
-			 //selected items which are an array
-			 console.log('$scope.x',$scope.x);
-			 if($scope.x) {
-				var address = $scope.x[0].split(",");
-				console.log("xxx", address);
-				shareData = {
-				 ER_Suburb: address[0],
-				 ER_Region: address[1],
-				 ER_Type: $scope.myPropertyType,
-				 ER_PriceMin: $scope.myMinPrice_Share,
-				 ER_PriceMax: $scope.myMaxPrice_Share,
-				 ER_BedRoomMin: $scope.minBedNum_Share,
-				 ER_BedRoomMax: $scope.maxBedNum_Share,
-				 ER_BathRoomMin: $scope.minBathNum_Share,
-				 ER_BathRoomMax: $scope.maxBathNum_Share,
-				 ER_ParkingMin: $scope.minParkingNum_Share,
-				 ER_ParkingMax: $scope.maxParkingNum_Share,
-				 ER_AreaMin: 0,
-				 ER_AreaMax: 50000,
-				 ER_AvailableDate: '2200-01-01',
-				 ER_Description:'',
-				 ER_Feature: ER_Feature
-				};
-			 } else {
-				shareData = {
-				 ER_Suburb: '',
-				 ER_Region: '',
-				 ER_Type: $scope.myPropertyType,
-				 SRName:'',
-				 SRPriceMin: $scope.myMinPrice_Share,
-				 SRPriceMax: $scope.myMaxPrice_Share,
-				 SRAreaMin: 0,
-				 SRAreaMax: 5000,
-				 SRAvailableDate: '2200-01-01',
-				 ER_Description:'',
-				 ER_Feature: ER_Feature
-				}
-			 }
-
-			 // $state.go('app.googlemap');
-			 console.log(shareData);
-			 $http.post('/customer/filt/share', shareData)
-				.then(function(r) {
-				 SearchService.set(r);
-				 updateService.set(shareData);
-				 //							SetCredentials(r);
-				 console.log('r===>', r);
-				 if(r.data.length > 0) {
-					$state.go('app.listpage');
-				 }
-				 //
-				}, function(e) {
-
-				});
-		 }
-		 /************share rooms data filter get starts**************/
      /**
       * features update code starts
       */
@@ -1993,9 +1709,281 @@
        }
       }
      }
+     /****************************train filter ends*****************************/
 
+/********************************************************************************
+                                search ----share and entire search
+********************************************************************************/
+     $scope.include_area = true;
+     $scope.include_area_share = true;
+     $http.get('/customer/profile')
+     .then(function(r) {
+       console.log(r);
+       if(r.data.customer_login_status){
+         //search for the results of properties
+           $scope.entireSearch = function() {
+            //selected items which are an array
+            console.log('$scope.x',$scope.x);
+            if($scope.x) {
+             var address = $scope.x[0].split(",");
+             console.log("xxx", address);
+             entireData = {
+              CID:r.data.CID,
+              ER_Suburb: address[0],
+              ER_Region: address[1],
+              include_area:$scope.include_area,
+              ER_Type: $scope.myPropertyType,
+              ER_PriceMin: $scope.myMinPrice,
+              ER_PriceMax: $scope.myMaxPrice,
+              ER_BedRoomMin: $scope.minBedNum,
+              ER_BedRoomMax: $scope.maxBedNum,
+              ER_BathRoomMin: $scope.minBathNum,
+              ER_BathRoomMax: $scope.maxBathNum,
+              ER_ParkingMin: $scope.minParkingNum,
+              ER_ParkingMax: $scope.maxParkingNum,
+              ER_AreaMin: 0,
+              ER_AreaMax: 50000,
+              ER_AvailableDate: '2200-01-01',
+              ER_Description:'',
+              ER_Feature: ER_Feature
+             };
+            } else {
+             entireData = {
+              CID:r.data.CID,
+              ER_Suburb: '',
+              ER_Region: '',
+              include_area:$scope.include_area,
+              ER_Type: $scope.myPropertyType,
+              ER_PriceMin: $scope.myMinPrice,
+              ER_PriceMax: $scope.myMaxPrice,
+              ER_BedRoomMin: $scope.minBedNum,
+              ER_BedRoomMax: $scope.maxBedNum,
+              ER_BathRoomMin: $scope.minBathNum,
+              ER_BathRoomMax: $scope.maxBathNum,
+              ER_ParkingMin: $scope.minParkingNum,
+              ER_ParkingMax: $scope.maxParkingNum,
+              ER_AreaMin: 0,
+              ER_AreaMax: 5000,
+              ER_AvailableDate: '2200-01-01',
+              ER_Description:'',
+              ER_Feature: ER_Feature
+             }
+            }
 
-    /****************************train filter ends*****************************/
+            // $state.go('app.googlemap');
+            console.log(entireData);
+            $http.post('/customer/filt/entire/tenant', entireData)
+             .then(function(r) {
+              SearchService.set(r);
+              updateService.set(entireData);
+              //							SetCredentials(r);
+              console.log('rrrrrrrrr==========>', r);
+              alert(222);
+              if(r.data.length > 0) {
+               $state.go('app.listpage');
+              }
+              //
+
+             }, function(e) {
+
+             });
+           }
+           /************************share search login status starts**************/
+           /************share rooms data filter get starts**************/
+          $scope.shareSearch = function(){
+            //selected items which are an array
+            console.log('$scope.x',$scope.x);
+            if($scope.x) {
+             var address = $scope.x[0].split(",");
+             console.log("xxx", address);
+             shareData = {
+              CID:r.data.CID,
+              ER_Suburb: address[0],
+              ER_Region: address[1],
+              include_area:$scope.include_area_share,
+              ER_Type: $scope.myPropertyType,
+              ER_PriceMin: $scope.myMinPrice_Share,
+              ER_PriceMax: $scope.myMaxPrice_Share,
+              ER_BedRoomMin: $scope.minBedNum_Share,
+              ER_BedRoomMax: $scope.maxBedNum_Share,
+              ER_BathRoomMin: $scope.minBathNum_Share,
+              ER_BathRoomMax: $scope.maxBathNum_Share,
+              ER_ParkingMin: $scope.minParkingNum_Share,
+              ER_ParkingMax: $scope.maxParkingNum_Share,
+              ER_AreaMin: 0,
+              ER_AreaMax: 50000,
+              ER_AvailableDate: '2200-01-01',
+              ER_Description:'',
+              ER_Feature: ER_Feature
+             };
+            } else {
+             shareData = {
+              CID:r.data.CID,
+              ER_Suburb: '',
+              ER_Region: '',
+              include_area:$scope.include_area_share,
+              ER_Type: $scope.myPropertyType,
+              SRName:'',
+              SRPriceMin: $scope.myMinPrice_Share,
+              SRPriceMax: $scope.myMaxPrice_Share,
+              SRAreaMin: 0,
+              SRAreaMax: 5000,
+              SRAvailableDate: '2200-01-01',
+              ER_Description:'',
+              ER_Feature: ER_Feature
+             }
+            }
+
+            // $state.go('app.googlemap');
+            console.log(shareData);
+            $http.post('/customer/filt/share', shareData)
+             .then(function(r) {
+              SearchService.set(r);
+              updateService.set(shareData);
+              //							SetCredentials(r);
+              console.log('r===>', r);
+              if(r.data.length > 0) {
+               $state.go('app.listpage');
+              }
+              //
+             }, function(e) {
+
+             });
+          }
+          /************share rooms data filter get ends**************/
+
+        }else {
+          //search for the results of properties
+            $scope.entireSearch = function() {
+             //selected items which are an array
+             console.log('$scope.x',$scope.x);
+             if($scope.x) {
+              var address = $scope.x[0].split(",");
+              console.log("xxx", address);
+              entireData = {
+               ER_Suburb: address[0],
+               ER_Region: address[1],
+               include_area:$scope.include_area,
+               ER_Type: $scope.myPropertyType,
+               ER_PriceMin: $scope.myMinPrice,
+               ER_PriceMax: $scope.myMaxPrice,
+               ER_BedRoomMin: $scope.minBedNum,
+               ER_BedRoomMax: $scope.maxBedNum,
+               ER_BathRoomMin: $scope.minBathNum,
+               ER_BathRoomMax: $scope.maxBathNum,
+               ER_ParkingMin: $scope.minParkingNum,
+               ER_ParkingMax: $scope.maxParkingNum,
+               ER_AreaMin: 0,
+               ER_AreaMax: 50000,
+               ER_AvailableDate: '2200-01-01',
+               ER_Description:'',
+               ER_Feature: ER_Feature
+              };
+             } else {
+              entireData = {
+               ER_Suburb: '',
+               ER_Region: '',
+               include_area:$scope.include_area,
+               ER_Type: $scope.myPropertyType,
+               ER_PriceMin: $scope.myMinPrice,
+               ER_PriceMax: $scope.myMaxPrice,
+               ER_BedRoomMin: $scope.minBedNum,
+               ER_BedRoomMax: $scope.maxBedNum,
+               ER_BathRoomMin: $scope.minBathNum,
+               ER_BathRoomMax: $scope.maxBathNum,
+               ER_ParkingMin: $scope.minParkingNum,
+               ER_ParkingMax: $scope.maxParkingNum,
+               ER_AreaMin: 0,
+               ER_AreaMax: 5000,
+               ER_AvailableDate: '2200-01-01',
+               ER_Description:'',
+               ER_Feature: ER_Feature
+              }
+             }
+
+             // $state.go('app.googlemap');
+             console.log(entireData);
+             $http.post('/customer/filt/entire', entireData)
+              .then(function(r) {
+               SearchService.set(r);
+               updateService.set(entireData);
+               //							SetCredentials(r);
+               console.log('r===>', r);
+               if(r.data.length > 0) {
+                $state.go('app.listpage');
+               }
+               //
+
+              }, function(e) {
+
+              });
+            }
+            /****************entire search without login ends***********************/
+
+            /***************share search without login starts************************/
+            /************share rooms data filter get starts**************/
+            $scope.shareSearch = function(){
+              //selected items which are an array
+              console.log('$scope.x',$scope.x);
+              if($scope.x) {
+               var address = $scope.x[0].split(",");
+               console.log("xxx", address);
+               shareData = {
+                ER_Suburb: address[0],
+                ER_Region: address[1],
+                include_area:$scope.include_area_share,
+                ER_Type: $scope.myPropertyType,
+                ER_PriceMin: $scope.myMinPrice_Share,
+                ER_PriceMax: $scope.myMaxPrice_Share,
+                ER_BedRoomMin: $scope.minBedNum_Share,
+                ER_BedRoomMax: $scope.maxBedNum_Share,
+                ER_BathRoomMin: $scope.minBathNum_Share,
+                ER_BathRoomMax: $scope.maxBathNum_Share,
+                ER_ParkingMin: $scope.minParkingNum_Share,
+                ER_ParkingMax: $scope.maxParkingNum_Share,
+                ER_AreaMin: 0,
+                ER_AreaMax: 50000,
+                ER_AvailableDate: '2200-01-01',
+                ER_Description:'',
+                ER_Feature: ER_Feature
+               };
+              } else {
+               shareData = {
+                ER_Suburb: '',
+                ER_Region: '',
+                include_area:$scope.include_area_share,
+                ER_Type: $scope.myPropertyType,
+                SRName:'',
+                SRPriceMin: $scope.myMinPrice_Share,
+                SRPriceMax: $scope.myMaxPrice_Share,
+                SRAreaMin: 0,
+                SRAreaMax: 5000,
+                SRAvailableDate: '2200-01-01',
+                ER_Description:'',
+                ER_Feature: ER_Feature
+               }
+              }
+
+              // $state.go('app.googlemap');
+              console.log(shareData);
+              $http.post('/customer/filt/share', shareData)
+               .then(function(r) {
+                SearchService.set(r);
+                updateService.set(shareData);
+                //							SetCredentials(r);
+                console.log('r===>', r);
+                if(r.data.length > 0) {
+                 $state.go('app.listpage');
+                }
+                //
+               }, function(e) {
+
+               });
+            }
+            /************share rooms data filter get ends**************/
+        }
+      });
+
     }
    ])
    .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {

@@ -25,7 +25,7 @@
 		.controller('WinCtrl', ['$scope', '$filter','$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($scope,$filter, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
-			$scope.letternums = 0;	
+			$scope.letternums = 0;
 			$http.get('/customer/profile')
 				.then(function(r) {
 					console.log(r);
@@ -51,7 +51,6 @@
 							if(r.data=="login"){
 								$state.go("app.login");
 							}else{
-
 							}
 						},function(e){
 							$state.go("app.login");
@@ -86,7 +85,7 @@
 										$state.go("app.shortlist");
 								//console.log("$scope.shortlistData",$scope.shortlistData);
 									},function(e){
-
+											console.log(e);
 									});
 							}
 						},function(e){
@@ -95,9 +94,5 @@
 
 			}
 			/*********************go to shortlist******************************************/
-
-
 		}])
-
-
 })();

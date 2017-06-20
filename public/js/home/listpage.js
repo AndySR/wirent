@@ -1,6 +1,4 @@
-;
-(function() {
-	'use strict';
+'use strict';
 	angular.module('andy')
 		.controller('listPageCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString',
 			function($scope,$animate,$log,$timeout,
@@ -9,6 +7,8 @@
 			updateService,utilConvertDateToString) {
 			var entireData = {};
 			var datafromhome = {};
+			$scope.favorsave = false;
+			$scope.shortlistInsert = {};
 			$scope.totalItems = 64;
 		    $scope.currentPage = 4;
 		     $animate.enabled(false);//消除carousel bug
@@ -82,7 +82,7 @@
 				$scope.minArea = 0;
 				$scope.maxArea = 10000;
 				/******************************end of filter data*******************************/
-				
+
 		/*datepicker start*/
 			$scope.today = function() {
 		      $scope.dt =new Date() ;
@@ -147,22 +147,22 @@
 						     case "%stove":
 						     	$scope.stove = true;
 						   	 break;
-						     case "%dishwasher": 
+						     case "%dishwasher":
 								$scope.dishwasher = true;
 						    break;
-						     case "%dryer": 
+						     case "%dryer":
 								$scope.dryer = true;
 						    break;
-						     case "%aircondition": 
+						     case "%aircondition":
 								$scope.aircondition = true;
 						    break;
-						     case "%refrigerator": 
+						     case "%refrigerator":
 								$scope.refrigerator = true;
 						    break;
-						     case "%laundry": 
+						     case "%laundry":
 								$scope.laundry = true;
 						    break;
-						     case "%bed": 
+						     case "%bed":
 								$scope.bed = true;
 						    break;
 						    case "%desk":
@@ -198,22 +198,22 @@
 						     case "%train_station;":
 						     	$scope.train = true;
 						   	 break;
-						     case "%backpack;": 
+						     case "%backpack;":
 								$scope.backpack = true;
 						    break;
-						     case "%park;": 
+						     case "%park;":
 								$scope.park = true;
 						    break;
-						     case "%school;": 
+						     case "%school;":
 								$scope.school = true;
 						    break;
-						     case "%big_family;": 
+						     case "%big_family;":
 								$scope.family = true;
 						    break;
-						     case "%shopping_mall;": 
+						     case "%shopping_mall;":
 								$scope.shoppingcenter = true;
 						    break;
-						     case "%offical_rental;": 
+						     case "%offical_rental;":
 								$scope.officerental = true;
 						    break;
 						    case "%university;":
@@ -242,22 +242,22 @@
 						     case "train_station":
 						     	data.train_station = true;
 						   	 break;
-						     case "backpack": 
+						     case "backpack":
 								data.backpack = true;
 						    break;
-						     case "park": 
+						     case "park":
 								data.park = true;
 						    break;
-						     case "school": 
+						     case "school":
 								data.school = true;
 						    break;
-						     case "big_family": 
+						     case "big_family":
 								data.big_family = true;
 						    break;
-						     case "shopping_mall": 
+						     case "shopping_mall":
 								data.shopping_mall = true;
 						    break;
-						     case "offical_rental": 
+						     case "offical_rental":
 								data.offical_rental = true;
 						    break;
 						    case "university":
@@ -269,7 +269,7 @@
 						    default:
 						    	data.university = true;
 						    	 break;
-						    	
+
 						}
 					}
 					if (uniindex == dataresults.length-1 || uniindex==-1){
@@ -282,7 +282,7 @@
 				/*********************************************************************
 				 *******************filter update code starts*************************
 				 ********************************************************************/
-				
+
 				 /********************************************************************
 				 **********************features update code starts********************
 				 *********************************************************************/
@@ -333,10 +333,10 @@
 						$scope.all_requirements = false;
 					}
 				}
-				
+
 				$scope.col_requirements = function(){
 					$scope.all_requirements = !$scope.all_requirements;
-					
+
 					if($scope.all_requirements)
 					{
 						$scope.no_smoking = true;
@@ -352,7 +352,7 @@
 						$scope.boy_only = false;
 						$scope.no_party = false;
 					}
-					
+
 				}
 				// colum2
 				//appliances
@@ -392,7 +392,7 @@
 						$scope.appliances = false;
 					}
 				}
-				
+
 				$scope.col_appliances = function(){
 					$scope.appliances = !$scope.appliances;
 					if($scope.appliances)
@@ -439,7 +439,7 @@
 						$scope.furniture = false;
 					}
 				}
-				
+
 				$scope.col_furniture = function(){
 					$scope.furniture = !$scope.furniture;
 					if($scope.furniture)
@@ -474,8 +474,8 @@
 						$scope.other_appliance = false;
 					}
 				}
-				
-				
+
+
 				$scope.col_other_appliance = function(){
 					$scope.other_appliance = !$scope.other_appliance;
 					if($scope.other_appliance)
@@ -520,7 +520,7 @@
 						$scope.gas = false;
 					}
 				}
-				
+
 				/****************************update submit***************************************/
 				$scope.update = function(){
 					var arr_desckey = [$scope.train,$scope.university,
@@ -604,10 +604,9 @@
 						.then(function(r) {
 							SearchService.set(r);
 							updateService.set(entireData);
-							
 							console.log('r===>', r);
 							if(r.data.length > 0) {
-								alert("刷新吧");
+								// alert("刷新吧");
 						/***resolve the data passed through factory service from home page**********************/
 					 if(JSON.stringify(SearchService.get()) != "{}"){
 						 	$localStorage.settings = SearchService.get().data;
@@ -638,22 +637,22 @@
 									     case "%stove":
 									     	$scope.stove = true;
 									   	 break;
-									     case "%dishwasher": 
+									     case "%dishwasher":
 											$scope.dishwasher = true;
 									    break;
-									     case "%dryer": 
+									     case "%dryer":
 											$scope.dryer = true;
 									    break;
-									     case "%aircondition": 
+									     case "%aircondition":
 											$scope.aircondition = true;
 									    break;
-									     case "%refrigerator": 
+									     case "%refrigerator":
 											$scope.refrigerator = true;
 									    break;
-									     case "%laundry": 
+									     case "%laundry":
 											$scope.laundry = true;
 									    break;
-									     case "%bed": 
+									     case "%bed":
 											$scope.bed = true;
 									    break;
 									    case "%desk":
@@ -689,22 +688,22 @@
 									     case "%train_station;":
 									     	$scope.train = true;
 									   	 break;
-									     case "%backpack;": 
+									     case "%backpack;":
 											$scope.backpack = true;
 									    break;
-									     case "%park;": 
+									     case "%park;":
 											$scope.park = true;
 									    break;
-									     case "%school;": 
+									     case "%school;":
 											$scope.school = true;
 									    break;
-									     case "%big_family;": 
+									     case "%big_family;":
 											$scope.family = true;
 									    break;
-									     case "%shopping_mall;": 
+									     case "%shopping_mall;":
 											$scope.shoppingcenter = true;
 									    break;
-									     case "%offical_rental;": 
+									     case "%offical_rental;":
 											$scope.officerental = true;
 									    break;
 									    case "%university;":
@@ -733,22 +732,22 @@
 									     case "train_station":
 									     	data.train_station = true;
 									   	 break;
-									     case "backpack": 
+									     case "backpack":
 											data.backpack = true;
 									    break;
-									     case "park": 
+									     case "park":
 											data.park = true;
 									    break;
-									     case "school": 
+									     case "school":
 											data.school = true;
 									    break;
-									     case "big_family": 
+									     case "big_family":
 											data.big_family = true;
 									    break;
-									     case "shopping_mall": 
+									     case "shopping_mall":
 											data.shopping_mall = true;
 									    break;
-									     case "offical_rental": 
+									     case "offical_rental":
 											data.offical_rental = true;
 									    break;
 									    case "university":
@@ -760,11 +759,13 @@
 									    default:
 									    	data.university = true;
 									    	 break;
-									    	
+
 									}
 								}
-								if (uniindex == dataresults.length-1 || uniindex==-1){
-										data.university = false;
+								if (uniindex == dataresults.length-1){
+										data.university = true;
+									}else if (uniindex==-1) {
+											data.university = false;
 									}
 								if(data.university){
 									data.uniname = dataresults[uniindex + 1];
@@ -779,7 +780,7 @@
 //					alert("updated");
 				}
 				/********************************filter update code ends*****************************/
-			
+
 			/************************filter orderby*******************************/
 			$scope.orderleft = false;
 			$scope.orderright = false;
@@ -793,47 +794,88 @@
 					$scope.orderright = true;
 					$scope.sortDate=!$scope.sortDate;
 				}
-				
+
 				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
     			$scope.orderName = orderName;
 //				$scope.orderName = order+'';
 			}
 			/************************filter orderby*******************************/
-			
-			/***********************add to shortlist************************************/
-			$scope.save2shortlist = function(){
-				$http.get('/customer/profile')
-				.then(function(r) {
-					console.log(r);
-					if(r.data.customer_login_status){
-						$scope.shortlistInsert.CID = $scope.detailsData.CID;
-						$scope.shortlistInsert.CLType="FavorSave";
-						$scope.shortlistInsert.CLDetail=$scope.detailsData.ER_ID+'';;
-						$scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
-						console.log("shortlistInsert",$scope.shortlistInsert);
-						$http.post('/customer/shortlist/insert', $scope.shortlistInsert)
-								.then(function(r){
-									console.log('r',r);				
-								},function(e){
-									console.log("数据有误");
-								});
-					}else{
-						$state.go('app.login');
-					}
-				},function(e){
-						console.log("数据有误");
-					})
-			}
+
+			/*************************shortlist check selection************************************************/
+			$scope.shortlistcheckdata = {};
+			$scope.shortlistDelete = {};
+
+		 $http.get('/customer/profile')
+		 .then(function(r) {
+			 console.log(r);
+			 if(r.data.customer_login_status){
+				 $scope.shortlistcheckdata.CID = r.data.CID;
+				 $scope.shortlistcheckdata.CLType = 'FavorSave';
+				 $http.post('/customer/shortlist', $scope.shortlistcheckdata)
+						 .then(function(r){
+							 $scope.shortlistData = r.data;
+							 console.log('r',r);
+						 },function(e){
+							 console.log("数据有误");
+						 });
+			 }
+		 });
+		 /***********************add to shortlist************************************/
+		 $scope.save2shortlist = function($index){
+			 alert($scope.favorsave);
+			 $http.get('/customer/profile')
+			 .then(function(r) {
+				 console.log(r);
+				 if(r.data.customer_login_status){
+					 $scope.shortlistInsert.CID =r.data.CID;
+					 $scope.shortlistInsert.CLType="FavorSave";
+					 $scope.shortlistInsert.CLDetail=$scope.entireData[$index].ER_ID;;
+					 $scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+					 console.log("shortlistInsert",$scope.shortlistInsert);
+					 $http.post('/customer/shortlist/insert', $scope.shortlistInsert)
+							 .then(function(r){
+								 console.log('r',r);
+							 },function(e){
+								 console.log("数据有误");
+							 });
+				 }else{
+					 $state.go('app.login');
+				 }
+			 },function(e){
+					 console.log("数据有误");
+				 });
+		 }
+		 /*******************delete from shortlist*********************************************/
+		 $scope.remove = function(key){
+			 $http.get('/customer/profile')
+			 .then(function(r) {
+				 console.log(r);
+				 if(r.data.customer_login_status){
+					 $scope.shortlistDelete.CID = r.data.CID;
+					 $scope.shortlistDelete.CLType="FavorSave";
+					 $scope.shortlistDelete.CLDetail= key;
+	 //				$scope.shortlistDelete.CLTime="";
+					 $http.post('/customer/shortlist/delete',$scope.shortlistDelete)
+							 .then(function(r){
+	 //							$scope.shortlistData = r.data;
+								 console.log("$scope.shortlistDelete",r);
+							 },function(e){
+
+							 });
+				 }
+			 });
+		 }
+		 /*************************shortlist check selection ends************************************************/
 			/**********************************************************************/
-			
-		}])
+
+		}]);
 		/*.filter('propsFilter', function() {
 		    return function(items, props) {
 		        var out = [];
 		        if (angular.isArray(items)) {
 		          items.forEach(function(item) {
 		            var itemMatches = false;
-		
+
 		            var keys = Object.keys(props);
 		            for (var i = 0; i < keys.length; i++) {
 		              var prop = keys[i];
@@ -843,7 +885,7 @@
 		                break;
 		              }
 		            }
-		
+
 		            if (itemMatches) {
 		              out.push(item);
 		            }
@@ -852,8 +894,7 @@
 		          // Let the output be the input untouched
 		          out = items;
 		        }
-		
+
 		        return out;
 		    };
 		})*/
-})();

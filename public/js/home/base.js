@@ -36,6 +36,11 @@ angular.module('andy', [
     //template:'<h1>homePage</h1>'
     templateUrl: '/partials/googlemap.html', //localhost:8080/home.tpl
   })
+  .state('googlemap', {
+   url: '/googlemap',
+   //template:'<h1>homePage</h1>'
+   templateUrl: '/partials/map.html', //localhost:8080/home.tpl
+ })
    .state('app.signup', {
     url: '/signup',
     templateUrl: '/tpl/page/signup',
@@ -126,6 +131,10 @@ angular.module('andy', [
     url: '/newsDetail',
     templateUrl: '/partials/newsDetail.html',
   })
+  .state('app.contact', {
+   url: '/contactus',
+   templateUrl: '/partials/contact.html',
+ })
    .state('app.trainmap', {
                 url: '/trainmap',
                 templateUrl: '/partials/trainmap.html',

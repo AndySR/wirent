@@ -68,7 +68,8 @@ $app->singleton(
    $app->routeMiddleware([
        'auth' => App\Http\Middleware\Authenticate::class,
        'cus'=>App\Http\Middleware\CustomerLoginStatus::class,
-       'lord'=>App\Http\Middleware\LandlordLoginStatus::class,       
+       'lord'=>App\Http\Middleware\LandlordLoginStatus::class,  
+       'id'=>App\Http\Middleware\idTenant::class,     
    ]);
 
 /*
@@ -92,6 +93,10 @@ $app->singleton(
 	$app->configure('session');
 	// set session name
 	$app->alias('session', 'Illuminate\Session\SessionManager');
+
+	//reg aws upload provider
+//  $app->register(Icyboy\LumenAws\AwsServiceProvider::class);    
+//  class_alias('Icyboy\LumenAws\AwsFacade', 'Aws');
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

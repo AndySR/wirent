@@ -460,7 +460,9 @@ angular.module('andy')
 
 							}
 						}
-						if (uniindex == dataresults.length-1 || uniindex==-1){
+						if (uniindex == dataresults.length-1){
+								data.university = true;
+							}else if (uniindex==-1) {
 								data.university = false;
 							}
 						if(data.university){

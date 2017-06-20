@@ -1,21 +1,43 @@
-;(function(){
-	'use strict';
+'use strict';
 	angular.module('andy')
 		.controller('shortlistCtrl',['$scope','$http','SearchService',function($scope,$http,SearchService){
-			$scope.shortlistData=SearchService.get();
+			// $scope.shortlistData=SearchService.get();
+			 $scope.shortlistcheckdata = {};
+			 $scope.shortlistDelete = {};
+			$http.get('/customer/profile')
+			.then(function(r) {
+				console.log(r);
+				if(r.data.customer_login_status){
+					$scope.shortlistcheckdata.CID = r.data.CID;
+					$scope.shortlistcheckdata.CLType = 'FavorSave';
+					$http.post('/customer/shortlist', $scope.shortlistcheckdata)
+							.then(function(r){
+								$scope.shortlistData = r.data;
+								console.log('r',r);
+							},function(e){
+								console.log("数据有误");
+							});
+				}
+
+			});
 			$scope.remove = function(key){
-				alert("remove");
-				$scope.shortlistDelete.CID = 0;
-				$scope.shortlistDelete.CLType="FavorSave";
-				$scope.shortlistDelete.CLDetail= key;
-//				$scope.shortlistDelete.CLTime="";
-				$http.post('/customer/shortlist/delete',$scope.shortlistDelete)
-						.then(function(r){
-//							$scope.shortlistData = r.data;
-							console.log("$scope.shortlistDelete",r);
-						},function(e){
-							
-						});
-			}
-		}])
-})();
+				$http.get('/customer/profile')
+				.then(function(r) {
+					console.log(r);
+					if(r.data.customer_login_status){
+						$scope.shortlistDelete.CID = r.data.CID;
+						$scope.shortlistDelete.CLType="FavorSave";
+						$scope.shortlistDelete.CLDetail= key;
+		//				$scope.shortlistDelete.CLTime="";
+						$http.post('/customer/shortlist/delete',$scope.shortlistDelete)
+								.then(function(r){
+		//							$scope.shortlistData = r.data;
+									console.log("$scope.shortlistDelete",r);
+								},function(e){
+
+								});
+					}
+				});
+
+			};
+		}]);

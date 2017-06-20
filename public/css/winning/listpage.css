@@ -13,6 +13,16 @@
 .list-page label {
 	color: gray;
 }
+.list-page .descriptions li{
+		display: inline-block;
+		text-align: center;
+		width: 49%;
+}
+.list-page .descriptions li a {
+	  display:block;
+}
+
+
 .list-page .content {
 	/*width: 1000px;*/   /*there seems some problem here */
 	position: relative;
@@ -316,9 +326,9 @@
 .list-page .info-panel .price .available {
 	display: block;
 	position: absolute;
-	font: 100 12px/15px "microsoft yahei";
+	font: 400 12px/15px "microsoft yahei";
 	/*margin-top: 4px;*/
-	width: 160px;
+	width: 170px;
 	/*line-height: 50px;*/
 	height: 20;
 	left: 60px;

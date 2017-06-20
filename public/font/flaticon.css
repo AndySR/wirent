@@ -124,6 +124,53 @@
 .flaticon-bed1:before { content: "\f12c"; }
 .flaticon-plug1:before { content: "\f12d"; }
 
+/*normal size margin-left:0;*/
+.flaticon-close-envelope01:before { content: "\f100"; margin-left:0;}
+.flaticon-conversation01:before { content: "\f101"; margin-left:0;}
+.flaticon-businesswoman01:before { content: "\f102"; margin-left:0;}
+.flaticon-tool01:before { content: "\f103"; margin-left:0;}
+.flaticon-spanner01:before { content: "\f104"; margin-left:0;}
+.flaticon-properties-information01:before { content: "\f105"; margin-left:0;}
+.flaticon-man-user01:before { content: "\f106"; margin-left:0;}
+.flaticon-banknote01:before { content: "\f107"; margin-left:0;}
+.flaticon-handyman-tools01:before { content: "\f108"; margin-left:0;}
+.flaticon-paintbrush01:before { content: "\f109"; margin-left:0;}
+.flaticon-factory-stock-house01:before { content: "\f10a"; margin-left:0;}
+.flaticon-moving-home-transport-for-boxes01:before { content: "\f10b"; margin-left:0;}
+.flaticon-puzzle01:before { content: "\f10c"; margin-left:0;}
+.flaticon-food01:before { content: "\f10d"; margin-left:0;}
+.flaticon-office-worker01:before { content: "\f10e"; margin-left:0;}
+.flaticon-vacuum01:before { content: "\f10f"; margin-left:0;}
+.flaticon-train-on-railroad01:before { content: "\f110"; margin-left:0;}
+.flaticon-shopping-cart01:before { content: "\f111"; margin-left:0;}
+.flaticon-man-standing-up01:before { content: "\f112"; margin-left:0;}
+.flaticon-double-king-size-bed01:before { content: "\f113"; margin-left:0;}
+.flaticon-turn-microphone-off-button01:before { content: "\f114"; margin-left:0;}
+.flaticon-washing-machine01:before { content: "\f115"; margin-left:0;}
+.flaticon-bedroom-black-closed-closet-for-clothes01:before { content: "\f116"; margin-left:0;}
+.flaticon-green-park-city-space01:before { content: "\f117"; margin-left:0;}
+.flaticon-minisplit01:before { content: "\f118"; margin-left:0;}
+.flaticon-female-silhouette01:before { content: "\f119"; margin-left:0;}
+.flaticon-no-smoking-sign01:before { content: "\f11a"; margin-left:0;}
+.flaticon-man-in-office-desk-with-computer01:before { content: "\f11b"; margin-left:0;}
+.flaticon-people01:before { content: "\f11c"; margin-left:0;}
+.flaticon-no-dogs01:before { content: "\f11d"; margin-left:0;}
+.flaticon-tumble-dryer01:before { content: "\f11e"; margin-left:0;}
+.flaticon-college-graduation01:before { content: "\f11f"; margin-left:0;}
+.flaticon-cabinet01:before { content: "\f120"; margin-left:0;}
+.flaticon-microwave01:before { content: "\f121"; margin-left:0;}
+.flaticon-fridge01:before { content: "\f122"; margin-left:0;}
+.flaticon-open-book01:before { content: "\f123"; margin-left:0;}
+.flaticon-settings01:before { content: "\f124"; margin-left:0;}
+.flaticon-stove01:before { content: "\f125"; margin-left:0;}
+.flaticon-dishwasher01:before { content: "\f126"; margin-left:0;}
+.flaticon-wifi01:before { content: "\f127"; margin-left:0;}
+.flaticon-socket01:before { content: "\f128"; margin-left:0;}
+.flaticon-business01:before { content: "\f129"; margin-left:0;}
+.flaticon-gas-level01:before { content: "\f12a"; margin-left:0;}
+.flaticon-backpack01:before { content: "\f12b"; margin-left:0;}
+.flaticon-bed01:before { content: "\f12c"; margin-left:0;}
+.flaticon-plug01:before { content: "\f12d"; margin-left:0;}
 /*margin-top*/
 /*normal size*/
 .flaticon-close-envelope2:before { content: "\f100"; font-size: 75px; margin-left: 20px;margin-right: 20px;}

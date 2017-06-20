@@ -77,7 +77,7 @@
          });
 
         }, function(e) {
-         console.log("数据有误");
+         console.log("数据有误"+ e);
         })
       } else {
        $scope.datas = [""];

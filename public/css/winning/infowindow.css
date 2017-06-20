@@ -123,7 +123,7 @@
 .map-page  .lunbo {
  	display: block;
  }
- 
+
 .map-page  .lunbo {
  	position: relative;
  	/*margin: 0 auto;*/
@@ -133,26 +133,26 @@
  	top: 10px;
  	overflow: hidden;
  }
- 
+
 .map-page .lunbo ul {
  	position: absolute;
  	width: 490px;
 	height: 305px;
  }
- 
+
 .map-page .lunbo ul li {
  	list-style-type: none;
  	position: absolute;
  	width: 490px;
 	height: 305px;
  }
- 
+
 .map-page .lunbo ul li a img {
  	display: inline-block;
  	width: 490px;
 	height: 305px;
  }
- 
+
  .map-page .lunbo ul.listContent {
  	position: absolute;
  	left: 500px;
@@ -160,7 +160,7 @@
  	width: 220px;
  	height: 25px;
  }
- 
+
  .map-page .lunbo ul.listContent li.list {
  	position: relative;
  	display: block;
@@ -173,14 +173,14 @@
  	line-height: 25px;
  	cursor: pointer;
  }
- 
+
  .map-page .active {
  	background: #161616;
  	color: #ffffff;
  }
 .map-page .hander-left,
 .map-page .hander-right {
-	
+
 	text-align: center;
 	position:absolute;
 	top: 50%;
@@ -226,7 +226,7 @@
 }
 .map-page .map_feature_filter li > ul {
 	margin-top: 15px;
-} 
+}
 .map-page .map_feature_filter > li > a {
 	color: lightgray;
 }
@@ -462,7 +462,7 @@
 	/*float: left;*/
 	margin: -15px 65px 0 20px;
 	/*border: 1px solid #DFDFDF;*/
-	
+
 	position: absolute;
 	top: 20px;
 	left: 210px;
@@ -634,4 +634,22 @@
 	/* margin-right: 20px; */
     color: purple;
     border-bottom: 3px solid rgb(150, 65, 137);
+}
+.map-page .calender p{
+	/*position: relative;*/
+	display: inline-block!important;
+}
+.map-page .calender p input.form-control {
+	width:47%;
+	border-radius: 0;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.map-page .descriptions li{
+	display: inline-block;
+	text-align: center;
+	width: 49%;
+}
+.map-page .descriptions li a {
+	  display:block;
 }

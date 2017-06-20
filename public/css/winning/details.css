@@ -117,7 +117,7 @@
 }
 .details-page .content .list-wrap .first {
 	background-color: white;
-	height: 210px;
+	height: 344px;
 	/*background-color: white;*/
 	border: 1px solid #e1e1e1;
 	border-radius: 5px;
@@ -210,11 +210,20 @@
 
 
 .details-page .info-panel .benefits {
-	width: 800px;
+	width: 400px;
 	line-height: 34px;
 	position: absolute;
-	left: 10px;
+	left: 0;
 	top: 160px;
+}
+.details-page .info-panel .benefits ul li {
+
+  display: inline-block;
+  width: 24%;
+}
+.details-page .info-panel .benefits ul li a{
+    display: block;
+    text-align: center;
 }
 .details-page .info-panel .benefits a:hover {
 	cursor: default;

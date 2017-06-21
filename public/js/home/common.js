@@ -468,69 +468,64 @@
 
 
    /*****************theme title search********************************************************/
-     $scope.search = function(keywords) {
- //					console.log($scope.x);
- //					alert(keywords);
-      if($scope.x) {
-       var address = $scope.x[0].split(",");
- //						console.log("xxx", address);
-       entireData = {
-        ER_Suburb: address[0],
-        ER_Region: address[1],
-        ER_Type: $scope.myPropertyType,
-        ER_PriceMin: $scope.myMinPrice,
-        ER_PriceMax: $scope.myMaxPrice,
-        ER_BedRoomMin: $scope.minBedNum,
-        ER_BedRoomMax: $scope.maxBedNum,
-        ER_BathRoomMin: $scope.minBathNum,
-        ER_BathRoomMax: 5,
-        ER_ParkingMin: $scope.myParkingNum,
-        ER_ParkingMax: 5,
-        ER_AreaMin: 0,
-        ER_AreaMax: 5000,
-        ER_AvailableDate: '2020-01-01',
-        ER_Description:'%'+keywords+';',
-        ER_Feature: ER_Feature
-       };
-      } else {
-       entireData = {
-        ER_Suburb: '',
-        ER_Region: '',
-        ER_Type: $scope.myPropertyType,
-        ER_PriceMin: $scope.myMinPrice,
-        ER_PriceMax: $scope.myMaxPrice,
-        ER_BedRoomMin: $scope.minBedNum,
-        ER_BedRoomMax: $scope.maxBedNum,
-        ER_BathRoomMin: $scope.minBathNum,
-        ER_BathRoomMax: 5,
-        ER_ParkingMin: $scope.myParkingNum,
-        ER_ParkingMax: 5,
-        ER_AreaMin: 0,
-        ER_AreaMax: 5000,
-        ER_AvailableDate: '2020-01-01',
-        ER_Description:'%'+keywords+';',
-        ER_Feature: ER_Feature
-       }
-      }
-
-      // $state.go('app.googlemap');
-      console.log(entireData);
-      $http.post('/customer/filt/entire', entireData)
-       .then(function(r) {
-        SearchService.set(r);
-        updateService.set(entireData);
-        //SetCredentials(r);
-        console.log('r===>', r);
-        if(r.data.length > 0) {
- //								$state.go('app.listpage');
-         $state.go('app.listpage');
-        }
-        //
-
-       }, function(e) {
-
-       });
-     }
+    //  $scope.search = function(keywords) {
+     //
+    //   if($scope.x) {
+    //    var address = $scope.x[0].split(",");
+    //    entireData = {
+    //     ER_Suburb: address[0],
+    //     ER_Region: address[1],
+    //     ER_Type: $scope.myPropertyType,
+    //     ER_PriceMin: $scope.myMinPrice,
+    //     ER_PriceMax: $scope.myMaxPrice,
+    //     ER_BedRoomMin: $scope.minBedNum,
+    //     ER_BedRoomMax: $scope.maxBedNum,
+    //     ER_BathRoomMin: $scope.minBathNum,
+    //     ER_BathRoomMax: 5,
+    //     ER_ParkingMin: $scope.myParkingNum,
+    //     ER_ParkingMax: 5,
+    //     ER_AreaMin: 0,
+    //     ER_AreaMax: 5000,
+    //     ER_AvailableDate: '2020-01-01',
+    //     ER_Description:'%'+keywords+';',
+    //     ER_Feature: ER_Feature
+    //    };
+    //   } else {
+    //    entireData = {
+    //     ER_Suburb: '',
+    //     ER_Region: '',
+    //     ER_Type: $scope.myPropertyType,
+    //     ER_PriceMin: $scope.myMinPrice,
+    //     ER_PriceMax: $scope.myMaxPrice,
+    //     ER_BedRoomMin: $scope.minBedNum,
+    //     ER_BedRoomMax: $scope.maxBedNum,
+    //     ER_BathRoomMin: $scope.minBathNum,
+    //     ER_BathRoomMax: 5,
+    //     ER_ParkingMin: $scope.myParkingNum,
+    //     ER_ParkingMax: 5,
+    //     ER_AreaMin: 0,
+    //     ER_AreaMax: 5000,
+    //     ER_AvailableDate: '2020-01-01',
+    //     ER_Description:'%'+keywords+';',
+    //     ER_Feature: ER_Feature
+    //    }
+    //   }
+     //
+     //
+    //   console.log(entireData);
+    //   $http.post('/customer/filt/entire', entireData)
+    //    .then(function(r) {
+    //     SearchService.set(r);
+    //     updateService.set(entireData);
+    //     console.log('r===>', r);
+    //     if(r.data.length > 0) {
+    //      $state.go('app.listpage');
+    //     }
+     //
+    //    }, function(e) {
+     //
+    //    });
+    //  }
    /*****************theme title search ends********************************************************/
 
 
@@ -1196,7 +1191,7 @@
      /*****************************************************************
          ********************share rental station filter*****************
          ****************************************************************/
-      $scope._Chatswood=false;$scope._Hornsby=false;$scope._Epping=false;$scope._MQ_Uni=false;$scope._Rodes=false;$scope._allT1=false;
+     $scope._Chatswood=false;$scope._Hornsby=false;$scope._Epping=false;$scope._MQ_Uni=false;$scope._Rodes=false;$scope._allT1=false;
      $scope._Burwood=false;$scope._Straithfield=false;$scope._Greensquare=false;$scope._Mascot=false;$scope._Lidcome_T2=false;$scope._allT2=false;
      $scope._Central_T3=false;$scope._Sydenham=false;$scope._Campsie=false;$scope._Bankstown=false;$scope._Liverpool_T3=false;$scope._allT3=false;
      $scope._Central_T4=false;$scope._Redfern=false;$scope._Wollicreek=false;$scope._Rockdale=false;$scope._Hurstville=false;$scope._allT4=false;
@@ -1716,20 +1711,33 @@
 ********************************************************************************/
      $scope.include_area = true;
      $scope.include_area_share = true;
+     var suburb = "";
+     var station = "";
      $http.get('/customer/profile')
      .then(function(r) {
        console.log(r);
        if(r.data.customer_login_status){
          //search for the results of properties
-           $scope.entireSearch = function() {
+           $scope.entireSearch = function(station) {
+             if(typeof station != "string")
+              {
+                station = "";
+              }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
+                 var arr_station = station.split(";");
+                 station = "%"+arr_station[0]+";";
+                 suburb = arr_station[1];
+              }else{
+                 station = station;
+              }
             //selected items which are an array
             console.log('$scope.x',$scope.x);
             if($scope.x) {
              var address = $scope.x[0].split(",");
              console.log("xxx", address);
+             suburb = address[0];
              entireData = {
               CID:r.data.CID,
-              ER_Suburb: address[0],
+              ER_Suburb: suburb,
               ER_Region: address[1],
               include_area:$scope.include_area,
               ER_Type: $scope.myPropertyType,
@@ -1744,13 +1752,13 @@
               ER_AreaMin: 0,
               ER_AreaMax: 50000,
               ER_AvailableDate: '2200-01-01',
-              ER_Description:'',
+              ER_Description: station,
               ER_Feature: ER_Feature
              };
             } else {
              entireData = {
               CID:r.data.CID,
-              ER_Suburb: '',
+              ER_Suburb: suburb,
               ER_Region: '',
               include_area:$scope.include_area,
               ER_Type: $scope.myPropertyType,
@@ -1765,7 +1773,7 @@
               ER_AreaMin: 0,
               ER_AreaMax: 5000,
               ER_AvailableDate: '2200-01-01',
-              ER_Description:'',
+              ER_Description: station,
               ER_Feature: ER_Feature
              }
             }
@@ -1790,15 +1798,26 @@
            }
            /************************share search login status starts**************/
            /************share rooms data filter get starts**************/
-          $scope.shareSearch = function(){
+          $scope.shareSearch = function(station){
+            if(typeof station != "string")
+             {
+               station = "";
+             }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
+                var arr_station = station.split(";");
+                station = "%"+arr_station[0]+";";
+                suburb = arr_station[1];
+             }else{
+                station = station;
+             }
             //selected items which are an array
             console.log('$scope.x',$scope.x);
             if($scope.x) {
              var address = $scope.x[0].split(",");
              console.log("xxx", address);
+             suburb = address[0];
              shareData = {
               CID:r.data.CID,
-              ER_Suburb: address[0],
+              ER_Suburb: suburb,
               ER_Region: address[1],
               include_area:$scope.include_area_share,
               ER_Type: $scope.myPropertyType,
@@ -1813,13 +1832,13 @@
               ER_AreaMin: 0,
               ER_AreaMax: 50000,
               ER_AvailableDate: '2200-01-01',
-              ER_Description:'',
+              ER_Description: station,
               ER_Feature: ER_Feature
              };
             } else {
              shareData = {
               CID:r.data.CID,
-              ER_Suburb: '',
+              ER_Suburb: suburb,
               ER_Region: '',
               include_area:$scope.include_area_share,
               ER_Type: $scope.myPropertyType,
@@ -1829,7 +1848,7 @@
               SRAreaMin: 0,
               SRAreaMax: 5000,
               SRAvailableDate: '2200-01-01',
-              ER_Description:'',
+              ER_Description: station,
               ER_Feature: ER_Feature
              }
             }
@@ -1854,14 +1873,25 @@
 
         }else {
           //search for the results of properties
-            $scope.entireSearch = function() {
+            $scope.entireSearch = function(station) {
+              if(typeof station != "string")
+               {
+                 station = "";
+               }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
+                  var arr_station = station.split(";");
+                  station = "%"+arr_station[0]+";";
+                  suburb = arr_station[1];
+               }else{
+                  station = station;
+               }
              //selected items which are an array
              console.log('$scope.x',$scope.x);
              if($scope.x) {
               var address = $scope.x[0].split(",");
               console.log("xxx", address);
+              suburb = address[0];
               entireData = {
-               ER_Suburb: address[0],
+               ER_Suburb: suburb,
                ER_Region: address[1],
                include_area:$scope.include_area,
                ER_Type: $scope.myPropertyType,
@@ -1876,12 +1906,12 @@
                ER_AreaMin: 0,
                ER_AreaMax: 50000,
                ER_AvailableDate: '2200-01-01',
-               ER_Description:'',
+               ER_Description: station,
                ER_Feature: ER_Feature
               };
              } else {
               entireData = {
-               ER_Suburb: '',
+               ER_Suburb: suburb,
                ER_Region: '',
                include_area:$scope.include_area,
                ER_Type: $scope.myPropertyType,
@@ -1896,7 +1926,7 @@
                ER_AreaMin: 0,
                ER_AreaMax: 5000,
                ER_AvailableDate: '2200-01-01',
-               ER_Description:'',
+               ER_Description: station,
                ER_Feature: ER_Feature
               }
              }
@@ -1922,14 +1952,25 @@
 
             /***************share search without login starts************************/
             /************share rooms data filter get starts**************/
-            $scope.shareSearch = function(){
+            $scope.shareSearch = function(station){
+              if(typeof station != "string")
+               {
+                 station = "";
+               }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
+                  var arr_station = station.split(";");
+                  station = "%"+arr_station[0]+";";
+                  suburb = arr_station[1];
+               }else{
+                  station = station;
+               }
               //selected items which are an array
               console.log('$scope.x',$scope.x);
               if($scope.x) {
                var address = $scope.x[0].split(",");
                console.log("xxx", address);
+               suburb = address[0];
                shareData = {
-                ER_Suburb: address[0],
+                ER_Suburb: suburb,
                 ER_Region: address[1],
                 include_area:$scope.include_area_share,
                 ER_Type: $scope.myPropertyType,
@@ -1944,12 +1985,12 @@
                 ER_AreaMin: 0,
                 ER_AreaMax: 50000,
                 ER_AvailableDate: '2200-01-01',
-                ER_Description:'',
+                ER_Description: station,
                 ER_Feature: ER_Feature
                };
               } else {
                shareData = {
-                ER_Suburb: '',
+                ER_Suburb: suburb,
                 ER_Region: '',
                 include_area:$scope.include_area_share,
                 ER_Type: $scope.myPropertyType,
@@ -1959,7 +2000,7 @@
                 SRAreaMin: 0,
                 SRAreaMax: 5000,
                 SRAvailableDate: '2200-01-01',
-                ER_Description:'',
+                ER_Description: station,
                 ER_Feature: ER_Feature
                }
               }

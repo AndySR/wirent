@@ -154,8 +154,8 @@ angular.module('andy')
 							opacity=1;
 							scope.tips=true;
 							scope.features=false;
-							scope.boxshow=true;
-							element.find("i").css({'opacity': 1,'left': left + 90 + 'px'});
+							scope.boxshow=false;
+							element.find("i").css({'opacity': 0,'left': left + 90 + 'px'});
 						}
 						 else if(event == 2) {
 							left = 130;
@@ -234,8 +234,8 @@ angular.module('andy')
 							opacity=1;
 							scope.tips1=true;
 							scope.features1=false;
-							scope.boxshow1=true;
-							element.find("i").css({'opacity': 1,'left': left + 90 + 'px'});
+							scope.boxshow1=false;
+							element.find("i").css({'opacity': 0,'left': left + 90 + 'px'});
 						}
 						 else if(event == 2) {
 							left = 130;

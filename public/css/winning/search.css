@@ -955,7 +955,12 @@
 	margin-bottom: 30px;
 	padding: 10px;
 }
-
+.banner-search .h1-left {
+	padding-left: 150px;
+}
+.banner-search .h1-right {
+	padding-right: 150px;
+}
 .banner-search .dream-homes-container:before {
 	padding-bottom: 56.05%
 }

@@ -185,67 +185,74 @@ li {
       font-size: 0;
       line-height: 0;
   }
+  .introduction-wrapper .introduction .introContent .base {
+      margin-top: 20px;
+  }
    .introduction-wrapper .introduction .introContent .content {
-      margin-top: 10px;
+     padding-top: 15px;
+      margin-top: 20px;
   }
    .introduction-wrapper .introduction .introContent .content ul {
       font-size: 0;
   }
    .introduction-wrapper .introduction .introContent .content ul li {
       display: inline-block;
-      width: 20%;
+      width: 50%;
       line-height: 30px;
       font-size: 14px;
       color: #222222;
   }
-   .introduction-wrapper .introduction .introContent .content ul li {
-      width: 20%;
-  }
+ .introduction-wrapper .introduction .introContent .content ul li {
+     width: 20%;
+ }
   /*********************features section start********************************/
-  .details-page .introduction-wrapper .introduction .introContent .content ul li.list-features {
-      width: 20%;
+.introduction-wrapper .introduction .introContent .content ul li.list-features {
+    width: 20%;
   }
-  .details-page .introduction-wrapper .introduction .introContent .content ul li .features {
+.introduction-wrapper .introduction .introContent .content ul li .features {
+    display: block;
     width: 100%;
     text-align: center;
   }
-  .details-page .introduction-wrapper .introduction .introContent .content ul li .features .icon {
+.introduction-wrapper .introduction .introContent .content ul li .features .icon {
     display: block;
-    width: 100%;
+    height: 50%;
   }
-  .details-page .introduction-wrapper .introduction .introContent .content ul li .features .description {
+.introduction-wrapper .introduction .introContent .content ul li .features .description {
     display: block;
-    width: 100%;
+    height: 50%;
   }
   /*********************features section ends********************************/
-   .introduction-wrapper .introduction .introContent .content ul li .label {
+.introduction-wrapper .introduction .introContent .content ul li .label {
       color: #999999;
       font-weight: 500;
       font-size: 14px;
       text-shadow: none;
   }
-   .introduction-wrapper .introduction .feature {
-      margin-top: 34px;
-  }
-   .introduction-wrapper .introduction .feature .featureContent {
-      padding-top: 25px;
+.introduction-wrapper .introduction .feature .featureContent {
+      padding-top: 15px;
       font-size: 14px;
       line-height: 28px;
       overflow: hidden;
       max-height: 411px;
   }
-   .introduction-wrapper .introduction .feature .featureContent span {
+.introduction-wrapper .introduction .feature .featureContent span {
       display: table-cell;
   }
-   .introduction-wrapper .introduction .feature .featureContent .label {
+.introduction-wrapper .introduction .feature .featureContent .label {
       width: 75px;
       font-weight: bold;
       color: #222222;
   }
-   .introduction-wrapper .introduction .feature .featureContent .text {
+.introduction-wrapper .introduction .feature .featureContent .text {
       color: #666666;
   }
-
+.introduction-wrapper .introduction .feature .base {
+       margin-top: 34px;
+   }
+.introduction-wrapper .introduction .feature .base .content {
+    padding-top: 25px;
+  }
   /*details description ends*/
   div.introduction-foot {
     position: fixed;

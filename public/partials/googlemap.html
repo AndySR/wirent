@@ -9,10 +9,12 @@
 							              <span translate="listpage.filter.title"></span>
 							              <span class="caret"></span>
 							            </a>
-							            <div class=" wrapper bg-white cust-m-t" style="position: fixed; top: 100px; left: 0;z-index: 100; width:836px; box-shadow: 2px 2px 2px lavender;" ng-show="dropdown">
+							            <div class=" wrapper bg-white cust-m-t" style="position: fixed; top: 100px; left: 0;z-index: 100; width:61.5%; box-shadow: 2px 2px 2px lavender;" ng-show="dropdown">
 							              <div class="row">
 							                <div class="col-sm-6">
-							                  <div class="row">
+																<label translate="listpage.filter.description.title">Options:</label>
+							                  <div class="row b-t">
+																	<div class="m-t-xs"></div>
 							                    <div class="col-xs-6 left-li">
 							                      <ul class="list-unstyled l-h-2x">
 							                        <li>
@@ -83,11 +85,10 @@
 							                    </div>
 							                  </div>
 							                </div>
-							                <div class="col-sm-6 b-l b-light">
+							                <div class="col-sm-6">
 							                  <div class="row" style="margin-right:0;">
-							                    <div class="col-xs-6 left-li">
-					                          	<label class="m-t-xxs" translate="listpage.filter.description.title">Descriptions:</label>
-					                          	<ul style="list-style: none; padding-left: 0;" class="descriptions">
+					                          	<label translate="listpage.filter.description.title">Descriptions:</label>
+					                          	<ul style="list-style: none; padding-left: 0;" class="descriptions b-t">
 							                          		<li>
 							                          			<a class="" title="near train station" ng-click="train=!train">
 							                          				<i ng-show="train" class="flaticon-train-on-railroad30" style="color: orange;" aria-hidden="true"></i>
@@ -116,9 +117,37 @@
 										                          	</a>
 																								<a>park</a>
 							                          		</li>
+																						<li>
+																							<a class="" title="near school" ng-click="school=!school">
+																								<i ng-show="school" class="flaticon-open-book30" style="color: yellow;" aria-hidden="true"></i>
+																								<i ng-show="!school" class="flaticon-open-book30" aria-hidden="true"></i>
+																							</a>
+																								<a>school</a>
+																						</li>
+																						<li>
+																							<a class="" title="big family" ng-click="family=!family">
+																								<i ng-show="family" class="flaticon-people30" style="color: pink;" aria-hidden="true"></i>
+																								<i ng-show="!family" class="flaticon-people30" aria-hidden="true"></i>
+																							</a>
+																							<a>family</a>
+																						</li>
+																						<li>
+																							<a class="" title="near shoppingcenter" ng-click="shoppingcenter=!shoppingcenter">
+																								<i ng-show="shoppingcenter" class="flaticon-shopping-cart30" style="color: darkred;" aria-hidden="true"></i>
+																								<i ng-show="!shoppingcenter" class="flaticon-shopping-cart30" aria-hidden="true"></i>
+																							</a>
+																							<a>shoppingcenter</a>
+																						</li>
+																						<li>
+																							<a class="" title="officerental" ng-click="officerental=!officerental">
+																								<i ng-show="officerental" class="flaticon-business30" style="color: blue;" aria-hidden="true"></i>
+																								<i ng-show="!officerental" class="flaticon-business30" aria-hidden="true"></i>
+																							</a>
+																							<a>officerental</a>
+																						</li>
 							                          	</ul>
 																			<label class="m-t-xxs" translate="listpage.filter.description.title">Descriptions:</label>
-																			<ul style="list-style: none; padding-left: 0;" class="descriptions">
+																			<ul style="list-style: none; padding-left: 0;" class="descriptions b-t">
 							                          		<li>
 																							<a title="girl_only" ng-click="girlonly()">
 																									<i ng-show="girl_only" style="color: purple;" class="flaticon-female-silhouette30"></i>
@@ -140,63 +169,28 @@
 										                      			</a>
 																								<a translate="listpage.filter.feature.aircondition"></a>
 																						</li>
+																						<li>
+																								<a title="stove" ng-click="stove_click()">
+																									<i ng-show="stove" style="color: purple;" class="flaticon-stove30"></i>
+																									<i ng-show="!stove" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;
+																								</a>
+																								<a translate="listpage.filter.feature.kitchen"></a>
+																						</li>
+																						<li>
+																								<a title="laundry" ng-click="laundry_click()">
+																									<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine30"></i>
+																									<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;
+																								</a>
+																								<a translate="listpage.filter.feature.laundry"></a>
+																						</li>
 																			</ul>
-																	</div>
-							                    <div class="col-xs-6 right-li">
-																			<ul style="list-style: none; margin-top: 26px; padding-left: 0;" class="descriptions">
-																				<li>
-																					<a class="" title="near school" ng-click="school=!school">
-																						<i ng-show="school" class="flaticon-open-book30" style="color: yellow;" aria-hidden="true"></i>
-																						<i ng-show="!school" class="flaticon-open-book30" aria-hidden="true"></i>
-																					</a>
-																						<a>school</a>
-																				</li>
-																				<li>
-																					<a class="" title="big family" ng-click="family=!family">
-																						<i ng-show="family" class="flaticon-people30" style="color: pink;" aria-hidden="true"></i>
-																						<i ng-show="!family" class="flaticon-people30" aria-hidden="true"></i>
-																					</a>
-																					<a>family</a>
-																				</li>
-																				<li>
-																					<a class="" title="near shoppingcenter" ng-click="shoppingcenter=!shoppingcenter">
-																						<i ng-show="shoppingcenter" class="flaticon-shopping-cart30" style="color: darkred;" aria-hidden="true"></i>
-																						<i ng-show="!shoppingcenter" class="flaticon-shopping-cart30" aria-hidden="true"></i>
-																					</a>
-																					<a>shoppingcenter</a>
-																				</li>
-																				<li>
-																					<a class="" title="officerental" ng-click="officerental=!officerental">
-																						<i ng-show="officerental" class="flaticon-business30" style="color: blue;" aria-hidden="true"></i>
-																						<i ng-show="!officerental" class="flaticon-business30" aria-hidden="true"></i>
-																					</a>
-																					<a>officerental</a>
-																				</li>
-																			</ul>
-																			<ul style="list-style: none; margin-top: 26px; padding-left: 0;" class="descriptions">
-																					<li>
-																							<a title="stove" ng-click="stove_click()">
-																								<i ng-show="stove" style="color: purple;" class="flaticon-stove30"></i>
-																								<i ng-show="!stove" class="flaticon-stove30"></i>&nbsp;&nbsp;&nbsp;
-																							</a>
-																							<a translate="listpage.filter.feature.kitchen"></a>
-																					</li>
-																					<li>
-																							<a title="laundry" ng-click="laundry_click()">
-																								<i ng-show="laundry" style="color: purple;" class="flaticon-washing-machine30"></i>
-																								<i ng-show="!laundry" class="flaticon-washing-machine30"></i>&nbsp;&nbsp;&nbsp;
-																							</a>
-																							<a translate="listpage.filter.feature.laundry"></a>
-																					</li>
-																					<li>
-																						<button type="submit" class="button btn-lg btn-success plusplus"  ng-click="update();dropdown=false" style="margin-top:10px; margin-left:10px;" tabindex="23">
-																							<span translate="listpage.filter.search">Update search</span>
-																						</button>
-																					</li>
-																			</ul>
-																	</div>
 							                  </div>
 							                </div>
+															<div>
+																<button type="submit" class="button btn-lg btn-success plusplus"  ng-click="update();dropdown=false" style="margin-top:10px; margin-left:370px;" tabindex="23">
+																	<span translate="listpage.filter.search">Update search</span>
+																</button>
+															</div>
 														</div>
 							            </div>
 							          </li>
@@ -258,21 +252,21 @@
 																		  </p>
 																		  <div class="listing-features">
 																				<span class="f-icon with-text">
-										                            				<span class="copy">
-										                            					<em class="ng-binding">[:vm.shop.ER_BedRoom:]</em>
-										                            				</span>
+			                            				<span class="copy">
+			                            					<em class="ng-binding">[:vm.shop.ER_BedRoom:]</em>
+			                            				</span>
 																					<span class="icon fa fa-bed"></span>
 																				</span>
 																				<span class="f-icon with-text">
-										                            				<span class="copy">
-										                            					<em class="ng-binding">[:vm.shop.ER_BathRoom:]</em>
-										                            				</span>
+			                            				<span class="copy">
+			                            					<em class="ng-binding">[:vm.shop.ER_BathRoom:]</em>
+			                            				</span>
 																					<span class="icon fa fa-bath"></span>
 																				</span>
 																				<span class="f-icon with-text">
-										                            				<span class="copy">
-										                            					<em class="ng-binding">[:vm.shop.ER_Parking:]</em>
-										                            				</span>
+			                            				<span class="copy">
+			                            					<em class="ng-binding">[:vm.shop.ER_Parking:]</em>
+			                            				</span>
 																					<span class="icon fa fa-car"></span>
 																				</span>
 																				<span class="details" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="margin-left: 20px;">
@@ -370,39 +364,38 @@
 						</a>
 					</div>
 					<div class="benefits">
-						<a href class="f-icon with-text " title="near train station">
-                            <span class="icon " ng-show="shop.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
-                             <!--<span class="icon " ng-show="!shop.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
-                        </a>
-                        <a href class="f-icon with-text " title="near university">
-                        	<span class="icon " ng-show="shop.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
-                            <!--<span class="icon " ng-show="!shop.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>-->
-                        </a>
-                        <a href class="f-icon with-text " title="backpack">
-                        	<span class="icon " ng-show="shop.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
-                            <!--<span class="icon " ng-show="!shop.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
-                        </a>
-                        <a href class="f-icon with-text " title="near park">
-                        	 <span class="icon " ng-show="shop.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
-                            <!--<span class="icon " ng-show="!shop.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
-                        </a>
-						<a href class="f-icon with-text " title="near school">
-							<span class="icon " ng-show="shop.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
-                            <!--<span class="icon " ng-show="!shop.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
-                        </a>
-                        <a href class="f-icon with-text " title="big family">
-                        	 <span class="icon " ng-show="shop.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
-                            <!--<span class="icon " ng-show="!shop.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
-                        </a>
-                        <a href class="f-icon with-text " title="near shopping center">
-                        	<span class="icon " ng-show="shop.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
-                            <!--<span class="icon " ng-show="!shop.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
-                        </a>
-                        <a href class="f-icon with-text " title="office rental">
-                        	<span class="icon " ng-show="shop.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
-                            <!--<span class="icon " ng-show="!shop.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
-                        </a>
-
+							<a href class="f-icon with-text " title="near train station">
+			            <span class="icon " ng-show="shop.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
+			             <!--<span class="icon " ng-show="!shop.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
+			        </a>
+			        <a href class="f-icon with-text " title="near university">
+			        	<span class="icon " ng-show="shop.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+			            <!--<span class="icon " ng-show="!shop.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>-->
+			        </a>
+			        <a href class="f-icon with-text " title="backpack">
+			        	<span class="icon " ng-show="shop.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
+			            <!--<span class="icon " ng-show="!shop.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
+			        </a>
+			        <a href class="f-icon with-text " title="near park">
+			        	 <span class="icon " ng-show="shop.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
+			            <!--<span class="icon " ng-show="!shop.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
+			        </a>
+							<a href class="f-icon with-text " title="near school">
+								<span class="icon " ng-show="shop.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
+			            <!--<span class="icon " ng-show="!shop.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
+			        </a>
+			        <a href class="f-icon with-text " title="big family">
+			        	 <span class="icon " ng-show="shop.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
+			            <!--<span class="icon " ng-show="!shop.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
+			        </a>
+			        <a href class="f-icon with-text " title="near shopping center">
+			        	<span class="icon " ng-show="shop.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
+			            <!--<span class="icon " ng-show="!shop.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
+			        </a>
+			        <a href class="f-icon with-text " title="office rental">
+			        	<span class="icon " ng-show="shop.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
+			            <!--<span class="icon " ng-show="!shop.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
+			        </a>
 					</div>
 					<div class="price">
 						<span class="num">$[:shop.ER_Price:]</span>

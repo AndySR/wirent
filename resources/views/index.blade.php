@@ -76,6 +76,7 @@
 	<script src="/js/home/business.js"></script>
 	<script src="/js/home/documentation.js"></script>
 	<script src="/js/home/rightfix.js"></script>
+	<script src="/js/home/footer.js"></script>
 </body>
 
 </html>

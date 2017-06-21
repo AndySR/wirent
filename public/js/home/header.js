@@ -19,10 +19,13 @@
 				}
 			}
 		}])
+		// .run(['$anchorScroll', function($anchorScroll) {
+		//   $anchorScroll.yOffset = -50;   // always scroll by 50 extra pixels
+		// }])
 		.service('BaseService', ['$state', '$http', function($state, $http,$localStorage) {
 
 		}])
-		.controller('WinCtrl', ['$scope', '$filter','$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($scope,$filter, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
+		.controller('WinCtrl', ['$anchorScroll', '$location','$scope', '$filter','$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($anchorScroll,$location,$scope,$filter, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
 			$scope.letternums = 0;
@@ -94,5 +97,17 @@
 
 			}
 			/*********************go to shortlist******************************************/
+			$scope.gotoAnchor = function(businessSection) {
+      var newHash = businessSection;
+      if ($location.hash() !== newHash) {
+        // set the $location.hash to `newHash` and
+        // $anchorScroll will automatically scroll to it
+        $location.hash(businessSection);
+      } else {
+        // call $anchorScroll() explicitly,
+        // since $location.hash hasn't changed
+        $anchorScroll();
+      }
+    };
 		}])
 })();

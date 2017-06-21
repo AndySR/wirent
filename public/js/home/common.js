@@ -1786,7 +1786,6 @@
               updateService.set(entireData);
               //							SetCredentials(r);
               console.log('rrrrrrrrr==========>', r);
-              alert(222);
               if(r.data.length > 0) {
                $state.go('app.listpage');
               }

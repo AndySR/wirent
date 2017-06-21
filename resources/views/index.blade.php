@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/css/simple-line-icons.css" type="text/css" />
 	<link rel="stylesheet" href="/css/font.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/app.css" type="text/css" />
-	<link rel="stylesheet" href="/css/winning/search-option.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="/css/winning/search-option.css" type="text/css" /> -->
 	<link rel="stylesheet" href="/css/winning/profile.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/infowindow.css" type="text/css" />
 	<link rel="stylesheet" href="/css/winning/details.css" type="text/css" />

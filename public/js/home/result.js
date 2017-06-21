@@ -669,7 +669,6 @@
 
 							console.log('r===>', r);
 							if(r.data.length > 0) {
-								alert("刷新吧");
 						/**********************page update****************************/
 								if(JSON.stringify(SearchService.get()) != "{}"){
 							 	$localStorage.settings = SearchService.get().data;

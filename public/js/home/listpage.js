@@ -824,7 +824,7 @@
 		 });
 		 /***********************add to shortlist************************************/
 		 $scope.save2shortlist = function($index){
-			 alert($scope.favorsave);
+			//  alert($scope.favorsave);
 			 $http.get('/customer/profile')
 			 .then(function(r) {
 				 console.log(r);

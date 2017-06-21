@@ -1,6 +1,6 @@
 'use strict';
 	angular.module('andy')
-		.controller('shortlistCtrl',['$scope','$http','SearchService',function($scope,$http,SearchService){
+		.controller('shortlistCtrl',['$scope','$http','$state','SearchService',function($scope,$http,$state,SearchService){
 			// $scope.shortlistData=SearchService.get();
 			 $scope.shortlistcheckdata = {};
 			 $scope.shortlistDelete = {};
@@ -33,6 +33,7 @@
 								.then(function(r){
 		//							$scope.shortlistData = r.data;
 									console.log("$scope.shortlistDelete",r);
+									$state.reload();
 								},function(e){
 
 								});

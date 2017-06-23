@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="/font/flaticon.css" />
 	<link rel="stylesheet" href="/css/winning/newsDetail.css" type="text/css"/>
 	<link rel="stylesheet" href="/css/winning/fixright.css" type="text/css"/>
+	<link rel="stylesheet" href="/css/winning/loading.css" type="text/css" />
 </head>
 <body ng-controller="MainCtrl">
 

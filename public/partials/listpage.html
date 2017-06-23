@@ -32,7 +32,7 @@
 	                      <ul class="list-unstyled l-h-2x">
 	                        <li class="m-b-md">
 	                         <label translate="listpage.filter.price">Price</label>
-							 <input type="text" ng-model="myMinPrice" style="width: 149px;height: 40px; margin-left: 18px;" class="form-control input-sm inline" placeholder="minPrice" aria-describedby="basic-addon1">
+							 					 	 <input type="text" ng-model="myMinPrice" style="width: 149px;height: 40px; margin-left: 18px;" class="form-control input-sm inline" placeholder="minPrice" aria-describedby="basic-addon1">
 	                        </li>
 	                        <li class="m-b-md">
 	                          <label translate="listpage.filter.beds">Beds</label>
@@ -295,7 +295,7 @@
 									<div class="slider-main" id="slider_main_block">
 										 <carousel interval="myInterval" >
 									          <slide ng-repeat="slide in property.picset" active="slide.active">
-									            <img ng-src="[:slide.PicFile:]" class="img-full" style="width: 233px;height: 220px;">
+									            <img ng-src="[:slide.PicFile:]" class="img-full" style="width: 233px;height: 220px;" ui-sref="app.details({id:property.ER_ID,name:property.ER_No+' '+property.ER_St+' '+property.ER_Suburb+' '+property.ER_Region})">
 									            <!--<div class="carousel-caption">
 									              <h4>Slide [:$index:]</h4>
 									              <p>[:slide.text:]</p>

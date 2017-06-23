@@ -841,7 +841,23 @@
 //					alert("updated");
 				}
 				/********************************filter update code ends*****************************/
-
+				/*********************sortby*********************************************/
+				$scope.sortBy = function(orderName){
+					if(orderName==='ER_Price'){
+						$scope.orderright = false;
+						$scope.orderleft = true;
+						$scope.sortPrice=!$scope.sortPrice;
+					}else if(orderName==='ER_AvailableDate'){
+						$scope.orderleft = false;
+						$scope.orderright = true;
+						$scope.sortDate=!$scope.sortDate;
+					}
+				
+					$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
+						$scope.orderName = orderName;
+				//				$scope.orderName = order+'';
+				}
+				/*********************sortby ends*********************************************/
 
 			})
 		.service('googleService',['$scope',function($scope){

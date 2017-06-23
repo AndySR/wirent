@@ -17,6 +17,26 @@
 	                                <li><a href="javascript:;" class="btn" data-filter="NewDevelopment">New Homes</a></li>
 	                                <li><a href="javascript:;" class="btn" data-filter="share">Share</a></li>
 	                                <li><a href="javascript:;" class="btn" data-filter="sold">Sold</a></li>
+																	<li>
+																	 <a ng-click="sortBy('ER_Price')" class="btn">
+																			 <i translate="listpage.list.orderBy.price"></i>
+																		 &nbsp;
+																			 <span ng-if="orderleft">
+																				 <i ng-show="sortPrice" class="fa fa-caret-down"></i>
+																				 <i ng-show="!sortPrice" class="fa fa-caret-up"></i>
+																		 </span>
+																	 </a>
+																 </li>
+																 <li>
+																	 <a ng-click="sortBy('ER_AvailableDate')" class="btn">
+																			 <i translate="listpage.list.orderBy.time"></i>
+																			 &nbsp;
+																			 <span ng-if="orderright">
+																		 <i ng-show="sortDate" class="fa fa-caret-down"></i>
+																				 <i ng-show="!sortDate" class="fa fa-caret-up"></i>
+																	 </span>
+																	 </a>
+																 </li>
                             	</ul>
 							</div>
 						</header>
@@ -30,19 +50,19 @@
 						        <span class="icon outline fa fa-star"></span>
 						        <span class="invisible">remove from shortlist</span>
 						</a>
-						<a href="#" class="projectListingsClickThrough">
+						<a  class="projectListingsClickThrough">
 					        <div class="media-wrap crop-image" style="overflow: hidden; position: relative;">
-					                <img src="[:value[0].PicFile:]" alt="61 Cottenham Avenue, Kingsford" class="" style="position: absolute; width: 320px; height: auto; top: -11.5px; left: 0px;">
+					                <img src="[:value[0].PicFile:]" alt="[:value[0].ER_No:] [:value[0].ER_St:], [:value[0].ER_Suburb:]" class="" style="position: absolute; width: 320px; height: auto; top: -11.5px; left: 0px;">
 					        </div>
 					    </a>
 					    <div class="outer-wrap">
 					        <div class="inner-wrap">
-					            <a href="#" class="projectListingsClickThrough">
+					            <a class="projectListingsClickThrough">
 					                <div class="price-wrap">
 					                        <h4 class="truncate-single">$[:value[0].ER_Price:]</h4>
 					                </div>
 					                    <ul class="features">
-					                            <li class="truncate-single">[:value[0].ER_BedRoom:] <i class="fa fa-bed"></i>, [:value[0].ER_BathRoom:] <i class="fa fa-bath"></i>, [:value[0].ER_Parking:] <i class="fa fa-car"></i>,</li>
+					                            <li class="truncate-single">[:value[0].ER_BedRoom:] <i class="fa fa-bed"></i> [:value[0].ER_BathRoom:] <i class="fa fa-bath"></i> [:value[0].ER_Parking:] <i class="fa fa-car"></i></li>
 					                            <li class="address truncate-single">[:value[0].ER_No:] [:value[0].ER_St:], [:value[0].ER_Suburb:]</li>
 					                    </ul>
 					                <dl class="cfix">

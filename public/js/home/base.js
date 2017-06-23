@@ -12,6 +12,7 @@ angular.module('andy', [
       'ui.jq',
       'ngMap',
       'map',
+      'details'
       ])
  .config(function ($interpolateProvider,
        $stateProvider,

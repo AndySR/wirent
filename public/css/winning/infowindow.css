@@ -16,12 +16,14 @@
 }
 
 .map-page .infowindow-container img {
-
+	cursor: pointer;
   margin-right: 20px;
   border-radius: 0;
   margin-top: 0;
 }
-
+.map-page img {
+	cursor: pointer!important;
+}
 /*.infowindow-container span {
   font-size: 10px;
   margin-right: 5px;
@@ -228,7 +230,7 @@
 	margin-top: 15px;
 }
 .map-page .map_feature_filter > li > a {
-	color: lightgray;
+	color: #07111b;
 }
 .map-page .map_feature_filter > li > a:hover {
 	color: purple;

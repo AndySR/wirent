@@ -28,12 +28,24 @@
 		.controller('WinCtrl', ['$anchorScroll', '$location','$scope', '$filter','$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($anchorScroll,$location,$scope,$filter, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
-			$scope.letternums = 0;
+			// $scope.letternums = 0;
 			$http.get('/customer/profile')
 				.then(function(r) {
 					console.log(r);
 					if(r.data.customer_login_status)
-						$scope.profile = true;
+						{
+								$scope.profile = true;
+							/*********************obtain unread messages number***********************************/
+								var promise=readLetters.query();
+									promise.then(function (data) {
+										console.log("===data===",data);
+										$localStorage.headerSetting.letternums = data[0]['count(*)'];
+										$scope.letternums = $localStorage.headerSetting.letternums;
+									});
+									$scope.letternums = $localStorage.headerSetting.letternums;
+
+							/*********************obtain unread messages number***********************************/
+						}
 					else
 						$scope.profile = false;
 				})
@@ -47,29 +59,21 @@
 						location.href = '/';
 					});
 			}
-			$scope.read_Letters = function(){
+			$scope.read_Letters = function(messages){
 				$http.get('/customer/profile')
 						.then(function(r){
 							console.log("=============",r);
 							if(r.data=="login"){
 								$state.go("app.login");
 							}else{
+								$state.go("app.profile");
 							}
 						},function(e){
 							$state.go("app.login");
 						})
 
 					}
-			/*********************obtain unread messages number***********************************/
-				var promise=readLetters.query();
-			    promise.then(function (data) {
-			    	console.log("===data===",data);
-			    	$localStorage.headerSetting.letternums = data[0]['count(*)'];
-			    	$scope.letternums = $localStorage.headerSetting.letternums;
-			    });
-					$scope.letternums = $localStorage.headerSetting.letternums;
 
-			/*********************obtain unread messages number***********************************/
 
 			/*********************go to shortlist******************************************/
 			$scope.go2Shortlist = function(){

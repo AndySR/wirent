@@ -11,7 +11,7 @@
 	bottom: 230px;
 	margin-top: -140px;
 	right: 0;
-	z-index: 999;
+	z-index: 99;
 	background-color: #fff;
 	box-shadow: 0 4px 12px 0 rgba(7, 17, 27, .1);
 }
@@ -84,7 +84,7 @@
     -webkit-transform-origin: 100% 95%;
     -ms-transform-origin: 100% 95%;
     transform-origin: 100% 95%;
-  
+
 }
 .rightfix .elevator .elevator-app:hover .elevator-app-box {
     display: block;

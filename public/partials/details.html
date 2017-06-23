@@ -588,7 +588,7 @@
 				            <i class="icon-call-end block m-b-xs fa-2x"></i>
 				            <span>Call</span>
 				          </a>
-				          <a href class="col padder-v text-muted b-r b-light">
+				          <a ng-click="showDetail();gotoAnchor('company')" class="col padder-v text-muted b-r b-light">
 				            <i class="icon-pointer block m-b-xs fa-2x"></i>
 				            <span>Location</span>
 				          </a>
@@ -633,14 +633,55 @@
 
 		</div>
 	</div>
-	<div class="row m-t-sm">
-		<ng-map center="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" zoom="18"  scrollwheel="false"> <!--draggable="false" zoom-control="false"-->
-			<marker position="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" title="[: detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+','+detailsData.ER_Region :]" optimized="false" animation="Animation.BOUNCE" icon="{
+	<div class="row m-t-sm" id="company">
+		<ng-map center="[: center :]"  zoom="18"  scrollwheel="false"> <!--draggable="false" zoom-control="false"-->
+			<marker position="[: location.position :]" id='[: location.id: ]' position="[:location.position:]" ng-repeat="location in locations" title="[: location.position :]" optimized="false" animation="Animation.BOUNCE" icon="{
 		        url:'img/blue.png',
 		        scaledSize:[30,30],
 		        origin: [0,0],
 		        anchor: [10,10]
 		      }"></marker>
+					<!-- <info-window id="foo-iw">
+							<div ng-non-bindable="">
+										<div class="infowindow-container clear">
+													<div class="info-left">
+														<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="width:100px; align-content: center;">
+													</div>
+													<div class="info-right">
+															<p class="price">$[:vm.shop.ER_Price:]<i translate="listpage.list.row.price_unit"></i></p>
+															<p class="address">
+																	<a ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})">
+																		[:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region:]
+																	</a>
+															</p>
+															<div class="listing-features">
+																<span class="f-icon with-text">
+																	<span class="copy">
+																		<em class="ng-binding">[:vm.shop.ER_BedRoom:]</em>
+																	</span>
+																	<span class="icon fa fa-bed"></span>
+																</span>
+																<span class="f-icon with-text">
+																	<span class="copy">
+																		<em class="ng-binding">[:vm.shop.ER_BathRoom:]</em>
+																	</span>
+																	<span class="icon fa fa-bath"></span>
+																</span>
+																<span class="f-icon with-text">
+																	<span class="copy">
+																		<em class="ng-binding">[:vm.shop.ER_Parking:]</em>
+																	</span>
+																	<span class="icon fa fa-car"></span>
+																</span>
+																<span class="details" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="margin-left: 20px;">
+																	<i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i>
+																</span>
+															</div>
+
+													</div>
+										</div>
+							</div>
+					</info-window> -->
 		</ng-map>
 	</div>
 

@@ -194,12 +194,10 @@ class CustomerController extends Controller
 		return $result;
 	} 
 	
-	// 会员有shortlist的查询
-	public function filt_entire(Request $request)
+	public function filt_entire_count(Request $request)
 	{
-		//赋值参数
 		$include_area = $request->input('include_area');
-		$ER_Suburb = $request->input('ER_Suburb');
+		$ER_Suburb = $request->input('ER_Suburb');				//检查房源所在区被包含在客户选择的多个区拼接成中 i.e. 'epping,eastwood' 注意分隔符为逗号
 		$ER_Region = $request->input('ER_Region');
 		$ER_Type = $request->input('ER_Type');
 		$ER_BedRoomMin = $request->input('ER_BedRoomMin');
@@ -217,6 +215,65 @@ class CustomerController extends Controller
 		$ER_AvailableDate = $request->input('ER_AvailableDate');
 		
 		$data = array();
+		
+		if ($include_area==true)	
+		{
+			$proc_name = 'include_area';
+			$sql = "call $proc_name('{$ER_Suburb}')";
+			$SuburbSet = DB::select($sql);
+			$ER_Suburb = '';
+			foreach($SuburbSet as $Suburb)
+			{
+				$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;										
+			}
+			$proc_name = 'filt_Check_EntireRent_Count';
+			$sql = "call $proc_name(
+									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
+									'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
+									'{$ER_Description}','{$ER_AreaMin}','{$ER_AreaMax}','{$ER_PriceMin}','{$ER_PriceMax}',
+									'{$ER_AvailableDate}'
+									)";
+			$data = DB::select($sql);
+		}
+		else
+		{	
+			$proc_name = 'filt_Check_EntireRent_Count';
+			$sql = "call $proc_name(
+									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
+									'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
+									'{$ER_Description}','{$ER_AreaMin}','{$ER_AreaMax}','{$ER_PriceMin}','{$ER_PriceMax}',
+									'{$ER_AvailableDate}'
+									)";
+			$data = DB::select($sql);
+		}
+	}
+	
+	// 非会员有shortlist的查询
+	public function filt_entire(Request $request)
+	{
+		//赋值参数
+		$include_area = $request->input('include_area');
+		$ER_Suburb = $request->input('ER_Suburb');				//检查房源所在区被包含在客户选择的多个区拼接成中 i.e. 'epping,eastwood' 注意分隔符为逗号
+		$ER_Region = $request->input('ER_Region');
+		$ER_Type = $request->input('ER_Type');
+		$ER_BedRoomMin = $request->input('ER_BedRoomMin');
+		$ER_BedRoomMax = $request->input('ER_BedRoomMax');
+		$ER_BathRoomMin = $request->input('ER_BathRoomMin');
+		$ER_BathRoomMax = $request->input('ER_BathRoomMax');
+		$ER_ParkingMin = $request->input('ER_ParkingMin');
+		$ER_ParkingMax = $request->input('ER_ParkingMax');
+		$ER_Feature = $request->input('ER_Feature');    		//feature暂定furnitured or unfurnitured
+		$ER_Description = $request->input('ER_Description');	//Description 参数要使用%a%b%... 顺序必须与insert至表内顺序一致
+		$ER_AreaMin = $request->input('ER_AreaMin');
+		$ER_AreaMax = $request->input('ER_AreaMax');
+		$ER_PriceMin = $request->input('ER_PriceMin');
+		$ER_PriceMax = $request->input('ER_PriceMax');
+		$ER_AvailableDate = $request->input('ER_AvailableDate');
+			//分页查询参数
+		$OrderBy = $request->input('OrderBy');
+		$PageID = $request->input('PageID');
+		
+		$data = array();
 		$dataSet = array();
 
 		//执行存储过程
@@ -226,22 +283,19 @@ class CustomerController extends Controller
 					$proc_name = 'include_area';
 					$sql = "call $proc_name('{$ER_Suburb}')";
 					$SuburbSet = DB::select($sql);
+					$ER_Suburb = '';
 					foreach($SuburbSet as $Suburb)
 					{
-						$ER_Suburb = $Suburb->suburb;
-						$proc_name = 'filt_Check_EntireRent';
-						$sql = "call $proc_name(
-												'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
-												'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
-												'{$ER_Description}','{$ER_AreaMin}','{$ER_AreaMax}','{$ER_PriceMin}','{$ER_PriceMax}',
-												'{$ER_AvailableDate}'
-												)";
-						$data_suburb = DB::select($sql);
-						if($data_suburb!=null)
-						foreach($data_suburb as $data_item)
-						{$data[]=$data_item;}					
+						$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;										
 					}
-//					return $data;
+					$proc_name = 'filt_Check_EntireRent';
+					$sql = "call $proc_name(
+											'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
+											'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
+											'{$ER_Description}','{$ER_AreaMin}','{$ER_AreaMax}','{$ER_PriceMin}','{$ER_PriceMax}',
+											'{$ER_AvailableDate}','{$OrderBy}','{$PageID}'
+											)";
+					$data = DB::select($sql);
 				}
 			else
 			{	
@@ -250,7 +304,7 @@ class CustomerController extends Controller
 										'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
 										'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
 										'{$ER_Description}','{$ER_AreaMin}','{$ER_AreaMax}','{$ER_PriceMin}','{$ER_PriceMax}',
-										'{$ER_AvailableDate}'
+										'{$ER_AvailableDate}','{$OrderBy}','{$PageID}'
 										)";
 				$data = DB::select($sql);
 			}
@@ -282,7 +336,7 @@ class CustomerController extends Controller
 											'{$optionlist_input[1]}','{$optionlist_input[0]}','{$optionlist_input[2]}','{$optionlist_input[9]}','{$optionlist_input[8]}',
 											'{$optionlist_input[11]}','{$optionlist_input[10]}','{$optionlist_input[13]}','{$optionlist_input[12]}','{$optionlist_input[5]}',
 											'{$optionlist_input[4]}','{$optionlist_input[15]}','{$optionlist_input[14]}','{$optionlist_input[7]}','{$optionlist_input[6]}',
-											'{$optionlist_input[3]}'
+											'{$optionlist_input[3]}','{$OrderBy}','{$PageID}'
 											)";
 					$data = DB::select($sql);
 					$i--;
@@ -305,6 +359,10 @@ class CustomerController extends Controller
 				$item->details = $itemdetail;	
 			}			
 			return $data;
+			
+			
+			//domain 新增查询无结果解决办法 在房源足够多的情况下
+			//if ($data==''){return '没有与您查询条件完全匹配的房源';}
 		}
 		catch(exception $e)
 		{
@@ -318,7 +376,7 @@ class CustomerController extends Controller
 		//赋值参数
 		$CID = $request->input('CID');
 		$include_area = $request->input('include_area');
-		$ER_Suburb = $request->input('ER_Suburb');
+		$ER_Suburb = $request->input('ER_Suburb');				//检查房源所在区被包含在客户选择的多个区拼接成中 i.e. 'epping,eastwood' 注意分隔符为逗号
 		$ER_Region = $request->input('ER_Region');
 		$ER_Type = $request->input('ER_Type');
 		$ER_BedRoomMin = $request->input('ER_BedRoomMin');
@@ -334,6 +392,9 @@ class CustomerController extends Controller
 		$ER_PriceMin = $request->input('ER_PriceMin');
 		$ER_PriceMax = $request->input('ER_PriceMax');
 		$ER_AvailableDate = $request->input('ER_AvailableDate');
+			//分页查询参数
+		$OrderBy = $request->input('OrderBy');
+		$PageID = $request->input('PageID');
 		
 		$data = array();
 		$dataSet = array();
@@ -345,22 +406,19 @@ class CustomerController extends Controller
 					$proc_name = 'include_area';
 					$sql = "call $proc_name('{$ER_Suburb}')";
 					$SuburbSet = DB::select($sql);
+					$ER_Suburb = '';
 					foreach($SuburbSet as $Suburb)
 					{
-						$ER_Suburb = $Suburb->suburb;
-						$proc_name = 'filt_Check_EntireRent';
-						$sql = "call $proc_name(
-												'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
-												'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
-												'{$ER_Description}','{$ER_AreaMin}','{$ER_AreaMax}','{$ER_PriceMin}','{$ER_PriceMax}',
-												'{$ER_AvailableDate}'
-												)";
-						$data_suburb = DB::select($sql);
-						if($data_suburb!=null)
-						foreach($data_suburb as $data_item)
-						{$data[]=$data_item;}					
+						$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;										
 					}
-//					return $data;
+					$proc_name = 'filt_Check_EntireRent';
+					$sql = "call $proc_name(
+											'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
+											'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
+											'{$ER_Description}','{$ER_AreaMin}','{$ER_AreaMax}','{$ER_PriceMin}','{$ER_PriceMax}',
+											'{$ER_AvailableDate}','{$OrderBy}','{$PageID}'
+											)";
+					$data = DB::select($sql);
 				}
 			else
 			{	
@@ -369,7 +427,7 @@ class CustomerController extends Controller
 										'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$ER_BedRoomMin}','{$ER_BedRoomMax}',
 										'{$ER_BathRoomMin}','{$ER_BathRoomMax}','{$ER_ParkingMin}','{$ER_ParkingMax}','{$ER_Feature}',
 										'{$ER_Description}','{$ER_AreaMin}','{$ER_AreaMax}','{$ER_PriceMin}','{$ER_PriceMax}',
-										'{$ER_AvailableDate}'
+										'{$ER_AvailableDate}','{$OrderBy}','{$PageID}'
 										)";
 				$data = DB::select($sql);
 			}
@@ -401,7 +459,7 @@ class CustomerController extends Controller
 											'{$optionlist_input[1]}','{$optionlist_input[0]}','{$optionlist_input[2]}','{$optionlist_input[9]}','{$optionlist_input[8]}',
 											'{$optionlist_input[11]}','{$optionlist_input[10]}','{$optionlist_input[13]}','{$optionlist_input[12]}','{$optionlist_input[5]}',
 											'{$optionlist_input[4]}','{$optionlist_input[15]}','{$optionlist_input[14]}','{$optionlist_input[7]}','{$optionlist_input[6]}',
-											'{$optionlist_input[3]}'
+											'{$optionlist_input[3]}','{$OrderBy}','{$PageID}'
 											)";
 					$data = DB::select($sql);
 					$i--;
@@ -462,12 +520,11 @@ class CustomerController extends Controller
 		}
 		return $data;
 	}
-	//会员有shortlist查询
-	public function filt_share_by_tenant(Request $request)
+	
+	public function filt_share_count(Request $request)
 	{
 		//赋值参数
-		$CID = $request->input('CID');		
-		
+		$include_area = $request->input('include_area');
 		$ER_Suburb = $request->input('ER_Suburb');
 		$ER_Region = $request->input('ER_Region');
 		$ER_Type = $request->input('ER_Type');
@@ -481,26 +538,80 @@ class CustomerController extends Controller
 		
 		$ER_Feature = $request->input('ER_Feature');    		//feature暂定furnitured or unfurnitured
 		$ER_Description = $request->input('ER_Description');	//Description 参数要使用%a%b%... 顺序必须与insert至表内顺序一致
+		
+		if ($include_area==true)	
+		{
+			$proc_name = 'include_area';
+			$sql = "call $proc_name('{$ER_Suburb}')";
+			$SuburbSet = DB::select($sql);
+			$ER_Suburb = '';
+			foreach($SuburbSet as $Suburb)
+			{
+				$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;					
+			}
+			$proc_name = 'filt_Check_SharingRent_Count';
+			$sql = "call $proc_name(
+							'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$SRName}','{$SRAreaMin}',
+							'{$SRAreaMax}','{$SRPriceMin}','{$SRPriceMax}','{$SRAvailableDate}','{$ER_Feature}',
+							'{$ER_Description}'
+							)";
+			$data = DB::select($sql);
+		}
+		else
+		{	
+			$proc_name = 'filt_Check_SharingRent_Count';
+			$sql = "call $proc_name(
+									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$SRName}','{$SRAreaMin}',
+									'{$SRAreaMax}','{$SRPriceMin}','{$SRPriceMax}','{$SRAvailableDate}','{$ER_Feature}',
+									'{$ER_Description}'
+									)";
+			$data = DB::select($sql);
+		}		
+	}
+	
+	
+	//会员有shortlist查询
+	public function filt_share_by_tenant(Request $request)
+	{
+		//赋值参数
+		$CID = $request->input('CID');		
+		$include_area = $request->input('include_area');
+		$ER_Suburb = $request->input('ER_Suburb');
+		$ER_Region = $request->input('ER_Region');
+		$ER_Type = $request->input('ER_Type');
+	
+		$SRName = $request->input('SRName');
+		$SRAreaMin = $request->input('SRAreaMin');
+		$SRAreaMax = $request->input('SRAreaMax');
+		$SRPriceMin = $request->input('SRPriceMin');
+		$SRPriceMax = $request->input('SRPriceMax');
+		$SRAvailableDate = $request->input('SRAvailableDate');
+		
+		$ER_Feature = $request->input('ER_Feature');    		//feature暂定furnitured or unfurnitured
+		$ER_Description = $request->input('ER_Description');	//Description 参数要使用%a%b%... 顺序必须与insert至表内顺序一致
+		
+		//分页查询参数
+		$OrderBy = $request->input('OrderBy');
+		$PageID = $request->input('PageID');
+		
 			
 		if ($include_area==true)	
 		{
 			$proc_name = 'include_area';
 			$sql = "call $proc_name('{$ER_Suburb}')";
 			$SuburbSet = DB::select($sql);
+			$ER_Suburb = '';
 			foreach($SuburbSet as $Suburb)
 			{
-				$ER_Suburb = $Suburb->suburb;
-				$proc_name = 'filt_Check_SharingRent';
-				$sql = "call $proc_name(
-								'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$SRName}','{$SRAreaMin}',
-								'{$SRAreaMax}','{$SRPriceMin}','{$SRPriceMax}','{$SRAvailableDate}','{$ER_Feature}',
-								'{$ER_Description}'
-								)";
-				$data_suburb = DB::select($sql);
-				if($data_suburb!=null)
-				foreach($data_suburb as $data_item)
-				{$data[]=$data_item;}					
+				$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;					
 			}
+			$proc_name = 'filt_Check_SharingRent';
+			$sql = "call $proc_name(
+							'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$SRName}','{$SRAreaMin}',
+							'{$SRAreaMax}','{$SRPriceMin}','{$SRPriceMax}','{$SRAvailableDate}','{$ER_Feature}',
+							'{$ER_Description}','{$OrderBy}','{$PageID}'
+							)";
+			$data = DB::select($sql);
 		}
 		else
 		{	
@@ -508,7 +619,7 @@ class CustomerController extends Controller
 			$sql = "call $proc_name(
 									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$SRName}','{$SRAreaMin}',
 									'{$SRAreaMax}','{$SRPriceMin}','{$SRPriceMax}','{$SRAvailableDate}','{$ER_Feature}',
-									'{$ER_Description}'
+									'{$ER_Description}','{$OrderBy}','{$PageID}'
 									)";
 			$data = DB::select($sql);
 		}
@@ -541,7 +652,7 @@ class CustomerController extends Controller
 					$sql = "call $proc_name(
 											'{$optionlist_input[1]}','{$optionlist_input[0]}','{$optionlist_input[2]}','{$optionlist_input[3]}','{$optionlist_input[9]}',
 											'{$optionlist_input[10]}','{$optionlist_input[7]}','{$optionlist_input[8]}','{$optionlist_input[4]}','{$optionlist_input[6]}',
-											'{$optionlist_input[5]}'
+											'{$optionlist_input[5]}','{$OrderBy}','{$PageID}'
 											)";
 					$data = DB::select($sql);
 					$i--;
@@ -595,6 +706,7 @@ class CustomerController extends Controller
 	public function filt_share(Request $request)
 	{
 		//赋值参数
+		$include_area = $request->input('include_area');
 		$ER_Suburb = $request->input('ER_Suburb');
 		$ER_Region = $request->input('ER_Region');
 		$ER_Type = $request->input('ER_Type');
@@ -609,13 +721,39 @@ class CustomerController extends Controller
 		$ER_Feature = $request->input('ER_Feature');    		//feature暂定furnitured or unfurnitured
 		$ER_Description = $request->input('ER_Description');	//Description 参数要使用%a%b%... 顺序必须与insert至表内顺序一致
 		
-		$proc_name = 'filt_Check_SharingRent';
-		$sql = "call $proc_name(
-								'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$SRName}','{$SRAreaMin}',
-								'{$SRAreaMax}','{$SRPriceMin}','{$SRPriceMax}','{$SRAvailableDate}','{$ER_Feature}',
-								'{$ER_Description}'
-								)";
-		$data = DB::select($sql);	
+		//分页查询参数
+		$OrderBy = $request->input('OrderBy');
+		$PageID = $request->input('PageID');
+		
+		
+		if ($include_area==true)	
+		{
+			$proc_name = 'include_area';
+			$sql = "call $proc_name('{$ER_Suburb}')";
+			$SuburbSet = DB::select($sql);
+			$ER_Suburb = '';
+			foreach($SuburbSet as $Suburb)
+			{
+				$ER_Suburb = $ER_Suburb+','+$Suburb->suburb;					
+			}
+			$proc_name = 'filt_Check_SharingRent';
+			$sql = "call $proc_name(
+							'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$SRName}','{$SRAreaMin}',
+							'{$SRAreaMax}','{$SRPriceMin}','{$SRPriceMax}','{$SRAvailableDate}','{$ER_Feature}',
+							'{$ER_Description}','{$OrderBy}','{$PageID}'
+							)";
+			$data = DB::select($sql);
+		}
+		else
+		{	
+			$proc_name = 'filt_Check_SharingRent';
+			$sql = "call $proc_name(
+									'{$ER_Suburb}','{$ER_Region}','{$ER_Type}','{$SRName}','{$SRAreaMin}',
+									'{$SRAreaMax}','{$SRPriceMin}','{$SRPriceMax}','{$SRAvailableDate}','{$ER_Feature}',
+									'{$ER_Description}','{$OrderBy}','{$PageID}'
+									)";
+			$data = DB::select($sql);
+		}
 		
 			/*
 			 * 查询无结果解决办法:
@@ -644,7 +782,7 @@ class CustomerController extends Controller
 					$sql = "call $proc_name(
 											'{$optionlist_input[1]}','{$optionlist_input[0]}','{$optionlist_input[2]}','{$optionlist_input[3]}','{$optionlist_input[9]}',
 											'{$optionlist_input[10]}','{$optionlist_input[7]}','{$optionlist_input[8]}','{$optionlist_input[4]}','{$optionlist_input[6]}',
-											'{$optionlist_input[5]}'
+											'{$optionlist_input[5]}','{$OrderBy}','{$PageID}'
 											)";
 					$data = DB::select($sql);
 					$i--;
@@ -855,7 +993,16 @@ class CustomerController extends Controller
 		$CLType = $request->input('CLType');
 		$CLDetail=$request->input('CLDetail');
 		$CLTime = $request->input('CLTime');
-		//执行存储过程
+		//查询数据库内是否存在相同信息
+		$proc_name = 'check_CustomerLogbook_by_CIDCLType';
+		$sql = "call $proc_name({$CID},'{$CLType}')";
+		$result = DB::select($sql);
+		foreach($result as $shortlist_item)
+		{
+			if ($shortlist_item->CLDetail==$CLDetail)
+			{return 'shortlist_insert_repeat';}
+		}
+		//执行添加存储过程
 		$proc_name = 'proc_Insert_CustomerLogbook';
 		$sql = "call $proc_name({$CID},'{$CLType}','{$CLDetail}','{$CLTime}')";
 		$result = DB::select($sql);

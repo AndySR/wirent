@@ -241,7 +241,7 @@
 											<div ng-non-bindable="">
 														<div class="infowindow-container clear">
 																	<div class="info-left">
-																		<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" style="width:100px; align-content: center;">
+																		<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="width:100px; align-content: center;">
 																	</div>
 																	<div class="info-right">
 																		  <p class="price">$[:vm.shop.ER_Price:]<i translate="listpage.list.row.price_unit"></i></p>
@@ -332,7 +332,7 @@
 					</div>
 					 <carousel interval="myInterval" >
 				          <slide ng-repeat="slide in shop.picset" active="slide.active">
-				            <img ng-src="[:slide.PicFile:]" class="img-full" style="height: 490px; height: 305px;">
+				            <img ng-src="[:slide.PicFile:]" class="img-full" style="height: 490px; height: 305px;"  ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
 				            <!--<div class="carousel-caption">
 				              <h4>Slide [:$index:]</h4>
 				              <p>[:slide.text:]</p>

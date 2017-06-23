@@ -1,7 +1,7 @@
 ;
 (function() {
 	'use strict';
-	angular.module('andy')
+	angular.module('details',['ngMap'])
 	.controller('ModalInstanceCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
 	    $scope.contact = {};
 	    $scope.customer = {};
@@ -41,7 +41,7 @@
 	      $modalInstance.dismiss('cancel');
 	    };
 	  }])
-	.controller('detailsController',['$http','$scope','$state','$window','$stateParams','$cookies','$rootScope','$localStorage','$modal', '$log','SearchService','readJSON','mouseEvent','utilConvertDateToString','hotRentService',function ($http,$scope,$state,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
+	.controller('detailsController',function ($anchorScroll,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
 		var datapackage = {};
 		$scope.detailsData = {};
 		$scope.shortlistInsert = {};
@@ -66,7 +66,7 @@
 			$http.post('/customer/shortlist',$scope.shortlistData)
 						.then(function(r){
 							$scope.shortlistData = r.data;
-//							console.log("$scope.shortlistData",$scope.shortlistData);
+							//console.log("$scope.shortlistData",$scope.shortlistData);
 						},function(e){
 
 						});*/
@@ -107,6 +107,45 @@
 	    }
 
 		/****************************************************************/
+
+		/******************details page map starts******************************/
+		var vm = this;
+		$scope.center = '';
+		NgMap.getMap().then(function(map) {
+			vm.map = map;
+		});
+		 $scope.locations = [
+					{
+						id: 'property',
+						center: $scope.detailsData.ER_No+' '+$scope.detailsData.ER_St+' '+$scope.detailsData.ER_Suburb+','+$scope.detailsData.ER_Region,
+						position: $scope.detailsData.ER_No+' '+$scope.detailsData.ER_St+' '+$scope.detailsData.ER_Suburb+','+$scope.detailsData.ER_Region
+					},
+					{
+						id: 'company',
+						center: '84 pitt street Sydney NSW',
+						position: '84 pitt street Sydney NSW'
+					}
+				];
+				$scope.center = $scope.locations[0].center;
+				$scope.showDetail = function() {
+					// $scope.companyLocation = companyLocation;
+					// vm.map.showInfoWindow('company', $scope.companyLocation.id);
+						$scope.center = $scope.locations[1].center;
+				};
+
+				$scope.gotoAnchor = function(company) {
+	      var newHash = company;
+	      if ($location.hash() !== newHash) {
+	        // set the $location.hash to `newHash` and
+	        // $anchorScroll will automatically scroll to it
+	        $location.hash(company);
+	      } else {
+	        // call $anchorScroll() explicitly,
+	        // since $location.hash hasn't changed
+	        $anchorScroll();
+	      }
+	    };
+		/******************details page map******************************/
 
 		/************print web page*****************/
 		$scope.printDiv = function (div){
@@ -189,7 +228,7 @@
         $log.info('Modal dismissed at: ' + new Date());
       });
     };
-	}])
+	})
 .factory('readData', ['$http', '$q', function($http, $q) {
 		return {
 			query: function() {

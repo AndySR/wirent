@@ -273,27 +273,27 @@
 			$scope.myPropertyType = 'Apartment';
 			$scope.propertyTypes = [{ id: 1, propertyType:'House'}, { id: 2,propertyType:'Apartment'},
 				{ id: 3, propertyType:'Unit'},{ id: 4,propertyType:'Studio'}];
-			//select minPrice
-				$scope.myMinPrice = 0;
-				$scope.minPrices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
-									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
-									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
-									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
-									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
-									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
-									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
-									,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
-			//select maxPrice
-				$scope.myMaxPrice = 10000;
-				$scope.maxPrices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
-									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
-									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
-									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
-									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
-									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
-									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
-									,{ id: 29, price: '1800' },{ id: 30, price: '2000' },{ id: 31, price: '3000' },{ id: 32, price: '4000' }
-									,{ id: 33, price: '5000' },{ id: 34, price: '10000' }];
+				//select minPrice
+					$scope.myMinPrice = 0;
+					$scope.minPrices = [{ id: 1, price: '' }, { id: 2, price: '$50' }, { id: 3, price: '$100' },{ id: 4, price: '$150' }
+										,{ id: 5, price: '$200' },{ id: 6, price: '$250' },{ id: 7, price: '$300' },{ id: 8, price: '$350' }
+										,{ id: 9, price: '$400' },{ id: 10, price: '$450' },{ id: 11, price: '$500' },{ id: 12, price: '$550' }
+										,{ id: 13, price: '$600' },{ id: 14, price: '$650' },{ id: 15, price: '$700' },{ id: 16, price: '$750' }
+										,{ id: 17, price: '$800' },{ id: 18, price: '$850' },{ id: 19, price: '$900' },{ id: 20, price: '$950' }
+										,{ id: 21, price: '$1000' },{ id: 22, price: '$1100' },{ id: 23, price: '$1200' },{ id: 24, price: '$1300'}
+										,{ id: 25, price: '$1400' },{ id: 26, price: '$1500' },{ id: 27, price: '$1600' },{ id: 28, price: '$1700' }
+										,{ id: 29, price: '$1800' },{ id: 30, price: '$1900' }];
+				//select maxPrice
+					$scope.myMaxPrice = 10000;
+					$scope.maxPrices = [{ id: 1, price: '' }, { id: 2, price: '$50' }, { id: 3, price: '$100' },{ id: 4, price: '$150' }
+										,{ id: 5, price: '$200' },{ id: 6, price: '$250' },{ id: 7, price: '$300' },{ id: 8, price: '$350' }
+										,{ id: 9, price: '$400' },{ id: 10, price: '$450' },{ id: 11, price: '$500' },{ id: 12, price: '$550' }
+										,{ id: 13, price: '$600' },{ id: 14, price: '$650' },{ id: 15, price: '$700' },{ id: 16, price: '$750' }
+										,{ id: 17, price: '$800' },{ id: 18, price: '$850' },{ id: 19, price: '$900' },{ id: 20, price: '$950' }
+										,{ id: 21, price: '$1000' },{ id: 22, price: '$1100' },{ id: 23, price: '$1200' },{ id: 24, price: '$1300'}
+										,{ id: 25, price: '$1400' },{ id: 26, price: '$1500' },{ id: 27, price: '$1600' },{ id: 28, price: '$1700' }
+										,{ id: 29, price: '$1800' },{ id: 30, price: '$1900' },{ id: 31, price: '$2000' },{ id: 32, price: '$3000' },{ id: 33, price: '$4000' }
+										,{ id: 34, price: '$5000' },{ id: 35, price: '$10000' }];
 			//select bedsNum
 				$scope.minBedNum = '1';
 				$scope.maxBedNum = '10';
@@ -833,7 +833,7 @@
 								}
 							});
 						/*****************************page update******************************/
-								$state.go('app.googlemap');
+								$state.go('googlemap');
 							}
 						}, function(e) {
 
@@ -852,7 +852,7 @@
 						$scope.orderright = true;
 						$scope.sortDate=!$scope.sortDate;
 					}
-				
+
 					$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
 						$scope.orderName = orderName;
 				//				$scope.orderName = order+'';

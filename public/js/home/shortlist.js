@@ -27,15 +27,13 @@
 					if(r.data.customer_login_status){
 						$scope.shortlistDelete.CID = r.data.CID;
 						$scope.shortlistDelete.CLType="FavorSave";
-						$scope.shortlistDelete.CLDetail= key;
+						$scope.shortlistDelete.CLDetail= $scope.shortlistData[key][0].ER_ID;
 		//				$scope.shortlistDelete.CLTime="";
 						$http.post('/customer/shortlist/delete',$scope.shortlistDelete)
 								.then(function(r){
-		//							$scope.shortlistData = r.data;
-									console.log("$scope.shortlistDelete",r);
 									$state.reload();
 								},function(e){
-
+										console.log(e);
 								});
 					}
 				});

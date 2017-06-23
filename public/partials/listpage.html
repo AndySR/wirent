@@ -32,7 +32,8 @@
 	                      <ul class="list-unstyled l-h-2x">
 	                        <li class="m-b-md">
 	                         <label translate="listpage.filter.price">Price</label>
-							 					 	 <input type="text" ng-model="myMinPrice" style="width: 149px;height: 40px; margin-left: 18px;" class="form-control input-sm inline" placeholder="minPrice" aria-describedby="basic-addon1">
+													 <select ng-model="myMinPrice" class="input-sm form-control w-sm inline v-middle" style="margin-left: 20px;" ng-options="minPrice.price as minPrice.price for minPrice in minPrices">
+	 												</select>
 	                        </li>
 	                        <li class="m-b-md">
 	                          <label translate="listpage.filter.beds">Beds</label>
@@ -51,10 +52,11 @@
 	                    	<label style="margin-left: 60px; margin-bottom: 10px;">max</label>
 	                      <ul class="list-unstyled l-h-2x">
 	                        <li class="m-b-md">
-							<input type="text" class="form-control input-sm" ng-model="myMaxPrice" style="width: 149px;height: 40px;" placeholder="maxPrice" aria-describedby="basic-addon1">
+														<select ng-model="myMaxPrice" class="input-sm form-control w-sm inline v-middle" ng-options="maxPrice.price as maxPrice.price for maxPrice in maxPrices">
+														</select>
 	                        </li>
 	                        <li class="m-b-md">
-							  <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
+							  						<select class="input-sm form-control w-sm inline v-middle" ng-model="maxBedNum" ng-options="maxBed.num as maxBed.num for maxBed in bedsNum">
 	                          </select>
 	                        </li>
 	                        <li class="m-b-md">

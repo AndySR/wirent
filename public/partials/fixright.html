@@ -1,11 +1,11 @@
 <div class="rightfix " ng-controller="fixCtrl">
 	<div id="J_GotoTop" class="elevator">
 		<div ng-show="hiddenright">
-				<a href="" class="elevator-msg" target="_blank">
+				<a href="" ng-click="feedback()" class="elevator-msg" target="_blank">
 					<i class="fa fa-exclamation-circle"></i>
 					<span class="">意见反馈</span>
 				</a>
-				<a href="" class="elevator-faq" target="_blank">
+				<a href="" ng-click="open()" class="elevator-faq" target="_blank">
 					<i class="fa fa-commenting"></i>
 					<span class="">联系我们</span>
 				</a>
@@ -23,6 +23,12 @@
 					<i class="fa fa-angle-up"></i>
 					<span class="">返回顶部</span>
 				</a>
+				<script type="text/ng-template" id="myModalContact.html">
+							<div ng-include="'/partials/tpl/modal_contact.html'"></div>
+				</script>
+				<script type="text/ng-template" id="myModalFeedback.html">
+							<div ng-include="'/partials/tpl/modal_feedback.html'"></div>
+				</script>
 		</div>
 		<a  class=" no-goto" id="backTop" ng-click="hiddenright=!hiddenright">
 			<i class="fa fa-plus" ng-show="!hiddenright" aria-hidden="true" style="color:#098f64;"></i>

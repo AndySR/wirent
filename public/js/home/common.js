@@ -117,12 +117,12 @@
      {id: 4, propertyType: 'Studio'}];
 
      //select minPrice
-     $scope.myMinPrice = '0';
+     $scope.myMinPrice = 0;
      //select maxPrice
-     $scope.myMaxPrice = '$2000';
-     $scope.myMinPrice_Share = '0';
+     $scope.myMaxPrice = 2000;
+     $scope.myMinPrice_Share = 0;
      //select maxPrice
-     $scope.myMaxPrice_Share = '$2000';
+     $scope.myMaxPrice_Share = 2000;
      $scope.Prices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
                ,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
                ,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
@@ -133,25 +133,25 @@
                ,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
      //select bedsNum
      $scope.minBedNum = 0;
-     $scope.maxBedNum = 0;
+     $scope.maxBedNum = 10;
      $scope.minBedNum_Share = 0;
-     $scope.maxBedNum_Share = 0;
+     $scope.maxBedNum_Share = 10;
      $scope.bedsNum = [{ id: 1, num: '1' }, { id: 2, num: '2' }, { id: 3, num: '3' },{ id: 4, num: '4' }
              ,{ id: 5, num: '5' },{ id: 6, num: '6' },{ id: 7, num: '7' },{ id: 8, num: '8' },{ id: 9, num: '9' }
              ,{ id: 10, num: '10' }];
      //select bathNum
      $scope.minBathNum = 0;
-     $scope.maxBathNum = 0;
+     $scope.maxBathNum = 10;
      $scope.minBathNum_Share = 0;
-     $scope.maxBathNum_Share = 0;
+     $scope.maxBathNum_Share = 10;
      $scope.bathsNum = [{ id: 1, num: '0' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
              ,{ id: 5, num: '4' },{ id: 6, num: '5' },{ id: 7, num: '6' },{ id: 8, num: '7' },{ id: 9, num: '8' },{ id: 10, num: '9' },{ id: 11, num: '10' }];
      //select parkingNum
      $scope.myParkingNum = 0;
      $scope.minParkingNum = 0;
-     $scope.maxParkingNum = 0;
+     $scope.maxParkingNum = 10;
      $scope.minParkingNum_Share = 0;
-     $scope.maxParkingNum_Share = 0;
+     $scope.maxParkingNum_Share = 10;
      $scope.parkingsNum = [{ id: 1, num: '0' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
              ,{ id: 5, num: '4' },{ id: 6, num: '5' },{ id: 7, num: '6' },{ id: 8, num: '7' },{ id: 9, num: '8' },{ id: 10, num: '9' },{ id: 11, num: '10' }];
 
@@ -1722,12 +1722,14 @@
              if(typeof station != "string")
               {
                 station = "";
+                suburb = "";
               }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
                  var arr_station = station.split(";");
                  station = "%"+arr_station[0]+";";
                  suburb = arr_station[1];
               }else{
                  station = station;
+                 suburb = "";
               }
             //selected items which are an array
             console.log('$scope.x',$scope.x);
@@ -1801,12 +1803,14 @@
             if(typeof station != "string")
              {
                station = "";
+               suburb = "";
              }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
                 var arr_station = station.split(";");
                 station = "%"+arr_station[0]+";";
                 suburb = arr_station[1];
              }else{
                 station = station;
+                suburb = "";
              }
             //selected items which are an array
             console.log('$scope.x',$scope.x);
@@ -1876,12 +1880,14 @@
               if(typeof station != "string")
                {
                  station = "";
+                 suburb = "";
                }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
                   var arr_station = station.split(";");
                   station = "%"+arr_station[0]+";";
                   suburb = arr_station[1];
                }else{
                   station = station;
+                  suburb = "";
                }
              //selected items which are an array
              console.log('$scope.x',$scope.x);
@@ -1929,18 +1935,17 @@
                ER_Feature: ER_Feature
               }
              }
-
              // $state.go('app.googlemap');
              console.log(entireData);
-             $http.post('/customer/filt/entire', entireData)
+             $http.post('/customer/filt/entire/count', entireData)
               .then(function(r) {
                SearchService.set(r);
                updateService.set(entireData);
                //							SetCredentials(r);
                console.log('r===>', r);
-               if(r.data.length > 0) {
-                $state.go('app.listpage');
-               }
+              //  if(r.data.length > 0) {
+              //   $state.go('app.listpage');
+              //  }
                //
 
               }, function(e) {
@@ -1955,12 +1960,14 @@
               if(typeof station != "string")
                {
                  station = "";
+                 suburb = "";
                }else if (station.indexOf("station;") >=0 && station.indexOf("%")<0) {
                   var arr_station = station.split(";");
                   station = "%"+arr_station[0]+";";
                   suburb = arr_station[1];
                }else{
                   station = station;
+                  suburb = "";
                }
               //selected items which are an array
               console.log('$scope.x',$scope.x);

@@ -1,11 +1,11 @@
-<div style="background-color:#f2f5f7">
+<div style="background-color:#f2f5f7" ng-controller="contactCtrl">
 	<div class="container" style="padding-top:20px;">
 		<div class="row">
 	    <div class="col-sm-6">
 	      <h3 class="m-t-none m-b font-thin">Contact us</h3>
 	      <p>We’d love to hear what you think! Please fill out the form with any questions or feedback you might have.</p>
 	      <form role="form">
-					<div class="row form-group" style="margin-right: 0;">
+					<div class="row form-group">
 						<div class="form-group col-sm-6">
 							<label>First Name</label>
 		          <input type="text" class="form-control" placeholder="*First Name">
@@ -16,8 +16,9 @@
 		        </div>
 					</div>
 	        <div class="form-group">
-	          <label>Country</label>
-	          <input type="text" class="form-control" placeholder="*Countries">
+	          <label>serviceTypes</label>
+						<select ng-model="myService" class="input form-control inline v-middle" ng-options="serviceType.service as serviceType.service for serviceType in serviceTypes">
+						</select>
 	        </div>
 	        <div class="form-group">
 	          <label>Email</label>

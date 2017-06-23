@@ -265,7 +265,7 @@
 									<li class="list-features">
 										<div class="features">
 											<span class="icon"><i class="flaticon-stove30"></i></span>
-											<span class="description">stove</span>
+											<span class="description">full kitchen</span>
 										</div>
 									</li>
 									<li class="list-features">
@@ -484,7 +484,7 @@
 									<li class="list-features">
 										<div class="features">
 											<span class="icon"><i class="flaticon-stove30"></i></span>
-											<span class="description">stove</span>
+											<span class="description">full kitchen</span>
 										</div>
 									</li>
 									<li class="list-features">
@@ -600,7 +600,7 @@
 				          </a>
 				          <script type="text/ng-template" id="myModalContent.html">
 						            <div ng-include="'/partials/tpl/modal.html'"></div>
-						  </script>
+						  		</script>
 				        </div>
 				     <div class="hbox text-center text-sm">
 				          <a href class="col padder-v text-muted b-r b-light">
@@ -700,24 +700,24 @@
 					<div class="right-descriptions">
 							<div class="desc-text">
 									<ul>
-										<li class="center-text"><a class="price">$650</a><i class="period">&nbsp;&nbsp;per&nbsp;&nbsp;week</i></li>
-										<li class="center-text"><a class="time">available time:</a><i class="date">&nbsp;&nbsp;2019-01-01</i></li>
+										<li class="center-text"><a class="price">[:detailsData.ER_Price:]</a><i class="period">&nbsp;&nbsp;per&nbsp;&nbsp;week</i></li>
+										<li class="center-text"><a class="time">available time:</a><i class="date">&nbsp;&nbsp;[:detailsData.ER_AvailableDate:]</i></li>
 										<li class="center-text">
 											<span>
-												<i>2</i>
+												<i>[:detailsData.ER_BedRoom:]</i>
 												<i class="fa fa-bed"></i>
 											</span>
 											<span>
-												<i>1</i>
+												<i>[:detailsData.ER_BathRoom:]</i>
 												<i class="fa fa-bath"></i>
 											</span>
 											<span>
-												<i>1</i>
+												<i>[:detailsData.ER_Parking:]</i>
 												<i class="fa fa-car"></i>
 											</span>
 										</li>
 										<li class="center-text">
-											<span>7/72-74 Albert Road Strathfield NSW</span>
+											<span>[:detailsData.ER_No+' '+detailsData.ER_St+' '+detailsData.ER_Suburb+' '+detailsData.ER_Region:]</span>
 										</li>
 										<li class="center-text">
 											<a href class="f-icon with-text train" title="near train station">
@@ -726,7 +726,7 @@
 											</a>
 											<a href class="f-icon with-text university" title="near university">
 												<span class="icon " ng-show="detailsData.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
-													<span class="icon " ng-show="!detailsData.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+													<!-- <span class="icon " ng-show="!detailsData.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span> -->
 											</a>
 											<a href class="f-icon with-text backpack" title="backpack">
 												<span class="icon " ng-show="detailsData.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
@@ -769,11 +769,11 @@
 											<img src="img/img1.jpg"/>
 								</div> -->
 									<div class="left-side-image clear">
-												<img src="img/img1.jpg"/>
+												<img ng-src="[:detailsData.picset[0].PicFile:]"/>
 									</div>
 									<div class="right-side-image clear">
-												<img src="img/img1.jpg"/>
-												<img src="img/img1.jpg"/>
+												<img ng-src="[:detailsData.picset[1].PicFile:]"/>
+												<img ng-src="[:detailsData.picset[2].PicFile:]"/>
 									</div>
 							</div>
 					</div>

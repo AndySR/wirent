@@ -11,8 +11,7 @@ angular.module('andy', [
       'pascalprecht.translate',
       'ui.jq',
       'ngMap',
-      'map',
-      'details'
+      'map'
       ])
  .config(function ($interpolateProvider,
        $stateProvider,

@@ -9,19 +9,21 @@
 			var datafromhome = {};
 			$scope.favorsave = false;
 			$scope.shortlistInsert = {};
-			$scope.totalItems = 64;
-		    $scope.currentPage = 4;
+			// $scope.totalItems = 64;
+		  //   $scope.currentPage = 4;
 		     $animate.enabled(false);//消除carousel bug
 		    var ER_Feature = [];
-		    $scope.setPage = function (pageNo) {
-		      $scope.currentPage = pageNo;
-		    };
-		    $scope.pageChanged = function() {
-		      $log.info('Page changed to: ' + $scope.currentPage);
-		    };
-		    $scope.maxSize = 5;
-		    $scope.bigTotalItems = 175;
-		    $scope.bigCurrentPage = 1;
+		    // $scope.setPage = function (pageNo) {
+		    //   $scope.currentPage = pageNo;
+		    // };
+		    // $scope.pageChanged = function() {
+		    //   $log.info('Page changed to: ' + $scope.currentPage);
+		    // };
+		    // $scope.maxSize = 5;
+				// $scope.numPages = 2;
+		    // $scope.bigTotalItems = 175;
+		    // $scope.bigCurrentPage = 1;
+				// $scope.itemsPerPage = 20;
 		   /* location input*/
 		    $scope.person = {};
 	        $scope.people = [
@@ -128,6 +130,12 @@
 			 	console.log('$localStorage.settings other conditions',$localStorage.settings);
 			 }
 			 $scope.entireData=entireData;
+			 /***********pagination starts********************/
+			 	$scope.maxSize = 5;
+				$scope.totalItems = entireData.length;
+				$scope.currentPage = 1;
+				$scope.itemsPerPage = 20;
+			/***********pagination starts********************/
 		 if(JSON.stringify(updateService.get()) != "{}"){
 				$localStorage.datafromhome=updateService.get();
 				datafromhome=$localStorage.datafromhome;
@@ -829,6 +837,7 @@
 			 .then(function(r) {
 				 console.log(r);
 				 if(r.data.customer_login_status){
+					 entireData[$index].saved = $scope.favorsave;
 					 $scope.shortlistInsert.CID =r.data.CID;
 					 $scope.shortlistInsert.CLType="FavorSave";
 					 $scope.shortlistInsert.CLDetail=$scope.entireData[$index].ER_ID;

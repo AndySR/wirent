@@ -1,46 +1,7 @@
 ;
 (function() {
 	'use strict';
-	angular.module('details',['ngMap'])
-	.controller('ModalInstanceCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
-	    $scope.contact = {};
-	    $scope.customer = {};
-		$scope.saveEnvelope = function(){
-			alert('1010');
-			$scope.customer.title = 'Contact';
-			$scope.customer.CID = 1;
-			$scope.customer.createTime = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd HH:mm:ss");
-			$scope.customer.IdReceiver= 3;
-			$scope.customer.content = $scope.contact.name +';'+$scope.contact.email +';'+$scope.contact.phone +';'+$scope.contact.message;
-			$scope.customer.msg_direct_comment='Customer to Staff';
-			console.log("me.customer",$scope.customer);
-		$http.post('/customer/msg/write', $scope.customer)
-			.then(function(r){
-				console.log('r===>',r);
-				/*if (r.status===200)
-				{
-					me.signup_data = {};
-					$state.go('app.login');
-				}*/
-//				$modalInstance.dismiss('cancel');
-			},function(e){
-
-			})
-
-		}
-
-		$scope.items = items;
-	    $scope.selected = {
-	      item: $scope.items[0]
-	    };
-	    $scope.ok = function () {
-	      $modalInstance.close($scope.selected.item);
-	    };
-
-	    $scope.cancel = function () {
-	      $modalInstance.dismiss('cancel');
-	    };
-	  }])
+	angular.module('andy')
 	.controller('detailsController',function ($anchorScroll,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
 		var datapackage = {};
 		$scope.detailsData = {};
@@ -128,8 +89,6 @@
 				];
 				$scope.center = $scope.locations[0].center;
 				$scope.showDetail = function() {
-					// $scope.companyLocation = companyLocation;
-					// vm.map.showInfoWindow('company', $scope.companyLocation.id);
 						$scope.center = $scope.locations[1].center;
 				};
 
@@ -197,7 +156,7 @@
 					})
 
 			}
-	   	/****************************add shortlist**********************************/
+	   	/****************************add shortlist end**********************************/
 		   /* $scope.myInterval = 5000;
 		    var slides = $scope.slides = [];
 		    $scope.addSlide = function() {
@@ -209,6 +168,14 @@
 		    for (var i=0; i<4; i++) {
 		      $scope.addSlide();
 		    }*/
+			/********************************************/
+				$scope.wechatShow = false;
+				$scope.showWechat = function(){
+					$scope.wechatShow = !$scope.wechatShow;
+					$rootScope.$broadcast('wechat', $scope.wechatShow);
+				}
+			/********************************************/
+				/************************contactus modal starts*************************/
 	$scope.items = ['item1', 'item2', 'item3'];
     $scope.open = function (size) {
       var modalInstance = $modal.open({
@@ -229,6 +196,44 @@
       });
     };
 	})
+	.controller('ModalInstanceCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
+	    $scope.contact = {};
+	    $scope.customer = {};
+		$scope.saveEnvelope = function(){
+			$scope.customer.title = 'Contact';
+			$scope.customer.CID = 1;
+			$scope.customer.createTime = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd HH:mm:ss");
+			$scope.customer.IdReceiver= 3;
+			$scope.customer.content = $scope.contact.name +';'+$scope.contact.email +';'+$scope.contact.phone +';'+$scope.contact.message;
+			$scope.customer.msg_direct_comment='Customer to Staff';
+			console.log("me.customer",$scope.customer);
+		$http.post('/customer/msg/write', $scope.customer)
+			.then(function(r){
+				console.log('r===>',r);
+				/*if (r.status===200)
+				{
+					me.signup_data = {};
+					$state.go('app.login');
+				}*/
+//				$modalInstance.dismiss('cancel');
+			},function(e){
+
+			})
+
+		}
+
+		$scope.items = items;
+	    $scope.selected = {
+	      item: $scope.items[0]
+	    };
+	    $scope.ok = function () {
+	      $modalInstance.close($scope.selected.item);
+	    };
+
+	    $scope.cancel = function () {
+	      $modalInstance.dismiss('cancel');
+	    };
+	  }])
 .factory('readData', ['$http', '$q', function($http, $q) {
 		return {
 			query: function() {

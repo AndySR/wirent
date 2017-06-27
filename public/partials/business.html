@@ -1,4 +1,4 @@
-<div class="business" ng-controller="businessCtrl">
+<div class="business" ng-controller="businessCtrl as vm">
 	<div class="wrapper">
 		<!--filter 模块-->
 		<div class="filter-box">
@@ -8,14 +8,14 @@
 						<dd data-index="0">
 							<div class="option-list">
 								<a href="" class="on">不限</a>
-								<a href="">Move</a>
-								<a href="">Painting</a>
-								<a href="">Storage</a>
-								<a href="">Handyman</a>
-								<a href="">Cleaning</a>
-								<a href="">Appliance</a>
-								<a href="">Take away</a>
-								<a href="">Free post</a>
+								<a ng-click="businessSearch('move')">Move</a>
+								<a ng-click="businessSearch('painting')">Painting</a>
+								<a ng-click="businessSearch('storage')">Storage</a>
+								<a ng-click="businessSearch('handyman')">Handyman</a>
+								<a ng-click="businessSearch('clean')">Cleaning</a>
+								<a ng-click="businessSearch('appliance')">Appliance</a>
+								<a ng-click="businessSearch('take_away')">Take away</a>
+								<a ng-click="businessSearch('free_post')">Free post</a>
 							</div>
 						</dd>
 					</dl>
@@ -156,13 +156,18 @@
 								<div class="clear"></div>
 							</div>
 						</li>
--->						<div class="page-box house-lst-page-box" comp-module="page" page-url="/jingjiren/pg{page}/" page-data="{&quot;totalPage&quot;:100,&quot;curPage&quot;:1}">
-							<a class="on" href="" data-page="1">1</a>
-							<a href="" data-page="2">2</a>
-							<a href="" data-page="3">3</a><span>...</span>
-							<a href="" data-page="100">100</a>
-							<a href="" data-page="2">下一页</a>
-						</div>
+-->
+							<div class="page-box house-lst-page-box" ng-if="vm.pager.pages.length">
+								<a ng-click="vm.setPage(1)">First</a>
+								<a ng-click="vm.setPage(vm.pager.currentPage - 1)">上一页</a>
+								<ul style="display:inline-block;height:50px;padding:0;margin:0;">
+									<li ng-repeat="(key,value) in vm.pager.pages track by $index" class="inline" style="width:50px;padding:0;margin:0;height:30px;display:inline-block;overflow:visible;border-bottom:none;">
+											<a ng-click="vm.setPage($index+1)">[:$index+1:]</a>
+									</li>
+								</ul>
+								<a ng-click="vm.setPage(vm.pager.currentPage + 1)">下一页</a>
+								<a ng-click="vm.setPage(vm.pager.totalPages)">Last</a>
+							</div>
 					</ul>
 				</div>
 			</div>

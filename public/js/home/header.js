@@ -25,7 +25,7 @@
 		.service('BaseService', ['$state', '$http', function($state, $http,$localStorage) {
 
 		}])
-		.controller('WinCtrl', ['$anchorScroll', '$location','$scope', '$filter','$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService',function($anchorScroll,$location,$scope,$filter, $state,$window, $http,UserService,readLetters,$localStorage,SearchService) {
+		.controller('WinCtrl', ['$anchorScroll', '$location','$scope', '$filter','$state','$window', '$http','UserService','readLetters','$localStorage', 'SearchService','updateService',function($anchorScroll,$location,$scope,$filter, $state,$window, $http,UserService,readLetters,$localStorage,SearchService,updateService) {
 			$localStorage.headerSetting = {};
 			$scope.name = "Winning";
 			// $scope.letternums = 0;
@@ -100,18 +100,37 @@
 						})
 
 			}
-			/*********************go to shortlist******************************************/
-			$scope.gotoAnchor = function(businessSection) {
-      var newHash = businessSection;
-      if ($location.hash() !== newHash) {
-        // set the $location.hash to `newHash` and
-        // $anchorScroll will automatically scroll to it
-        $location.hash(businessSection);
-      } else {
-        // call $anchorScroll() explicitly,
-        // since $location.hash hasn't changed
-        $anchorScroll();
-      }
-    };
+			/*********************go to shortlist end******************************************/
+			/**************businessSection entry********************/
+			var business = {};
+			$scope.businessSearch = function(TPDetail){
+			 business.TPDetail = TPDetail;
+			 business.TPServLoc = '';
+			 $http.post('/customer/filt_thirdparty', business)
+				.then(function(r) {
+				 SearchService.set(r);
+				 updateService.set(TPDetail);
+				 console.log('r===>', r);
+				 if(r.data.length > 0) {
+					$state.go('app.business');
+				 }
+				 //
+
+				}, function(e) {
+
+				});
+			}
+		// 	$scope.gotoAnchor = function(businessSection) {
+    //   var newHash = businessSection;
+    //   if ($location.hash() !== newHash) {
+    //     // set the $location.hash to `newHash` and
+    //     // $anchorScroll will automatically scroll to it
+    //     $location.hash(businessSection);
+    //   } else {
+    //     // call $anchorScroll() explicitly,
+    //     // since $location.hash hasn't changed
+    //     $anchorScroll();
+    //   }
+    // };
 		}])
 })();

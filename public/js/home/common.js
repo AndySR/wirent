@@ -11,9 +11,10 @@
     '$http',
     'SearchService',
     'updateService',
+    'getDataService',
     '$modal',
     '$log',
-    function ($cookies, $rootScope, $state, $scope, $element, $http, SearchService, updateService, $modal, $log) {
+    function ($cookies, $rootScope, $state, $scope, $element, $http, SearchService, updateService, getDataService,$modal, $log) {
      var hello = true;
      //						var address = {};
      var active = true;
@@ -586,34 +587,6 @@
      $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
      $scope.format = $scope.formats[0];
 
-
-    /**********************************modal code starts***********************************/
-       $scope.items = ['item1', 'item2', 'item3'];
-
-       $scope.openmodal = function (size) {
- //		    	alert("modal");
-
-         var modalInstance = $modal.open({
-           templateUrl: 'myModalContent.html',
-           controller: 'ModalInstanceCtrl',
-           size: size,
-           resolve: {
-            /* maps: function(){
-              return angular.element(".subway-map").subwayMap({ debug: true });
-             },*/
-             items: function () {
-               return $scope.items;
-             }
-           }
-         });
-
-         modalInstance.result.then(function (selectedItem) {
-           $scope.selected = selectedItem;
-         }, function () {
-           $log.info('Modal dismissed at: ' + new Date());
-         });
-       };
-       /**********************************modal code ends***********************************/
 
     /************************filter orderby*******************************/
     $scope.orderleft = false;
@@ -1782,19 +1755,44 @@
 
             // $state.go('app.googlemap');
             console.log(entireData);
-            $http.post('/customer/filt/entire/tenant', entireData)
-             .then(function(r) {
-              SearchService.set(r);
-              updateService.set(entireData);
-              //							SetCredentials(r);
-              console.log('rrrrrrrrr==========>', r);
-              if(r.data.length > 0) {
-               $state.go('app.listpage');
-              }
-              //
+            // $http.post('/customer/filt/entire/tenant', entireData)
+            //  .then(function(r) {
+            //   SearchService.set(r);
+            //   updateService.set(entireData);
+            //   //							SetCredentials(r);
+            //   console.log('rrrrrrrrr==========>', r);
+            //   if(r.data.length > 0) {
+            //    $state.go('app.listpage');
+            //   }
+            //   //
+            //
+            //  }, function(e) {
+            //
+            //  });
+            getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
+                 $scope.data = result;
+                 console.log($scope.data);
+                 return result;
+             },function(error){
+               console.log("error" + error);
+             }).then(function(result){
+               result = Math.ceil(result/20);
+               entireData.OrderBy = 'ER_AvailableDate';
+               entireData.PageID = result;
+               console.log(entireData);
 
-             }, function(e) {
+                $http.post('/customer/filt/entire/tenant', entireData)
+                 .then(function(r) {
+                  //  alert("entire login")
+                  SearchService.set(r);
+                  updateService.set(entireData);
+                  console.log('r===>', r);
+                   $state.go('app.listpage');
+                 }, function(e) {
 
+                 });
+             },function(error){
+               console.log("error" + error);
              });
            }
            /************************share search login status starts**************/
@@ -1824,17 +1822,12 @@
               ER_Region: address[1],
               include_area:$scope.include_area_share,
               ER_Type: $scope.myPropertyType,
-              ER_PriceMin: $scope.myMinPrice_Share,
-              ER_PriceMax: $scope.myMaxPrice_Share,
-              ER_BedRoomMin: $scope.minBedNum_Share,
-              ER_BedRoomMax: $scope.maxBedNum_Share,
-              ER_BathRoomMin: $scope.minBathNum_Share,
-              ER_BathRoomMax: $scope.maxBathNum_Share,
-              ER_ParkingMin: $scope.minParkingNum_Share,
-              ER_ParkingMax: $scope.maxParkingNum_Share,
-              ER_AreaMin: 0,
-              ER_AreaMax: 50000,
-              ER_AvailableDate: '2200-01-01',
+              SRName:'',
+              SRPriceMin: $scope.myMinPrice_Share,
+              SRPriceMax: $scope.myMaxPrice_Share,
+              SRAreaMin: 0,
+              SRAreaMax: 5000,
+              SRAvailableDate: '2200-01-01',
               ER_Description: station,
               ER_Feature: ER_Feature
              };
@@ -1858,14 +1851,14 @@
 
             // $state.go('app.googlemap');
             console.log(shareData);
-            $http.post('/customer/filt/share', shareData)
+            $http.post('/customer/filt/share/count', shareData)
              .then(function(r) {
               SearchService.set(r);
               updateService.set(shareData);
               //							SetCredentials(r);
               console.log('r===>', r);
               if(r.data.length > 0) {
-               $state.go('app.listpage');
+              //  $state.go('app.listpage');
               }
               //
              }, function(e) {
@@ -1937,26 +1930,38 @@
              }
              // $state.go('app.googlemap');
              console.log(entireData);
-             $http.post('/customer/filt/entire/count', entireData)
-              .then(function(r) {
-               SearchService.set(r);
-               updateService.set(entireData);
-               //							SetCredentials(r);
-               console.log('r===>', r);
-              //  if(r.data.length > 0) {
-              //   $state.go('app.listpage');
-              //  }
-               //
+             getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
+                  $scope.data = result;
+                  console.log($scope.data);
+                  return result;
+              },function(error){
+                console.log("error" + error);
+              }).then(function(result){
+                result = Math.ceil(result/20);
+                entireData.OrderBy = 'ER_AvailableDate';
+                entireData.PageID = result;
+                console.log(entireData);
 
-              }, function(e) {
+                 $http.post('/customer/filt/entire', entireData)
+                  .then(function(r) {
+                   SearchService.set(r);
+                   updateService.set(entireData);
+                   console.log('r===>', r);
+                    $state.go('app.listpage');
+                  }, function(e) {
 
+                  });
+              },function(error){
+                console.log("error" + error);
               });
+
             }
             /****************entire search without login ends***********************/
 
             /***************share search without login starts************************/
             /************share rooms data filter get starts**************/
             $scope.shareSearch = function(station){
+
               if(typeof station != "string")
                {
                  station = "";
@@ -1980,17 +1985,12 @@
                 ER_Region: address[1],
                 include_area:$scope.include_area_share,
                 ER_Type: $scope.myPropertyType,
-                ER_PriceMin: $scope.myMinPrice_Share,
-                ER_PriceMax: $scope.myMaxPrice_Share,
-                ER_BedRoomMin: $scope.minBedNum_Share,
-                ER_BedRoomMax: $scope.maxBedNum_Share,
-                ER_BathRoomMin: $scope.minBathNum_Share,
-                ER_BathRoomMax: $scope.maxBathNum_Share,
-                ER_ParkingMin: $scope.minParkingNum_Share,
-                ER_ParkingMax: $scope.maxParkingNum_Share,
-                ER_AreaMin: 0,
-                ER_AreaMax: 50000,
-                ER_AvailableDate: '2200-01-01',
+                SRPriceMin: $scope.myMinPrice_Share,
+                SRPriceMax: $scope.myMaxPrice_Share,
+                SRName:'',
+                SRAreaMin: 0,
+                SRAreaMax: 50000,
+                SRAvailableDate: '2200-01-01',
                 ER_Description: station,
                 ER_Feature: ER_Feature
                };
@@ -2013,18 +2013,42 @@
 
               // $state.go('app.googlemap');
               console.log(shareData);
-              $http.post('/customer/filt/share', shareData)
-               .then(function(r) {
-                SearchService.set(r);
-                updateService.set(shareData);
-                //							SetCredentials(r);
-                console.log('r===>', r);
-                if(r.data.length > 0) {
-                 $state.go('app.listpage');
-                }
-                //
-               }, function(e) {
+              // $http.post('/customer/filt/share/count', shareData)
+              //  .then(function(r) {
+              //   SearchService.set(r);
+              //   updateService.set(shareData);
+              //   //							SetCredentials(r);
+              //   console.log('r===>', r);
+              //   if(r.data.length > 0) {
+              //   //  $state.go('app.listpage');
+              //   }
+              //   //
+              //  }, function(e) {
+              //
+              //  });
+              getDataService.getDataRequests('/customer/filt/share/count',shareData).then(function(result){
+                   $scope.data = result;
+                   console.log($scope.data);
+                   return result;
+               },function(error){
+                 console.log("error" + error);
+               }).then(function(result){
+                 result = Math.ceil(result/20);
+                 shareData.OrderBy = 'SRAvailableDate';
+                 shareData.PageID = 1;
+                 console.log(shareData);
 
+                  $http.post('/customer/filt/share', shareData)
+                   .then(function(r) {
+                    SearchService.set(r);
+                    updateService.set(shareData);
+                    console.log('r===>', r);
+                     $state.go('app.listpage');
+                   }, function(e) {
+
+                   });
+               },function(error){
+                 console.log("error" + error);
                });
             }
             /************share rooms data filter get ends**************/
@@ -2033,25 +2057,6 @@
 
     }
    ])
-   .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'items', function($scope, $modalInstance, items) {
-
-       $scope.items = items;
-       $scope.selected = {
-         item: $scope.items[0]
-       };
-
-       $scope.ok = function () {
-         $modalInstance.close($scope.selected.item);
-       };
-
-       $scope.cancel = function () {
-         $modalInstance.dismiss('cancel');
-       };
-     }]);
-
-
-
-
 	/*.animation('.fold-animation', ['$animateCss', function($animateCss) {
 	  return {
 	    enter: function(element, doneFn) {

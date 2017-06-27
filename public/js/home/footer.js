@@ -1,15 +1,23 @@
 'use strict'
 angular.module('andy')
-  .controller('footerCtrl',['$location', '$anchorScroll','$scope','$element',function($location,$anchorScroll,$scope,$element){
-    $scope.showWechat = function(){
-       $scope.wechat = !$scope.wechat;
-    }
-    $scope.gotoBottom = function(){
-      // set the location.hash to the id of
-      // the element you wish to scroll to.
-      $location.hash('bottom');
+  .factory('wechatService',function(){
+    var wechat = {};
+    return {
+      getClassname : function () {
+        return wechat.classname;
+      },
 
-      // call $anchorScroll()
-      $anchorScroll();
+      setClassname : function (classname) {
+        wechat.classname = classname;
+      }
     }
+  })
+  .controller('footerCtrl',['$location','$rootScope','$anchorScroll','$scope','$element','wechatService',function($location,$rootScope,$anchorScroll,$scope,$element,wechatService){
+
+     $scope.wechatShow = false;
+     $scope.showWechat = function(){
+       $scope.wechatShow = !$scope.wechatShow;
+       wechatService.setClassname($scope.wechatShow);
+       $rootScope.$broadcast('wechat', $scope.wechatShow);
+     };
   }]);

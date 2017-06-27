@@ -213,7 +213,7 @@ class CustomerController extends Controller
 		$ER_PriceMin = $request->input('ER_PriceMin');
 		$ER_PriceMax = $request->input('ER_PriceMax');
 		$ER_AvailableDate = $request->input('ER_AvailableDate');
-    
+
 		$data = array();
 
 		if ($include_area==true)
@@ -234,6 +234,7 @@ class CustomerController extends Controller
 									'{$ER_AvailableDate}'
 									)";
 			$data = DB::select($sql);
+      return $data;
 		}
 		else
 		{
@@ -245,6 +246,7 @@ class CustomerController extends Controller
 									'{$ER_AvailableDate}'
 									)";
 			$data = DB::select($sql);
+        return $data;
 		}
 	}
 
@@ -524,6 +526,7 @@ class CustomerController extends Controller
 	public function filt_share_count(Request $request)
 	{
 		//赋值参数
+    return "123";
 		$include_area = $request->input('include_area');
 		$ER_Suburb = $request->input('ER_Suburb');
 		$ER_Region = $request->input('ER_Region');
@@ -556,6 +559,7 @@ class CustomerController extends Controller
 							'{$ER_Description}'
 							)";
 			$data = DB::select($sql);
+      return $data;
 		}
 		else
 		{
@@ -566,6 +570,7 @@ class CustomerController extends Controller
 									'{$ER_Description}'
 									)";
 			$data = DB::select($sql);
+      return $data;
 		}
 	}
 

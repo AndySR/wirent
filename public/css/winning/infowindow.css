@@ -217,10 +217,10 @@
 	margin-left: -40px;
 }*/
 .map-page .map_feature_filter {
-	position: absolute;
-	top: 65px;
-	left: 980px;
-	z-index: 100;
+		position: absolute;
+    top: 15px;
+    left: 990px;
+    z-index: 100;
 }
 .map-page .map_feature_filter > li {
 	list-style: none;

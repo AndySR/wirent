@@ -52,6 +52,7 @@
 	<script src="/node_modules/angular-file-upload.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDvEbpAtBYXMXoun-I3wYhn-7K33iVc7qs"></script>
 	<script src="/node_modules/ui-utils.js"></script>
+	<script src="/node_modules/underscore-min.js"></script>
 	<script src="/js/home/directives/ui-jq.js"></script>
 	<script src="/js/home/services/ui-load.js"></script>
 	<script src="/js/home/map/jquery.subwayMap-0.5.0.js"></script>

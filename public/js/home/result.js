@@ -44,6 +44,12 @@
 				 	vm.shops = $localStorage.settings;
 				 	console.log('$localStorage.settings',$localStorage.settings);
 				 }
+				 /***********pagination starts********************/
+				 	$scope.maxSize = 5;
+					$scope.totalItems = vm.shops.length;
+					$scope.currentPage = 1;
+					$scope.itemsPerPage = 20;
+				/***********pagination starts********************/
 				 /**
 				  * parameters from search engine
 				  */

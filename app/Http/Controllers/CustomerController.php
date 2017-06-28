@@ -894,7 +894,7 @@ class CustomerController extends Controller
 			$proc_name = 'proc_Insert_MaintenanceLibrary';
 			$sql = "call $proc_name('{$MType}','{$ER_ID}','{$CID}','{$MApplyForm}','{$MStat}','{$MApplyDate}')";
 			$result = DB::insert($sql);
-			return [$result];
+			return json_encode($result);
 		}
 		catch(exception $e)
 		{
@@ -986,8 +986,8 @@ class CustomerController extends Controller
 		//执行存储过程
 		$proc_name = 'proc_Delete_CustomerLogbook';
 		$sql = "call $proc_name({$CID},'{$CLType}','{$CLDetail}')";
-		$result = DB::select($sql);
-		return $result;
+		$result = DB::delete($sql);
+		return json_encode($result);
 	}
 
 	public function shortlist_insert(Request $request)
@@ -1036,7 +1036,7 @@ class CustomerController extends Controller
 		$sql = "call $proc_Name({$idMsg_sr})";
 
 		$result = DB::update($sql);
-		return $result;
+		return json_encode($result);
 	}
 
 	public function msg_received(Request $request)

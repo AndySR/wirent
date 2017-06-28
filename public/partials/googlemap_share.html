@@ -1,4 +1,4 @@
-<div ng-controller="googlemapCtrl as vm" >
+<div ng-controller="googlemapShareCtrl as vm" >
 	<div class="map-page">
 	    <div style="position: fixed; right: 0;width:100%; height: 50px; z-index: 100; background-color: #f6f8f8;">
 			<div class="pull-left">
@@ -232,7 +232,7 @@
 						            </a>
 						            <ul class="dropdown-menu" role="menu">
 						              <li>
-						              	<a ng-click="sortBy('ER_Price')">
+						              	<a ng-click="sortBy('SRPrice')">
 						              	  	<i translate="listpage.list.orderBy.price"></i>
 						              		&nbsp;
 					              		    <span ng-if="orderleft">
@@ -243,7 +243,7 @@
 						              </li>
 						              <li class="divider"></li>
 						              <li>
-						                <a ng-click="sortBy('ER_AvailableDate')">
+						                <a ng-click="sortBy('SRAvailableDate')">
 						                  	<i translate="listpage.list.orderBy.time"></i>
 						                  	&nbsp;
 						                    <span ng-if="orderright">
@@ -269,12 +269,12 @@
 											<div ng-non-bindable="">
 														<div class="infowindow-container clear">
 																	<div class="info-left">
-																		<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="width:100px; align-content: center;">
+																		<img src="[:vm.shop.picset[0].PicFile:]" alt="Avatar" ui-sref="app.detailsShare({id:vm.shop.SRID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="width:100px; align-content: center;">
 																	</div>
 																	<div class="info-right">
-																		  <p class="price">$[:vm.shop.ER_Price:]<i translate="listpage.list.row.price_unit"></i></p>
+																		  <p class="price">$[:vm.shop.SRPrice:]<i translate="listpage.list.row.price_unit"></i></p>
 																		  <p class="address">
-																		  		<a ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})">
+																		  		<a ui-sref="app.detailsShare({id:vm.shop.SRID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})">
 																		  			[:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region:]
 																		  		</a>
 																		  </p>
@@ -297,7 +297,7 @@
 			                            				</span>
 																					<span class="icon fa fa-car"></span>
 																				</span>
-																				<span class="details" ui-sref="app.details({id:vm.shop.ER_ID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="margin-left: 20px;">
+																				<span class="details" ui-sref="app.detailsShare({id:vm.shop.SRID,name:vm.shop.ER_No+' '+vm.shop.ER_St+' '+vm.shop.ER_Suburb+' '+vm.shop.ER_Region})" style="margin-left: 20px;">
 																					<i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i>
 																				</span>
 																			</div>
@@ -329,7 +329,7 @@
 					</div>
 					 <carousel interval="myInterval" >
 				          <slide ng-repeat="slide in shop.picset" active="slide.active">
-				            <img ng-src="[:slide.PicFile:]" class="img-full" style="height: 490px; height: 305px;"  ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
+				            <img ng-src="[:slide.PicFile:]" class="img-full" style="height: 490px; height: 305px;"  ui-sref="app.detailsShare({id:shop.SRID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
 				            <!--<div class="carousel-caption">
 				              <h4>Slide [:$index:]</h4>
 				              <p>[:slide.text:]</p>
@@ -356,7 +356,7 @@
 						</span>
 					</div>
 					<div class="address">
-						<a ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
+						<a ui-sref="app.detailsShare({id:shop.SRID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
 							[:shop.ER_No+' '+shop.ER_St:],[:shop.ER_Suburb+' '+shop.ER_Region:]
 						</a>
 					</div>
@@ -395,11 +395,14 @@
 			        </a>
 					</div>
 					<div class="price">
-						<span class="num">$[:shop.ER_Price:]</span>
+						<span class="num">$[:shop.SRPrice:]</span>
 						<span class="period" translate="listpage.list.row.price_unit">per week</span>
 						<span class="available"><i translate="listpage.list.row.time"></i>:&nbsp;&nbsp;<i style="color: darkred;font-size: 16px;">[:shop.ER_AvailableDate:]</i></span>
 					</div>
-					<div class="view" ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
+					<div class="room-type">
+						<span class="room-size">[:shop.SRName:]&nbsp;room</span>
+					</div>
+					<div class="view" ui-sref="app.detailsShare({id:shop.SRID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
 						<span class="view-num"><i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i></span>
 					</div>
 				</div>

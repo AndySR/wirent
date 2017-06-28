@@ -1,6 +1,6 @@
 'use strict';
 	angular.module('andy')
-		.controller('listPageCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString','getDataService',
+		.controller('listPageShareCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString','getDataService',
 			function($scope,$animate,$log,$timeout,
 			$http,$state,$cookies,$rootScope,
 			$localStorage,SearchService,
@@ -597,22 +597,18 @@
 							CID:r.data.CID,
 							ER_Suburb: '',
 							ER_Region: '',
+							include_area:true,
+							SRName:'',
 							ER_Type: $scope.myPropertyType,
-							ER_PriceMin: $scope.myMinPrice,
-							ER_PriceMax: $scope.myMaxPrice,
-							ER_BedRoomMin: $scope.minBedNum,
-							ER_BedRoomMax: $scope.maxBedNum,
-							ER_BathRoomMin: $scope.minBathNum,
-							ER_BathRoomMax: $scope.maxBathNum,
-							ER_ParkingMin: $scope.minParkingNum,
-							ER_ParkingMax: $scope.maxParkingNum,
-							ER_AreaMin: $scope.minArea,
-							ER_AreaMax: $scope.maxArea,
-							ER_AvailableDate: utilConvertDateToString.getDateToString($scope.dt,"yyyy-MM-dd") +'',
+							SRPriceMin: $scope.myMinPrice,
+							SRPriceMax: $scope.myMaxPrice,
+							SRAreaMin: $scope.minArea,
+							SRAreaMax: $scope.maxArea,
+							SRAvailableDate: utilConvertDateToString.getDateToString($scope.dt,"yyyy-MM-dd") +'',
 							ER_Description: descriptions,
 							ER_Feature: features
 						}
-						getDataService.getDataRequests('/customer/filt/entire/count', entireData).then(function(result){
+						getDataService.getDataRequests('/customer/filt/share/count', entireData).then(function(result){
                  $scope.data = result;
                  console.log($scope.data);
                  return result;
@@ -620,11 +616,11 @@
                console.log("error" + error);
              }).then(function(result){
                result = Math.ceil(result/20);
-               entireData.OrderBy = 'ER_AvailableDate';
+               entireData.OrderBy = 'SRAvailableDate';
                entireData.PageID = 0;
                console.log(entireData);
 
-                $http.post('/customer/filt/entire/tenant', entireData)
+                $http.post('/customer/filt/share/tenant', entireData)
                  .then(function(r) {
                   //  alert("entire login")
                   SearchService.set(r);
@@ -796,7 +792,7 @@
 												}
 											});
 										/*****************************page update******************************/
-												$state.go('app.listpage');
+												$state.go('app.listpageShare');
 											}
                  }, function(e) {
 
@@ -810,23 +806,17 @@
 						 ER_Region: '',
 						 include_area:$scope.include_area,
 						 ER_Type: $scope.myPropertyType,
-						 ER_PriceMin: $scope.myMinPrice,
-						 ER_PriceMax: $scope.myMaxPrice,
-						 ER_BedRoomMin: $scope.minBedNum,
-						 ER_BedRoomMax: $scope.maxBedNum,
-						 ER_BathRoomMin: $scope.minBathNum,
-						 ER_BathRoomMax: $scope.maxBathNum,
-						 ER_ParkingMin: $scope.minParkingNum,
-						 ER_ParkingMax: $scope.maxParkingNum,
-						 ER_AreaMin: 0,
-						 ER_AreaMax: 50000,
-						 ER_AvailableDate: '2200-01-01',
+						 SRPriceMin: $scope.myMinPrice,
+						 SRPriceMax: $scope.myMaxPrice,
+						 SRAreaMin: 0,
+						 SRAreaMax: 50000,
+						 SRAvailableDate: '2200-01-01',
 						 ER_Description: descriptions,
 						 ER_Feature: features
 						};
 					 // $state.go('app.googlemap');
 					 console.log(entireData);
-					 getDataService.getDataRequests('/customer/filt/entire/count',entireData).then(function(result){
+					 getDataService.getDataRequests('/customer/filt/share/count',entireData).then(function(result){
 								$scope.data = result;
 								console.log($scope.data);
 								return result;
@@ -834,11 +824,11 @@
 							console.log("error" + error);
 						}).then(function(result){
 							result = Math.ceil(result/20);
-							entireData.OrderBy = 'ER_AvailableDate';
+							entireData.OrderBy = 'SRAvailableDate';
 							entireData.PageID = 0;
 							console.log(entireData);
 
-							 $http.post('/customer/filt/entire', entireData)
+							 $http.post('/customer/filt/share', entireData)
 								.then(function(r) {
 								 SearchService.set(r);
 								 updateService.set(entireData);
@@ -1010,7 +1000,7 @@
 						 								}
 						 							});
 						 						/*****************************page update******************************/
-						 								$state.go('app.listpage');
+						 								$state.go('app.listpageShare');
 						 							}
 
 								}, function(e) {
@@ -1031,11 +1021,11 @@
 			$scope.orderleft = false;
 			$scope.orderright = false;
 			$scope.sortBy = function(orderName){
-				if(orderName==='ER_Price'){
+				if(orderName==='SRPrice'){
 					$scope.orderright = false;
 					$scope.orderleft = true;
 					$scope.sortPrice=!$scope.sortPrice;
-				}else if(orderName==='ER_AvailableDate'){
+				}else if(orderName==='SRAvailableDate'){
 					$scope.orderleft = false;
 					$scope.orderright = true;
 					$scope.sortDate=!$scope.sortDate;

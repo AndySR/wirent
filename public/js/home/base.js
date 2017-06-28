@@ -11,7 +11,8 @@ angular.module('andy', [
       'pascalprecht.translate',
       'ui.jq',
       'ngMap',
-      'map'
+      'map',
+      'mapshare'
       ])
  .config(function ($interpolateProvider,
        $stateProvider,
@@ -41,6 +42,11 @@ angular.module('andy', [
    //template:'<h1>homePage</h1>'
    templateUrl: '/partials/map.html', //localhost:8080/home.tpl
  })
+ .state('googlemapShare', {
+  url: '/googlemapShare',
+  //template:'<h1>homePage</h1>'
+  templateUrl: '/partials/mapshare.html', //localhost:8080/home.tpl
+})
    .state('app.signup', {
     url: '/signup',
     templateUrl: '/tpl/page/signup',
@@ -95,6 +101,21 @@ angular.module('andy', [
           }, ],
       },
   })
+  .state('app.listpageShare', {
+   url: '/listpageShare',
+   templateUrl: '/partials/listpage_share.html',
+   controller: 'listPageShareCtrl',
+   resolve: {
+       deps: ['$ocLazyLoad',
+         function ($ocLazyLoad) {
+           return $ocLazyLoad.load('ui.select').then(
+               function () {
+                   return $ocLazyLoad.load('js/home/listpageShare.js');
+                 }
+           );
+         }, ],
+     },
+ })
    .state('app.business', {
     url: '/business',
     templateUrl: '/partials/business.html',
@@ -111,6 +132,10 @@ angular.module('andy', [
                 url: '/details?id&name',
                 templateUrl: '/partials/details.html',
               })
+  .state('app.detailsShare', {
+               url: '/detailsShare?id&name',
+               templateUrl: '/partials/detailsShare.html',
+             })
    .state('app.serviceTypes', {
     url: '/serviceTypes',
     templateUrl: '/partials/serviceTypes.html',

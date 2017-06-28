@@ -505,6 +505,23 @@
 	top: 100px;
 	color: #191D3A;
 }
+.map-page .adv .info-panel .room-type {
+	width: 100px;
+	height: 50px;
+	margin: 25px 65px 0 0;
+	position: absolute;
+	top: 100px;
+  left: 300px;
+}
+.map-page .adv .info-panel .room-type .room-size {
+	display: block;
+	font: 400 16px/20px "microsoft yahei";
+	width: 100px;
+	height: 50;
+	/*left: 460px;*/
+	margin-top: 10px;
+	color: #C81623;;
+}
 .map-page .adv .info-panel .view {
 	width: 100px;
 	height: 50px;

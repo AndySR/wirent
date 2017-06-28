@@ -2,7 +2,7 @@
 (function() {
 	'use strict';
 	angular.module('andy')
-	.controller('detailsController',function ($anchorScroll,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
+	.controller('detailsShareController',function ($anchorScroll,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
 		var datapackage = {};
 		$scope.detailsData = {};
 		$scope.shortlistInsert = {};
@@ -17,6 +17,14 @@
 		 	datapackage = $localStorage.settings;
 		 	console.log('$localStorage.settings',$localStorage.settings);
 		 }
+		 angular.forEach(datapackage, function(data,index,array){
+				 //data等价于array[index]
+				 console.log($stateParams.id+"======"+data);
+				 console.log("SRID",data.SRID);
+				 if($stateParams.id==data.SRID){
+					 $scope.detailsData = data;
+				 }
+			 });
 //		 $scope.datapackage = datapackage;
 		 console.log("=====datapackage=====",datapackage);
 		 console.log($stateParams.id +"<======>"+$stateParams.name);
@@ -31,28 +39,6 @@
 						},function(e){
 
 						});*/
-		if (typeof($scope.datapackage) === "undefined")
-		 {
-		 	if(JSON.stringify(hotRentService.get()) != "{}"){
-		 	$localStorage.settings = hotRentService.get();
-		 	console.log('$localStorage.settings',$localStorage.settings);
-		 	datapackage = $localStorage.settings;
-			console.log('datapackage',datapackage);
-		 }else{
-		 	datapackage = $localStorage.settings;
-		 	console.log('$localStorage.settings',$localStorage.settings);
-		 }
-		}
-		  $scope.datapackage = datapackage;
-		  console.log("=====datapackage=====",datapackage);
-		 angular.forEach($scope.datapackage, function(data,index,array){
-					//data等价于array[index]
-					console.log("ER_ID",data.ER_ID);
-					if($stateParams.id==data.ER_ID){
-						$scope.detailsData = data;
-					}
-				});
-		console.log("$scope.datapackage======>",$scope.datapackage );
 
 		/**************************Advertisements carousel********************************/
 		$scope.myInterval = 5000;
@@ -289,10 +275,10 @@
    }
   }
  })
-.directive('rentrecommend', ['readData','$timeout','$localStorage', 'mouseEvent', 'hotRentService',function(readData, $timeout,$localStorage,mouseEvent,hotRentService) {
+.directive('hotrentShare', ['readData','$timeout','$localStorage', 'mouseEvent', 'hotRentService',function(readData, $timeout,$localStorage,mouseEvent,hotRentService) {
 		return {
 			restrict: 'EA',
-			templateUrl: '/partials/mydirectives/directive-hotrent.html',
+			templateUrl: '/partials/mydirectives/directive-hotrentShare.html',
 			scope: {
 			},
 			link: function(scope, element, attr) {
@@ -400,10 +386,10 @@
 			}
 		}
 	}])
-.directive('imagelunbo',['SearchService','$timeout','$localStorage','$stateParams','mouseEvent' ,'hotRentService',function (SearchService,$timeout,$localStorage,$stateParams,mouseEvent,hotRentService) {
+.directive('lunboShare',['SearchService','$timeout','$localStorage','$stateParams','mouseEvent' ,'hotRentService',function (SearchService,$timeout,$localStorage,$stateParams,mouseEvent,hotRentService) {
   return{
    restrict:'EA',
-   templateUrl:'/partials/mydirectives/directive-lunbo.html',
+   templateUrl:'/partials/mydirectives/directive-lunboShare.html',
    css: 'css/winning/details.css',
    scope:{},
    link: function (scope, element, attr) {
@@ -422,23 +408,10 @@
 	 scope.datapackage = datapackage;
 	 console.log($stateParams.id +"<======>"+$stateParams.name);
 	  console.log("scope.datapackage" +"<======>"+scope.datapackage);
-	 if (typeof(scope.datapackage) === "undefined")
-	 {
-	 	if(JSON.stringify(hotRentService.get()) != "{}"){
-	 	$localStorage.settings = hotRentService.get();
-	 	console.log('$localStorage.settings',$localStorage.settings);
-	 	datapackage = $localStorage.settings;
-		console.log('datapackage',datapackage);
-	 }else{
-	 	datapackage = $localStorage.settings;
-	 	console.log('$localStorage.settings',$localStorage.settings);
-	 }
-	 scope.datapackage = datapackage;
-	 }
 	 angular.forEach(datapackage, function(data,index,array){
 		//data等价于array[index]
 		//console.log("ER_ID",data.ER_ID);
-		if($stateParams.id==data.ER_ID){
+		if($stateParams.id==data.SRID){
 			scope.detailsData = data;
 		//alert($stateParams.id);
 		}

@@ -1778,7 +1778,7 @@
              }).then(function(result){
                result = Math.ceil(result/20);
                entireData.OrderBy = 'ER_AvailableDate';
-               entireData.PageID = result;
+               entireData.PageID = 0;
                console.log(entireData);
 
                 $http.post('/customer/filt/entire/tenant', entireData)
@@ -1849,21 +1849,47 @@
              }
             }
 
-            // $state.go('app.googlemap');
-            console.log(shareData);
-            $http.post('/customer/filt/share/count', shareData)
-             .then(function(r) {
-              SearchService.set(r);
-              updateService.set(shareData);
-              //							SetCredentials(r);
-              console.log('r===>', r);
-              if(r.data.length > 0) {
-              //  $state.go('app.listpage');
-              }
-              //
-             }, function(e) {
+            getDataService.getDataRequests('/customer/filt/share/count', shareData).then(function(result){
+                 $scope.data = result;
+                 console.log($scope.data);
+                 return result;
+             },function(error){
+               console.log("error" + error);
+             }).then(function(result){
+               result = Math.ceil(result/20);
+               shareData.OrderBy = 'ER_AvailableDate';
+               shareData.PageID = 0;
+               console.log(shareData);
 
+                $http.post('/customer/filt/share/tenant', shareData)
+                 .then(function(r) {
+                  //  alert("entire login")
+                  SearchService.set(r);
+                  updateService.set(shareData);
+                  console.log('r===>', r);
+                   $state.go('app.listpageShare');
+                 }, function(e) {
+
+                 });
+             },function(error){
+               console.log("error" + error);
              });
+
+            // $state.go('app.googlemap');
+            // console.log(shareData);
+            // $http.post('/customer/filt/share/count', shareData)
+            //  .then(function(r) {
+            //   SearchService.set(r);
+            //   updateService.set(shareData);
+            //   //							SetCredentials(r);
+            //   console.log('r===>', r);
+            //   if(r.data[0]["count(*)"] > 0) {
+            //
+            //   }
+            //   //
+            //  }, function(e) {
+            //
+            //  });
           }
           /************share rooms data filter get ends**************/
 
@@ -1939,7 +1965,7 @@
               }).then(function(result){
                 result = Math.ceil(result/20);
                 entireData.OrderBy = 'ER_AvailableDate';
-                entireData.PageID = result;
+                entireData.PageID = 0;
                 console.log(entireData);
 
                  $http.post('/customer/filt/entire', entireData)
@@ -2043,7 +2069,7 @@
                     SearchService.set(r);
                     updateService.set(shareData);
                     console.log('r===>', r);
-                     $state.go('app.listpage');
+                     $state.go('app.listpageShare');
                    }, function(e) {
 
                    });

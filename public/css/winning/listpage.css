@@ -337,6 +337,27 @@
 	top: 60px;
 	color: #191D3A;
 }
+.list-page .info-panel .room-type {
+	width: 100px;
+	height: 50px;
+	margin: 25px 65px 0 0;
+	position: absolute;
+	top: 40px;
+	left: 295px;
+}
+.list-page .info-panel .room-type .room-size {
+	display: block;
+	font: 400 16px/20px "microsoft yahei";
+	width: 100px;
+	height: 50;
+	/*left: 460px;*/
+	margin-top: 20px;
+	color: #C81623;
+}
+/*.list-page .info-panel .room-type .room-size:hover {
+	color: #C81623;
+	cursor: pointer;
+}*/
 .list-page .info-panel .view {
 	width: 100px;
 	height: 50px;

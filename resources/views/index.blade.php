@@ -60,7 +60,8 @@
 	 <!-- lazyload -->
   	<script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
 	<script src="/js/home/map/load-google-maps.js"></script>
-	<script src="/js/home/result.js"></script>
+	<script src="/js/home/googlemap.js"></script>
+	<script src="/js/home/googlemapShare.js"></script>
 	<script src="/js/home/base.js"></script>
 	<script src="/js/home/config.js"></script>
 	<script src="/js/home/main.js"></script>
@@ -69,10 +70,12 @@
 	<script src="/js/home/header.js"></script>
 	<script src="/js/home/common.js"></script>
 	<script src="/js/home/details.js"></script>
+	<script src="/js/home/detailsShare.js"></script>
 	<script src="/js/home/upload.js"></script>
 	<script src="/js/home/profile.js"></script>
 	<script src="/js/home/shortlist.js"></script>
 	<script src="/js/home/listpage.js"></script>
+	<script src="/js/home/listpageShare.js"></script>
 	<script src="/js/home/new.js"></script>
 	<script src="/js/home/trainmap.js"></script>
 	<script src="/js/home/business.js"></script>

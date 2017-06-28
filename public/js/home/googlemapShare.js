@@ -1,6 +1,6 @@
 ;(function(){
 	'use strict';
-	angular.module('map',['ngMap'])
+	angular.module('mapshare',['ngMap'])
 		.factory('utilConvertDateToString', ['$filter','$scope', function ($filter,$scope) {
 		    return {
 		        getDateToString: function (date, format) {
@@ -15,7 +15,7 @@
 		        }
 		    };
 		}])
-	.controller('MyCtrl',function($scope,$animate,$http,$location,$state,$log,NgMap,$cookies,$rootScope,$localStorage,SearchService,updateService,utilConvertDateToString) {
+	.controller('googlemapShareCtrl',function($scope,$animate,$http,$location,$state,$log,NgMap,$cookies,$rootScope,$localStorage,SearchService,updateService,utilConvertDateToString,getDataService) {
 				var shortlistInsert = {};
 				var entireData = {};
 				var datafromhome = {};
@@ -65,6 +65,7 @@
 		 ****update the information passed from previous page starts** see the different in filter page
 		 *****************************************************************************/
 				 $scope.inputaddress = datafromhome.ER_Suburb+' '+datafromhome.ER_Region;
+				  if(datafromhome.ER_Feature!=""){
 				 ER_Feature = datafromhome.ER_Feature.split(";");
 				 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);
 				 for (var j = 0; j<ER_Feature.length;j++) {
@@ -117,6 +118,7 @@
 				    	 		break;
 						}
 				 }
+			 }
 				 console.log("hahahahaha",ER_Feature);
 				 switch (datafromhome.ER_Description)
 						{
@@ -589,7 +591,7 @@
 					}
 				}
 
-				/****************************update submit***************************************/
+				/****************************update submit starts***************************************/
 				$scope.update = function(){
 					var arr_desckey = [$scope.train,$scope.university,
 							$scope.backpack,$scope.park,
@@ -648,212 +650,444 @@
 							ER_Feature:features
 						};
 					} else {*/
+					$http.get('/customer/profile')
+					.then(function(r) {
+					 if(r.data.customer_login_status){
 						entireData = {
+							CID:r.data.CID,
 							ER_Suburb: '',
 							ER_Region: '',
+							include_area:true,
+							SRName:'',
 							ER_Type: $scope.myPropertyType,
-							ER_PriceMin: $scope.myMinPrice,
-							ER_PriceMax: $scope.myMaxPrice,
-							ER_BedRoomMin: $scope.minBedNum,
-							ER_BedRoomMax: $scope.maxBedNum,
-							ER_BathRoomMin: $scope.minBathNum,
-							ER_BathRoomMax: $scope.maxBathNum,
-							ER_ParkingMin: $scope.minParkingNum,
-							ER_ParkingMax: $scope.maxParkingNum,
-							ER_AreaMin: $scope.minArea,
-							ER_AreaMax: $scope.maxArea,
-							ER_AvailableDate: utilConvertDateToString.getDateToString($scope.dt,"yyyy-MM-dd") +'',
+							SRPriceMin: $scope.myMinPrice,
+							SRPriceMax: $scope.myMaxPrice,
+							SRAreaMin: $scope.minArea,
+							SRAreaMax: $scope.maxArea,
+							SRAvailableDate: utilConvertDateToString.getDateToString($scope.dt,"yyyy-MM-dd") +'',
 							ER_Description: descriptions,
 							ER_Feature: features
 						}
-//					}
-					console.log("entireData===>",entireData);
-					$http.post('/customer/filt/entire', entireData)
-						.then(function(r) {
-							SearchService.set(r);
-							updateService.set(entireData);
+						getDataService.getDataRequests('/customer/filt/share/count', entireData).then(function(result){
+								 $scope.data = result;
+								 console.log($scope.data);
+								 return result;
+						 },function(error){
+							 console.log("error" + error);
+						 }).then(function(result){
+							 result = Math.ceil(result/20);
+							 entireData.OrderBy = 'SRAvailableDate';
+							 entireData.PageID = 0;
+							 console.log(entireData);
 
-							console.log('r===>', r);
-							if(r.data.length > 0) {
-						/**********************page update****************************/
-								if(JSON.stringify(SearchService.get()) != "{}"){
-							 	$localStorage.settings = SearchService.get().data;
-							 	console.log('$localStorage.settings',$localStorage.settings);
-							 	vm.shops = $localStorage.settings;
-								console.log('vm.shops',vm.shops);
-							 }else{
-							 	vm.shops = $localStorage.settings;
-							 	console.log('$localStorage.settings',$localStorage.settings);
-							 }
-							 /**
-							  * parameters from search engine
-							  */
-							 if(JSON.stringify(updateService.get()) != "{}"){
-								$localStorage.datafromhome=updateService.get();
-								datafromhome=$localStorage.datafromhome;
-					 		console.log('updateService.get()',updateService.get());
-							 }else{
-							 	datafromhome=$localStorage.datafromhome;
-							 	console.log('$localStorage.datafromhome',datafromhome);
-							 }
+								$http.post('/customer/filt/share/tenant', entireData)
+								 .then(function(r) {
+									//  alert("entire login")
+									SearchService.set(r);
+									updateService.set(entireData);
+									if(r.data.length > 0) {
+												// alert("刷新吧");
+										/***resolve the data passed through factory service from home page**********************/
+									 if(JSON.stringify(SearchService.get()) != "{}"){
+											$localStorage.settings = SearchService.get().data;
+											console.log('$localStorage.settings',$localStorage.settings);
+											vm.shops = $localStorage.settings;
+											console.log('entireData',	vm.shops);
+										 }else{
+											vm.shops = $localStorage.settings;
+											console.log('$localStorage.settings other conditions',$localStorage.settings);
+										 }
 
-							  $scope.inputaddress = datafromhome.ER_Suburb+' '+datafromhome.ER_Region;
-							 ER_Feature = datafromhome.ER_Feature.split(";");
-							 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);
-							 for (var j = 0; j<ER_Feature.length;j++) {
-							 	switch (ER_Feature[j])
-									{
-									     case "%stove":
-									     	$scope.stove = true;
-									   	 break;
-									     case "%dishwasher":
-											$scope.dishwasher = true;
-									    break;
-									     case "%dryer":
-											$scope.dryer = true;
-									    break;
-									     case "%aircondition":
-											$scope.aircondition = true;
-									    break;
-									     case "%refrigerator":
-											$scope.refrigerator = true;
-									    break;
-									     case "%laundry":
-											$scope.laundry = true;
-									    break;
-									     case "%bed":
-											$scope.bed = true;
-									    break;
-									    case "%desk":
-									     	$scope.desk = true;
-									     break;
-									    case "%wardrob":
-									    	$scope.wardrob = true;
-									    	 break;
-							    	    case "%wifi":
-							    	        $scope.wifi = true;
-							    	 		break;
-							    	    case "%gas":
-							    			$scope.gas = true;
-							    			 break;
-							    	    case "%no_pets":
-							    			$scope.no_pets = true;
-							    	 		break;
-							    	    case "%girl_only":
-							    			$scope.girl_only = true;
-							    	 		break;
-							    	 	case "%boy_only":
-							    			$scope.boy_only = true;
-							    	 		break;
-							    	 	case "%no_party":
-							    			$scope.no_party = true;
-							    	 		break;
-									}
-							 }
-							 console.log("hahahahaha",ER_Feature);
-							 switch (datafromhome.ER_Description)
-									{
-									     case "%train_station;":
-									     	$scope.train = true;
-									   	 break;
-									     case "%backpack;":
-											$scope.backpack = true;
-									    break;
-									     case "%park;":
-											$scope.park = true;
-									    break;
-									     case "%school;":
-											$scope.school = true;
-									    break;
-									     case "%big_family;":
-											$scope.family = true;
-									    break;
-									     case "%shopping_mall;":
-											$scope.shoppingcenter = true;
-									    break;
-									     case "%offical_rental;":
-											$scope.officerental = true;
-									    break;
-									    case "%university;":
-									     	$scope.university = true;
-									     break;
-							 		}
-							 angular.forEach(vm.shops, function(data,index,array){
-								//data等价于array[index]
-								data.train_station = false;
-								data.backpack = false;
-								data.park = false;
-								data.school = false;
-								data.big_family = false;
-								data.shopping_mall = false;
-								data.offical_rental = false;
-								data.university = false;
-								var dataresults = data.ER_Description.split(";");
-								console.log("lengthhhh",dataresults);
-								var uniindex = 0
-								dataresults.pop();
-								uniindex = dataresults.indexOf('university');
-								console.log("length",dataresults.length);
-								for(var i =0;i<dataresults.length;i++)
-								{
-									switch (dataresults[i])
-									{
-									     case "train_station":
-									     	data.train_station = true;
-									   	 break;
-									     case "backpack":
-											data.backpack = true;
-									    break;
-									     case "park":
-											data.park = true;
-									    break;
-									     case "school":
-											data.school = true;
-									    break;
-									     case "big_family":
-											data.big_family = true;
-									    break;
-									     case "shopping_mall":
-											data.shopping_mall = true;
-									    break;
-									     case "offical_rental":
-											data.offical_rental = true;
-									    break;
-									    case "university":
-									     	data.university = true;
-									     break;
-									    case "":
-									    	data.university = true;
-									    	 break;
-									    default:
-									    	data.university = true;
-									    	 break;
+									 if(JSON.stringify(updateService.get()) != "{}"){
+											$localStorage.datafromhome=updateService.get();
+											datafromhome=$localStorage.datafromhome;
+											console.log('updateService.get()',updateService.get());
+											 }else{
+												datafromhome=$localStorage.datafromhome;
+												console.log('$localStorage.datafromhome',datafromhome);
+											 }
+												$scope.datafromhome=datafromhome;
+										/******************display the features data passed through home*****************/
+											 if(datafromhome.ER_Feature!=""){
+												ER_Feature = datafromhome.ER_Feature.split(";");
+											 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
+											 for (var j = 0; j<ER_Feature.length;j++) {
+												switch (ER_Feature[j])
+													{
+															 case "%stove":
+																$scope.stove = true;
+															 break;
+															 case "%dishwasher":
+															$scope.dishwasher = true;
+															break;
+															 case "%dryer":
+															$scope.dryer = true;
+															break;
+															 case "%aircondition":
+															$scope.aircondition = true;
+															break;
+															 case "%refrigerator":
+															$scope.refrigerator = true;
+															break;
+															 case "%laundry":
+															$scope.laundry = true;
+															break;
+															 case "%bed":
+															$scope.bed = true;
+															break;
+															case "%desk":
+																$scope.desk = true;
+															 break;
+															case "%wardrob":
+																$scope.wardrob = true;
+																 break;
+																case "%wifi":
+																		$scope.wifi = true;
+																break;
+																case "%gas":
+																$scope.gas = true;
+																 break;
+																case "%no_pets":
+																$scope.no_pets = true;
+																break;
+																case "%girl_only":
+																$scope.girl_only = true;
+																break;
+															case "%boy_only":
+																$scope.boy_only = true;
+																break;
+															case "%no_party":
+																$scope.no_party = true;
+																break;
+													}
+												 }
+											 }
+												/***************display the description data passed through home*********************/
+												switch (datafromhome.ER_Description)
+													{
+															 case "%train_station;":
+																$scope.train = true;
+															 break;
+															 case "%backpack;":
+															$scope.backpack = true;
+															break;
+															 case "%park;":
+															$scope.park = true;
+															break;
+															 case "%school;":
+															$scope.school = true;
+															break;
+															 case "%big_family;":
+															$scope.family = true;
+															break;
+															 case "%shopping_mall;":
+															$scope.shoppingcenter = true;
+															break;
+															 case "%offical_rental;":
+															$scope.officerental = true;
+															break;
+															case "%university;":
+																$scope.university = true;
+															 break;
+													}
+											angular.forEach(vm.shops, function(data,index,array){
+												//data等价于array[index]
+												data.train_station = false;
+												data.backpack = false;
+												data.park = false;
+												data.school = false;
+												data.big_family = false;
+												data.shopping_mall = false;
+												data.offical_rental = false;
+												data.university = false;
+												var dataresults = data.ER_Description.split(";");
+												var uniindex = 0
+												dataresults.pop();
+												uniindex = dataresults.indexOf('university');
+												console.log("length",dataresults.length);
+												for(var i =0;i<dataresults.length;i++)
+												{
+													switch (dataresults[i])
+													{
+															 case "train_station":
+																data.train_station = true;
+															 break;
+															 case "backpack":
+															data.backpack = true;
+															break;
+															 case "park":
+															data.park = true;
+															break;
+															 case "school":
+															data.school = true;
+															break;
+															 case "big_family":
+															data.big_family = true;
+															break;
+															 case "shopping_mall":
+															data.shopping_mall = true;
+															break;
+															 case "offical_rental":
+															data.offical_rental = true;
+															break;
+															case "university":
+																data.university = true;
+															 break;
+															case "":
+																data.university = true;
+																 break;
+															default:
+																data.university = true;
+																 break;
 
-									}
-								}
-								if (uniindex == dataresults.length-1 || uniindex==-1){
-										data.university = false;
-									}
-								if(data.university){
-									data.uniname = dataresults[uniindex + 1];
-								}
-							});
-						/*****************************page update******************************/
-								$state.go('googlemap');
-							}
-						}, function(e) {
+													}
+												}
+												if (uniindex == dataresults.length-1){
+														data.university = true;
+													}else if (uniindex==-1) {
+															data.university = false;
+													}
+												if(data.university){
+													data.uniname = dataresults[uniindex + 1];
+												}
+											});
+										/*****************************page update******************************/
+												$state.go('googlemapShare');
+											}
+								 }, function(e) {
 
+								 });
+						 },function(error){
+							 console.log("error" + error);
+						 });
+					}else {
+						entireData = {
+						 ER_Suburb: '',
+						 ER_Region: '',
+						 include_area:$scope.include_area,
+						 SRName:'',
+						 ER_Type: $scope.myPropertyType,
+						 SRPriceMin: $scope.myMinPrice,
+						 SRPriceMax: $scope.myMaxPrice,
+						 SRAreaMin: 0,
+						 SRAreaMax: 50000,
+						 SRAvailableDate: '2200-01-01',
+						 ER_Description: descriptions,
+						 ER_Feature: features
+						};
+					 // $state.go('app.googlemap');
+					 console.log(entireData);
+					 getDataService.getDataRequests('/customer/filt/share/count',entireData).then(function(result){
+								$scope.data = result;
+								console.log($scope.data);
+								return result;
+						},function(error){
+							console.log("error" + error);
+						}).then(function(result){
+							result = Math.ceil(result/20);
+							entireData.OrderBy = 'SRAvailableDate';
+							entireData.PageID = 0;
+							console.log(entireData);
+
+							 $http.post('/customer/filt/share', entireData)
+								.then(function(r) {
+								 SearchService.set(r);
+								 console.log("r===>",r);
+								 updateService.set(entireData);
+								 console.log("entireData===>",entireData);
+											if(r.data.length > 0) {
+														// alert("刷新吧");
+												/***resolve the data passed through factory service from home page**********************/
+											 if(JSON.stringify(SearchService.get()) != "{}"){
+													$localStorage.settings = SearchService.get().data;
+													console.log('$localStorage.settings',$localStorage.settings);
+														vm.shops = $localStorage.settings;
+													console.log('entireData',	vm.shops);
+												 }else{
+													 $localStorage.settings = r.data;
+														vm.shops = $localStorage.settings;
+													console.log('$localStorage.settings other conditions',$localStorage.settings);
+												 }
+												 $scope.entireData = 	vm.shops;
+											 if(JSON.stringify(updateService.get()) != "{}"){
+													$localStorage.datafromhome=updateService.get();
+													datafromhome=$localStorage.datafromhome;
+													console.log('updateService.get()',updateService.get());
+													 }else{
+														datafromhome=$localStorage.datafromhome;
+														console.log('$localStorage.datafromhome',datafromhome);
+													 }
+														$scope.datafromhome=datafromhome;
+												/******************display the features data passed through home*****************/
+													 if(datafromhome.ER_Feature!=""){
+														ER_Feature = datafromhome.ER_Feature.split(";");
+													 	ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
+													 for (var j = 0; j<ER_Feature.length;j++) {
+														switch (ER_Feature[j])
+															{
+																	 case "%stove":
+																		$scope.stove = true;
+																	 break;
+																	 case "%dishwasher":
+																	$scope.dishwasher = true;
+																	break;
+																	 case "%dryer":
+																	$scope.dryer = true;
+																	break;
+																	 case "%aircondition":
+																	$scope.aircondition = true;
+																	break;
+																	 case "%refrigerator":
+																	$scope.refrigerator = true;
+																	break;
+																	 case "%laundry":
+																	$scope.laundry = true;
+																	break;
+																	 case "%bed":
+																	$scope.bed = true;
+																	break;
+																	case "%desk":
+																		$scope.desk = true;
+																	 break;
+																	case "%wardrob":
+																		$scope.wardrob = true;
+																		 break;
+																		case "%wifi":
+																				$scope.wifi = true;
+																		break;
+																		case "%gas":
+																		$scope.gas = true;
+																		 break;
+																		case "%no_pets":
+																		$scope.no_pets = true;
+																		break;
+																		case "%girl_only":
+																		$scope.girl_only = true;
+																		break;
+																	case "%boy_only":
+																		$scope.boy_only = true;
+																		break;
+																	case "%no_party":
+																		$scope.no_party = true;
+																		break;
+															}
+														 }
+													 }
+														/***************display the description data passed through home*********************/
+														switch (datafromhome.ER_Description)
+															{
+																	 case "%train_station;":
+																		$scope.train = true;
+																	 break;
+																	 case "%backpack;":
+																	$scope.backpack = true;
+																	break;
+																	 case "%park;":
+																	$scope.park = true;
+																	break;
+																	 case "%school;":
+																	$scope.school = true;
+																	break;
+																	 case "%big_family;":
+																	$scope.family = true;
+																	break;
+																	 case "%shopping_mall;":
+																	$scope.shoppingcenter = true;
+																	break;
+																	 case "%offical_rental;":
+																	$scope.officerental = true;
+																	break;
+																	case "%university;":
+																		$scope.university = true;
+																	 break;
+															}
+													angular.forEach(vm.shops, function(data,index,array){
+														//data等价于array[index]
+														data.train_station = false;
+														data.backpack = false;
+														data.park = false;
+														data.school = false;
+														data.big_family = false;
+														data.shopping_mall = false;
+														data.offical_rental = false;
+														data.university = false;
+														var dataresults = data.ER_Description.split(";");
+														var uniindex = 0
+														dataresults.pop();
+														uniindex = dataresults.indexOf('university');
+														console.log("length",dataresults.length);
+														for(var i =0;i<dataresults.length;i++)
+														{
+															switch (dataresults[i])
+															{
+																	 case "train_station":
+																		data.train_station = true;
+																	 break;
+																	 case "backpack":
+																	data.backpack = true;
+																	break;
+																	 case "park":
+																	data.park = true;
+																	break;
+																	 case "school":
+																	data.school = true;
+																	break;
+																	 case "big_family":
+																	data.big_family = true;
+																	break;
+																	 case "shopping_mall":
+																	data.shopping_mall = true;
+																	break;
+																	 case "offical_rental":
+																	data.offical_rental = true;
+																	break;
+																	case "university":
+																		data.university = true;
+																	 break;
+																	case "":
+																		data.university = true;
+																		 break;
+																	default:
+																		data.university = true;
+																		 break;
+
+															}
+														}
+														if (uniindex == dataresults.length-1){
+																data.university = true;
+															}else if (uniindex==-1) {
+																	data.university = false;
+															}
+														if(data.university){
+															data.uniname = dataresults[uniindex + 1];
+														}
+													});
+												/*****************************page update******************************/
+														$state.go('googlemapShare');
+													}
+
+								}, function(e) {
+										console.log("error"+e);
+								});
+						},function(error){
+							console.log("error" + error);
 						});
-//					alert("updated");
+					}
+				});
+		//					}
+
+		//					alert("updated");
 				}
 				/********************************filter update code ends*****************************/
+
+
 				/*********************sortby*********************************************/
 				$scope.sortBy = function(orderName){
-					if(orderName==='ER_Price'){
+					if(orderName==='SRPrice'){
 						$scope.orderright = false;
 						$scope.orderleft = true;
 						$scope.sortPrice=!$scope.sortPrice;
-					}else if(orderName==='ER_AvailableDate'){
+					}else if(orderName==='SRAvailableDate'){
 						$scope.orderleft = false;
 						$scope.orderright = true;
 						$scope.sortDate=!$scope.sortDate;

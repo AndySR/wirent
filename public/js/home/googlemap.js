@@ -1,154 +1,72 @@
-'use strict';
-	angular.module('andy')
-		.controller('listPageCtrl', ['$scope','$animate','$log','$timeout','$http','$state','$cookies','$rootScope','$localStorage','SearchService','updateService','utilConvertDateToString','getDataService',
-			function($scope,$animate,$log,$timeout,
-			$http,$state,$cookies,$rootScope,
-			$localStorage,SearchService,
-			updateService,utilConvertDateToString,getDataService) {
-			var entireData = {};
-			var datafromhome = {};
-			$scope.favorsave = false;
-			$scope.shortlistInsert = {};
-			// $scope.totalItems = 64;
-		  //   $scope.currentPage = 4;
-		     $animate.enabled(false);//消除carousel bug
-		    var ER_Feature = [];
-		    // $scope.setPage = function (pageNo) {
-		    //   $scope.currentPage = pageNo;
-		    // };
-		    // $scope.pageChanged = function() {
-		    //   $log.info('Page changed to: ' + $scope.currentPage);
-		    // };
-		    // $scope.maxSize = 5;
-				// $scope.numPages = 2;
-		    // $scope.bigTotalItems = 175;
-		    // $scope.bigCurrentPage = 1;
-				// $scope.itemsPerPage = 20;
-		   /* location input*/
-		    $scope.person = {};
-	        $scope.people = [
-	        { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
-	        { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
-	        { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
-	        { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
-	        { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
-	        { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
-	        { name: 'Nicole',    email: 'nicole@email.com',    age: 43, country: 'Colombia' },
-	        { name: 'Natasha',   email: 'natasha@email.com',   age: 54, country: 'Ecuador' },
-	        { name: 'Michael',   email: 'michael@email.com',   age: 15, country: 'Colombia' },
-	        { name: 'Nicolás',   email: 'nicolas@email.com',    age: 43, country: 'Colombia' }
-	        ];
-	        /*the other filter attributes*/
-	       	/******************************start of filter data*******************************/
-				// property types
-			$scope.myPropertyType = 'Apartment';
-			$scope.propertyTypes = [{ id: 1, propertyType:'House'}, { id: 2,propertyType:'Apartment'},
-				{ id: 3, propertyType:'Unit'},{ id: 4,propertyType:'Studio'}];
-			//select minPrice
-				$scope.myMinPrice = 0;
-				$scope.minPrices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
-									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
-									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
-									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
-									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
-									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
-									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
-									,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
-			//select maxPrice
-				$scope.myMaxPrice = 10000;
-				$scope.maxPrices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
-									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
-									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
-									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
-									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
-									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
-									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
-									,{ id: 29, price: '1800' },{ id: 30, price: '1900' },{ id: 31, price: '2000' },{ id: 32, price: '3000' },{ id: 33, price: '4000' }
-									,{ id: 34, price: '5000' },{ id: 35, price: '10000' }];
-			//select bedsNum
-				$scope.minBedNum = '1';
-				$scope.maxBedNum = '10';
-				$scope.bedsNum = [{ id: 1, num: '1' }, { id: 2, num: '2' }, { id: 3, num: '3' },{ id: 4, num: '4' }
-								,{ id: 5, num: '5' },{ id: 6, num: '6' },{ id: 7, num: '7' },{ id: 8, num: '8' },{ id: 9, num: '9' }
-								,{ id: 10, num: '10' }];
-			//select bathNum
-				$scope.minBathNum = '0';
-				$scope.maxBathNum = '10';
-				$scope.bathsNum = [{ id: 1, num: '0' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
-								,{ id: 5, num: '4' },{ id: 6, num: '5' },{ id: 7, num: '6' },{ id: 8, num: '7' },{ id: 9, num: '8' },{ id: 10, num: '9' },{ id: 11, num: '10' }];
-			//select parkingNum
-				$scope.minParkingNum = '0';
-				$scope.maxParkingNum = '10';
-				$scope.parkingsNum = [{ id: 1, num: '0' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
-								,{ id: 5, num: '4' },{ id: 6, num: '5' },{ id: 7, num: '6' },{ id: 8, num: '7' },{ id: 9, num: '8' },{ id: 10, num: '9' },{ id: 11, num: '10' }];
-				$scope.minArea = 0;
-				$scope.maxArea = 10000;
-				/******************************end of filter data*******************************/
+;(function(){
+	'use strict';
+	angular.module('map',['ngMap'])
+		.factory('utilConvertDateToString', ['$filter','$scope', function ($filter,$scope) {
+		    return {
+		        getDateToString: function (date, format) {
+		            if (angular.isDate(date) && angular.isString(format)) {
+		                return $filter('date')(date, format);
+		            }
+		        },
+		        getStringToDate: function (string) {
+		            if (angular.isString(string)) {
+		                return new Date(string.replace(/-/g, "-"));
+		            }
+		        }
+		    };
+		}])
+	.controller('googlemapCtrl',function($scope,$animate,$http,$location,$state,$log,NgMap,$cookies,$rootScope,$localStorage,SearchService,updateService,utilConvertDateToString,getDataService) {
+				var shortlistInsert = {};
+				var entireData = {};
+				var datafromhome = {};
+				var ER_Feature = [];
+				var vm = this;
+				NgMap.getMap().then(function(map) {
+					vm.map = map;
 
-		/*datepicker start*/
-			$scope.today = function() {
-		      $scope.dt =new Date() ;
-		    };
-		    $scope.today();
-		    $scope.clear = function () {
-		      $scope.dt = null;
-		    };
-		    // Disable weekend selection
-		    /*$scope.disabled = function(date, mode) {
-		      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-		    };*/
-		    $scope.toggleMin = function() {
-		      $scope.minDate = $scope.minDate ? null : new Date();
-		    };
-		    $scope.toggleMin();
-		    $scope.open = function($event) {
-		      $event.preventDefault();
-		      $event.stopPropagation();
-		      $scope.opened = true;
-		    };
-		    $scope.dateOptions = {
-		      formatYear: 'yy',
-		      startingDay: 1,
-		      class: 'datepicker'
-		    };
-		    $scope.initDate = new Date('2016-15-20');
-		    $scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-		    $scope.format = $scope.formats[0];
-		/*datepicker end*/
-				/*update submit*/
-				$scope.update = function(){
-					alert("updated");
-				}
-		/***resolve the data passed through factory service from home page**********************/
-		 if(JSON.stringify(SearchService.get()) != "{}"){
-			 	$localStorage.settings = SearchService.get().data;
-			 	console.log('$localStorage.settings',$localStorage.settings);
-			 	entireData = $localStorage.settings;
-				console.log('entireData',entireData);
-			 }else{
-			 	entireData = $localStorage.settings;
-			 	console.log('$localStorage.settings other conditions',$localStorage.settings);
-			 }
-			 $scope.entireData=entireData;
-			 /***********pagination starts********************/
-			 	$scope.maxSize = 5;
-				$scope.totalItems = entireData.length;
-				$scope.currentPage = 1;
-				$scope.itemsPerPage = 20;
-			/***********pagination starts********************/
-		 if(JSON.stringify(updateService.get()) != "{}"){
-				$localStorage.datafromhome=updateService.get();
-				datafromhome=$localStorage.datafromhome;
+				});
+				vm.clicked = function() {
+					alert('Clicked a link inside infoWindow');
+				};
+				$animate.enabled(false);//消除carousel bug
+				/*
+				 * when SearchService.get() has children, set the result to localstorage,
+				 * when searchservice has no child, the localstorage will keep the previous
+				 * set value
+				 *
+				 * */
+				 if(JSON.stringify(SearchService.get()) != "{}"){
+				 	$localStorage.settings = SearchService.get().data;
+				 	console.log('$localStorage.settings',$localStorage.settings);
+				 	vm.shops = $localStorage.settings;
+					console.log('vm.shops',vm.shops);
+				 }else{
+				 	vm.shops = $localStorage.settings;
+				 	console.log('$localStorage.settings',$localStorage.settings);
+				 }
+				 /***********pagination starts********************/
+				 	$scope.maxSize = 5;
+					$scope.totalItems = vm.shops.length;
+					$scope.currentPage = 1;
+					$scope.itemsPerPage = 20;
+				/***********pagination starts********************/
+				 /**
+				  * parameters from search engine
+				  */
+				 if(JSON.stringify(updateService.get()) != "{}"){
+					$localStorage.datafromhome=updateService.get();
+					datafromhome=$localStorage.datafromhome;
 		 		console.log('updateService.get()',updateService.get());
 				 }else{
 				 	datafromhome=$localStorage.datafromhome;
 				 	console.log('$localStorage.datafromhome',datafromhome);
 				 }
-				  $scope.datafromhome=datafromhome;
-			/******************display the features data passed through home*****************/
-				 if(datafromhome.ER_Feature!=""){
-				 	ER_Feature = datafromhome.ER_Feature.split(";");
-				 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);// there is something needed to be changed here
+		/****************************************************************************
+		 ****update the information passed from previous page starts** see the different in filter page
+		 *****************************************************************************/
+				 $scope.inputaddress = datafromhome.ER_Suburb+' '+datafromhome.ER_Region;
+				 ER_Feature = datafromhome.ER_Feature.split(";");
+				 ER_Feature = ER_Feature.splice(ER_Feature.length-3,2);
 				 for (var j = 0; j<ER_Feature.length;j++) {
 				 	switch (ER_Feature[j])
 						{
@@ -198,10 +116,9 @@
 				    			$scope.no_party = true;
 				    	 		break;
 						}
-					 }
 				 }
-				  /***************display the description data passed through home*********************/
-				 	switch (datafromhome.ER_Description)
+				 console.log("hahahahaha",ER_Feature);
+				 switch (datafromhome.ER_Description)
 						{
 						     case "%train_station;":
 						     	$scope.train = true;
@@ -228,7 +145,7 @@
 						     	$scope.university = true;
 						     break;
 				 		}
-				angular.forEach(entireData, function(data,index,array){
+				 angular.forEach(vm.shops, function(data,index,array){
 					//data等价于array[index]
 					data.train_station = false;
 					data.backpack = false;
@@ -239,6 +156,7 @@
 					data.offical_rental = false;
 					data.university = false;
 					var dataresults = data.ER_Description.split(";");
+					console.log("lengthhhh",dataresults);
 					var uniindex = 0
 					dataresults.pop();
 					uniindex = dataresults.indexOf('university');
@@ -282,20 +200,160 @@
 					}
 					if (uniindex == dataresults.length-1){
 							data.university = true;
-						}else if ( uniindex==-1) {
+						} else if (uniindex==-1) {
 							data.university = false;
 						}
 					if(data.university){
 						data.uniname = dataresults[uniindex + 1];
 					}
 				});
-				/*********************************************************************
-				 *******************filter update code starts*************************
-				 ********************************************************************/
+				console.log("数据",vm.shops);
+				/*vm.shops = [{
+						id: 'foo',
+						name: 'FOO SHOP',
+						position: 'sydney australia'
+					},
+					{
+						id: 'bar',
+						name: 'BAR SHOP',
+						position: '9/20 harbourne road kingsford australia'
+					},
+					{
+						id:vm.shopss[0].ER_ID+'',
+						name:'Danestone',
+						position:vm.shopss[0].ER_No+' '+vm.shopss[0].ER_St+' '+vm.shopss[0].ER_Suburb+' '+vm.shopss[0].ER_Region
+					}
+				];*/
+				 	/**************************************************/
+				  /*   vm.myInterval = 5000;
+				      var slides = vm.slides = [];
+				    vm.addSlide = function() {
+				      slides.push({
+				        image: 'img/b1' + slides.length + '.jpg',
+				        text: ['Carousel text #0','Carousel text #1','Carousel text #2','Carousel text #3'][slides.length % 4]
+				      });
+				    };
+				    for (var i=0; i<4; i++) {
+				      vm.addSlide();
+				    }*/
+				/**************************************************/
 
-				 /********************************************************************
-				 **********************features update code starts********************
-				 *********************************************************************/
+				/**********************add to shortlist**********************************************/
+				vm.addShortlist = function (){
+				$http.get('/customer/profile')
+					.then(function(r) {
+						console.log(r);
+						if(r.data.customer_login_status){
+							shortlistInsert.CID = 1;
+							shortlistInsert.CLType="FavorSave";
+							shortlistInsert.CLDetail=vm.shop.ER_ID+'';;
+							shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+							console.log("shortlistInsert",shortlistInsert);
+							$http.post('/customer/shortlist/insert', shortlistInsert)
+							.then(function(r){
+								console.log('r',r);
+									console.log("r",r);
+							},function(e){
+								console.log("数据有误");
+							})
+						}else{
+							$state.go("app.login");
+						}
+					});
+
+				}
+
+				/*********************************************************************/
+				vm.shop = vm.shops[0];
+				vm.showDetail = function(e, shop) {
+					vm.shop = shop;
+					vm.map.showInfoWindow('foo-iw', shop.ER_ID+'');
+				};
+
+				vm.hideDetail = function() {
+					vm.map.hideInfoWindow('foo-iw');
+				};
+
+				/*filter start*/
+				// property types
+			$scope.myPropertyType = 'Apartment';
+			$scope.propertyTypes = [{ id: 1, propertyType:'House'}, { id: 2,propertyType:'Apartment'},
+				{ id: 3, propertyType:'Unit'},{ id: 4,propertyType:'Studio'}];
+				//select minPrice
+					$scope.myMinPrice = 0;
+					$scope.minPrices = [{ id: 1, price: '' }, { id: 2, price: '$50' }, { id: 3, price: '$100' },{ id: 4, price: '$150' }
+										,{ id: 5, price: '$200' },{ id: 6, price: '$250' },{ id: 7, price: '$300' },{ id: 8, price: '$350' }
+										,{ id: 9, price: '$400' },{ id: 10, price: '$450' },{ id: 11, price: '$500' },{ id: 12, price: '$550' }
+										,{ id: 13, price: '$600' },{ id: 14, price: '$650' },{ id: 15, price: '$700' },{ id: 16, price: '$750' }
+										,{ id: 17, price: '$800' },{ id: 18, price: '$850' },{ id: 19, price: '$900' },{ id: 20, price: '$950' }
+										,{ id: 21, price: '$1000' },{ id: 22, price: '$1100' },{ id: 23, price: '$1200' },{ id: 24, price: '$1300'}
+										,{ id: 25, price: '$1400' },{ id: 26, price: '$1500' },{ id: 27, price: '$1600' },{ id: 28, price: '$1700' }
+										,{ id: 29, price: '$1800' },{ id: 30, price: '$1900' }];
+				//select maxPrice
+					$scope.myMaxPrice = 10000;
+					$scope.maxPrices = [{ id: 1, price: '' }, { id: 2, price: '$50' }, { id: 3, price: '$100' },{ id: 4, price: '$150' }
+										,{ id: 5, price: '$200' },{ id: 6, price: '$250' },{ id: 7, price: '$300' },{ id: 8, price: '$350' }
+										,{ id: 9, price: '$400' },{ id: 10, price: '$450' },{ id: 11, price: '$500' },{ id: 12, price: '$550' }
+										,{ id: 13, price: '$600' },{ id: 14, price: '$650' },{ id: 15, price: '$700' },{ id: 16, price: '$750' }
+										,{ id: 17, price: '$800' },{ id: 18, price: '$850' },{ id: 19, price: '$900' },{ id: 20, price: '$950' }
+										,{ id: 21, price: '$1000' },{ id: 22, price: '$1100' },{ id: 23, price: '$1200' },{ id: 24, price: '$1300'}
+										,{ id: 25, price: '$1400' },{ id: 26, price: '$1500' },{ id: 27, price: '$1600' },{ id: 28, price: '$1700' }
+										,{ id: 29, price: '$1800' },{ id: 30, price: '$1900' },{ id: 31, price: '$2000' },{ id: 32, price: '$3000' },{ id: 33, price: '$4000' }
+										,{ id: 34, price: '$5000' },{ id: 35, price: '$10000' }];
+			//select bedsNum
+				$scope.minBedNum = '1';
+				$scope.maxBedNum = '10';
+				$scope.bedsNum = [{ id: 1, num: '1' }, { id: 2, num: '2' }, { id: 3, num: '3' },{ id: 4, num: '4' }
+								,{ id: 5, num: '5' },{ id: 6, num: '6' },{ id: 7, num: '7' },{ id: 8, num: '8' },{ id: 9, num: '9' }
+								,{ id: 10, num: '10' }];
+			//select bathNum
+				$scope.minBathNum = '0';
+				$scope.maxBathNum = '10';
+				$scope.bathsNum = [{ id: 1, num: '0' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
+								,{ id: 5, num: '4' },{ id: 6, num: '5' },{ id: 7, num: '6' },{ id: 8, num: '7' },{ id: 9, num: '8' },{ id: 10, num: '9' },{ id: 11, num: '10' }];
+			//select parkingNum
+				$scope.minParkingNum = '0';
+				$scope.maxParkingNum = '10';
+				$scope.parkingsNum = [{ id: 1, num: '0' }, { id: 2, num: '1' }, { id: 3, num: '2' },{ id: 4, num: '3' }
+								,{ id: 5, num: '4' },{ id: 6, num: '5' },{ id: 7, num: '6' },{ id: 8, num: '7' },{ id: 9, num: '8' },{ id: 10, num: '9' },{ id: 11, num: '10' }];
+				$scope.minArea = 0;
+				$scope.maxArea = 10000;
+				/*end of filter*/
+
+		/*datepicker start*/
+			$scope.today = function() {
+		      $scope.dt = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd") ;
+		    };
+		    $scope.today();
+		    $scope.clear = function () {
+		      $scope.dt = null;
+		    };
+		    // Disable weekend selection
+		    /*$scope.disabled = function(date, mode) {
+		      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+		    };*/
+		    $scope.toggleMin = function() {
+		      $scope.minDate = $scope.minDate ? null : new Date();
+		    };
+		    $scope.toggleMin();
+		    $scope.open = function($event) {
+		      $event.preventDefault();
+		      $event.stopPropagation();
+		      $scope.opened = true;
+		    };
+		    $scope.dateOptions = {
+		      formatYear: 'yy',
+		      startingDay: 1,
+		      class: 'datepicker'
+		    };
+		    $scope.initDate = new Date('2016-15-20');
+		    $scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		    $scope.format = $scope.formats[0];
+				/*datepicker end*/
+
+				/****************************************************************************
+				 *****************************features update code starts********************
+				 ***************************************************************************/
 				//all_requirements
 				// colum1
 				$scope.nosmoking = function (){
@@ -531,7 +589,7 @@
 					}
 				}
 
-				/****************************update submit***************************************/
+				/****************************update submit starts***************************************/
 				$scope.update = function(){
 					var arr_desckey = [$scope.train,$scope.university,
 							$scope.backpack,$scope.park,
@@ -635,13 +693,13 @@
 									 if(JSON.stringify(SearchService.get()) != "{}"){
 											$localStorage.settings = SearchService.get().data;
 											console.log('$localStorage.settings',$localStorage.settings);
-											entireData = $localStorage.settings;
-											console.log('entireData',entireData);
+											vm.shops = $localStorage.settings;
+											console.log('entireData',	vm.shops);
 										 }else{
-											entireData = $localStorage.settings;
+											vm.shops = $localStorage.settings;
 											console.log('$localStorage.settings other conditions',$localStorage.settings);
 										 }
-										 $scope.entireData=entireData;
+
 									 if(JSON.stringify(updateService.get()) != "{}"){
 											$localStorage.datafromhome=updateService.get();
 											datafromhome=$localStorage.datafromhome;
@@ -734,7 +792,7 @@
 																$scope.university = true;
 															 break;
 													}
-											angular.forEach(entireData, function(data,index,array){
+											angular.forEach(vm.shops, function(data,index,array){
 												//data等价于array[index]
 												data.train_station = false;
 												data.backpack = false;
@@ -796,7 +854,7 @@
 												}
 											});
 										/*****************************page update******************************/
-												$state.go('app.listpage');
+												$state.go('googlemap');
 											}
                  }, function(e) {
 
@@ -849,13 +907,14 @@
 						 					 if(JSON.stringify(SearchService.get()) != "{}"){
 						 						 	$localStorage.settings = SearchService.get().data;
 						 						 	console.log('$localStorage.settings',$localStorage.settings);
-						 						 	entireData = $localStorage.settings;
-						 							console.log('entireData',entireData);
+						 						 		vm.shops = $localStorage.settings;
+						 							console.log('entireData',	vm.shops);
 						 						 }else{
-						 						 	entireData = $localStorage.settings;
+						 						 	 $localStorage.settings = r.data;
+													 	vm.shops = $localStorage.settings;
 						 						 	console.log('$localStorage.settings other conditions',$localStorage.settings);
 						 						 }
-						 						 $scope.entireData=entireData;
+												 $scope.entireData = 	vm.shops;
 						 					 if(JSON.stringify(updateService.get()) != "{}"){
 						 							$localStorage.datafromhome=updateService.get();
 						 							datafromhome=$localStorage.datafromhome;
@@ -948,7 +1007,7 @@
 						 									     	$scope.university = true;
 						 									     break;
 						 							 		}
-						 							angular.forEach(entireData, function(data,index,array){
+						 							angular.forEach(vm.shops, function(data,index,array){
 						 								//data等价于array[index]
 						 								data.train_station = false;
 						 								data.backpack = false;
@@ -1010,7 +1069,7 @@
 						 								}
 						 							});
 						 						/*****************************page update******************************/
-						 								$state.go('app.listpage');
+														$state.go('googlemap');
 						 							}
 
 								}, function(e) {
@@ -1026,148 +1085,28 @@
 //					alert("updated");
 				}
 				/********************************filter update code ends*****************************/
+				/*********************sortby*********************************************/
+				$scope.sortBy = function(orderName){
+					if(orderName==='ER_Price'){
+						$scope.orderright = false;
+						$scope.orderleft = true;
+						$scope.sortPrice=!$scope.sortPrice;
+					}else if(orderName==='ER_AvailableDate'){
+						$scope.orderleft = false;
+						$scope.orderright = true;
+						$scope.sortDate=!$scope.sortDate;
+					}
 
-			/************************filter orderby*******************************/
-			$scope.orderleft = false;
-			$scope.orderright = false;
-			$scope.sortBy = function(orderName){
-				if(orderName==='ER_Price'){
-					$scope.orderright = false;
-					$scope.orderleft = true;
-					$scope.sortPrice=!$scope.sortPrice;
-				}else if(orderName==='ER_AvailableDate'){
-					$scope.orderleft = false;
-					$scope.orderright = true;
-					$scope.sortDate=!$scope.sortDate;
+					$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
+						$scope.orderName = orderName;
+				//				$scope.orderName = order+'';
 				}
+				/*********************sortby ends*********************************************/
 
-				$scope.reverse = ($scope.orderName === orderName) ? !$scope.reverse : false;
-    			$scope.orderName = orderName;
-//				$scope.orderName = order+'';
-			}
-			/************************filter orderby*******************************/
-
-
-		 /***********************add to shortlist starts************************************/
-		 var shortlistInsert = {};
-		 var shortlistDelete = {};
-		 $scope.save2shortlist = function($index){
-			 $scope.favorsave=!$scope.favorsave;
-			 $http.get('/customer/profile')
-			 .then(function(r) {
-				 console.log(r);
-				 if(r.data.customer_login_status){
-					 	if ($scope.favorsave) {
-							 shortlistInsert.CID =r.data.CID;
-							 shortlistInsert.CLType="FavorSave";
-							 shortlistInsert.CLDetail=$scope.entireData[$index].ER_ID;
-							 shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
-							 console.log("shortlistInsert",shortlistInsert);
-							 $http.post('/customer/shortlist/insert', shortlistInsert)
-								 .then(function(r){
-									 console.log('r',r);
-								 },function(e){
-									 console.log("数据有误");
-								 });
-					 	}else {
-							/*******************delete from shortlist*********************************************/
-										console.log(r);
-										shortlistDelete.CID = r.data.CID;
-										shortlistDelete.CLType="FavorSave";
-										shortlistDelete.CLDetail= $scope.entireData[$index].ER_ID;;
-										//	$scope.shortlistDelete.CLTime="";
-										$http.post('/customer/shortlist/delete',shortlistDelete)
-												.then(function(r){
-													// 	$scope.shortlistData = r.data;
-													console.log("shortlistDelete",r);
-												},function(e){
-													console.log("数据有误"+e);
-												});
-							}
-							/*************************shortlist check selection ends************************************************/
-				 }else{
-					 $state.go('app.login');
-				 }
-			 },function(e){
-					 console.log("数据有误" + e);
-				 });
-		 }
-/***********************add to shortlist ends************************************/
-/*************$watch update data starts----save(shortlist)*******************/
-$scope.$watch(function(){
-			//  return getShortlistData();
-		 },function(new_data,old_data){
-
-			 // var timeline_data = TimelineService.data;
-			 // for(var k in new_data)
-			 // {
-			 // 	for(var i=0;i< timeline_data.length;i++)
-			 // 	{
-			 // 		if(k==timeline_data[i].id){
-			 // 			timeline_data[i] = new_data[k];
-			 // 		}
-			 // 	}
-			 // }
-			 // TimelineService.data = AnswerService.count_vote(TimelineService.data);
-		 },true)
-/*************$watch update data ends----save(shortlist)*******************/
-
-
-/*******************get shortlistData starts*************************/
-	var shortlistcheckdata = {};
-	var shortlistData = {};
-	function getShortlistData(){
-		$http.get('/customer/profile')
-			.then(function(r) {
-			 console.log(r);
-			 if(r.data.customer_login_status){
-				 shortlistcheckdata.CID = r.data.CID;
-				 shortlistcheckdata.CLType = 'FavorSave';
-				 $http.post('/customer/shortlist', shortlistcheckdata)
-						 .then(function(r){
-							 shortlistData = r.data;
-							 return shortlistData;
-							 console.log('r',r);
-						 },function(e){
-							 console.log("数据有误");
-						 });
-			 }
-			});
-	}
-/*******************get shortlistData ends*************************/
-
-
-
-
-			/**********************************************************************/
-
-		}]);
-		/*.filter('propsFilter', function() {
-		    return function(items, props) {
-		        var out = [];
-		        if (angular.isArray(items)) {
-		          items.forEach(function(item) {
-		            var itemMatches = false;
-
-		            var keys = Object.keys(props);
-		            for (var i = 0; i < keys.length; i++) {
-		              var prop = keys[i];
-		              var text = props[prop].toLowerCase();
-		              if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
-		                itemMatches = true;
-		                break;
-		              }
-		            }
-
-		            if (itemMatches) {
-		              out.push(item);
-		            }
-		          });
-		        } else {
-		          // Let the output be the input untouched
-		          out = items;
-		        }
-
-		        return out;
-		    };
-		})*/
+			})
+		.service('googleService',['$scope',function($scope){
+			var me = this;
+			me.data = {};
+//				alert("fixed header");
+		}])
+})();

@@ -60,8 +60,8 @@
 	                          </select>
 	                        </li>
 	                        <li class="m-b-md">
-						        <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
-						        </select>
+									        <select class="input-sm form-control w-sm inline v-middle" ng-model="maxBathNum" ng-options="maxBath.num as maxBath.num for maxBath in bathsNum" >
+									        </select>
 	                        </li>
 	                      </ul>
 	                    </div>
@@ -398,9 +398,9 @@
 									<span class="view-num"><i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right" aria-hidden="true"></i></span>
 								</div>
 								<div class="save">
-									<a class="save-delete-shortlist" ng-click="save2shortlist($index);favorsave=!favorsave">
-										<i ng-show="property.saved" style="color: pink;" class="fa fa-lg fa-heart">&nbsp;<i translate="listpage.list.row.save"></i></i>
-										<i ng-show="!property.saved" class="fa fa-lg fa-heart-o">&nbsp;<i translate="listpage.list.row.save"></i></i>
+									<a class="save-delete-shortlist" ng-click="save2shortlist($index);shortlist=!shortlist">
+										<i ng-show="shortlist" style="color: pink;" class="fa fa-lg fa-heart">&nbsp;<i translate="listpage.list.row.save"></i></i>
+										<i ng-show="!shortlist" class="fa fa-lg fa-heart-o">&nbsp;<i translate="listpage.list.row.save"></i></i>
 									</a>
 								</div>
 							</div>

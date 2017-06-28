@@ -526,7 +526,6 @@ class CustomerController extends Controller
 	public function filt_share_count(Request $request)
 	{
 		//赋值参数
-    return "123";
 		$include_area = $request->input('include_area');
 		$ER_Suburb = $request->input('ER_Suburb');
 		$ER_Region = $request->input('ER_Region');
@@ -1010,8 +1009,8 @@ class CustomerController extends Controller
 		//执行添加存储过程
 		$proc_name = 'proc_Insert_CustomerLogbook';
 		$sql = "call $proc_name({$CID},'{$CLType}','{$CLDetail}','{$CLTime}')";
-		$result = DB::select($sql);
-		return $result;
+		$result = DB::insert($sql);
+		return json_encode($result);
 
 	}
 

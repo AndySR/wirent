@@ -31,6 +31,7 @@
 		//				$scope.shortlistDelete.CLTime="";
 						$http.post('/customer/shortlist/delete',$scope.shortlistDelete)
 								.then(function(r){
+									console.log("r=====>>"+r);
 									$state.reload();
 								},function(e){
 										console.log(e);

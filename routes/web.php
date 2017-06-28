@@ -85,8 +85,8 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 	$app->post('/filt/entire/count', 		'CustomerController@filt_entire_count');
 	$app->post('/filt/entire', 		'CustomerController@filt_entire');
 	$app->post('/filt/entire/tenant',['middleware' => 'id','uses'=>'CustomerController@filt_entire_by_tenant']);
-	$app->post('/filt/share/count', 		'CustomerController@filt_entire_count');
-	$app->post('/filt/share', 		'CustomerController@filt_entire');
+	$app->post('/filt/share/count', 		'CustomerController@filt_share_count');
+	$app->post('/filt/share', 		'CustomerController@filt_share');
 	$app->post('/filt/share/tenant', ['middleware' => 'id','uses'=>'CustomerController@filt_share_by_tenant']);
 	$app->post('/filt_address', 	'CustomerController@filt_address');
 	$app->post('/filt_thirdparty', 	'CustomerController@filt_thirdparty');
@@ -106,7 +106,7 @@ $app->group(['prefix' => 'customer'], function () use ($app){
 		$app->post('/notice',		['middleware' => 'cus','uses'=>'CustomerController@msg_notice']);
 		$app->get('/confirm',		['middleware' => 'cus','uses'=>'CustomerController@msg_confirm']);
 		$app->post('/received',		['middleware' => 'cus','uses'=>'CustomerController@msg_received']);	//msg_receive is php function
-		$app->post('/write',			['middleware' => 'cus','uses'=>'CustomerController@msg_write']);
+		$app->post('/write',			'CustomerController@msg_write');
 	});
 });
 //landlord entrance

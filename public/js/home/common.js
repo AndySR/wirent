@@ -2035,7 +2035,7 @@
                }).then(function(result){
                  result = Math.ceil(result/20);
                  shareData.OrderBy = 'SRAvailableDate';
-                 shareData.PageID = 1;
+                 shareData.PageID = 0;
                  console.log(shareData);
 
                   $http.post('/customer/filt/share', shareData)

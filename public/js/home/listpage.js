@@ -46,25 +46,25 @@
 				{ id: 3, propertyType:'Unit'},{ id: 4,propertyType:'Studio'}];
 			//select minPrice
 				$scope.myMinPrice = 0;
-				$scope.minPrices = [{ id: 1, price: '' }, { id: 2, price: '$50' }, { id: 3, price: '$100' },{ id: 4, price: '$150' }
-									,{ id: 5, price: '$200' },{ id: 6, price: '$250' },{ id: 7, price: '$300' },{ id: 8, price: '$350' }
-									,{ id: 9, price: '$400' },{ id: 10, price: '$450' },{ id: 11, price: '$500' },{ id: 12, price: '$550' }
-									,{ id: 13, price: '$600' },{ id: 14, price: '$650' },{ id: 15, price: '$700' },{ id: 16, price: '$750' }
-									,{ id: 17, price: '$800' },{ id: 18, price: '$850' },{ id: 19, price: '$900' },{ id: 20, price: '$950' }
-									,{ id: 21, price: '$1000' },{ id: 22, price: '$1100' },{ id: 23, price: '$1200' },{ id: 24, price: '$1300'}
-									,{ id: 25, price: '$1400' },{ id: 26, price: '$1500' },{ id: 27, price: '$1600' },{ id: 28, price: '$1700' }
-									,{ id: 29, price: '$1800' },{ id: 30, price: '$1900' }];
+				$scope.minPrices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
+									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
+									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
+									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
+									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
+									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
+									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
+									,{ id: 29, price: '1800' },{ id: 30, price: '1900' }];
 			//select maxPrice
 				$scope.myMaxPrice = 10000;
-				$scope.maxPrices = [{ id: 1, price: '' }, { id: 2, price: '$50' }, { id: 3, price: '$100' },{ id: 4, price: '$150' }
-									,{ id: 5, price: '$200' },{ id: 6, price: '$250' },{ id: 7, price: '$300' },{ id: 8, price: '$350' }
-									,{ id: 9, price: '$400' },{ id: 10, price: '$450' },{ id: 11, price: '$500' },{ id: 12, price: '$550' }
-									,{ id: 13, price: '$600' },{ id: 14, price: '$650' },{ id: 15, price: '$700' },{ id: 16, price: '$750' }
-									,{ id: 17, price: '$800' },{ id: 18, price: '$850' },{ id: 19, price: '$900' },{ id: 20, price: '$950' }
-									,{ id: 21, price: '$1000' },{ id: 22, price: '$1100' },{ id: 23, price: '$1200' },{ id: 24, price: '$1300'}
-									,{ id: 25, price: '$1400' },{ id: 26, price: '$1500' },{ id: 27, price: '$1600' },{ id: 28, price: '$1700' }
-									,{ id: 29, price: '$1800' },{ id: 30, price: '$1900' },{ id: 31, price: '$2000' },{ id: 32, price: '$3000' },{ id: 33, price: '$4000' }
-									,{ id: 34, price: '$5000' },{ id: 35, price: '$10000' }];
+				$scope.maxPrices = [{ id: 1, price: '' }, { id: 2, price: '50' }, { id: 3, price: '100' },{ id: 4, price: '150' }
+									,{ id: 5, price: '200' },{ id: 6, price: '250' },{ id: 7, price: '300' },{ id: 8, price: '350' }
+									,{ id: 9, price: '400' },{ id: 10, price: '450' },{ id: 11, price: '500' },{ id: 12, price: '550' }
+									,{ id: 13, price: '600' },{ id: 14, price: '650' },{ id: 15, price: '700' },{ id: 16, price: '750' }
+									,{ id: 17, price: '800' },{ id: 18, price: '850' },{ id: 19, price: '900' },{ id: 20, price: '950' }
+									,{ id: 21, price: '1000' },{ id: 22, price: '1100' },{ id: 23, price: '1200' },{ id: 24, price: '1300'}
+									,{ id: 25, price: '1400' },{ id: 26, price: '1500' },{ id: 27, price: '1600' },{ id: 28, price: '1700' }
+									,{ id: 29, price: '1800' },{ id: 30, price: '1900' },{ id: 31, price: '2000' },{ id: 32, price: '3000' },{ id: 33, price: '4000' }
+									,{ id: 34, price: '5000' },{ id: 35, price: '10000' }];
 			//select bedsNum
 				$scope.minBedNum = '1';
 				$scope.maxBedNum = '10';
@@ -811,72 +811,98 @@
 			}
 			/************************filter orderby*******************************/
 
-			/*************************shortlist check selection************************************************/
-			$scope.shortlistcheckdata = {};
-			$scope.shortlistDelete = {};
 
-		 $http.get('/customer/profile')
-		 .then(function(r) {
+		 /***********************add to shortlist starts************************************/
+		 var shortlistInsert = {};
+		 var shortlistDelete = {};
+		 $scope.save2shortlist = function($index){
+			 $scope.favorsave=!$scope.favorsave;
+			 $http.get('/customer/profile')
+			 .then(function(r) {
+				 console.log(r);
+				 if(r.data.customer_login_status){
+					 	if ($scope.favorsave) {
+							 shortlistInsert.CID =r.data.CID;
+							 shortlistInsert.CLType="FavorSave";
+							 shortlistInsert.CLDetail=$scope.entireData[$index].ER_ID;
+							 shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
+							 console.log("shortlistInsert",shortlistInsert);
+							 $http.post('/customer/shortlist/insert', shortlistInsert)
+								 .then(function(r){
+									 console.log('r',r);
+								 },function(e){
+									 console.log("数据有误");
+								 });
+					 	}else {
+							/*******************delete from shortlist*********************************************/
+										console.log(r);
+										shortlistDelete.CID = r.data.CID;
+										shortlistDelete.CLType="FavorSave";
+										shortlistDelete.CLDetail= $scope.entireData[$index].ER_ID;;
+										//	$scope.shortlistDelete.CLTime="";
+										$http.post('/customer/shortlist/delete',shortlistDelete)
+												.then(function(r){
+													// 	$scope.shortlistData = r.data;
+													console.log("shortlistDelete",r);
+												},function(e){
+													console.log("数据有误"+e);
+												});
+							}
+							/*************************shortlist check selection ends************************************************/
+				 }else{
+					 $state.go('app.login');
+				 }
+			 },function(e){
+					 console.log("数据有误" + e);
+				 });
+		 }
+/***********************add to shortlist ends************************************/
+/*************$watch update data starts----save(shortlist)*******************/
+$scope.$watch(function(){
+			//  return getShortlistData();
+		 },function(new_data,old_data){
+
+			 // var timeline_data = TimelineService.data;
+			 // for(var k in new_data)
+			 // {
+			 // 	for(var i=0;i< timeline_data.length;i++)
+			 // 	{
+			 // 		if(k==timeline_data[i].id){
+			 // 			timeline_data[i] = new_data[k];
+			 // 		}
+			 // 	}
+			 // }
+			 // TimelineService.data = AnswerService.count_vote(TimelineService.data);
+		 },true)
+/*************$watch update data ends----save(shortlist)*******************/
+
+
+/*******************get shortlistData starts*************************/
+	var shortlistcheckdata = {};
+	var shortlistData = {};
+	function getShortlistData(){
+		$http.get('/customer/profile')
+			.then(function(r) {
 			 console.log(r);
 			 if(r.data.customer_login_status){
-				 $scope.shortlistcheckdata.CID = r.data.CID;
-				 $scope.shortlistcheckdata.CLType = 'FavorSave';
-				 $http.post('/customer/shortlist', $scope.shortlistcheckdata)
+				 shortlistcheckdata.CID = r.data.CID;
+				 shortlistcheckdata.CLType = 'FavorSave';
+				 $http.post('/customer/shortlist', shortlistcheckdata)
 						 .then(function(r){
-							 $scope.shortlistData = r.data;
+							 shortlistData = r.data;
+							 return shortlistData;
 							 console.log('r',r);
 						 },function(e){
 							 console.log("数据有误");
 						 });
 			 }
-		 });
-		 /***********************add to shortlist************************************/
-		 $scope.save2shortlist = function($index){
-			//  alert($scope.favorsave);
-			 $http.get('/customer/profile')
-			 .then(function(r) {
-				 console.log(r);
-				 if(r.data.customer_login_status){
-					 entireData[$index].saved = $scope.favorsave;
-					 $scope.shortlistInsert.CID =r.data.CID;
-					 $scope.shortlistInsert.CLType="FavorSave";
-					 $scope.shortlistInsert.CLDetail=$scope.entireData[$index].ER_ID;
-					 $scope.shortlistInsert.CLTime=utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd hh:mm:ss");
-					 console.log("shortlistInsert",$scope.shortlistInsert);
-					 $http.post('/customer/shortlist/insert', $scope.shortlistInsert)
-							 .then(function(r){
-								 console.log('r',r);
-							 },function(e){
-								 console.log("数据有误");
-							 });
-				 }else{
-					 $state.go('app.login');
-				 }
-			 },function(e){
-					 console.log("数据有误");
-				 });
-		 }
-		 /*******************delete from shortlist*********************************************/
-		 $scope.remove = function(key){
-			 $http.get('/customer/profile')
-			 .then(function(r) {
-				 console.log(r);
-				 if(r.data.customer_login_status){
-					 $scope.shortlistDelete.CID = r.data.CID;
-					 $scope.shortlistDelete.CLType="FavorSave";
-					 $scope.shortlistDelete.CLDetail= key;
-	 //				$scope.shortlistDelete.CLTime="";
-					 $http.post('/customer/shortlist/delete',$scope.shortlistDelete)
-							 .then(function(r){
-	 //							$scope.shortlistData = r.data;
-								 console.log("$scope.shortlistDelete",r);
-							 },function(e){
+			});
+	}
+/*******************get shortlistData ends*************************/
 
-							 });
-				 }
-			 });
-		 }
-		 /*************************shortlist check selection ends************************************************/
+
+
+
 			/**********************************************************************/
 
 		}]);

@@ -149,13 +149,14 @@
 							<div class="name">基本属性</div>
 							<div class="content">
 								<ul>
-									<li><span class="label">Address:</span>Level 2, 84 Pitt Street, Sydney 2000</li>
+									<li><span class="label">Address:</span>[:detailsData.ER_No + " " +detailsData.ER_St+ " " +detailsData.ER_Suburb+ " " +detailsData.ER_Region:]</li>
 									<li>
-										<span class="label">Rental Fee:</span> $750/ week
+										<span class="label">Rental Fee:</span>$[:detailsData.SRPrice:] &nbsp;week
 									</li>
-									<li><span class="label">Property Type:</span>Apartment</li>
+									<li><span class="label">Property Type:</span>[:detailsData.ER_Type:]</li>
+									<li><span class="label">Room Type:</span>Single room</li>
 									<li>
-										<span class="label">Fit Out:</span>1 Bath/ 1 Bed / 1 Parking
+										<span class="label">Fit Out:</span>[:detailsData.ER_BedRoom:] <i class="fa fa-bed"></i>/ [:detailsData.ER_BathRoom:] <i class="fa fa-bath"></i> / [:detailsData.ER_Parking:] <i class="fa fa-car"></i>
 										<!-- 1<i class="fa fa-bed"></i>
 										1<i class="fa fa-bath"></i>
 										1<i class="fa fa-car"></i> -->
@@ -165,7 +166,7 @@
 									<li>
 										<span class="label">Bond:</span> $2280
 									</li>
-									<li><span class="label">房屋现状:</span>整租</li>
+									<li><span class="label">房屋现状:</span>[:detailsData.SRName:]</li>
 								</ul>
 							</div>
 						</div>
@@ -178,31 +179,31 @@
 								<ul>
 									<li>
 										<span class="label">Facilities:</span>
-										<span class="text">Pool/ Gym</span>
+										<span class="text">[:detailsData.details[0].facility:]</span>
 									</li>
 									<li>
 										<span class="label">交通出行:</span>
-										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].train_station:]</span>
 									</li>
 									<li>
 										<span class="label"></span>
-										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].bus_stop:]</span>
 									</li>
 									<li>
 										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Ferry&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].ferry:]</span>
 									</li>
 									<li>
 										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Light rail&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].light_rail:]</span>
 									</li>
 									<li>
 										<span class="label">Retails/ Shops:</span>
-										<span class="text">Woolworths, Priceline</span>
+										<span class="text">[:detailsData.details[0].shops:]</span>
 									</li>
 									<li>
 										<span class="label">School:</span>
-										<span class="text">Sydney Girls High school</span>
+										<span class="text">[:detailsData.details[0].school:]</span>
 									</li>
 								</ul>
 							</div>
@@ -214,8 +215,7 @@
 							</div>
 							<div class="featureContent">
 								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
+									[:detailsData.details[0].description_en:]
 								</p>
 							</div>
 						</div>

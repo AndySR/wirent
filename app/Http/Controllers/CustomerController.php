@@ -894,7 +894,7 @@ class CustomerController extends Controller
 			$proc_name = 'proc_Insert_MaintenanceLibrary';
 			$sql = "call $proc_name('{$MType}','{$ER_ID}','{$CID}','{$MApplyForm}','{$MStat}','{$MApplyDate}')";
 			$result = DB::insert($sql);
-			return json_encode($result);
+			return [$result];
 		}
 		catch(exception $e)
 		{
@@ -956,18 +956,37 @@ class CustomerController extends Controller
 		{
 			$proc_name = 'check_CustomerLogbook_by_CIDCLType';
 			$sql = "call $proc_name({$CID},'{$CLType}')";
-			$ERinfoSet =[];
+			$infoSet =[];
 			$result = DB::select($sql);
-						//循环查询ERinfo
-			$proc_Name = 'check_EntireRentInfo_by_ERID';
-			foreach($result as $item)
+			if($CLType=='FavorSave')
 			{
-				$ER_ID = $item->CLDetail;
-				$sql = "call $proc_Name({$ER_ID})";
-				$ERinfo = DB::select($sql);
-				$ERinfoSet[] = $ERinfo;
+				//循环查询ERinfo
+				$proc_Name = 'check_EntireRentInfo_by_ERID';
+				foreach($result as $item)
+				{
+					$ER_ID = $item->CLDetail;
+					$sql = "call $proc_Name({$ER_ID})";
+					$ERinfo = DB::select($sql);
+					$infoSet[] = $ERinfo;
+				}
+				return $infoSet;
 			}
-			return $ERinfoSet;
+			elseif($CLType=='ShareSave')
+			{
+				$proc_Name = 'check_SharingRoomInfo_by_SRID';
+				foreach($result as $item)
+				{
+					$SRID = $item->CLDetail;
+					$sql = "call $proc_Name({$SRID})";
+					$SRinfo = DB::select($sql);
+					$infoSet[] = $SRinfo;
+				}
+				return $infoSet;
+			}
+			else
+			{
+				return "shortlist_type_unknown";
+			}
 		}
 		catch(exception $e)
 		{
@@ -986,8 +1005,8 @@ class CustomerController extends Controller
 		//执行存储过程
 		$proc_name = 'proc_Delete_CustomerLogbook';
 		$sql = "call $proc_name({$CID},'{$CLType}','{$CLDetail}')";
-		$result = DB::delete($sql);
-		return json_encode($result);
+		$result = DB::select($sql);
+		return $result;
 	}
 
 	public function shortlist_insert(Request $request)
@@ -1036,7 +1055,7 @@ class CustomerController extends Controller
 		$sql = "call $proc_Name({$idMsg_sr})";
 
 		$result = DB::update($sql);
-		return json_encode($result);
+		return $result;
 	}
 
 	public function msg_received(Request $request)

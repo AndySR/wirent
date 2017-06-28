@@ -354,13 +354,12 @@
 							<div class="name">基本属性</div>
 							<div class="content">
 								<ul>
-									<li><span class="label">Address:</span>Level 2, 84 Pitt Street, Sydney 2000</li>
+									<li><span class="label">Address:</span>[:detailsData.ER_No + " " +detailsData.ER_St+ " " +detailsData.ER_Suburb+ " " +detailsData.ER_Region:]</li>
 									<li>
-										<span class="label">Rental Fee:</span>$350/ week
+										<span class="label">Rental Fee:</span>$[:detailsData.ER_Price:] week
 									</li>
-									<li><span class="label">Property Type:</span>Apartment</li>
-									<li><span class="label">Room Type:</span>Single room</li>
-									<li><span class="label">Fit Out:</span>1 Bath/ 1 Bed / 1 Parking</li>
+									<li><span class="label">Property Type:</span>[:detailsData.ER_Type:]</li>
+									<li><span class="label">Fit Out:</span>[:detailsData.ER_BedRoom:] <i class="fa fa-bed"></i>/ [:detailsData.ER_BathRoom:] <i class="fa fa-bath"></i> / [:detailsData.ER_Parking:] <i class="fa fa-car"></i></li>
 									<li><span class="label">Including:</span> Air-conditioner  Internet</li>
 									<li><span class="label">Available Time:</span>01/06/2017</li>
 									<li>

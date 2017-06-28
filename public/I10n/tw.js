@@ -1,5 +1,6 @@
 {
-	"header": {
+	"header": 
+	{
 			"HOME": "首頁",
 			"RENT"	:"租房",
 			"BUY"	:"買房",
@@ -26,30 +27,37 @@
 				"Twitter":"Twitter",
 				"Instagram":"Instagram"
 			},									
-			"LOGIN": {
+			"LOGIN": 
+			{
 				"Login":"登錄",
 				"Login_enquiry":"還沒賬戶?",    
 				"Logout":"注銷",
 				"Profile":"個人管理"
 			},
-			"REGIST": {
+			"REGIST": 
+			{
 				"Regist":"注冊",
 				"Regist_enquiry":"已經注冊過"
 			}
 	},
-	"profile":{
+	"profile":
+	{
 		"TITLE":"我的賬戶",
-		"UPDATE":{
-			"Success":{
+		"UPDATE":
+		{
+			"Success":
+			{
 				"header":"更新 已完成",
 				"details":"更新 已上傳至服務器."
 			},
-			"Error":{
+			"Error":
+			{
 				"header":"更新失敗",
 				"details":"服務器拒絕更新，請檢查您的網絡連接後電話或郵件聯繫我們."
 			}
 		},		
-		"SECTION":{
+		"SECTION":
+		{
 			"Profile":
 			{
 				"header":"個人資料",
@@ -218,7 +226,7 @@
 			}
 		}
 	},
-		"listpage":
+	"listpage":
 	{
 		"title":"列表",
 		"filter":
@@ -308,6 +316,20 @@
 		"less":"收起"
 	},
 	"hotrent":"推荐房源",
+	"footer":
+	{
+		"title":"Footer",
+		"director":
+		{
+			"about":"關于我們",
+			"contact":"聯係我們",
+			"business":"商家入駐"
+		},
+		"office":
+		{
+			"tw_addr":"11071臺北市信義區忠孝東路四段560號13樓"
+		}
+	},	
 	"tips":
 	{
 		"title":"Tips",
@@ -381,10 +403,57 @@
 			}
 		}
 	},
-	"hotrent":"HotRent",
 	"detail":
 	{
-		"title":"Detail"
+		"title":"詳情",
+		"table":
+		{
+			"title":"房源介紹",
+			"basic":"基本信息",
+			"feature":
+			{
+				"title":"綜合列表",
+				"facility":"設備",
+				"transport":
+				{
+					"title":"公共交通",
+					"train":"火車站",
+					"bus":"巴士站",
+					"ferry":"渡輪碼頭",
+					"light":"輕軌站"
+				},
+				"furniture":
+				{
+					"title":"家具家電",
+					"room":"臥室",
+					"kitchen":"厨房",
+					"laundry":"洗衣房",
+					"living":"客廳餐廳"
+				},
+				"retails":"商店",
+				"schools":"學校"
+			},
+			"description":"詳細描述",
+			"requirements":
+			{
+				"title":"房客要求",
+				"smoke":"禁止吸烟",
+				"pet":"禁養寵物",
+				"girl":"限女生",
+				"boy":"限男生"
+			},
+			"tips":
+			{
+				"title":"房源提供設施",
+				"kitchen":"全灶具厨房",
+				"coffee":"咖啡吧台",
+				"aircondition":"空調",
+				"media":"工作台",
+				"fridge":"冰箱",
+				"laundry":"洗衣機"
+			},
+			"others":"備注"
+		}
 	},
 	"business":
 	{
@@ -467,8 +536,28 @@
 				"step_1":"註冊業主上傳更新 '個人資料|我的資料'",
 				"step_2":"在'個人資料|房產管理'添加房源信息",
 				"tips":"您可以在工作時間直接電話聯繫我們的員工告知我們所有信息."				
-			}
-			
+			},
+			"section_2":
+			{
+				"title":"Section_2: Strategy and Benifits",
+				"step_1":"Our staff will contact you within 24 hours, and book the first inspection.",
+				"step_2":"Our staff will customize strategy to promote your property. We also match proper benefits with your property depending on the current benefits we provided.",
+				"tips":"You can preview the current benefits for landlord in 'Profile|Property details'."				
+			},
+			"section_3":
+			{
+				"title":"Section_3: Contracts and Inspection",
+				"step_1":"After the on-site negotiation with our staff, you may sign the trust agreement with agent.",
+				"step_2":"We may start inspection and make promotion immediately or book a later arrangement for you",
+				"tips":"You can preview your 'To be released' status property online and share your ideas with us."				
+			},	
+			"section_4":
+			{
+				"title":"Section_4: Monthly Management",
+				"step_1":"Now you will start to receive our monthly balance reports and transfer receipts via email.",
+				"step_2":"You can also manage your property online through your 'Profile'",
+				"tips":"All details will be shown in your 'Profile' and we may help you to analysis your investment in next versions functional update."				
+			}			
 		}
 	},
 	"conditions of use":

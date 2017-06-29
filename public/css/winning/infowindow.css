@@ -82,8 +82,8 @@
 	width: 530px;
 	height: 100%;
 	margin: 0;
-  	overflow-y: scroll;
-  	border-left: solid #d8dade 1px;
+	overflow-y: scroll;
+	border-left: solid #d8dade 1px;
 }
 
 .map-page .adv ul li {
@@ -92,8 +92,8 @@
 	float:right;
 	list-style: none;
 	/*clear: both;*/
-	/*margin:0 auto;*/
-	margin-right: 15px;
+	margin:0 auto;
+	margin-right: 5px;
 }
 .map-page .adv li:before {
 	content: "";
@@ -116,10 +116,97 @@
 .map-page .adv .ad {
 	width: 490px;
 	height: 305px;
-	/*box-sizing: border-box;*/
-	/*border: 1px solid white;*/
 	overflow: hidden;
 	position: relative;
+}
+.map-page .adv .ad .carousel {
+    position: relative;
+}
+.map-page .adv .ad ul li {
+	list-style: none;
+	padding: 0;
+	margin:0;
+}
+
+.map-page .adv .ad ol.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 15;
+    width: 60%;
+    padding-left: 0;
+    margin-left: -50%;
+    text-align: center;
+    list-style: none;
+}
+.map-page .adv .ad ol li {
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	border: 1px solid #fff;
+	text-align: center;
+	background: rgba(0,0,0,.3);
+	/*float: left;
+	margin-right: 10px;*/
+	cursor: pointer;
+	_display: inline;
+}
+.map-page .adv .ad ol.carousel-indicators .active {
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	border: 1px solid #ccc;
+	text-align: center;
+	background: #fff;
+}
+
+
+.map-page .adv .ad ol li.current {
+	background: yellow;
+}
+
+.map-page .adv .ad ul li {
+	list-style: none;
+	margin-left: -60px;
+	float: left;
+}
+
+.map-page .adv .ad ul {
+	position: absolute;
+	top: -100px;
+}
+
+.map-page .adv .ad ul li.current {
+	display: block;
+}
+
+.map-page .adv #arr {
+	display: none;
+}
+
+.map-page .adv #arr span {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	left: 5px;
+	top: 50%;
+	margin-top: -20px;
+	background: #000;
+	cursor: pointer;
+	line-height: 40px;
+	text-align: center;
+	font-weight: bold;
+	font-family: '黑体';
+	font-size: 30px;
+	color: #fff;
+	opacity: 0.3;
+	border: 1px solid #fff;
+	z-index: 1000;
+}
+
+.map-page .adv #arr #right {
+	right: 5px;
+	left: auto;
 }
 /****************lunbo starts********************************/
 .map-page  .lunbo {
@@ -236,74 +323,7 @@
 	color: purple;
     /*border-bottom: 3px solid rgb(150, 65, 137);*/
 }
-.map-page .adv .ad ol {
-	position: absolute;
-	/*right: 10px;*/
-	left: 75%;
-	bottom: 10px;
-}
 
-.map-page .adv .ad ol li {
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	border: 1px solid #ccc;
-	text-align: center;
-	background: #fff;
-	float: left;
-	margin-right: 10px;
-	cursor: pointer;
-	_display: inline;
-}
-
-.map-page .adv .ad ol li.current {
-	background: yellow;
-}
-
-.map-page .adv .ad ul li {
-	list-style: none;
-	margin-left: -60px;
-	float: left;
-}
-
-.map-page .adv .ad ul {
-	position: absolute;
-	top: -100px;
-	/*width: 2940px;*/
-}
-
-.map-page .adv .ad ul li.current {
-	display: block;
-}
-
-.map-page .adv #arr {
-	display: none;
-}
-
-.map-page .adv #arr span {
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	left: 5px;
-	top: 50%;
-	margin-top: -20px;
-	background: #000;
-	cursor: pointer;
-	line-height: 40px;
-	text-align: center;
-	font-weight: bold;
-	font-family: '黑体';
-	font-size: 30px;
-	color: #fff;
-	opacity: 0.3;
-	border: 1px solid #fff;
-	z-index: 1000;
-}
-
-.map-page .adv #arr #right {
-	right: 5px;
-	left: auto;
-}
 .map-page .adv .description {
 	width: 490px;
 	height: 230px;

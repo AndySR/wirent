@@ -1,12 +1,18 @@
 <!--<div class="modal-body wrapper-lg">-->
 <div>
         <form name="form" class="form-validation">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <span class="h4">Contact</span>
+          <div class="panel panel-default" style="margin-bottom: 0; border:none;">
+            <div class="panel-heading" style="background-color: #012161; color:white;">
+              <span class="h4">Contact Agent</span>
             </div>
+            <div class="text-center m-t-lg clearfix">
+             <div class="thumb-lg avatar m-t-n-xxl">
+               <img src="img/Andy.jpg" alt="..." class="b b-3x b-white">
+               <div class="h4 font-thin m-t-sm" style="margin-left:-20px;">WinningInvestment</div>
+             </div>
+           </div>
             <div class="panel-body">
-              <p class="text-muted">Need support? please fill the fields below.</p>                        
+              <p class="text-muted">To apply for this property, please fill the fields below.</p>
                 <div class="form-group pull-in clearfix">
                   <div class="col-sm-6">
                     <label>Your name</label>
@@ -26,7 +32,8 @@
                   <textarea class="form-control" rows="6" ng-model="contact.message" placeholder="Type your message"></textarea>
                 </div>
             </div>
-            <footer class="panel-footer text-right bg-light lter">
+            <footer class="panel-footer text-right bg-light lter" style="background-color: #012161; color:white;">
+              <button class="btn btn-success" ng-click="cancel()">Cancel</button>
               <button type="submit" ng-disabled='form.$invalid' ng-click="saveEnvelope()" class="btn btn-success">Submit</button>
             </footer>
           </div>

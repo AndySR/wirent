@@ -141,7 +141,7 @@
 	</div>
 		<div class="row container-fluid m-r-n-xs" style="margin-top: 0;">
 		<div class="col-sm-8">
-			<div class="content-wrapper introduction-wrapper" id="introduction" style="display:none;">
+			<div class="content-wrapper introduction-wrapper" id="introduction">
 				<div class="introduction">
 					<div class="title">房源介绍</div>
 					<div class="introContent">
@@ -151,22 +151,16 @@
 								<ul>
 									<li><span class="label">Address:</span>[:detailsData.ER_No + " " +detailsData.ER_St+ " " +detailsData.ER_Suburb+ " " +detailsData.ER_Region:]</li>
 									<li>
-										<span class="label">Rental Fee:</span>$[:detailsData.SRPrice:] &nbsp;week
+										<span class="label">Rental Fee:</span>$[:detailsData.SRPrice:] week
 									</li>
 									<li><span class="label">Property Type:</span>[:detailsData.ER_Type:]</li>
-									<li><span class="label">Room Type:</span>Single room</li>
-									<li>
-										<span class="label">Fit Out:</span>[:detailsData.ER_BedRoom:] <i class="fa fa-bed"></i>/ [:detailsData.ER_BathRoom:] <i class="fa fa-bath"></i> / [:detailsData.ER_Parking:] <i class="fa fa-car"></i>
-										<!-- 1<i class="fa fa-bed"></i>
-										1<i class="fa fa-bath"></i>
-										1<i class="fa fa-car"></i> -->
-									</li>
+									<li><span class="label">Fit Out:</span>[:detailsData.ER_BedRoom:] <i class="fa fa-bed"></i>&nbsp; [:detailsData.ER_BathRoom:] <i class="fa fa-bath"></i> &nbsp; [:detailsData.ER_Parking:] <i class="fa fa-car"></i></li>
 									<li><span class="label">Including:</span> Air-conditioner  Internet</li>
-									<li><span class="label">Available Time:</span>01/06/2017</li>
+									<li><span class="label">Available Time:</span>[:detailsData.SRAvailableDate:]</li>
 									<li>
-										<span class="label">Bond:</span> $2280
+										<span class="label">Bond：</span> $2280
 									</li>
-									<li><span class="label">房屋现状:</span>[:detailsData.SRName:]</li>
+									<li><span class="label">房屋现状:</span>[:detailsData.ER_Stat:]</li>
 								</ul>
 							</div>
 						</div>
@@ -191,14 +185,32 @@
 									</li>
 									<li>
 										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Ferry&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].ferry:]</span>
+										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].ferry:]</span>
 									</li>
 									<li>
 										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Light rail&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].light_rail:]</span>
+										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].light_rail:]</span>
+									</li>
+
+									<!-- <li>
+										<span class="label">Furniture:</span>
+										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;Room&nbsp;&nbsp;&nbsp;&nbsp;Build-In Wardrobes  Furnished bed, desk and chair</span>
 									</li>
 									<li>
-										<span class="label">Retails/ Shops:</span>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp; Kitchen&nbsp;&nbsp;&nbsp;&nbsp; Furnished stove, microwave and fridge</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Laundry&nbsp;&nbsp;&nbsp;&nbsp;Washing machine</span>
+									</li>
+									<li>
+										<span class="label"></span>
+										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp; Living/ Dinning&nbsp;&nbsp;&nbsp;&nbsp; Air-conditioner</span>
+									</li> -->
+
+									<li>
+										<span class="label">Retails/Shops:</span>
 										<span class="text">[:detailsData.details[0].shops:]</span>
 									</li>
 									<li>
@@ -223,38 +235,38 @@
 							<div class="name">房屋要求</div>
 							<div class="content">
 								<ul>
-									<li class="list-features">
+									<li class="list-features" ng-show="no_smoking">
 										<div class="features">
 											<span class="icon">
-												<i class="flaticon-no-smoking-sign30"></i>
+												<i class="flaticon-no-smoking-sign30" style="color:purple;"></i>
 											</span>
 											<span class="description">no smoking</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="no_pets">
 										<div class="features">
-											<span class="icon"><i class="flaticon-no-dogs30"></i></span>
+											<span class="icon"><i class="flaticon-no-dogs30" style="color:purple;"></i></span>
 											<span class="description">no pets</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="girl_only">
 										<div class="features">
-											<span class="icon"><i class="flaticon-female-silhouette30"></i></span>
+											<span class="icon"><i class="flaticon-female-silhouette30" style="color:purple;"></i></span>
 											<span class="description">girls only</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="boy_only">
 										<div class="features">
-											<span class="icon"><i class="flaticon-man-standing-up30"></i></span>
+											<span class="icon"><i class="flaticon-man-standing-up30" style="color:purple;"></i></span>
 											<span class="description">boys only</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<!-- <li class="list-features">
 										<div class="features">
 											<span class="icon"><i class="flaticon-turn-microphone-off-button30"></i></span>
 											<span class="description">no party</span>
 										</div>
-									</li>
+									</li> -->
 								</ul>
 							</div>
 						</div>
@@ -262,63 +274,63 @@
 							<div class="name">基本设施</div>
 							<div class="content">
 								<ul>
-									<li class="list-features">
+									<li class="list-features" ng-show="stove">
 										<div class="features">
-											<span class="icon"><i class="flaticon-stove30"></i></span>
+											<span class="icon"><i class="flaticon-stove30" style="color:purple;"></i></span>
 											<span class="description">full kitchen</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="dishwasher">
 										<div class="features">
-											<span class="icon"><i class="flaticon-dishwasher30"></i></span>
+											<span class="icon"><i class="flaticon-dishwasher30" style="color:purple;"></i></span>
 											<span class="description">dishwasher</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="dryer">
 										<div class="features">
-											<span class="icon"><i class="flaticon-tumble-dryer30"></i></span>
+											<span class="icon"><i class="flaticon-tumble-dryer30" style="color:purple;"></i></span>
 											<span class="description">dryer</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="aircondition">
 										<div class="features">
-											<span class="icon"><i class="flaticon-minisplit30"></i></span>
+											<span class="icon"><i class="flaticon-minisplit30" style="color:purple;"></i></span>
 											<span class="description">aircondition</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="bed">
 										<div class="features">
-											<span class="icon"><i class="flaticon-bed30"></i></span>
+											<span class="icon"><i class="flaticon-bed30" style="color:purple;"></i></span>
 											<span class="description">bed</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="desk">
 										<div class="features">
-											<span class="icon"><i class="flaticon-man-in-office-desk-with-computer30"></i></span>
+											<span class="icon"><i class="flaticon-man-in-office-desk-with-computer30" style="color:purple;"></i></span>
 											<span class="description">desk</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="wardrob">
 										<div class="features">
-											<span class="icon"><i class="flaticon-bedroom-black-closed-closet-for-clothes30"></i></span>
+											<span class="icon"><i class="flaticon-bedroom-black-closed-closet-for-clothes30" style="color:purple;"></i></span>
 											<span class="description">wardrob</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="refrigerator">
 										<div class="features">
-											<span class="icon"><i class="flaticon-fridge30"></i></span>
+											<span class="icon"><i class="flaticon-fridge30" style="color:purple;"></i></span>
 											<span class="description">refrigerator</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="laundry">
 										<div class="features">
-											<span class="icon"><i class="flaticon-washing-machine30"></i></span>
+											<span class="icon"><i class="flaticon-washing-machine30" style="color:purple;"></i></span>
 											<span class="description">laundry</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features"  ng-show="wifi">
 										<div class="features">
-											<span class="icon"><i class="flaticon-wifi30"></i></span>
+											<span class="icon"><i class="flaticon-wifi30" style="color:purple;"></i></span>
 											<span class="description">wifi</span>
 										</div>
 									</li>
@@ -338,227 +350,7 @@
 							</div>
 							<div class="featureContent">
 								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="content-wrapper introduction-wrapper" id="introduction">
-				<div class="introduction">
-					<div class="title">房源介绍</div>
-					<div class="introContent">
-						<div class="base">
-							<div class="name">基本属性</div>
-							<div class="content">
-								<ul>
-									<li><span class="label">Address:</span>Level 2, 84 Pitt Street, Sydney 2000</li>
-									<li>
-										<span class="label">Rental Fee:</span>$350/ week
-									</li>
-									<li><span class="label">Property Type:</span>Apartment</li>
-									<li><span class="label">Room Type:</span>Single room</li>
-									<li><span class="label">Fit Out:</span>1 Bath/ 1 Bed / 1 Parking</li>
-									<li><span class="label">Including:</span> Air-conditioner  Internet</li>
-									<li><span class="label">Available Time:</span>01/06/2017</li>
-									<li>
-										<span class="label">Bond：</span> $2280
-									</li>
-									<li><span class="label">房屋现状:</span>分租</li>
-								</ul>
-							</div>
-						</div>
-						<div class="feature">
-							<div class="name">房源特色</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<ul>
-									<li>
-										<span class="label">Facilities:</span>
-										<span class="text">Pool/Gym</span>
-									</li>
-									<li>
-										<span class="label">交通出行:</span>
-										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-									</li>
-
-									<li>
-										<span class="label">Furniture:</span>
-										<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;Room&nbsp;&nbsp;&nbsp;&nbsp;Build-In Wardrobes  Furnished bed, desk and chair</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp; Kitchen&nbsp;&nbsp;&nbsp;&nbsp; Furnished stove, microwave and fridge</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Laundry&nbsp;&nbsp;&nbsp;&nbsp;Washing machine</span>
-									</li>
-									<li>
-										<span class="label"></span>
-										<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp; Living/ Dinning&nbsp;&nbsp;&nbsp;&nbsp; Air-conditioner</span>
-									</li>
-
-									<li>
-										<span class="label">Retails/Shops:</span>
-										<span class="text">Woolworths, Priceline</span>
-									</li>
-									<li>
-										<span class="label">School:</span>
-										<span class="text">Sydney Girls High school</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="feature">
-							<div class="name">房源描述</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
-								</p>
-							</div>
-						</div>
-						<div class="base">
-							<div class="name">房屋要求</div>
-							<div class="content">
-								<ul>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon">
-												<i class="flaticon-no-smoking-sign30"></i>
-											</span>
-											<span class="description">no smoking</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-no-dogs30"></i></span>
-											<span class="description">no pets</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-female-silhouette30"></i></span>
-											<span class="description">girls only</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-man-standing-up30"></i></span>
-											<span class="description">boys only</span>
-										</div>
-									</li>
-									<!-- <li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-turn-microphone-off-button30"></i></span>
-											<span class="description">no party</span>
-										</div>
-									</li> -->
-								</ul>
-							</div>
-						</div>
-						<div class="base">
-							<div class="name">基本设施</div>
-							<div class="content">
-								<ul>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-stove30"></i></span>
-											<span class="description">full kitchen</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-dishwasher30"></i></span>
-											<span class="description">dishwasher</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-tumble-dryer30"></i></span>
-											<span class="description">dryer</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-minisplit30"></i></span>
-											<span class="description">aircondition</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-bed30"></i></span>
-											<span class="description">bed</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-man-in-office-desk-with-computer30"></i></span>
-											<span class="description">desk</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-bedroom-black-closed-closet-for-clothes30"></i></span>
-											<span class="description">wardrob</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-fridge30"></i></span>
-											<span class="description">refrigerator</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-washing-machine30"></i></span>
-											<span class="description">laundry</span>
-										</div>
-									</li>
-									<li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-wifi30"></i></span>
-											<span class="description">wifi</span>
-										</div>
-									</li>
-									<!-- <li class="list-features">
-										<div class="features">
-											<span class="icon"><i class="flaticon-gas-level30"></i></span>
-											<span class="description">gas</span>
-										</div>
-									</li> -->
-								</ul>
-							</div>
-						</div>
-						<div class="feature">
-							<div class="name">Others</div>
-							<div class="zf-tag">
-								<div class="clear"></div>
-							</div>
-							<div class="featureContent">
-								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
+									[:detailsData.details[0].comment:]
 								</p>
 							</div>
 						</div>
@@ -574,14 +366,14 @@
 				        </div>
 				        <div class="item m-l-n-xxs m-r-n-xxs">
 				          <div ng-init="x = 3" class="top text-right padder m-t-xs w-full">
-				            <rating ng-model="x" max="5" state-on="'fa fa-star text-white'" state-off="'fa fa-star-o text-white'"></rating>
+				            <!-- <rating ng-model="x" max="5" state-on="'fa fa-star text-white'" state-off="'fa fa-star-o text-white'"></rating> -->
 				          </div>
 				         <div class="bottom wrapper bg-gd-dk text-white">
 				            <div class="text-u-c h3 m-b-sm text-primary-lter">Rent&nbsp;Buy&nbsp;Invest</div>
 				            <div>Address</div>
 				            <div>84 Pitt St Sydney</div>
 				          </div>
-				          <img src="img/c0.jpg" class="img-full" style="height: 104px;">
+				          <img src="img/c0.jpg" class="img-full" style="height: 200px;">
 				        </div>
 				        <div class="hbox text-center b-b b-light text-sm">
 				          <a href class="col padder-v text-muted b-r b-light">
@@ -700,7 +492,7 @@
 					<div class="right-descriptions">
 							<div class="desc-text">
 									<ul>
-										<li class="center-text"><a class="price">[:detailsData.SRPrice:]</a><i class="period">&nbsp;&nbsp;per&nbsp;&nbsp;week</i></li>
+										<li class="center-text"><a class="price">$[:detailsData.SRPrice:]</a><i class="period">&nbsp;&nbsp;per&nbsp;&nbsp;week</i></li>
 										<li class="center-text"><a class="time">available time:</a><i class="date">&nbsp;&nbsp;[:detailsData.SRAvailableDate:]</i></li>
 										<li class="center-text">
 											<span>
@@ -790,32 +582,50 @@
 											<div class="featureContent">
 												<ul>
 													<li>
-														<span class="label">Facilities：</span>
-														<span class="text">Pool/ Gym</span>
+														<span class="label">Facilities:</span>
+														<span class="text">[:detailsData.details[0].facility:]</span>
 													</li>
 													<li>
-														<span class="label">交通出行：</span>
-														<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
-													</li>
-													<li>
-														<span class="label"></span>
-														<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+														<span class="label">交通出行:</span>
+														<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;train station&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].train_station:]</span>
 													</li>
 													<li>
 														<span class="label"></span>
-														<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular&nbsp;&nbsp;Quay/Darling&nbsp;&nbsp;Harbour&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+														<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp;Bus Stop&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].bus_stop:]</span>
 													</li>
 													<li>
 														<span class="label"></span>
-														<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;小区有公交站点，去往新港、开发区、洋货市场、工农村等地，出行方便。</span>
+														<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Circular Quay/ Darling Harbour&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].ferry:]</span>
 													</li>
 													<li>
-														<span class="label">Retails/ Shops：</span>
-														<span class="text">Woolworths, Priceline</span>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp;Central station&nbsp;&nbsp;&nbsp;&nbsp;[:detailsData.details[0].light_rail:]</span>
+													</li>
+
+													<!-- <li>
+														<span class="label">Furniture:</span>
+														<span class="text"><i class="fa fa-train"></i>&nbsp;&nbsp;Room&nbsp;&nbsp;&nbsp;&nbsp;Build-In Wardrobes  Furnished bed, desk and chair</span>
 													</li>
 													<li>
-														<span class="label">School：</span>
-														<span class="text">Sydney Girls High school</span>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-bus"></i>&nbsp;&nbsp; Kitchen&nbsp;&nbsp;&nbsp;&nbsp; Furnished stove, microwave and fridge</span>
+													</li>
+													<li>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-ship"></i>&nbsp;&nbsp;Laundry&nbsp;&nbsp;&nbsp;&nbsp;Washing machine</span>
+													</li>
+													<li>
+														<span class="label"></span>
+														<span class="text"><i class="fa fa-subway"></i>&nbsp;&nbsp; Living/ Dinning&nbsp;&nbsp;&nbsp;&nbsp; Air-conditioner</span>
+													</li> -->
+
+													<li>
+														<span class="label">Retails/Shops:</span>
+														<span class="text">[:detailsData.details[0].shops:]</span>
+													</li>
+													<li>
+														<span class="label">School:</span>
+														<span class="text">[:detailsData.details[0].school:]</span>
 													</li>
 												</ul>
 											</div>
@@ -838,8 +648,7 @@
 							</div>
 							<div class="featureContent">
 								<p>
-									our beautiful office settle here and lots of footcourt supply all region's delicious food.
-									Good sea view and Convenient transport to whole NSW
+									[:detailsData.details[0].description_en:]
 								</p>
 							</div>
 						</div>
@@ -847,108 +656,125 @@
 							<div class="name">房屋要求</div>
 							<div class="content">
 								<ul>
-									<li class="list-features">
+									<li class="list-features" ng-show="no_smoking">
 										<div class="features">
 											<span class="icon">
-												<i class="flaticon-no-smoking-sign30"></i>
+												<i class="flaticon-no-smoking-sign30" style="color:purple;"></i>
 											</span>
 											<span class="description">no smoking</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="no_pets">
 										<div class="features">
-											<span class="icon"><i class="flaticon-no-dogs30"></i></span>
+											<span class="icon"><i class="flaticon-no-dogs30" style="color:purple;"></i></span>
 											<span class="description">no pets</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="girl_only">
 										<div class="features">
-											<span class="icon"><i class="flaticon-female-silhouette30"></i></span>
+											<span class="icon"><i class="flaticon-female-silhouette30" style="color:purple;"></i></span>
 											<span class="description">girls only</span>
 										</div>
 									</li>
-									<li class="list-features">
+									<li class="list-features" ng-show="boy_only">
 										<div class="features">
-											<span class="icon"><i class="flaticon-man-standing-up30"></i></span>
+											<span class="icon"><i class="flaticon-man-standing-up30" style="color:purple;"></i></span>
 											<span class="description">boys only</span>
 										</div>
 									</li>
+									<!-- <li class="list-features">
+										<div class="features">
+											<span class="icon"><i class="flaticon-turn-microphone-off-button30"></i></span>
+											<span class="description">no party</span>
+										</div>
+									</li> -->
 								</ul>
 							</div>
 						</div>
 						<div class="base">
 							<div class="name">基本设施</div>
 							<div class="content">
-							<ul>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-stove30"></i></span>
-										<span class="description">stove</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-dishwasher30"></i></span>
-										<span class="description">dishwasher</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-tumble-dryer30"></i></span>
-										<span class="description">dryer</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-minisplit30"></i></span>
-										<span class="description">aircondition</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-bed30"></i></span>
-										<span class="description">bed</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-man-in-office-desk-with-computer30"></i></span>
-										<span class="description">desk</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-bedroom-black-closed-closet-for-clothes30"></i></span>
-										<span class="description">wardrob</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-fridge30"></i></span>
-										<span class="description">refrigerator</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-washing-machine30"></i></span>
-										<span class="description">laundry</span>
-									</div>
-								</li>
-								<li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-wifi30"></i></span>
-										<span class="description">wifi</span>
-									</div>
-								</li>
-								<!-- <li class="list-features">
-									<div class="features">
-										<span class="icon"><i class="flaticon-gas-level30"></i></span>
-										<span class="description">gas</span>
-									</div>
-								</li> -->
-							</ul>
+								<ul>
+									<li class="list-features" ng-show="stove">
+										<div class="features">
+											<span class="icon"><i class="flaticon-stove30" style="color:purple;"></i></span>
+											<span class="description">full kitchen</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="dishwasher">
+										<div class="features">
+											<span class="icon"><i class="flaticon-dishwasher30" style="color:purple;"></i></span>
+											<span class="description">dishwasher</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="dryer">
+										<div class="features">
+											<span class="icon"><i class="flaticon-tumble-dryer30" style="color:purple;"></i></span>
+											<span class="description">dryer</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="aircondition">
+										<div class="features">
+											<span class="icon"><i class="flaticon-minisplit30" style="color:purple;"></i></span>
+											<span class="description">aircondition</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="bed">
+										<div class="features">
+											<span class="icon"><i class="flaticon-bed30" style="color:purple;"></i></span>
+											<span class="description">bed</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="desk">
+										<div class="features">
+											<span class="icon"><i class="flaticon-man-in-office-desk-with-computer30" style="color:purple;"></i></span>
+											<span class="description">desk</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="wardrob">
+										<div class="features">
+											<span class="icon"><i class="flaticon-bedroom-black-closed-closet-for-clothes30" style="color:purple;"></i></span>
+											<span class="description">wardrob</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="refrigerator">
+										<div class="features">
+											<span class="icon"><i class="flaticon-fridge30" style="color:purple;"></i></span>
+											<span class="description">refrigerator</span>
+										</div>
+									</li>
+									<li class="list-features" ng-show="laundry">
+										<div class="features">
+											<span class="icon"><i class="flaticon-washing-machine30" style="color:purple;"></i></span>
+											<span class="description">laundry</span>
+										</div>
+									</li>
+									<li class="list-features"  ng-show="wifi">
+										<div class="features">
+											<span class="icon"><i class="flaticon-wifi30" style="color:purple;"></i></span>
+											<span class="description">wifi</span>
+										</div>
+									</li>
+									<!-- <li class="list-features">
+										<div class="features">
+											<span class="icon"><i class="flaticon-gas-level30"></i></span>
+											<span class="description">gas</span>
+										</div>
+									</li> -->
+								</ul>
+							</div>
+					  </div>
+						<div class="feature">
+							<div class="name">Others</div>
+							<div class="zf-tag">
+								<div class="clear"></div>
+							</div>
+							<div class="featureContent">
+								<p>
+									[:detailsData.details[0].comment:]
+								</p>
+							</div>
 						</div>
-					</div>
 				</div>
 			</div>
 			</div>

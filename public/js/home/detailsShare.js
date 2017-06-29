@@ -2,11 +2,26 @@
 (function() {
 	'use strict';
 	angular.module('andy')
-	.controller('detailsShareController',function ($anchorScroll,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
+	.controller('detailsShareController',function ($anchorScroll,$animate,$location,$http,$scope,$state,NgMap,$window,$stateParams,$cookies,$rootScope,$localStorage, $modal, $log, SearchService,readJSON,mouseEvent,utilConvertDateToString,hotRentService){
 		var datapackage = {};
 		$scope.detailsData = {};
 		$scope.shortlistInsert = {};
+		$scope.no_smoking=false;
+		$scope.no_pets=false;
+		$scope.girl_only=false;
+		$scope.boy_only=false;
+		$scope.stove=false;
+		$scope.dishwasher=false;
+		$scope.aircondition=false;
+		$scope.bed=false;
+		$scope.desk=false;
+		$scope.wardrob=false;
+		$scope.refrigerator=false;
+		$scope.laundry=false;
+		$scope.wifi=false;
+		var ER_Feature = [];
 		$(window).scrollTop(0,0);
+	  $animate.enabled(false);//消除carousel bug
 		if(JSON.stringify(SearchService.get()) != "{}"){
 		 	$localStorage.settings = SearchService.get().data;
 		 	console.log('$localStorage.settings',$localStorage.settings);
@@ -39,6 +54,67 @@
 						},function(e){
 
 						});*/
+				/******************display the features data passed through home starts*****************/
+					 if($scope.detailsData.ER_Feature!=""){
+					 var str = $scope.detailsData.ER_Feature + "";
+					 ER_Feature = str.split(";");
+					//  ER_Feature = ER_Feature.pop();// there is something needed to be changed here
+					 for (var j = 0; j<ER_Feature.length;j++) {
+						//  console.log(ER_Feature[j]);
+						switch (ER_Feature[j])
+							{
+									 case "stove":
+										$scope.stove = true;
+									 break;
+									 case "dishwasher":
+									$scope.dishwasher = true;
+									break;
+									 case "dryer":
+									$scope.dryer = true;
+									break;
+									 case "aircondition":
+									$scope.aircondition = true;
+									break;
+									 case "refrigerator":
+									$scope.refrigerator = true;
+									break;
+									 case "laundry":
+									$scope.laundry = true;
+									break;
+									 case "bed":
+									$scope.bed = true;
+									break;
+									case "desk":
+										$scope.desk = true;
+									 break;
+									case "wardrob":
+										$scope.wardrob = true;
+										 break;
+										case "wifi":
+												$scope.wifi = true;
+										break;
+										case "gas":
+										$scope.gas = true;
+										 break;
+										case "no_pets":
+										$scope.no_pets = true;
+										break;
+										case "girl_only":
+										$scope.girl_only = true;
+										break;
+									case "boy_only":
+										$scope.boy_only = true;
+										break;
+									case "no_party":
+										$scope.no_party = true;
+										break;
+										case "no_smoking":
+											$scope.no_smoking = true;
+											break;
+							}
+						 }
+					 }
+		/******************display the features data passed through home ends*****************/
 
 		/**************************Advertisements carousel********************************/
 		$scope.myInterval = 5000;

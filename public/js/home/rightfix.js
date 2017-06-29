@@ -1,7 +1,7 @@
 ;(function() {
 	'use strict';
 	angular.module('andy')
-	.controller('ModalContactCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
+	.controller('ModalContactCtrl', ['$http','$scope', '$modalInstance', '$log', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,$log,items,utilConvertDateToString) {
 			$scope.contact = {};
 			$scope.customer = {};
 		$scope.saveEnvelope = function(){
@@ -40,11 +40,10 @@
 				$modalInstance.dismiss('cancel');
 			};
 		}])
-		.controller('ModalFeedbackCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
+		.controller('ModalFeedbackCtrl', ['$http','$scope', '$log','$modalInstance', 'items','utilConvertDateToString', function($http,$scope,$log, $modalInstance,items,utilConvertDateToString) {
 				$scope.contact = {};
 				$scope.customer = {};
 			$scope.saveEnvelope = function(){
-				alert('1010');
 				$scope.customer.title = 'Contact';
 				$scope.customer.CID = 1;
 				$scope.customer.createTime = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd HH:mm:ss");
@@ -79,7 +78,7 @@
 					$modalInstance.dismiss('cancel');
 				};
 			}])
-		.controller('fixCtrl',['$scope','$window','$modal','wechatService',function($scope,$window,$modal,wechatService){
+		.controller('fixCtrl',['$scope','$window','$modal','$log','wechatService',function($scope,$window,$modal,$log,wechatService){
 			$scope.go2Top = function(){
 				$(window).scrollTop(0,0);
 			};

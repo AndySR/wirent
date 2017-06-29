@@ -309,105 +309,105 @@
 							</ng-map>
 					</div>
 				<div class="adv clear">
-		<div class="relative-position">
-	<ul class="clear">
-		<li ng-repeat="shop in vm.shops | orderBy: orderName:reverse" ng-mouseover="vm.showDetail(e,shop)">
-			<div id="box" class="all clear panel b-a" set-ng-animate="false">
-				<!--<div class="ad">
+						<div class="relative-position">
+							<ul class="clear">
+								<li ng-repeat="shop in vm.shops | orderBy: orderName:reverse" ng-mouseover="vm.showDetail(e,shop)">
+									<div id="box" class="all clear panel b-a" set-ng-animate="false">
+										<!--<div class="ad">
 
-					<ul id="imgs">
-						<li ng-repeat="picture in shop.picset">
-							<img src="[:picture.PicFile:]" />
-						</li>
-					</ul>
+											<ul id="imgs">
+												<li ng-repeat="picture in shop.picset">
+													<img src="[:picture.PicFile:]" />
+												</li>
+											</ul>
 
-				<div id="arr"><span id="left"><</span><span id="right">></span></div>-->
-				<div class="ad">
-					<div class="shortlist-star" >
-							<a  ng-show="!star" ng-click="star=!star;vm.addShortlist()"><i class="fa fa-3x fa-heart-o" aria-hidden="true"></i></a>
-							<a style="color: pink;" ng-show="star" ng-click="star=!star;vm.deleteShortlist()"><i class="fa fa-3x fa-heart" aria-hidden="true"></i></a>
-					</div>
-					 <carousel interval="myInterval" >
-				          <slide ng-repeat="slide in shop.picset" active="slide.active">
-				            <img ng-src="[:slide.PicFile:]" class="img-full" style="height: 490px; height: 305px;"  ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
-				            <!--<div class="carousel-caption">
-				              <h4>Slide [:$index:]</h4>
-				              <p>[:slide.text:]</p>
-				            </div>-->
-				          </slide>
-			         </carousel>
-			         <!--<div maplunbo imgdata="shop" style="width: 490px;height: 305px;"></div>-->
-		         </div>
-			</div>
-			<div class="description">
-				<div class="info-panel">
-					<div class="listing-features rooms">
-						<span class="f-icon with-text" style="color: purple;">
-                        	<span class="copy"><em class="ng-binding">[:shop.ER_BedRoom:]</em></span>
-							<span class="icon fa fa-bed" ></span>
-						</span>
-						<span class="f-icon with-text" style="color: purple;">
-                        	<span class="copy"><em class="ng-binding">[:shop.ER_BathRoom:]</em></span>
-							<span class="icon fa fa-bath" ></span>
-						</span>
-						<span class="f-icon with-text" style="color: purple;">
-                    		<span class="copy"><em class="ng-binding">[:shop.ER_Parking:]</em></span>
-							<span class="icon fa fa-car" ></span>
-						</span>
-					</div>
-					<div class="address">
-						<a ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
-							[:shop.ER_No+' '+shop.ER_St:],[:shop.ER_Suburb+' '+shop.ER_Region:]
-						</a>
-					</div>
-					<div class="benefits">
-							<a href class="f-icon with-text " title="near train station">
-			            <span class="icon " ng-show="shop.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
-			             <!--<span class="icon " ng-show="!shop.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
-			        </a>
-			        <a href class="f-icon with-text " title="near university">
-			        	<span class="icon " ng-show="shop.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
-			            <!--<span class="icon " ng-show="!shop.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>-->
-			        </a>
-			        <a href class="f-icon with-text " title="backpack">
-			        	<span class="icon " ng-show="shop.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
-			            <!--<span class="icon " ng-show="!shop.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
-			        </a>
-			        <a href class="f-icon with-text " title="near park">
-			        	 <span class="icon " ng-show="shop.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
-			            <!--<span class="icon " ng-show="!shop.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
-			        </a>
-							<a href class="f-icon with-text " title="near school">
-								<span class="icon " ng-show="shop.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
-			            <!--<span class="icon " ng-show="!shop.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
-			        </a>
-			        <a href class="f-icon with-text " title="big family">
-			        	 <span class="icon " ng-show="shop.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
-			            <!--<span class="icon " ng-show="!shop.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
-			        </a>
-			        <a href class="f-icon with-text " title="near shopping center">
-			        	<span class="icon " ng-show="shop.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
-			            <!--<span class="icon " ng-show="!shop.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
-			        </a>
-			        <a href class="f-icon with-text " title="office rental">
-			        	<span class="icon " ng-show="shop.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
-			            <!--<span class="icon " ng-show="!shop.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
-			        </a>
-					</div>
-					<div class="price">
-						<span class="num">$[:shop.ER_Price:]</span>
-						<span class="period" translate="listpage.list.row.price_unit">per week</span>
-						<span class="available"><i translate="listpage.list.row.time"></i>:&nbsp;&nbsp;<i style="color: darkred;font-size: 16px;">[:shop.ER_AvailableDate:]</i></span>
-					</div>
-					<div class="view" ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
-						<span class="view-num"><i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i></span>
-					</div>
-				</div>
-			</div>
-		</li>
-	</ul>
-</div>
-		</div>
+										<div id="arr"><span id="left"><</span><span id="right">></span></div>-->
+										 <div class="ad">
+													 <div class="shortlist-star" >
+															<a  ng-show="!star" ng-click="star=!star;vm.addShortlist()"><i class="fa fa-3x fa-heart-o" aria-hidden="true"></i></a>
+															<a style="color: pink;" ng-show="star" ng-click="star=!star;vm.deleteShortlist()"><i class="fa fa-3x fa-heart" aria-hidden="true"></i></a>
+													 </div>
+											 		 <carousel interval="myInterval" >
+										          <slide ng-repeat="slide in shop.picset" active="slide.active">
+										            <img ng-src="[:slide.PicFile:]" class="img-full" style="height: 490px; height: 305px;"  ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
+										            <!--<div class="carousel-caption">
+										              <h4>Slide [:$index:]</h4>
+										              <p>[:slide.text:]</p>
+										            </div>-->
+										          </slide>
+									         </carousel>
+									         <!--<div maplunbo imgdata="shop" style="width: 490px;height: 305px;"></div>-->
+								     </div>
+									</div>
+									<div class="description">
+										<div class="info-panel">
+											<div class="listing-features rooms">
+												<span class="f-icon with-text" style="color: purple;">
+						                        	<span class="copy"><em class="ng-binding">[:shop.ER_BedRoom:]</em></span>
+													<span class="icon fa fa-bed" ></span>
+												</span>
+												<span class="f-icon with-text" style="color: purple;">
+						                        	<span class="copy"><em class="ng-binding">[:shop.ER_BathRoom:]</em></span>
+													<span class="icon fa fa-bath" ></span>
+												</span>
+												<span class="f-icon with-text" style="color: purple;">
+						                    		<span class="copy"><em class="ng-binding">[:shop.ER_Parking:]</em></span>
+													<span class="icon fa fa-car" ></span>
+												</span>
+											</div>
+											<div class="address">
+												<a ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
+													[:shop.ER_No+' '+shop.ER_St:],[:shop.ER_Suburb+' '+shop.ER_Region:]
+												</a>
+											</div>
+											<div class="benefits">
+													<a href class="f-icon with-text " title="near train station">
+									            <span class="icon " ng-show="shop.train_station" style="color: orange;"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>
+									             <!--<span class="icon " ng-show="!shop.train_station"><i class="flaticon-train-on-railroad1" aria-hidden="true"></i></span>-->
+									        </a>
+									        <a href class="f-icon with-text " title="near university">
+									        	<span class="icon " ng-show="shop.university" style="color: chocolate;"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>
+									            <!--<span class="icon " ng-show="!shop.university"><i class="flaticon-college-graduation1" aria-hidden="true"></i></span>-->
+									        </a>
+									        <a href class="f-icon with-text " title="backpack">
+									        	<span class="icon " ng-show="shop.backpack" style="color: greenyellow;"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>
+									            <!--<span class="icon " ng-show="!shop.backpack"><i class="flaticon-backpack1" aria-hidden="true"  ></i></span>-->
+									        </a>
+									        <a href class="f-icon with-text " title="near park">
+									        	 <span class="icon " ng-show="shop.park" style="color: green;"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>
+									            <!--<span class="icon " ng-show="!shop.park"><i class="flaticon-green-park-city-space1" aria-hidden="true"></i></span>-->
+									        </a>
+													<a href class="f-icon with-text " title="near school">
+														<span class="icon " ng-show="shop.school" style="color: yellow;"><i class="flaticon-open-book1" aria-hidden="true"></i></span>
+									            <!--<span class="icon " ng-show="!shop.school"><i class="flaticon-open-book1" aria-hidden="true"></i></span>-->
+									        </a>
+									        <a href class="f-icon with-text " title="big family">
+									        	 <span class="icon " ng-show="shop.big_family" style="color: pink;"><i class="flaticon-people1"  aria-hidden="true"></i></span>
+									            <!--<span class="icon " ng-show="!shop.big_family"><i class="flaticon-people1"  aria-hidden="true"></i></span>-->
+									        </a>
+									        <a href class="f-icon with-text " title="near shopping center">
+									        	<span class="icon " ng-show="shop.shopping_mall" style="color: darkred;"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>
+									            <!--<span class="icon " ng-show="!shop.shopping_mall"><i class="flaticon-shopping-cart1" aria-hidden="true"></i></span>-->
+									        </a>
+									        <a href class="f-icon with-text " title="office rental">
+									        	<span class="icon " ng-show="shop.offical_rental" style="color: blue;"><i class="flaticon-business1" aria-hidden="true"></i></span>
+									            <!--<span class="icon " ng-show="!shop.offical_rental"><i class="flaticon-business1" aria-hidden="true"></i></span>-->
+									        </a>
+											</div>
+											<div class="price">
+												<span class="num">$[:shop.ER_Price:]</span>
+												<span class="period" translate="listpage.list.row.price_unit">per week</span>
+												<span class="available"><i translate="listpage.list.row.time"></i>:&nbsp;&nbsp;<i style="color: darkred;font-size: 16px;">[:shop.ER_AvailableDate:]</i></span>
+											</div>
+											<div class="view" ui-sref="app.details({id:shop.ER_ID,name:shop.ER_No+' '+shop.ER_St+' '+shop.ER_Suburb+' '+shop.ER_Region})">
+												<span class="view-num"><i translate="listpage.list.row.details"></i> <i class="fa fa-angle-right"></i></span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+			  </div>
 </div>
 
 </div>

@@ -10,34 +10,34 @@
 							</div>
 							<div class="right">
 								<ul class="switchboard">
-	                                <li class="copy">Filter by</li>
-	                                <li><a href="javascript:;" class="btn" data-filter="">All</a></li>
-	                                <li><a href="javascript:;" class="btn" data-filter="buy">Buy</a></li>
-	                                <li><a href="javascript:;" class="btn selected" data-filter="rent">Rent</a></li>
-	                                <li><a href="javascript:;" class="btn" data-filter="NewDevelopment">New Homes</a></li>
-	                                <li><a href="javascript:;" class="btn" data-filter="share">Share</a></li>
-	                                <li><a href="javascript:;" class="btn" data-filter="sold">Sold</a></li>
-																	<li>
-																	 <a ng-click="sortBy('ER_Price')" class="btn">
-																			 <i translate="listpage.list.orderBy.price"></i>
-																		 &nbsp;
-																			 <span ng-if="orderleft">
-																				 <i ng-show="sortPrice" class="fa fa-caret-down"></i>
-																				 <i ng-show="!sortPrice" class="fa fa-caret-up"></i>
-																		 </span>
-																	 </a>
-																 </li>
-																 <li>
-																	 <a ng-click="sortBy('ER_AvailableDate')" class="btn">
-																			 <i translate="listpage.list.orderBy.time"></i>
-																			 &nbsp;
-																			 <span ng-if="orderright">
-																		 <i ng-show="sortDate" class="fa fa-caret-down"></i>
-																				 <i ng-show="!sortDate" class="fa fa-caret-up"></i>
-																	 </span>
-																	 </a>
-																 </li>
-                            	</ul>
+                    <li class="copy">Filter by</li>
+                    <li><a href="javascript:;" class="btn" data-filter="">All</a></li>
+                    <li><a href="javascript:;" class="btn" data-filter="buy">Buy</a></li>
+                    <li><a href="javascript:;" class="btn selected" data-filter="rent">Rent</a></li>
+                    <li><a href="javascript:;" class="btn" data-filter="NewDevelopment">New Homes</a></li>
+                    <li><a href="javascript:;" class="btn" data-filter="share">Share</a></li>
+                    <li><a href="javascript:;" class="btn" data-filter="sold">Sold</a></li>
+										<li>
+										 <a ng-click="sortBy('ER_Price')" class="btn">
+												 <i translate="listpage.list.orderBy.price"></i>
+											 &nbsp;
+												 <span ng-if="orderleft">
+													 <i ng-show="sortPrice" class="fa fa-caret-down"></i>
+													 <i ng-show="!sortPrice" class="fa fa-caret-up"></i>
+											 </span>
+										 </a>
+									 </li>
+									 <li>
+										 <a ng-click="sortBy('ER_AvailableDate')" class="btn">
+												 <i translate="listpage.list.orderBy.time"></i>
+												 &nbsp;
+												 <span ng-if="orderright">
+											 <i ng-show="sortDate" class="fa fa-caret-down"></i>
+													 <i ng-show="!sortDate" class="fa fa-caret-up"></i>
+										 </span>
+										 </a>
+									 </li>
+              	</ul>
 							</div>
 						</header>
 					</div>
@@ -45,6 +45,9 @@
 				<div class="row cfix" style="display: block;">
 					<ul class="cfix">
 					<li class="card listing shortlist clickable" ng-repeat="(key,value) in shortlistData track by $index | orderBy: orderName:reverse">
+						<script type="text/ng-template" id="myModalCancel.html">
+									<div ng-include="'/partials/tpl/modalcancel.html'"></div>
+						</script>
 						<a class="f-icon shortlist star shortlisted shortlist-ga-tracking" ng-click="remove($index)" title="remove from shortlist">
 								<span class="icon fill domain-icon-ic_shortlist_selected"></span>
 						        <span class="icon outline fa fa-heart" style="color:pink;"></span>

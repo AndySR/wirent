@@ -1,6 +1,44 @@
 'use strict';
 	angular.module('andy')
-		.controller('shortlistCtrl',['$scope','$http','$state','SearchService',function($scope,$http,$state,SearchService){
+	.controller('ModalCancelCtrl', ['$http','$scope', '$modalInstance', 'items','utilConvertDateToString', function($http,$scope, $modalInstance,items,utilConvertDateToString) {
+			$scope.contact = {};
+			$scope.customer = {};
+		$scope.saveEnvelope = function(){
+			$scope.customer.title = 'Contact';
+			$scope.customer.CID = 1;
+			$scope.customer.createTime = utilConvertDateToString.getDateToString(new Date(),"yyyy-MM-dd HH:mm:ss");
+			$scope.customer.IdReceiver= 3;
+			$scope.customer.content = $scope.contact.name +';'+$scope.contact.email +';'+$scope.contact.phone +';'+$scope.contact.message;
+			$scope.customer.msg_direct_comment='Customer to Staff';
+			console.log("me.customer",$scope.customer);
+		$http.post('/customer/msg/write', $scope.customer)
+			.then(function(r){
+				console.log('r===>',r);
+				/*if (r.status===200)
+				{
+					me.signup_data = {};
+					$state.go('app.login');
+				}*/
+//				$modalInstance.dismiss('cancel');
+			},function(e){
+
+			})
+
+		}
+
+		$scope.items = items;
+			$scope.selected = {
+				item: $scope.items[0]
+			};
+			$scope.ok = function () {
+				$modalInstance.close($scope.selected.item);
+			};
+
+			$scope.cancel = function () {
+				$modalInstance.dismiss('cancel');
+			};
+		}])
+		.controller('shortlistCtrl',['$scope','$http','$state','$modal','$log','SearchService',function($scope,$http,$state,$modal,$log,SearchService){
 			// $scope.shortlistData=SearchService.get();
 			 $scope.shortlistcheckdata = {};
 			 $scope.shortlistDelete = {};
@@ -32,6 +70,24 @@
 						$http.post('/customer/shortlist/delete',$scope.shortlistDelete)
 								.then(function(r){
 									console.log("r=====>>"+r);
+									/*********************************/
+									var modalInstance = $modal.open({
+										templateUrl: 'myModalCancel.html',
+										controller: 'ModalCancelCtrl',
+										size: 'sm',
+										resolve: {
+											items: function () {
+												return $scope.items;
+											}
+										}
+									});
+
+									modalInstance.result.then(function (selectedItem) {
+										$scope.selected = selectedItem;
+									}, function () {
+										$log.info('Modal dismissed at: ' + new Date());
+									});
+									/**********************************/
 									$state.reload();
 								},function(e){
 										console.log(e);
@@ -58,4 +114,25 @@
 			//				$scope.orderName = order+'';
 			}
 			/*********************sortby ends*********************************************/
+
+			/************************contactus modal starts*************************/
+				$scope.items = ['item1', 'item2', 'item3'];
+					$scope.open = function (size) {
+						var modalInstance = $modal.open({
+							templateUrl: 'myModalCancel.html',
+							controller: 'ModalCancelCtrl',
+							size: size,
+							resolve: {
+								items: function () {
+									return $scope.items;
+								}
+							}
+						});
+
+						modalInstance.result.then(function (selectedItem) {
+							$scope.selected = selectedItem;
+						}, function () {
+							$log.info('Modal dismissed at: ' + new Date());
+						});
+					};
 		}]);

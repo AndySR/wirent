@@ -410,9 +410,12 @@ angular.module('andy')
 						//如果不包含或者输入的是空字符串则用初始变量副本做替换
 						if($scope.datas.length == 0 || '' == v) {
 							$scope.datas = $scope.tempdatas;
+								// $scope.hidden = true;
 						}
+
 						console.log($scope.datas);
 					}
+					
 				}
 			};
 		})

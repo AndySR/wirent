@@ -1006,7 +1006,7 @@ class CustomerController extends Controller
 		$proc_name = 'proc_Delete_CustomerLogbook';
 		$sql = "call $proc_name({$CID},'{$CLType}','{$CLDetail}')";
 		$result = DB::select($sql);
-		return $result;
+		return json_encode($result);
 	}
 
 	public function shortlist_insert(Request $request)

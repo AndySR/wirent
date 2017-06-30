@@ -69,7 +69,6 @@
 					                            <li class="address truncate-single">[:value[0].ER_No:] [:value[0].ER_St:], [:value[0].ER_Suburb:]</li>
 					                    </ul>
 					                <dl class="cfix">
-
 					                        <dt>Inspection</dt>
 					                        <dd>Contact agent</dd>
 
@@ -78,7 +77,10 @@
 					        </div>
 
 					            <div class="toolbar-wrap">
-					                    <a href="#" class="btn btn-success shortlistEnquiry">Enquire now</a>
+					                    <a ng-click="open()" class="btn btn-success shortlistEnquiry">Enquire now</a>
+															<script type="text/ng-template" id="myModalEnquire.html">
+																		<div ng-include="'/partials/tpl/modalenquire.html'"></div>
+															</script>
 
 					                <span class="enquirySendDate" id="enquirySent"></span>
 
